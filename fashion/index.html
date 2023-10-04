@@ -6,6 +6,41 @@
   <link rel="icon" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fashion Slider</title>
+
+  <style>
+    body,
+    img {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+
+      /* user-drag: none; */
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      pointer-events: none;
+    }
+
+    .fashion-slider-title-text {
+      font-weight: 700;
+      font-size: var(--fashion-slider-title-font-size);
+      line-height: var(--fashion-slider-title-line-height);
+      letter-spacing: -1px;
+      color: rgba(255, 255, 255, 0);
+      -webkit-text-stroke: 2px #fff;
+      text-decoration: none;
+    }
+
+    #app {
+      overflow-y: hidden;
+    }
+  </style>
   <script type="module" crossorigin src="assets/index.d8a54396.js"></script>
   <link rel="stylesheet" href="assets/index.0d25bdac.css">
 </head>
@@ -21,12 +56,14 @@
             <!-- slide title wrap -->
             <div class="fashion-slider-title" data-swiper-parallax="-130%">
               <!-- slide title text -->
-              <div class="fashion-slider-title-text">Strad</div>
+              <a href="https://mix-tape.web.app" class="fashion-slider-title-text">Mixtape</a>
+              <!-- <div class="fashion-slider-title-text">Strad</div> -->
+              <!-- <a class="fashion-slider-link" href="https://mix-tape.web.app">Visitar</a> -->
             </div>
             <!-- slide image wrap -->
             <div class="fashion-slider-scale">
               <!-- slide image -->
-              <img src="images/sun.jpg">
+              <img src="images/feria.jpg">
             </div>
           </div>
           <!-- configure slide color with "data-slide-bg-color" attribute -->
@@ -39,7 +76,7 @@
             <!-- slide image wrap -->
             <div class="fashion-slider-scale">
               <!-- slide image -->
-              <img src="images/feria.jpg">
+              <img src="images/sun.jpg">
             </div>
           </div>
           <!-- configure slide color with "data-slide-bg-color" attribute -->
@@ -47,7 +84,7 @@
             <!-- slide title wrap -->
             <div class="fashion-slider-title" data-swiper-parallax="-130%">
               <!-- slide title text -->
-              <div class="fashion-slider-title-text">Nova Icaria</div>
+              <div class="fashion-slider-title-text">7:00</div>
             </div>
             <!-- slide image wrap -->
             <div class="fashion-slider-scale">
