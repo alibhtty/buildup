@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="./css/modals.css">
+	<link rel="stylesheet" href="./css/styles.css">
+	<script src="https://kit.fontawesome.com/003962264f.js" crossorigin="anonymous"></script>
+	<title>Encuesta</title>
+</head>
+<body>
+	<main class="main-container">
+		<section class="main-section">
+			<header class="header">
+				<img class="logo" src="./img/nsplogo.png">
+				<h2 class="header-title">ANALISIS DE ESTILO DE VIDA</h2>
+			</header>
+
+			<aside class="progress">
+				<h2 class="progress__title">Completado</h2>
+				<!-- circular progress bar -->
+				<div class="circular-progress">
+					<div class="value-container"></div>
+				</div>
+				<!-- linear progress bar -->
+				<div class="linear-progress">
+					<progress class="linear-progress-bar" id="prrogress-bar" max="100" value="0"></progress>
+					<span class="linear-value-container">0%</span>
+				</div>
+			</aside>
+		
+			<form id="formulario" action="" class="fomulario">
+		
+				<div class="contenedor-pregunta">
+					<div class="number">1</div>
+					<p class="pregunta">Se siente frecuentemente débil y/o cansado.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="1" type="radio" name="pregunta1" id="p1" >
+							<label for="p1">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="1" type="radio" name="pregunta1" id="p2" >
+							<label for="p2">NO</label>
+						</div>
+					</div>
+				</div>
+		
+				<div class="contenedor-pregunta">
+					<div class="number">2</div>
+					<p class="pregunta">Se enferma frecuentemente.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="2" type="radio" name="pregunta2" id="p3" >
+							<label for="p3">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="2" type="radio" name="pregunta2" id="p4" >
+							<label for="p4">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">3</div>
+					<p class="pregunta">Tiene mal olor corporal o mal aliento.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="3" type="radio" name="pregunta3" id="p5" >
+							<label for="p5">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="3" type="radio" name="pregunta3" id="p6" >
+							<label for="p6">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">4</div>
+					<p class="pregunta">Siente dificultad al digerir cierto tipo de alimentos.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="4" type="radio" name="pregunta4" id="p7" >
+							<label for="p7">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="4" type="radio" name="pregunta4" id="p8" >
+							<label for="p8">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">5</div>
+					<p class="pregunta">Consume frecuentemente carnes rojas.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="5" type="radio" name="pregunta5" id="p9" >
+							<label for="p9">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="5" type="radio" name="pregunta5" id="p10" >
+							<label for="p10">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">6</div>
+					<p class="pregunta">Padece de síndrome pre-menstrual o menopausia.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="6" type="radio" name="pregunta6" id="p11" >
+							<label for="p11">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="6" type="radio" name="pregunta6" id="p12" >
+							<label for="p12">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">7</div>
+					<p class="pregunta">Usa frecuentemente antibióticos.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="7" type="radio" name="pregunta7" id="p13" >
+							<label for="p13">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="7" type="radio" name="pregunta7" id="p14" >
+							<label for="p14">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">8</div>
+					<p class="pregunta">Consume alcohol regularmente.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="8" type="radio" name="pregunta8" id="p15" >
+							<label for="p15">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="8" type="radio" name="pregunta8" id="p16" >
+							<label for="p16">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">9</div>
+					<p class="pregunta">Tiene bolsas debajo de los ojos o pies hinchados.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="9" type="radio" name="pregunta9" id="p17" >
+							<label for="p17">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="9" type="radio" name="pregunta9" id="p18" >
+							<label for="p18">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">10</div>
+					<p class="pregunta">Es fumador activo o pasivo.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="10" type="radio" name="pregunta10" id="p19" >
+							<label for="p19">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="10" type="radio" name="pregunta10" id="p20" >
+							<label for="p20">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">11</div>
+					<p class="pregunta">Sufre de falta de concentración o memoria.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="11" type="radio" name="pregunta11" id="p21" >
+							<label for="p21">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="11" type="radio" name="pregunta11" id="p22" >
+							<label for="p22">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">12</div>
+					<p class="pregunta">Se recupera con dificultad de las enfermedades.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="12" type="radio" name="pregunta12" id="p23" >
+							<label for="p23">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="12" type="radio" name="pregunta12" id="p24" >
+							<label for="p24">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">13</div>
+					<p class="pregunta">Eructa o tiene gases después de las comidas.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="13" type="radio" name="pregunta13" id="p25" >
+							<label for="p25">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="13" type="radio" name="pregunta13" id="p26" >
+							<label for="p26">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">14</div>
+					<p class="pregunta">Se siente estresado frecuentemente.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="14" type="radio" name="pregunta14" id="p27" >
+							<label for="p27">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="14" type="radio" name="pregunta14" id="p28" >
+							<label for="p28">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">15</div>
+					<p class="pregunta">Sufre de alergias y/o afecciones en la piel (acné, erupciones).</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="15" type="radio" name="pregunta15" id="p29" >
+							<label for="p29">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="15" type="radio" name="pregunta15" id="p30" >
+							<label for="p30">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">16</div>
+					<p class="pregunta">Siente antojos por alimentos dulces y/o alimentos procesados (embutidos).</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="16" type="radio" name="pregunta16" id="p31" >
+							<label for="p31">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="16" type="radio" name="pregunta16" id="p32" >
+							<label for="p32">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">17</div>
+					<p class="pregunta">Consume productos lácteos regularmente.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="17" type="radio" name="pregunta17" id="p33" >
+							<label for="p33">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="17" type="radio" name="pregunta17" id="p34" >
+							<label for="p34">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">18</div>
+					<p class="pregunta">Se siente frecuentemente preocupado, ansioso o deprimido.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="18" type="radio" name="pregunta18" id="p35" >
+							<label for="p35">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="18" type="radio" name="pregunta18" id="p36" >
+							<label for="p36">NO</label>
+						</div>
+					</div>	
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">19</div>
+					<p class="pregunta">Siente poco sueño / sueño inquieto.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="19" type="radio" name="pregunta19" id="p37" >
+							<label for="p37">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="19" type="radio" name="pregunta19" id="p38" >
+							<label for="p38">NO</label>
+						</div>
+					</div>	
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">20</div>
+					<p class="pregunta">Sus uñas son quebradizas / se parten en capas.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="20" type="radio" name="pregunta20" id="p39" >
+							<label for="p39">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="20" type="radio" name="pregunta20" id="p40" >
+							<label for="p40">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">21</div>
+					<p class="pregunta">Su cabello se parte en las puntas o se cae.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="21" type="radio" name="pregunta21" id="p41" >
+							<label for="p41">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="21" type="radio" name="pregunta21" id="p42" >
+							<label for="p42">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">22</div>
+					<p class="pregunta">Su dieta es alta en grasas o en colesterol.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="22" type="radio" name="pregunta22" id="p43" >
+							<label for="p43">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="22" type="radio" name="pregunta22" id="p44" >
+							<label for="p44">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">23</div>
+					<p class="pregunta">Sufre de nerviosismo, ansiedad o tensión.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="23" type="radio" name="pregunta23" id="p45" >
+							<label for="p45">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="23" type="radio" name="pregunta23" id="p46" >
+							<label for="p46">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">24</div>
+					<p class="pregunta">Su dieta es baja en fibras (verduras, frutas, cereales, legumbres).</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="24" type="radio" name="pregunta24" id="p47" >
+							<label for="p47">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="24" type="radio" name="pregunta24" id="p48" >
+							<label for="p48">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">25</div>
+					<p class="pregunta">Sufre de calambres musculares</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="25" type="radio" name="pregunta25" id="p49" >
+							<label for="p49">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="25" type="radio" name="pregunta25" id="p50" >
+							<label for="p50">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">26</div>
+					<p class="pregunta">Está expuesto a contaminación ambiental. </p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="26" type="radio" name="pregunta26" id="p51" >
+							<label for="p51">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="26" type="radio" name="pregunta26" id="p52" >
+							<label for="p52">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">27</div>
+					<p class="pregunta">Permanece con sueño a cualquier hora del día. </p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="27" type="radio" name="pregunta27" id="p53" >
+							<label for="p53">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="27" type="radio" name="pregunta27" id="p54" >
+							<label for="p54">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">28</div>
+					<p class="pregunta">Consume mucho café, té o gaseosas oscuras “colas”.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="28" type="radio" name="pregunta28" id="p55" >
+							<label for="p55">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="28" type="radio" name="pregunta28" id="p56" >
+							<label for="p56">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">29</div>
+					<p class="pregunta">Su carácter es explosivo: pierde el control fácilmente.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="29" type="radio" name="pregunta29" id="p57" >
+							<label for="p57">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="29" type="radio" name="pregunta29" id="p58" >
+							<label for="p58">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">30</div>
+					<p class="pregunta">Es sensible a ciertos alimentos o productos químicos.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="30" type="radio" name="pregunta30" id="p59" >
+							<label for="p59">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="30" type="radio" name="pregunta30" id="p60" >
+							<label for="p60">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">31</div>
+					<p class="pregunta">Tiene molestias al consumir harinas blancas.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="31" type="radio" name="pregunta31" id="p61" >
+							<label for="p61">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="31" type="radio" name="pregunta31" id="p62" >
+							<label for="p62">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">32</div>
+					<p class="pregunta">Siente debilidad, dolor en huesos y músculos.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="32" type="radio" name="pregunta32" id="p63" >
+							<label for="p63">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="32" type="radio" name="pregunta32" id="p64" >
+							<label for="p64">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">33</div>
+					<p class="pregunta">Vive con preocupaciones constantes o resentimientos guardados.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="33" type="radio" name="pregunta33" id="p65" >
+							<label for="p65">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="33" type="radio" name="pregunta33" id="p66" >
+							<label for="p66">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">34</div>
+					<p class="pregunta">Es mal genio, se irrita con facilidad.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="34" type="radio" name="pregunta34" id="p67" >
+							<label for="p67">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="34" type="radio" name="pregunta34" id="p68" >
+							<label for="p68">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">35</div>
+					<p class="pregunta">Hace poco ejercicio.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="35" type="radio" name="pregunta35" id="p69" >
+							<label for="p69">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="35" type="radio" name="pregunta35" id="p70" >
+							<label for="p70">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">36</div>
+					<p class="pregunta">Presenta exceso de mucosidad (nariz y garganta).</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="36" type="radio" name="pregunta36" id="p71" >
+							<label for="p71">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="36" type="radio" name="pregunta36" id="p72" >
+							<label for="p72">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="number">37</div>
+					<p class="pregunta">Sufre de dificultades urinarias.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="37" type="radio" name="pregunta37" id="p73" >
+							<label for="p73">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="37" type="radio" name="pregunta37" id="p74" >
+							<label for="p74">NO</label>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor-pregunta">
+					<div class="last-number">38</div>
+					<p class="pregunta">Tiene poco apetito.</p>
+					<div class="separador"></div>
+					<div class="radio-buttons-container">
+						<div class="single-radio-buttons-container">
+							<input class="38" type="radio" name="pregunta38" id="p75" >
+							<label for="p75">SI</label>
+						</div>
+						<div class="single-radio-buttons-container">
+							<input class="38" type="radio" name="pregunta38" id="p76" >
+							<label for="p76">NO</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="button-container">
+					<!-- <input id="resultBtn" class="button" type="button" value="RESULTADO"/> -->
+					<!-- <button id="resetBtn" class="button">REINICIAR</button> -->
+					<input id="resetBtn" class="button" type="button" value="REINICIAR"/>
+				</div>
+
+			</form>
+		</section>
+		
+		<aside class="sidebar">
+			<h3 class="sidebar__header">CRITERIOS DE CALIFICACION</h3>
+			<div class="result-container">
+
+				<div class="side-report">
+					<h3 id="digestivo">Digestivo</h3>
+					<div class="sidebar-container">
+						<div id="D-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="D-icon-circular-progress" class="icon-circular-progress">
+								<div id="D-icon-value-container" class="icon-value-container">
+									<img src="./img/digestivo.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Intestinal</h3>
+					<div class="sidebar-container">
+						<div id="I-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="I-icon-circular-progress" class="icon-circular-progress">
+								<div id="I-icon-value-container" class="icon-value-container">
+									<img src="./img/stomach.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Circulatorio</h3>
+					<div class="sidebar-container">
+						<div id="C-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="C-icon-circular-progress" class="icon-circular-progress">
+								<div id="C-icon-value-container" class="icon-value-container">
+									<img src="./img/circulatorio.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Nervioso</h3>
+					<div class="sidebar-container">
+						<div id="N-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="N-icon-circular-progress" class="icon-circular-progress">
+								<div id="N-icon-value-container" class="icon-value-container">
+									<img src="./img/nervioso.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Inmunológico</h3>
+					<div class="sidebar-container">
+						<div id="M-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="M-icon-circular-progress" class="icon-circular-progress">
+								<div id="M-icon-value-container" class="icon-value-container">
+									<img src="./img/inmunologico.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Respiratorio</h3>
+					<div class="sidebar-container">
+						<div id="R-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="R-icon-circular-progress" class="icon-circular-progress">
+								<div id="R-icon-value-container" class="icon-value-container">
+									<img src="./img/respiratorio.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Urinario</h3>
+					<div class="sidebar-container">
+						<div id="U-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="U-icon-circular-progress" class="icon-circular-progress">
+								<div id="U-icon-value-container" class="icon-value-container">
+									<img src="./img/urinario.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Glandular</h3>
+					<div class="sidebar-container">
+						<div id="G-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="G-icon-circular-progress" class="icon-circular-progress">
+								<div id="G-icon-value-container" class="icon-value-container">
+									<img src="./img/glandular.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-report">
+					<h3 id="digestivo">Estructural</h3>
+					<div class="sidebar-container">
+						<div id="E-icon-circular-progress-container" class="icon-circular-progress-container">
+							<div id="E-icon-circular-progress" class="icon-circular-progress">
+								<div id="E-icon-value-container" class="icon-value-container">
+									<img src="./img/estructural.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="export-container">
+				<input id="exportBtn" class="button" type="button" value="EXPORTAR""/>
+			</div>
+		</aside>
+	</main>
+
+	<!-- Reset Modal -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<p>¿Seguro que quiere reiniciar?</p>
+			<div class="button-modal-container">
+				<button class="button-modal" id="acceptBtn">Aceptar</button>
+				<button class="button-modal" id="cancelBtn">Cancelar</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Result Modal -->
+	<div id="resultModal" class="modal">
+		<div class="modal-content">
+			<p>Por favor contesta todas las preguntas</p>
+			<div class="button-modal-container">
+				<button class="button-modal" id="accepResultBtn">Aceptar</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- form Modal -->
+	<div id="formModal" class="modal">
+		<div class="modal-content">
+			<p>Para poder descargar los resultados por favor ingresa los siguientes datos:</p>
+			<form id="formResult" action="">
+				<input id="inputName" type="text" placeholder="Nombre">
+				<div id="nombreError"></div>
+				<input id="inputEmail" type="email" placeholder="Correo">
+				<div id="emailError"></div>
+
+				<div class="radio-container">
+					<input type="radio" id="hombre" name="genero" checked>
+					<label for="hombre">Hombre</label>
+					<input type="radio" id="mujer" name="genero">
+					<label for="mujer">Mujer</label>
+				</div>
+			
+			<div class="button-modal-container">
+				<button class="button-modal" id="cancelExporBtn">Cancelar</button>
+				<input type="submit" class="button-modal" id="descargarBtn" value="Descargar"></input>
+			</div>
+			</form>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<p><strong>Copyright &copy; 2022 <a href="https://www.naturessunshine.ec" target="_blank">Nature's Sunshine EC</a>.</strong></p>
+		<p>Todos los derechos reservados.</p>
+		<div class="social-container">
+			<a href="#"><img src="img/facebook.png" alt="facebook"></a>
+			<a href="#"><img src="img/youtube.png" alt="youtube"></a>
+			<a href="#"><img src="img/whatsapp.png" alt="whatsapp"></a>
+			<a href="#"><img src="img/instagram.png" alt="instagram"></a>
+		</div>
+	</footer>	
+
+	<script src="https://kit.fontawesome.com/003962264f.js" crossorigin="anonymous"></script>
+	<script src="./js/jspdf.min.js"></script>
+	<script src="./js/modals.js"></script>
+	<!-- <script src="./js/aev.js"></script> -->
+	<script src="./js/aev-copy.js"></script>
+</body>
+</html>
