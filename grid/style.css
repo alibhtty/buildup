@@ -1,0 +1,131 @@
+/* Article - https://bitsofco.de/github-contribution-graph-css-grid/ */
+
+/* Grid-related CSS */
+
+:root {
+  --square-size: 15px;
+  --square-gap: 5px;
+  --week-width: calc(var(--square-size) + var(--square-gap));
+}
+
+.months { grid-area: months; }
+.days { grid-area: days; }
+.squares { grid-area: squares; }
+
+.graph {
+  width: 100%;
+  display: inline-grid;
+  grid-template-areas: "empty days"
+                       "months squares";
+  grid-template-rows: auto 1fr;
+  grid-gap: 10px;
+}
+
+.months {
+  width: 100%;
+  display: grid;
+  grid-template-rows: calc(var(--week-width) * 4) /* Jan */
+                         calc(var(--week-width) * 4) /* Feb */
+                         calc(var(--week-width) * 4) /* Mar */
+                         calc(var(--week-width) * 5) /* Apr */
+                         calc(var(--week-width) * 4) /* May */
+                         calc(var(--week-width) * 4) /* Jun */
+                         calc(var(--week-width) * 5) /* Jul */
+                         calc(var(--week-width) * 4) /* Aug */
+                         calc(var(--week-width) * 4) /* Sep */
+                         calc(var(--week-width) * 5) /* Oct */
+                         calc(var(--week-width) * 4) /* Nov */
+                         calc(var(--week-width) * 5) /* Dec */;
+}
+
+.days,
+.squares {
+  display: grid;
+  grid-gap: var(--square-gap);
+  grid-template-columns: repeat(7, var(--square-size));
+}
+
+.squares {
+  grid-auto-flow: row;
+  grid-auto-rows: var(--square-size);
+}
+
+
+/* Other styling */
+
+body {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 12px;
+  background-color: #000;
+  color: #f1f1f1;
+  margin: 0;
+  overscroll-behavior-x: none;
+  overscroll-behavior-: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.graph {
+  /* padding: 20px; */
+  border: 0px #e1e4e8 solid;
+  /* margin: 20px; */
+}
+
+.days li:nth-child(odd) {
+  visibility: hidden;
+}
+
+.squares li {
+  background-color: #ebedf0;
+}
+
+.squares li[data-level="1"] {
+  background-color: #c6e48b;
+}
+
+.squares li[data-level="2"] {
+  background-color: #7bc96f;
+}
+
+.squares li[data-level="3"] {
+  background-color: #196127;
+}
+
+
+/* Add media query for mobile devices */
+@media (max-width: 600px) {
+  :root {
+    --square-size: 8vw; /* 15px */
+    --square-gap: 2vw;
+    --week-width: calc(var(--square-size) + var(--square-gap));
+  }
+  
+  .graph {
+    width: 100%;
+    grid-template-columns: 15% 1fr;
+  }
+  .days{
+    margin: 0;
+    margin-top: 2rem;
+    padding: 0;
+  }
+  .months{
+    position: relative;
+    width: 100%;
+    right: 10%;
+  }
+  .squares {
+    width: 100%;
+    grid-auto-flow: row;
+    padding: 0;
+    margin: 0;
+    grid-auto-rows: var(--square-size);
+  }
+  .squares li {
+    border-radius: 4px;
+  }
+}
