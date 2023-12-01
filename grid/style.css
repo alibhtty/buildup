@@ -23,19 +23,21 @@
 
 .months {
   width: 100%;
+  height: auto;
   display: grid;
-  grid-template-rows: calc(var(--week-width) * 4) /* Jan */
-                         calc(var(--week-width) * 4) /* Feb */
-                         calc(var(--week-width) * 4) /* Mar */
-                         calc(var(--week-width) * 5) /* Apr */
-                         calc(var(--week-width) * 4) /* May */
-                         calc(var(--week-width) * 4) /* Jun */
-                         calc(var(--week-width) * 5) /* Jul */
-                         calc(var(--week-width) * 4) /* Aug */
-                         calc(var(--week-width) * 4) /* Sep */
-                         calc(var(--week-width) * 5) /* Oct */
-                         calc(var(--week-width) * 4) /* Nov */
-                         calc(var(--week-width) * 5) /* Dec */;
+  grid-template-rows: calc(var(--week-width) * 4) /* Nov */
+                      calc(var(--week-width) * 5) /* Dic */
+
+                      calc(var(--week-width) * 4) /* Ene */
+                      calc(var(--week-width) * 4) /* Feb */
+                      calc(var(--week-width) * 4) /* Mar */
+                      calc(var(--week-width) * 5) /* Abr */
+                      calc(var(--week-width) * 4) /* May */
+                      calc(var(--week-width) * 4) /* Jun */
+                      calc(var(--week-width) * 5) /* Jul */
+                      /* calc(var(--week-width) * 4) */ /* Ago */
+                      /* calc(var(--week-width) * 4) */ /* Sep */
+                      /* calc(var(--week-width) * 5) */ /* Oct */
 }
 
 .days,
@@ -51,7 +53,32 @@
 }
 
 
-/* Other styling */
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color: #000000;
+  z-index: 1;
+}
+header .days{
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  height: 5rem;
+}
+#titulo {
+  text-align: center;
+  padding-top: .5em;
+}
+
+.days {
+  display: none; /* Oculta los días inicialmente */
+  transition: opacity .5s ease-in-out;
+  opacity: 0;
+}
+
+
+
 
 body {
   width: 100%;
@@ -61,7 +88,7 @@ body {
   color: #f1f1f1;
   margin: 0;
   overscroll-behavior-x: none;
-  overscroll-behavior-: none;
+  /* overscroll-behavior-y: none; */
 }
 
 ul {
@@ -71,7 +98,8 @@ ul {
 
 .graph {
   /* padding: 20px; */
-  border: 0px #e1e4e8 solid;
+  border: 0px #ff6600 solid;
+  margin-top: 2em;
   /* margin: 20px; */
 }
 
@@ -80,20 +108,44 @@ ul {
 }
 
 .squares li {
-  background-color: #ebedf0;
+  background-color: #112112;  /* ebedf0 */
 }
 
 .squares li[data-level="1"] {
-  background-color: #c6e48b;
+  background-color: #ebedf0;
 }
 
 .squares li[data-level="2"] {
-  background-color: #7bc96f;
+  background-color: #c6e48b;
 }
 
 .squares li[data-level="3"] {
-  background-color: #196127;
+  background-color: #7bc96f;
 }
+
+.squares li[data-level="4"] {
+  background-color: #111114;
+}
+
+
+.squares li {
+  color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Asegúrate de que el tamaño del cuadro sea suficiente para mostrar el número */
+  /* width: 30px;
+  height: 30px; */
+}
+
+.perfil {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+
+
 
 
 /* Add media query for mobile devices */
@@ -107,10 +159,11 @@ ul {
   .graph {
     width: 100%;
     grid-template-columns: 15% 1fr;
+    margin-bottom: 4em;
   }
   .days{
     margin: 0;
-    margin-top: 2rem;
+    margin-top: 0rem; /* 2rem */
     padding: 0;
   }
   .months{
