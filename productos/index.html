@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Changarrito - Productos</title>
+
+  <style>
+    body,
+    img {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+
+      /* user-drag: none; */
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      /* pointer-events: none; */
+    }
+
+    .fashion-slider-title-text {
+      font-weight: 700;
+      /* font-size: var(--fashion-slider-title-font-size); */
+      line-height: var(--fashion-slider-title-line-height);
+      letter-spacing: -1px;
+      color: rgba(255, 255, 255, 0);
+      -webkit-text-stroke: 2px #fff;
+      text-decoration: none;
+    }
+
+    #app {
+      overflow-y: hidden;
+    }
+
+
+
+
+
+    /* Esconder imágenes en landscape o portrait */
+    .portrait-img {
+      display: none;
+    }
+
+    .landscape-img {
+      display: block;
+    }
+
+    /* Mostrar la imagen vertical en pantallas con orientación portrait */
+    @media screen and (orientation: portrait) {
+      .x-img {
+        display: none;
+      }
+
+      .y-img {
+        display: block;
+      }
+    }
+
+    @media screen and (orientation: landscape) {
+      .y-img {
+        display: none;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="assets/index.d8a54396.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Fashion slider container -->
+    <div class="fashion-slider">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide" data-slide-bg-color="#FF4400">
+            <div class="fashion-slider-title" data-swiper-parallax="-130%">
+              <a href="#" class="fashion-slider-title-text">Productos <br> El Changarrito</a>
+            </div>
+            <div class="fashion-slider-scale">
+              <img class="x-img" src="images/bg-productos-x.jpg">
+              <img class="y-img" src="images/bg-productos-y.jpg">
+            </div>
+          </div>
+
+          <div class="swiper-slide" data-slide-bg-color="#ff2200">
+            <div class="fashion-slider-title" data-swiper-parallax="-130%">
+              <a href="#" class="fashion-slider-title-text">Michelada</a>
+            </div>
+            <div class="fashion-slider-scale">
+              <img class="x-img" src="images/michelada-x.jpg">
+              <img class="y-img" src="images/michelada-y.jpg">
+            </div>
+          </div>
+
+          <div class="swiper-slide" data-slide-bg-color="#00782a">
+            <div class="fashion-slider-title" data-swiper-parallax="-130%">
+              <a href="#" class="fashion-slider-title-text">Relleno de tacos</a>
+            </div>
+            <div class="fashion-slider-scale">
+              <img class="x-img" src="images/rellenos-x.jpg">
+              <img class="y-img" src="images/rellenos-y.jpg">
+            </div>
+          </div>
+
+          <!-- <div class="swiper-slide" data-slide-bg-color="#00782a"></div>
+            <div class="fashion-slider-title" data-swiper-parallax="-130%">
+              <a href="#" class="fashion-slider-title-text">Tortillas</a>
+            </div>
+            <div class="fashion-slider-scale">
+              <img class="x-img" src="images/tortillas-x.jpg">
+              <img class="y-img" src="images/tortillas-y.jpg">
+            </div>
+          </div> -->
+
+        </div>
+
+        <!-- BOTONES PREV/NEXT -->
+        <div class="fashion-slider-button-prev fashion-slider-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+            <g class="fashion-slider-svg-wrap">
+              <g class="fashion-slider-svg-circle-wrap">
+                <circle cx="42" cy="42" r="30"></circle>
+              </g>
+              <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z">
+              </path>
+              <path class="fashion-slider-svg-line" d="M60,0H0"></path>
+            </g>
+          </svg>
+        </div>
+        <!-- left/previous navigation button -->
+        <div class="fashion-slider-button-next fashion-slider-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+            <g class="fashion-slider-svg-wrap">
+              <g class="fashion-slider-svg-circle-wrap">
+                <circle cx="42" cy="42" r="30"></circle> <!-- r="40" -->
+              </g>
+              <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z">
+              </path>
+              <path class="fashion-slider-svg-line" d="M60,0H0"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
