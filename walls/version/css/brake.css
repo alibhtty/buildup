@@ -1,0 +1,1087 @@
+@charset "UTF-8";
+
+:root{
+    --main:#00D8FF;
+    --suave:rgb(0, 216, 255, .18);
+    --hover:#005261;
+    --link:#00b7ff;
+
+    --color-black: black;
+    --color-white: white;
+    --color-grey: #797979;
+    --sticky-top-pos: 30vh;
+    --buffer: 5rem;
+}
+@font-face {
+    font-family: "bicro";
+    src: url("../fonts/bicro.ttf");
+    font-display: swap;
+       }
+@font-face {
+    font-family: "dewi";
+    src: url("../fonts/dewi-ex.ttf");
+    font-display: swap;
+       }
+@font-face {
+    font-family: "dewi-li";
+    src: url("../fonts/dewi-li.ttf");
+    font-display: swap;
+       }
+
+
+/* CSS 1 */
+body{
+    font-family: Arial;
+  }
+  .headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 124px;
+  z-index: 300;
+  }
+  .headerUpper {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background: rgba(20, 20, 19, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);}
+  .header-top {
+    width: 100%;
+    text-align: center;
+    padding-top: .7rem;
+  }
+  .header-top-text {
+    width: 100%;
+    font-family: 'bicro';
+    font-size: 24px;
+    color: #fbfbfd;
+    padding-top: 44px;
+  }
+    .localnav-background, .localnav-content {
+      height: 78px;
+    }
+    .localnav-title {
+      background-color: rgb(0, 0, 0, .98);
+      padding-top: 18px;
+      line-height: 10px;
+    }
+    .l-content-width {
+      padding-top: 24px
+    }
+
+  @media screen and (display-mode: standalone) {
+    .header-top {
+    width: 100%;
+    text-align: center;
+    padding-top: .7rem;
+    height: 88px;
+    padding-top: 44px;
+    }
+    .localnav-content{
+        margin-top: 48px;
+    }
+    .header-top-text {
+      width: 100%;
+      font-family: 'bicro';
+      font-size: 24px;
+      color: #fbfbfd;
+      margin-top: 44px;
+    }
+    .localnav-background, .localnav-content {
+      height: 110px;
+    }
+    /* .localnav-title {
+      padding-top: 38px
+    } */
+    .l-content-width {
+      padding-top: 34px
+    }
+    /* .timeline{
+      padding-top: 0rem
+    } */
+    .espacio{
+        margin-top: 1rem;
+      }
+    /* .espacio{
+    padding-top: 3rem;
+    } */
+  } ;
+/* END CSS 1 */
+
+
+       
+/* TIMELINE CSS */  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+  
+  .timeline {
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .timeline__section {
+    display: grid;
+    grid-template-columns: 42vw 0px 5vw 40vw; /* 26vw 0 5vw 60vw */
+    /* grid-template-columns: auto 5px 50px auto; */  /* 120 0 20 auto */
+    align-items: start;
+    position: relative;
+  }
+
+  
+  .timeline__left {
+    font-size: 15px; /* 2.5rem */
+    line-height: 15px;
+    text-align: right;
+    text-transform: uppercase;
+  }
+  
+  .timeline__left,
+  .timeline__middle,
+  .timeline__tracker {
+    position: sticky;
+    top: var(--sticky-top-pos);
+    /*   margin-bottom: var(--buffer); */
+  }
+  
+  .timeline__left,
+  .timeline__middle {
+    margin-bottom: var(--buffer);
+  }
+  
+  .timeline__right {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(128, 128, 128, 1) 0%,
+      rgba(128, 128, 128, 1) 100%
+    );
+  }
+  
+  .timeline__right > div {
+    background-color: var(--color-black);
+    padding-bottom: var(--buffer);
+    padding-left: 20px; /* 45px */
+    margin-left: 4px;
+  }
+  
+  .timeline__date > div:first-child {
+    font-size: 9px; /* 1.3rem */
+  }
+  
+  .timeline__bullet {
+    --bullet-dims: 20px;
+    background-color: var(--color-white);
+    width: var(--bullet-dims);
+    height: var(--bullet-dims);
+    border-radius: 99999%;
+    transform: translateX(calc(var(--bullet-dims) / 2 + 2px));
+    float: right;
+  }
+  
+  .timeline__content {
+    width: 16rem;
+    font-size: 16px; /* 3rem */
+    line-height: 20px;
+    color: var(--color-grey);
+    transition: color 1s cubic-bezier(0, 0.39, 0.58, 1);
+  }
+  
+  @media screen and (orientation: portrait) {
+    .timeline__content {
+    width: 58vw; /*  auto    58vw */
+    font-size: 16px; /* 3rem */
+    line-height: 20px;
+    } 
+    .back-menu{
+    right: 1rem;
+    }
+    .espacio{
+      margin-top: 1.5rem;
+    }
+
+
+    .timeline__section {
+    display: grid;
+    grid-template-columns: 26vw 0px 5vw 40vw; /* 26vw 0 5vw 60vw */
+    /* grid-template-columns: auto 5px 50px auto; */  /* 120 0 20 auto */
+    align-items: start;
+    position: relative;
+  }
+  }
+  @media screen and (orientation: landscape) {
+    .espacio{
+      margin-top: 2rem;
+    }
+    .back-menu h2{
+    padding: 4px 10px;
+  }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    .timeline__content {
+        width: auto;
+    }
+  }
+  
+  .animate-on-scroll {
+    color: var(--color-white);
+  }
+
+/* END TIMELINE CSS */
+
+       
+
+
+
+
+
+
+
+
+/* ======== TAP TOUCH ======== */
+ a, img{
+    -webkit-tap-highlight-color:  rgba(0, 216, 255, .1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+    }
+
+/* ====== FADE BLACK ====== */
+body:before {
+    content: "";
+    bottom: 0;
+    width: 100%;
+    height: 25vh; /* 10rem */
+    position: fixed;
+    /* top: 0;
+    right: 0; */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 90%);
+    z-index: 1;
+    pointer-events: none;
+    /* background: radial-gradient(circle, rgba(255,255,255,0), rgba(0,0,0,1) ); */
+    }
+
+    @media (max-width: 920px) {
+      body:before {
+        content: "";
+    bottom: 0;
+    width: 100%;
+    height: 25vh; /* 10rem */
+    position: fixed;
+    /* top: 0;
+    right: 0; */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,.9) 98%);
+    z-index: 1;
+    pointer-events: none;
+      }
+    }
+
+
+/* ====== FADE BLACK LINEAS ====== */
+.timeline__section:before {
+    content: "";
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 90%);
+    z-index: 1;
+    pointer-events: none;
+    }
+
+    @media (max-width: 920px) {
+      .timeline__section:before {
+        content: "";
+    bottom: 0;
+    width: 100%;
+    height: 25vh;
+    position: fixed;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,.7) 98%);
+    z-index: 1;
+    pointer-events: none;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+        .timeline__section:before {
+            content: "";
+        bottom: 0;
+        width: 100%;
+        height: 25vh;
+        position: fixed;
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,.7) 98%);
+        z-index: 1;
+        pointer-events: none;
+          }
+    }
+
+
+/* ====== PWA @alibhtty ====== */
+html, body {
+    /* position: fixed;
+    overflow: hidden; */
+    overscroll-behavior: contain;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0.5);
+  }
+  @media screen and (display-mode: standalone){
+    html, body {
+    /* position: fixed;
+    overflow: hidden; */
+    overscroll-behavior: contain;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0.3);
+    }
+
+    /* .localnav-content{
+        margin-top: 48px;
+    }
+    .we-localnav{
+        height: 110px;
+    } */
+  }
+
+
+/* ========= BLOQUEADOR DE ANIMACIONES, para PWA      @alibhtty ========= */
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            background-color: #000000;
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none;
+                background-color: #000000;
+            }
+            
+
+
+
+
+
+
+
+
+
+
+/* OTROS */
+.localnav-background, .localnav-content {
+    height: 78px;
+}
+.localnav-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.we-localnav:not(.we-localnav--no-qualifier):lang(es) .we-localnav__title__qualifier {
+    display: block;
+}
+
+.back-menu {
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+    height: 44px;
+    position: absolute;
+    padding: 9px;
+    right: 1rem;
+    font-size: 16px;
+    color: var(--main);
+    background-color: var(--suave);
+    /* border: #00D8FF solid 1px; */
+    border-radius: 25px 25px;
+    justify-content: center;
+    transition: all .4s ease-in-out;
+}
+    .back-menu:hover{
+        background-color: rgba(0, 216, 255, .3);
+        /* border: #000000  solid 1px; */
+        transition: all .4s ease-in-out;
+      }
+      .back-menu:active{
+        background-color: rgba(0, 216, 255, .4);
+        /* border: #000000  solid 1px; */
+      }
+      .back-menu h2{
+        position: absolute;
+        display: flex;
+        font-size: 16px;
+        color: var(--main);
+        /* right: 1.1rem; */
+      }
+
+
+#localnav-viewport-emitter {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    z-index: -1
+}
+
+#localnav-viewport-emitter::before {
+    content: "ac-localnav:large"
+}
+
+@media only screen and (max-width:1023px) {
+    #localnav-viewport-emitter::before {
+        content: "ac-localnav:medium"
+    }
+}
+
+@media only screen and (max-width:767px) {
+    #localnav-viewport-emitter::before {
+        content: "ac-localnav:small"
+    }
+}
+
+.localnav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px; /* 52px */
+    min-width: 1024px;
+    z-index: 9997
+}
+
+@media only screen and (max-width:1044px) {
+    .localnav {
+        min-width: 320px
+    }
+}
+
+.localnav.localnav-stacked {
+    height: 66px
+}
+
+@media only screen and (max-width:767px) {
+    .localnav {
+        height: 78px; /* 48px */
+    }
+
+    .localnav.localnav-stacked {
+        height: 63px
+    }
+}
+
+.localnav-overlap .localnav {
+    margin-bottom: -52px
+}
+
+.localnav.localnav-stacked .localnav-overlap .localnav {
+    margin-bottom: -66px
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-overlap .localnav {
+        margin-bottom: -48px
+    }
+
+    .localnav.localnav-stacked .localnav-overlap .localnav {
+        margin-bottom: -63px
+    }
+}
+
+.topnav-overlap .localnav {
+    margin-top: 44px;
+    margin-bottom: -96px
+}
+
+.topnav-overlap .localnav.localnav-stacked {
+    margin-bottom: -110px
+}
+
+@media only screen and (max-width:767px) {
+    .topnav-overlap .localnav {
+        margin-top: 48px;
+        margin-bottom: -96px
+    }
+
+    .topnav-overlap .localnav.localnav-stacked {
+        margin-bottom: -111px
+    }
+}
+
+.localnav.theme-dark {
+    background: 0 0
+}
+
+.localnav-menustate {
+    display: none
+}
+
+.localnav-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    z-index: 1
+}
+
+.localnav-content {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 22px;
+    position: relative;
+    z-index: 2
+}
+
+.localnav-content::after, .localnav-content::before {
+    content: ' ';
+    display: table
+}
+
+.localnav-content::after {
+    clear: both
+}
+
+@supports (padding:calc(max(0px))) {
+    .localnav-content {
+        padding-left: calc(max(22px, env(safe-area-inset-left)));
+        padding-right: calc(max(22px, env(safe-area-inset-right)))
+    }
+}
+
+@media only screen and (max-width:1023px) {
+    .localnav-content {
+        border-bottom: none
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-content {
+        padding: 0 0px
+    }
+}
+
+.localnav.css-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    -webkit-backdrop-filter: blur(80px); /* 30px */
+    backdrop-filter: blur(80px) contrast(1.1) saturate(1.2);
+}
+
+.localnav.no-css-sticky.localnav-sticking {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: fixed
+}
+
+#localnav-sticky-placeholder {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    visibility: hidden;
+    z-index: -1
+}
+
+#localnav-sticky-placeholder.no-css-sticky.localnav-sticking {
+    height: 52px
+}
+
+.localnav-overlap #localnav-sticky-placeholder.no-css-sticky.localnav-sticking, .topnav-overlap #localnav-sticky-placeholder.no-css-sticky.localnav-sticking {
+    height: 0
+}
+
+@media only screen and (max-width:767px) {
+    #localnav-sticky-placeholder.no-css-sticky.localnav-sticking {
+        height: 48px
+    }
+}
+
+.localnav-curtain {
+    background: rgba(0, 0, 0, .4);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 9996;
+    transition: opacity .2s ease
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-curtain {
+        transition: opacity 1s ease .2s, width 0s ease 1.2s, height 0s ease 1.2s
+    }
+}
+
+.localnav-menustate:checked~.localnav-curtain, .localnav-menustate:target~.localnav-curtain {
+    transition: opacity 1s ease .1s
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-menustate:checked~.localnav-curtain, .localnav-menustate:target~.localnav-curtain {
+        opacity: 1;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%
+    }
+}
+
+.localnav-actions {
+    float: left;
+    padding-top: 18px
+}
+
+.localnav.localnav-stacked .localnav-actions {
+    padding-top: 34px
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-actions {
+        right: 0;
+        padding-left: 22px;
+        padding-right: 22px;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        padding-right: calc(22px + constant(safe-area-inset-right))
+    }
+
+    @supports (padding:calc(max(0px))) {
+        .localnav-actions {
+            padding-right: calc(max(22px, env(safe-area-inset-right)))
+        }
+    }
+}
+
+@media only screen and (max-width:767px) and (max-width:767px) {
+    .localnav-actions {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px
+    }
+
+    .localnav.localnav-stacked .localnav-actions {
+        padding-top: 32px
+    }
+}
+
+.localnav-action {
+    margin-left: 24px;
+    float: left
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-action-button, .localnav-action-violator {
+        margin-left: 17px;
+        margin-top: -3px
+    }
+}
+
+.localnav-action-button .localnav-button, .localnav-action-violator .localnav-violator {
+    margin-top: -1px
+}
+
+.localnav-action-product {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0 0 99.9% 99.9%);
+    clip-path: inset(0 0 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    top: auto;
+    left: auto
+}
+
+.localnav-action-menucta {
+    margin-top: -2px;
+    position: relative;
+    z-index: 1
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-action-menucta {
+        float: left
+    }
+}
+
+.localnav-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto; /* 100% */
+    z-index: 1;
+    transition: background-color .5s cubic-bezier(.28, .11, .32, 1)
+}
+
+.localnav-background:after {
+    background-color: rgba(0, 0, 0, .16)
+}
+
+@media only screen and (max-width:767px) {
+    .localnav-background {
+        /* min-height: 48px; */
+        transition: background-color .5s ease .7s
+    }
+
+    .localnav.localnav-hero .localnav-background {
+        transition-delay: 0s
+    }
+}
+
+.localnav.localnav-scrim .localnav-background {
+    background-color: rgba(255, 255, 255, .9)
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav.localnav-scrim .localnav-background {
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255, 255, 255, .72)
+    }
+}
+
+.localnav-scrim.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: rgba(255, 255, 255, .9)
+}
+
+.localnav-scrim.localnav.theme-dark .localnav-background, .theme-dark .localnav.localnav-scrim .localnav-background {
+    background-color: rgba(29, 29, 31, .9)
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav-scrim.localnav.theme-dark .localnav-background, .theme-dark .localnav.localnav-scrim .localnav-background {
+        background-color: rgba(29, 29, 31, .72)
+    }
+}
+
+.localnav-scrim.theme-dark.localnav.localnav-noblur .localnav-background, .theme-dark .localnav-scrim.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: rgba(29, 29, 31, .9)
+}
+
+.localnav.localnav-sticking .localnav-background {
+    background-color: rgba(255, 255, 255, .9);
+    transition: background-color .5s cubic-bezier(.28, .11, .32, 1);
+    transition-property: background-color, -webkit-backdrop-filter;
+    transition-property: background-color, backdrop-filter;
+    transition-property: background-color, backdrop-filter, -webkit-backdrop-filter
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav.localnav-sticking .localnav-background {
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255, 255, 255, .72)
+    }
+}
+
+.localnav-sticking.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: rgba(255, 255, 255, .9)
+}
+
+.localnav-sticking.localnav.theme-dark .localnav-background, .theme-dark .localnav.localnav-sticking .localnav-background {
+    background-color: rgba(29, 29, 31, .9)
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav-sticking.localnav.theme-dark .localnav-background, .theme-dark .localnav.localnav-sticking .localnav-background {
+        background-color: rgba(29, 29, 31, .72)
+    }
+}
+
+.localnav-sticking.theme-dark.localnav.localnav-noblur .localnav-background, .theme-dark .localnav-sticking.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: rgba(29, 29, 31, .9)
+}
+
+.localnav-menustate:checked~.localnav .localnav-background, .localnav-menustate:target~.localnav .localnav-background {
+    background-color: #fff;
+    max-height: none;
+    transition: background-color .5s ease;
+    transition-property: background-color, -webkit-backdrop-filter;
+    transition-property: background-color, backdrop-filter;
+    transition-property: background-color, backdrop-filter, -webkit-backdrop-filter
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav-menustate:checked~.localnav .localnav-background, .localnav-menustate:target~.localnav .localnav-background {
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255, 255, 255, .9)
+    }
+}
+
+.localnav-menustate:checked~.localnav.localnav-noblur .localnav-background, .localnav-menustate:target~.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: #fff
+}
+
+.localnav.theme-dark .localnav-background:after, .theme-dark .localnav .localnav-background:after {
+    background-color: rgba(255, 255, 255, .24)
+}
+
+.localnav-menustate:checked~.theme-dark.localnav .localnav-background, .localnav-menustate:target~.theme-dark.localnav .localnav-background, .theme-dark .localnav-menustate:checked~.localnav .localnav-background, .theme-dark .localnav-menustate:target~.localnav .localnav-background {
+    background-color: #1d1d1f
+}
+
+@supports ((-webkit-backdrop-filter: initial) or (backdrop-filter: initial)) {
+    .localnav-menustate:checked~.theme-dark.localnav .localnav-background, .localnav-menustate:target~.theme-dark.localnav .localnav-background, .theme-dark .localnav-menustate:checked~.localnav .localnav-background, .theme-dark .localnav-menustate:target~.localnav .localnav-background {
+        background-color: rgba(29, 29, 31, .9)
+    }
+}
+
+.localnav-menustate:checked~.theme-dark.localnav.localnav-noblur .localnav-background, .localnav-menustate:target~.theme-dark.localnav.localnav-noblur .localnav-background, .theme-dark .localnav-menustate:checked~.localnav.localnav-noblur .localnav-background, .theme-dark .localnav-menustate:target~.localnav.localnav-noblur .localnav-background {
+    -webkit-backdrop-filter: initial;
+    backdrop-filter: initial;
+    background-color: #1d1d1f
+}
+
+.localnav.localnav-hero .localnav-background:after {
+    background-color: rgba(255, 255, 255, .24)
+}
+
+.localnav-hero.localnav.localnav-sticking .localnav-background:after {
+    background-color: rgba(0, 0, 0, .16)
+}
+
+.localnav-hero.localnav-sticking.localnav.theme-dark .localnav-background:after, .theme-dark .localnav-hero.localnav.localnav-sticking .localnav-background:after {
+    background-color: rgba(255, 255, 255, .24)
+}
+
+.localnav-menustate:checked~.localnav-hero.localnav .localnav-background:after, .localnav-menustate:target~.localnav-hero.localnav .localnav-background:after {
+    background-color: rgba(0, 0, 0, .16)
+}
+
+.localnav-menustate:checked~.localnav-hero.localnav.theme-dark .localnav-background:after, .localnav-menustate:target~.localnav-hero.localnav.theme-dark .localnav-background:after, .theme-dark .localnav-menustate:checked~.localnav-hero.localnav .localnav-background:after, .theme-dark .localnav-menustate:target~.localnav-hero.localnav .localnav-background:after {
+    background-color: rgba(255, 255, 255, .24)
+}
+
+.localnav-background:after {
+    margin-left: -490px;
+    left: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    width: 980px;
+    height: 1px;
+    z-index: 1
+}
+
+@media only screen and (max-width:1023px) {
+    .localnav-background:after {
+        margin-left: 0;
+        left: 0;
+        width: 100%
+    }
+}
+
+.localnav.localnav-noborder .localnav-background:after {
+    display: none
+}
+
+.localnav.localnav-scrim .localnav-background:after {
+    margin-left: 0;
+    left: 0;
+    width: 100%
+}
+
+.localnav.localnav-sticking .localnav-background:after {
+    margin-left: 0;
+    left: 0;
+    width: 100%
+}
+
+.localnav-menustate:checked~.localnav .localnav-background:after, .localnav-menustate:target~.localnav .localnav-background:after {
+    margin-left: 0;
+    left: 0;
+    width: 100%
+}
+
+
+
+.we-localnav__title__product {
+    position: relative;
+    font-family: dewi;
+    left: 3.6rem;
+    top: -37px; /* 6px */
+    color: #fbfbfd;
+    font-size: 18px; /* 24px */
+
+}
+.we-localnav__title__qualifier {
+    position: relative;
+    width: 8rem;
+    left: 3.6rem;
+
+    top: -38px;
+    color: #b3b3ba;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    letter-spacing: .009em;
+    /* font-family: "SF Pro Display", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-family: dewi-li;
+}
+@media screen and (orientation: portrait){
+    .back-menu {
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        z-index: 9;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .we-localnav__title {
+        font-size: 19px;
+        line-height: 10px;
+        font-weight: 600;
+        letter-spacing: .012em;
+        /* font-family: "SF Pro Display", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    }
+}
+
+
+
+/* LINK */
+.link{
+    color: var(--link);
+}
+
+/* BOTON SUBIR */
+.container {
+    width: 100%;
+    height: 3rem;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    max-width: 100%;
+  }
+
+  .add-to-btn {
+    position: relative;
+    background-color: var(--suave); /* #333333 */
+    color: var(--main);
+    text-align: center;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 12px;
+    z-index: 2;
+    transition: all ease-in-out .4s;
+  }
+  .add-to-btn:active {
+    background-color: var(--hover);
+    -webkit-tap-highlight-color: transparent
+  }
+
+
+
+  .caja{
+    background-color: blue;
+    border-radius: 12px;
+  }

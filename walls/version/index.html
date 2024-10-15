@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="alibhtty">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="applicable-device" content="pc,mobile">
+  <title>Timeline</title>
+	<meta name="referrer" content="always" />
+	<meta name="theme-color" content="#000000" />
+  <meta name="web-experience-app/config/environment">
+  <!-- <link rel="manifest" href="../../manifest.json"> -->
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mixtaperadio.web.app/">
+  <meta property="og:title" content="Mixtape">
+  <meta property="og:description" content="Mixtape version - &quot; 2024 &quot;">
+  <meta property="og:image" content="https://mixtaperadio.web.app/assets/icons/share.jpg">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="https://alibhtty.web.app/go/icons/logo192.png" />
+	<!-- <link rel="apple-touch-icon" sizes="180x180" href="../icons/icon_192.png"> -->
+	<!-- <link rel="icon" type="image/png" sizes="32x32" href="../icons/icon_32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../icons/icon_16.png"> -->
+	<link rel="shortcut icon" type="image/x-icon" href="https://alibhtty.web.app/go/icons/icon_192.ico">
+
+  <!-- <link integrity="" rel="stylesheet" href="./css/style-timeline.css"> -->
+  <link rel="stylesheet" href="./css/style-global.css">
+  <!-- <link integrity="" rel="stylesheet" href="./css/style-guias.css"> -->
+
+  <!-- galery css -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- <link rel="stylesheet" href="../style-catalogo.css"> -->
+  <link rel="stylesheet" href="./css/fancybox-v5.css">
+  <link rel="stylesheet" href="./css/brake.css">
+
+  <!-- style timeline -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+</head>
+
+<body class="no-js no-touch" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+  <script type="x/boundary" id="fastboot-body-start"></script>
+
+
+  <!-- <div id="globalheader">
+    <nav id="globalnav" lang="es-ES" dir="ltr" aria-label="Global"
+      data-analytics-element-engagement-start="globalnav:onFlyoutOpen"
+      data-analytics-element-engagement-end="globalnav:onFlyoutClose" data-analytics-activitymap-region-id="global nav"
+      data-analytics-region="global nav" class="globalnav no-js   ">
+      <div class="globalnav-content">
+        <div class="globalnav-item globalnav-menuback"><button class="globalnav-menuback-button"
+            aria-label="Men&#xFA; principal"><span class="globalnav-chevron-icon"><svg height="48" viewbox="0 0 9 48"
+                width="9" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m1.5618 24.0621 6.5581-6.4238c.2368-.2319.2407-.6118.0088-.8486-.2324-.2373-.6123-.2407-.8486-.0088l-7 6.8569c-.1157.1138-.1807.2695-.1802.4316.001.1621.0674.3174.1846.4297l7 6.7241c.1162.1118.2661.1675.4155.1675.1577 0 .3149-.062.4326-.1846.2295-.2388.2222-.6187-.0171-.8481z" />
+              </svg></span></button>
+        </div>
+  
+        <ul id="globalnav-list" class="globalnav-list" aria-labelledby="globalnav-menutrigger-button">
+
+          <!-- <header>
+          <div class="headerWrapper">
+            <div style="text-align: center; font-family: Ubuntu; font-size: 22px; padding-top: .7rem;" class="headerUpper">
+              <a style="font-family: bicro; font-size: 24px; color: #ffffff;">alibhtty</a>
+              </div>
+          </div>
+        </header> ->
+  
+          <li class="globalnav-item globalnav-item-apple">
+            <div class="header-top">
+              <h2 class="header-top-text">alibhtty</h2>
+            </div>
+          </li>
+  
+          <li class="globalnav-item globalnav-menu" data-topnav-flyout-item="menu" data-topnav-flyout-label="Menu"
+            role="none">
+            <div class="globalnav-flyout" data-topnav-flyout="menu">
+            </div>
+      </div>
+      </li>
+      </ul>
+  </div>
+  </nav>
+  
+  <div id="globalnav-curtain" class="globalnav-curtain"></div>
+  <div id="globalnav-placeholder" class="globalnav-placeholder"></div>
+  </div> -->
+
+
+    <main class="selfclear is-apps-theme">
+      <input id="localnav-menustate" class="localnav-menustate" type="checkbox">
+
+      <nav id="localnav" class="css-sticky we-localnav localnav   we-localnav--app-store" data-sticky>
+        
+        <div class="localnav-wrapper">
+          <div class="localnav-background we-localnav__background"></div>
+          <div class="localnav-content we-localnav__content">
+
+            
+              <div style="background: transparent; padding-left: 1rem; height: 78px;" class="localnav-title we-localnav__title">
+
+                <a class="back-menu" href="../index.html">
+                  <!-- <div style="position: absolute; display: flex; left: .5rem;">
+                    <svg style="color: #00d8ff;" viewBox="0 0 38 38" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 27L8 18L18 9" stroke="currentColor" stroke-width="1.6" fill-rule="evenodd" fill="none"></path><path d="M8 18H27.2818" stroke="currentColor" stroke-width="1.6"></path>
+                  </div> -->
+                  <h2> Back </h2>
+                  </svg>
+                </a>
+
+
+                <div >
+                  <div style="position: relative; width: 50px;">
+                    <img style="width: 44px; height: 44px; border-radius: 10px;" src="../assets/icons/logo.png" alt=""> <!-- ./img/ic.jpg -->
+                  </div>
+                  
+                  <a href="../index.html"> <!-- data-we-link-to-exclude -->
+                  <span class="we-localnav__title__product">Versiones</span></a> <!-- data-test-we-localnav-store-title -->
+                  <span class="we-localnav__title__qualifier"> <!-- data-test-we-localnav-preview-title -->
+  
+                    <!-- PUNTO URL -->
+                    <!-- <a href="../index.html" style="width: 14px; height: 14px; background-color: #ffffff;border-radius: 25px;" >
+                    <svg style="color: #000000;" viewBox="0 0 90 90" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 27L8 18L18 9" stroke="currentColor" stroke-width="1.6" fill-rule="evenodd" fill="none"></path><path d="M8 18H27.2818" stroke="currentColor" stroke-width="1.6"></path></svg></a> -->
+                    Beta 3
+                  </span>
+                </div>
+            
+              </div>
+            <div class="localnav-menu we-localnav__menu we-localnav__menu--apps">
+              <div class="localnav-actions we-localnav__actions">
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <span class="we-localnav__shim" aria-hidden="true"></span>
+      <label id="localnav-curtain" for="localnav-menustate"></label>
+
+
+
+      <!-- BANNER -->
+      <picture style="display:flex; align-items: center; justify-content: center;">
+          <img style="width: 350px; height: auto;" src="../assets/icons/share.jpg" class="we-artwork__image ember55768 ">
+      </picture>
+      
+
+
+
+      <!-- timeline -->
+      <div class="espacio"></div>
+        <div class="timeline">
+
+          <!-- -1 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>ABR 2, 2024</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  - Fix img playlist-g <br>
+                  - Fix text marquee playlist-g <br>
+                  - Fix botón instal pwa <br>
+                  - Add img compartir mixtape <br>
+                  - Fix radius playlist img <br>
+                  - Fix preloader  <!-- <a class="link" href="https://youtu.be/qkjo9XS9XW0" target="_blank">Youtube</a> -->
+        
+                  <style>
+                    .story__article-media__caption {
+                          display: flex;
+                          padding: 10px 10px 10px;
+                          border-radius: 0 0 12px 12px;
+                          color: #79797d;
+                          background-color: #111111;
+                          font-size: 13px;
+                          line-height: 15px;
+                          font-weight: 400;
+                          letter-spacing: .027em;
+                          font-family: "SF Pro Display", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                      }
+                      .story__section{
+                        padding-top: 10px;
+                      }
+                      .story__section a img{
+                        border-radius: 12px 12px 0 0 ;
+                      }
+                  </style>
+                  
+                  <!-- <div class="story__section story__article-media story__article-media--captioned">
+                    <a data-fancybox="gallery" data-src="img/noise-control.jpg" data-caption="">
+                      <img src="img/noise-control.jpg" alt="">            
+                    </a>
+                    <div class="story__article-media__caption">
+                      <div>
+                         Drum n' Bass - 21:21min.
+                      </div>
+                    </div>
+                  </div> -->        
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 0 -->
+          <!-- <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>ALIBHTTY</div>
+                <div>FEB 20, 2024</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  Mi cumple 🎉.
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 1 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>ABR 1, 2024</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  - Fix UI/UX <br>
+                  - Limpieza css.   <!-- <a class="link">@sebascarryon</a> -->
+        
+                  <style>
+                    .story__article-media__caption {
+                          display: flex;
+                          padding: 5px 10px 5px;
+                          border-radius: 0 0 12px 12px;
+                          color: #C0C0C0; /* 79797d */
+                          background-color: #363636;
+                          font-size: 12px;
+                          line-height: 15px;
+                          font-weight: 400;
+                          letter-spacing: .027em;
+                          font-family: "SF Pro Display", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                      }
+                      .story__section{
+                        padding-top: 10px;
+                      }
+                      .story__section a img{
+                        border-radius: 12px 12px 0 0 ;
+                      }
+                  </style>
+                  
+                  <!-- <div class="story__section story__article-media story__article-media--captioned">
+                    <a data-fancybox="gallery" data-src="img/barberbox.jpg" data-caption="">
+                      <img src="img/barberbox-min.jpg" alt="">            
+                    </a>
+                    <div class="story__article-media__caption">
+                      <div>
+                        Estilo renovado desde la raíz.
+                      </div>
+                    </div>
+                  </div> -->
+        
+        
+        
+        
+        
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- 2 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>ABR 1, 2024</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  - Responsive go/timeline <br>
+                  - Fix Header Top <br>
+                  - Fix Boton timeliine/back <br>
+                  - Add Img de compartir Timeline <a href="https://mixtaperadio.web.app" class="link">@mixtape.io</a>. 
+        
+                  <div class="story__section story__article-media story__article-media--captioned">
+                    <a data-fancybox="gallery" data-src="../image/app/tv-mixtape.gif" data-caption="">
+                      <img src="../image/app/tv-mixtape.gif" loading="lazy" alt="">            
+                    </a>
+                    <div class="story__article-media__caption">
+                      <div>
+                        Fix PWA 📱
+                      </div>
+                    </div>
+                  </div>
+        
+        
+        
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- 3 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>mar 22, 2022</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  - New deploy <a href="https://mixtaperadio.web.app" class="link">@mixtape.io</a>. 
+        
+                  <!-- <div class="story__section story__article-media story__article-media--captioned">
+                    <a data-fancybox="gallery" data-src="./img/DSC06838.jpg" data-caption="">
+                      <img src="../image/app/tv-mixtape.gif" loading="lazy" alt="">            
+                    </a>
+                    <div class="story__article-media__caption">
+                      <div>
+                        Fix PWA 📱
+                      </div>
+                    </div>
+                  </div> -->   
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 4 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>Ene 16, 2023</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  Colaboraciones
+                
+                  <div class="story__section story__article-media story__article-media--captioned">
+                    <a data-fancybox="gallery" data-src="./img/seralpha.jpg" data-caption="">
+                      <img loading="lazy" src="../image/app/deck.jpg" alt="">            
+                    </a>
+                    <div class="story__article-media__caption">
+                      <div>
+                        New
+                      </div>
+                    </div>
+                  </div>
+        
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- SOLO TEXTO -->
+          <!-- <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>Lorem ipsum</div>
+                <div>March 1st, 2022</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  Yes, Yes, without the oops! You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager? Did he just throw my cat out of the window? Eventually, you do plan to have dinosaurs on your dinosaur tour, right? Remind me to thank John for a lovely weekend.
+                </div>
+              </div>
+            </div>
+          </div> -->
+        
+          <!-- 5 -->
+          <div class="timeline__section">
+            <div class="timeline__left">
+              <div class="timeline__date">
+                <div>alibhtty</div>
+                <div>Dic 12, 2023</div>
+              </div>
+            </div>
+            <div class="timeline__tracker">
+              <div class="tracker"></div>
+            </div>
+            <div class="timeline__middle">
+              <div class="timeline__bullet"></div>
+            </div>
+            <div class="timeline__right">
+              <div>
+                <div class="timeline__content">
+                  end v.2.86
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+        <!-- BOTON SUBIR -->
+      <footer class="set-banner">
+        <div class="container">
+          <center>
+            <div class="add-to">
+              <button id="scrollToTop" class="add-to-btn">SUBIR</button>
+            </div>
+          </center>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- BOTON SUBIR SCRIPT -->
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+      const scrollToTopButton = document.getElementById('scrollToTop');
+    
+      // Agrega un evento de clic al botón
+      scrollToTopButton.addEventListener('click', function() {
+        // Desplázate a la parte superior de la página
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // Esto hace que el desplazamiento sea suave
+        });
+      });
+    });
+  </script>
+
+<!-- Fancy Gallery -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+      <script>
+        Fancybox.bind("[data-fancybox]", {
+          Carousel: {
+            infinite: false,
+          },
+          Slideshow: {
+            playOnStart: true,
+            timeout: 5000,
+          },
+          Toolbar: {
+            display: {
+              left: [],
+              middle: [],
+              right: ["slideshow", "close"],
+            },
+          },
+          Images: {
+            zoom: false,
+          },
+          Thumbs: false,
+          Caption: false,
+        });
+      </script>
+
+<!-- timeline -->
+<script id="rendered-js" >
+  const timelines = document.querySelectorAll(".timeline__right");
+  
+  const trackers = document.querySelectorAll(".timeline__tracker");
+  
+  window.addEventListener(
+  "scroll",
+  e => {
+    timelines.forEach((timeline, i) => {
+      //  Animate on scroll
+      if (trackers[i].offsetTop > 0) {
+        timeline.
+        querySelector(".timeline__content").
+        classList.add("animate-on-scroll");
+      } else {
+        timeline.
+        querySelector(".timeline__content").
+        classList.remove("animate-on-scroll");
+      }
+  
+      // Timeline progress
+      timeline.style.background = `linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) ${
+      trackers[i].offsetTop + 5
+      }px, var(--color-grey) ${
+      trackers[i].offsetTop + 5
+      }px, var(--color-grey) 100%)`;
+    });
+  },
+  { passive: true });
+  //# sourceURL=pen.js
+      </script>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+</body>
+
+</html>

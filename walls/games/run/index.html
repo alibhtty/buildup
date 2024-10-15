@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta charset="utf-8" />
+    <link rel="icon" href="./assets/icons/logo64.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="Mixtape">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Music 4ever - &quot;Barcelona &quot; It's Mixtape by @alibhtty"/>
+    <link rel="apple-touch-icon" href="./assets/icons/logo192.png" />
+    <title>Mixtape Radio – MIX STREAMS DJ`S</title>
+
+    <meta property="og:type" content="website">
+    <meta property="site_name" content="Mixtape">
+    <meta property="og:url" content="https://mixtaperadio.web.app/">
+    <meta property="og:title" content="Mixtape Radio">
+    <meta property="og:description" content="Music 4ever - &quot;Barcelona &quot; It's Mixtape by @alibhtty">
+    <meta property="og:image" content="/assets/icons/share.jpg">
+    <meta name="author" content="Ali Bhtty">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="mixtape, música, mix, dj, party, app, streaming">
+    <link rel="manifest" href="/manifest.json"/>
+
+  <style id="INLINE_PEN_STYLESHEET_ID">
+    @import url('https://fonts.googleapis.com/css?family=Voltaire');
+
+    @font-face {
+    font-family: "dewi-expand";
+    src: url(./fonts/RFDewiExpanded-Bold.woff);  /* ../image/fonts/RFDewiExpanded-Bold.woff */
+    font-weight: bold;
+    font-display: swap;
+    }
+
+html, body {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #000000;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+@media screen and (orientation: portrait){
+    html, body{
+        overscroll-behavior: contain;
+        overscroll-behavior-x: contain;
+        overscroll-behavior-y: none;
+    }
+}
+@media screen and (display-mode: standalone){
+    html, body{
+        overscroll-behavior: contain;
+        overscroll-behavior-x: contain;
+        overscroll-behavior-y: none;
+    }
+    #world{
+      height: calc(100vh + 40px);
+    }
+}
+
+/* no-select */
+html, body {
+    /* position: fixed; */
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0); /* .8 */
+  }
+
+blockquote, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, li, ol, p, pre, td, th, ul {
+  margin: 0;
+  padding: 0;
+}
+
+#world{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  /* background-color: #000000; */ /*ffe100    #dbe6e6 */
+  /* background: linear-gradient(to bottom, #ffcc00, #ff6600, #cc0033, #4b0013); */
+  background: linear-gradient(to bottom, #008cff, #74c0ff, #64b9ff, #008cff);
+  overflow: hidden;
+}
+
+
+#gameoverInstructions{
+  position:absolute;
+  /* font-family:'Voltaire', sans-serif; */
+  font-family: "dewi-expand";
+  font-weight:bold;
+  text-transform: uppercase;
+  font-size: 80px; /* 120 */
+  text-align:center;
+  color:#ff1c1c; /* ffc5a2 */
+  opacity:0;
+  left:50%;
+  top:50%;
+  width:100%;
+  transform : translate(-50%,-100%);
+  user-select: none;
+  transition: all 500ms ease-in-out;
+}
+#gameoverInstructions.show {
+  opacity:1;
+  transform : translate(-50%,-50%);
+  transition: all 500ms ease-in-out;
+}
+
+
+#dist{
+  position:absolute;
+  left:50%;
+  top:30px; /* 50px */
+  transform:translate(-50%,0%);
+  user-select: none;  
+}
+
+.label{
+  position:relative;
+  /* font-family:'Voltaire', sans-serif; */
+  font-family: "dewi-expand";
+  text-transform:uppercase;
+  color:#ff4c28; /* ffa873 */
+  font-size:10px;
+  letter-spacing:2px;
+  text-align:center;
+  margin-bottom:5px;
+}
+
+
+#distValue{
+  position:relative;
+  text-transform:uppercase;
+  color: #ff4c28; /* dc5f45 */
+  font-size:42px;
+  /* font-family:'Voltaire'; */
+  font-family: "dewi-expand";
+  text-align:center;
+}
+
+#credits{
+  position:absolute;
+  width:100%;
+  margin: auto;
+  bottom:0;
+  margin-bottom:20px;
+  /* font-family:'Voltaire', sans-serif; */
+  font-family: "dewi-expand";
+  color:#544027;
+  font-size:12px;
+  letter-spacing:0.5px;
+  text-transform: uppercase;
+  text-align : center;
+  user-select: none;  
+}
+#credits a {
+  color:#544027;
+}
+
+#credits a:hover {
+  color:#dc5f45;
+}
+
+#instructions{
+  position:absolute;
+  width:100%;
+  bottom:0;
+  margin: auto;
+  margin-bottom:50px;
+  /* font-family:'Voltaire', sans-serif; */
+  font-family: "dewi-expand";
+  color:#dc5f45;
+  font-size:16px;
+  letter-spacing:1px;
+  text-transform: uppercase;
+  text-align : center;
+  user-select: none;
+}
+.lightInstructions {
+  color:#5f9042;
+}
+.volver{
+  position: absolute;
+  text-align: center;
+  width: 90px;
+  padding: 10px;
+  font-family: "dewi-expand";
+  background-color: rgb(255,255,255,.85);
+  margin: 1rem 2rem;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+  border-radius:12px;
+}
+  </style>
+
+  
+<!-- <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script> -->
+</head>
+
+<div>
+  <div id="world"></div>
+<div id="gameoverInstructions">
+  Game Over
+</div>
+<div id="dist">
+  <div id="distValue">000</div> <!-- 000 -->
+  <div class="label">METROS</div> <!-- DISTANCIA -->
+</div>
+
+<a class="volver" href="../#/search/">VOLVER</a>
+<!-- <div id="instructions">Click para saltar<span class="lightInstructions"> — Coge las zanahorias y evita los erizos</span></div> -->
+
+<!-- <div id="credits"> Credits
+  Karim Maloul <a href="https://www.epic.net" target="blank">epic.net</a></p>
+</div> -->
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r80/three.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script  src="./conejo.js" crossorigin></script>
+</body>
+
+</html>
