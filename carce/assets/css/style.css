@@ -54,6 +54,8 @@ html {
 html,
 body {
   height: 100%;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -70,6 +72,7 @@ body {
   font-size: 14px;
   color: #171717;
   background: #F7F7F7;
+  /* background-color: #000000; */
   line-height: 1.52;
 }
 

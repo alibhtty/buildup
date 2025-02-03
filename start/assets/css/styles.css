@@ -74,6 +74,8 @@ body {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     background-color: var(--body-color);
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
 }
 
 h1, p {
