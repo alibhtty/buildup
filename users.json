@@ -1,5 +1,11 @@
 {
   "ali":   { "active": true },
   "paola": { "active": true },
-  "eylin": { "active": true }
+  "eylin": { "active": true },
+  "johan": { "active": false },
+  "ray": { "active": false },
+  "ryan": { "active": false },
+  "judith": { "active": false },
+  "alejandro": { "active": false },
+  "weslie": { "active": false },
 }
