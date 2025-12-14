@@ -1,11 +1,66 @@
 {
-  "ali":   { "active": true },
-  "paola": { "active": true },
-  "eylin": { "active": true },
-  "johan": { "active": false },
-  "ray": { "active": false },
-  "rian": { "active": true },
-  "judith": { "active": false },
-  "alejandro": { "active": false },
-  "weslie": { "active": false },
+  "configuracion_global": {
+    "oferta_free": {
+      "desde": "2025-12-01",
+      "hasta": "2025-12-31"
+    },
+
+    "aviso_modal_global": {
+      "texto": "",
+      "fondo": "#000000",
+      "opacidad": 0.85
+    }
+  },
+
+  "usuarios": {
+    "ali": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": null,
+
+      "aviso_modal": {
+        "texto": "",
+        "fondo": "#111111",
+        "opacidad": 0.9
+      }
+    },
+
+    "paola": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+
+      "aviso_modal": {
+        "texto": "⚠️ Tu suscripción finaliza el 31 de diciembre",
+        "fondo": "#3b0000",
+        "opacidad": 0.9
+      }
+    },
+
+    "eylin": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "johan": {
+      "activo_por_defecto": false,
+      "activo_desde": "2025-12-15",
+      "activo_hasta": "2025-12-31",
+
+      "aviso_modal": {
+        "texto": "🎁 Acceso temporal activado",
+        "fondo": "#002b36",
+        "opacidad": 0.85
+      }
+    },
+
+    "ray": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "" }
+    }
+  }
 }
