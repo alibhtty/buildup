@@ -136,7 +136,8 @@
           "viernes": { "mediodia": ["", ""], "noche": ["20:00", "23:30"] },
           "sabado": { "mediodia": ["", ""], "noche": ["", ""] },
           "domingo": { "mediodia": ["", ""], "noche": ["", ""] }
-        },
+        }
+       }, 
         {
         "nombre": "Judit Serrano",
         "plaza": "Base 7",
@@ -151,7 +152,7 @@
           "sabado": { "mediodia": ["11:30", "17:00"], "noche": ["11:30", "17:00"] },
           "domingo": { "mediodia": ["19:30", "01:00"], "noche": ["19:00", "00:00"] }
         }
-      }
+       }
     ]
   }
 ]
