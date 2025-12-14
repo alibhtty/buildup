@@ -61,6 +61,12 @@
       "activo_desde": null,
       "activo_hasta": null,
       "aviso_modal": { "texto": "" }
+    },
+    "rian": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "Free hasta 01/2026" }
     }
   }
 }
