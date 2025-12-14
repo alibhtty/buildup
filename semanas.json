@@ -7,45 +7,45 @@
         "nombre": "Paola Corrales ★",
         "plaza": "mando 1",
         "contratadas": 38,
-        "complementarias": null,
+        "complementarias": 0,
         "horarios": {
           "lunes": { "mediodia": ["09:00", "16:00"], "noche": ["19:00", "23:30"] },
-          "martes": { "mediodia": [], "noche": [] },
-          "miercoles": { "mediodia": [], "noche": [] },
-          "jueves": { "mediodia": [], "noche": [] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
           "viernes": { "mediodia": ["10:30", "16:00"], "noche": ["19:00", "00:00"] },
-          "sabado": { "mediodia": [], "noche": ["19:00", "01:00"] },
-          "domingo": { "mediodia": [], "noche": ["16:00", "23:30"] }
+          "sabado": { "mediodia": ["", ""], "noche": ["19:00", "01:00"] },
+          "domingo": { "mediodia": ["", ""], "noche": ["16:00", "23:30"] }
         }
       },
       {
         "nombre": "Eylin Ferreira ★",
         "plaza": "mando 2",
         "contratadas": 38,
-        "complementarias": null,
+        "complementarias": 0,
         "horarios": {
-          "lunes": { "mediodia": ["11:30", "17:00"], "noche": [] },
-          "martes": { "mediodia": ["11:30", "17:00"], "noche": [] },
+          "lunes": { "mediodia": ["11:30", "17:00"], "noche": ["", ""] },
+          "martes": { "mediodia": ["11:30", "17:00"], "noche": ["", ""] },
           "miercoles": { "mediodia": ["11:30", "17:00"], "noche": ["19:00", "00:00"] },
           "jueves": { "mediodia": ["10:30", "17:00"], "noche": ["19:00", "00:00"] },
-          "viernes": { "mediodia": [], "noche": ["20:00", "01:00"] },
-          "sabado": { "mediodia": [], "noche": [] },
-          "domingo": { "mediodia": [], "noche": [] }
+          "viernes": { "mediodia": ["", ""], "noche": ["20:00", "01:00"] },
+          "sabado": { "mediodia": ["", ""], "noche": ["", ""] },
+          "domingo": { "mediodia": ["", ""], "noche": ["", ""] }
         }
       },
       {
         "nombre": "Jeimy Borjas",
         "plaza": "base 1",
         "contratadas": 30,
-        "complementarias": null,
+        "complementarias": 0,
         "horarios": {
-          "lunes": { "mediodia": [], "noche": [] },
-          "martes": { "mediodia": [], "noche": [] },
-          "miercoles": { "mediodia": [], "noche": [] },
-          "jueves": { "mediodia": [], "noche": [] },
-          "viernes": { "mediodia": [], "noche": [] },
-          "sabado": { "mediodia": [], "noche": [] },
-          "domingo": { "mediodia": [], "noche": [] }
+          "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
+          "viernes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "sabado": { "mediodia": ["", ""], "noche": ["", ""] },
+          "domingo": { "mediodia": ["", ""], "noche": ["", ""] }
         }
       },
       {
@@ -54,8 +54,8 @@
         "contratadas": 30,
         "complementarias": 4,
         "horarios": {
-          "lunes": { "mediodia": [], "noche": [] },
-          "martes": { "mediodia": [], "noche": [] },
+          "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
           "miercoles": { "mediodia": ["13:00", "15:30"], "noche": ["19:00", "00:00"] },
           "jueves": { "mediodia": ["10:30", "17:00"], "noche": ["19:00", "00:00"] },
           "viernes": { "mediodia": ["13:00", "17:00"], "noche": ["19:00", "23:00"] },
@@ -70,9 +70,9 @@
         "complementarias": 7,
         "horarios": {
           "lunes": { "mediodia": ["11:30", "17:00"], "noche": ["20:00", "23:30"] },
-          "martes": { "mediodia": ["12:30", "15:30"], "noche": [] },
-          "miercoles": { "mediodia": [], "noche": [] },
-          "jueves": { "mediodia": [], "noche": [] },
+          "martes": { "mediodia": ["12:30", "15:30"], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
           "viernes": { "mediodia": ["11:30", "17:00"], "noche": ["19:30", "23:00"] },
           "sabado": { "mediodia": ["11:30", "17:00"], "noche": ["19:00", "01:00"] },
           "domingo": { "mediodia": ["11:30", "16:00"], "noche": [] }
@@ -84,8 +84,8 @@
         "contratadas": 20,
         "complementarias": 11,
         "horarios": {
-          "lunes": { "mediodia": [" ", " "], "noche": [" ", " "] },
-          "martes": { "mediodia": [" ", " "], "noche": [" ", " "] },
+          "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
           "miercoles": { "mediodia": ["11:30", "17:00"], "noche": ["20:00", "23:30"] },
           "jueves": { "mediodia": ["10:30", "16:30"], "noche": ["20:00", "23:00"] },
           "viernes": { "mediodia": ["", ""], "noche": ["20:30", "23:00"] },
@@ -100,12 +100,42 @@
         "complementarias": 12,
         "horarios": {
           "lunes": { "mediodia": ["13:00", "15:30"], "noche": ["19:30", "00:00"] },
-          "martes": { "mediodia": ["11:30", "17:00"], "noche": [] },
-          "miercoles": { "mediodia": [], "noche": [] },
-          "jueves": { "mediodia": [], "noche": [] },
+          "martes": { "mediodia": ["11:30", "17:00"], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
           "viernes": { "mediodia": ["11:30", "16:00"], "noche": ["20:30", "01:00"] },
           "sabado": { "mediodia": ["13:30", "16:30"], "noche": ["20:00", "00:00"] },
           "domingo": { "mediodia": [], "noche": ["20:30", "00:00"] }
+        }
+      },
+      {
+        "nombre": "Alejandro Lijeron",
+        "plaza": "base 6",
+        "contratadas": 15,
+        "complementarias": 9.5,
+        "horarios": {
+          "lunes": { "mediodia": ["13:30", "16:00"], "noche": ["19:00", "00:00"] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
+          "viernes": { "mediodia": ["", ""], "noche": ["20:00", "01:00"] },
+          "sabado": { "mediodia": ["12:30", "16:00"], "noche": ["20:30", "23:00"] },
+          "domingo": { "mediodia": ["13:00", "16:00"], "noche": ["20:00", "23:00"] }
+        }
+      },
+      {
+        "nombre": "Rianwhen Jones",
+        "plaza": "base 7",
+        "contratadas": 10,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["13:00", "16:30"], "noche": ["", ""] },
+          "martes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "miercoles": { "mediodia": ["", ""], "noche": ["", ""] },
+          "jueves": { "mediodia": ["", ""], "noche": ["20:30", "23:30"] },
+          "viernes": { "mediodia": ["", ""], "noche": ["20:00", "23:30"] },
+          "sabado": { "mediodia": ["", ""], "noche": ["", ""] },
+          "domingo": { "mediodia": ["", ""], "noche": ["", ""] }
         }
       }
     ]
