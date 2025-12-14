@@ -5,7 +5,7 @@
     "trabajadores": [
       {
         "nombre": "Paola Corrales ★",
-        "plaza": "mando 1",
+        "plaza": "Mando 1",
         "contratadas": 38,
         "complementarias": 0,
         "horarios": {
@@ -20,7 +20,7 @@
       },
       {
         "nombre": "Eylin Ferreira ★",
-        "plaza": "mando 2",
+        "plaza": "Mando 2",
         "contratadas": 38,
         "complementarias": 0,
         "horarios": {
@@ -35,7 +35,7 @@
       },
       {
         "nombre": "Jeimy Borjas",
-        "plaza": "base 1",
+        "plaza": "Base 1",
         "contratadas": 30,
         "complementarias": 0,
         "horarios": {
@@ -50,7 +50,7 @@
       },
       {
         "nombre": "Ray Leonard",
-        "plaza": "base 2",
+        "plaza": "Base 2",
         "contratadas": 30,
         "complementarias": 4,
         "horarios": {
@@ -65,7 +65,7 @@
       },
       {
         "nombre": "Johan Cruz",
-        "plaza": "base 3",
+        "plaza": "Base 3",
         "contratadas": 30,
         "complementarias": 7,
         "horarios": {
@@ -80,7 +80,7 @@
       },
       {
         "nombre": "Ali Bhtty",
-        "plaza": "base 4",
+        "plaza": "Base 4",
         "contratadas": 20,
         "complementarias": 11,
         "horarios": {
@@ -95,7 +95,7 @@
       },
       {
         "nombre": "Weslie Negrón",
-        "plaza": "base 5",
+        "plaza": "Base 5",
         "contratadas": 20,
         "complementarias": 12,
         "horarios": {
@@ -110,7 +110,7 @@
       },
       {
         "nombre": "Alejandro Lijeron",
-        "plaza": "base 6",
+        "plaza": "Base 6",
         "contratadas": 15,
         "complementarias": 9.5,
         "horarios": {
@@ -125,7 +125,7 @@
       },
       {
         "nombre": "Rian Jones",
-        "plaza": "base 7",
+        "plaza": "Base 7",
         "contratadas": 10,
         "complementarias": 0,
         "horarios": {
@@ -139,9 +139,9 @@
         },
         {
         "nombre": "Judit Serrano",
-        "plaza": "base 7",
-        "contratadas": 10,
-        "complementarias": 0,
+        "plaza": "Base 7",
+        "contratadas": 20,
+        "complementarias": 1.5,
         "horarios": {
           "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
           "martes": { "mediodia": ["", ""], "noche": ["", ""] },
