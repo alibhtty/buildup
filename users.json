@@ -5,6 +5,16 @@
       "hasta": "2025-12-31"
     },
 
+    "configuracion_global": {
+    "colores": {
+      "background": { "hex": "#00cc66", "opacidad": 0.3 },
+      "header": { "hex": "#EFDECD", "opacidad": 1 },
+      "apertura": { "hex": "#00aa44", "opacidad": 1 },
+      "cierre": { "hex": "#f42828", "opacidad": 1 },
+      "texto": { "hex": "#FFFFFF", "opacidad": 0.9 }
+    }
+  }
+
     "aviso_modal_global": {
       "texto": "Actualiza tu widget",
       "fondo": "#000000",
