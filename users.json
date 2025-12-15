@@ -11,7 +11,7 @@
       "apertura": { "hex": "#00aa44", "opacidad": 1 },
       "cierre": { "hex": "#f42828", "opacidad": 1 },
       "texto": { "hex": "#FFFFFF", "opacidad": 0.9 }
-    }
+    },
 
     "aviso_modal_global": {
       "texto": "Actualiza tu widget",
