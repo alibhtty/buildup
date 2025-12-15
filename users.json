@@ -21,7 +21,7 @@
       "aviso_modal": {
         "texto": "ADMIN",
         "fondo": "#111111",
-        "opacidad": 0.9
+        "opacidad": 0.8
       }
     },
 
@@ -33,7 +33,7 @@
       "aviso_modal": {
         "texto": "Caduca 01/01/2026",
         "fondo": "#000000",
-        "opacidad": 0.4
+        "opacidad": 0.2
       }
     },
 
@@ -51,8 +51,8 @@
 
       "aviso_modal": {
         "texto": "Caduca 01/01/2026",
-        "fondo": "#002b36",
-        "opacidad": 0.85
+        "fondo": "#000000",
+        "opacidad": 0.2
       }
     },
 
