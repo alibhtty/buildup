@@ -1,0 +1,107 @@
+{
+  "configuracion_global": {
+    "oferta_free": {
+      "desde": "2025-12-15",
+      "hasta": "2025-12-31"
+    },
+
+    "colores": {
+      "background": { "hex": "#00cc66", "opacidad": 0.3 },
+      "header": { "hex": "#EFDECD", "opacidad": 1 },
+      "apertura": { "hex": "#00aa44", "opacidad": 1 },
+      "cierre": { "hex": "#f42828", "opacidad": 1 },
+      "texto": { "hex": "#FFFFFF", "opacidad": 0.9 }
+    },
+
+    "widget_url": {
+      "activo": false,
+      "url": "https://ali-bhtty.web.app"
+    },
+
+    "aviso_modal_global": {
+      "texto": "",
+      "fondo": "#000000",
+      "opacidad": 0.85
+    }
+  },
+
+  "usuarios": {
+    "ali": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": null,
+
+      "aviso_modal": {
+        "texto": "ADMIN",
+        "fondo": "#111111",
+        "opacidad": 0.7
+      }
+    },
+
+    "paola": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+
+      "aviso_modal": {
+        "texto": "Caduca 01/01/2026",
+        "fondo": "#000000",
+        "opacidad": 0
+      }
+    },
+
+    "eylin": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "Caduca 01/01/2026" }
+    },
+
+    "johan": {
+      "activo_por_defecto": false,
+      "activo_desde": "2025-12-17",
+      "activo_hasta": "2025-12-31",
+
+      "aviso_modal": {
+        "texto": "Caduca 01/01/2026",
+        "fondo": "#000000",
+        "opacidad": 0
+      }
+    },
+
+    "ray": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "Caduca 01/01/2026" }
+    },
+
+    "weslie": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "Caduca 01/01/2026" }
+    },
+
+    "alejandro": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "" }
+    },
+    
+    "rian": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "" }
+    },
+
+    "judit": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "Caduca 01/01/2026" }
+    }
+  }
+}
