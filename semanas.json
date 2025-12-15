@@ -326,7 +326,7 @@
       {
         "nombre": "Alejandro Lijeron",
         "plaza": "Base 6",
-        "contratadas": 20,
+        "contratadas": 17,
         "complementarias": 0,
         "horarios": {
           "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
