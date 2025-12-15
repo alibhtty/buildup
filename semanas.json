@@ -84,7 +84,7 @@
         "contratadas": 20,
         "complementarias": 11,
         "horarios": {
-          "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
+          "lunes": { "mediodia": ["13:00", "15:00"], "noche": ["", ""] },
           "martes": { "mediodia": ["", ""], "noche": ["", ""] },
           "miercoles": { "mediodia": ["11:30", "17:00"], "noche": ["20:00", "23:30"] },
           "jueves": { "mediodia": ["10:30", "16:30"], "noche": ["20:00", "23:00"] },
