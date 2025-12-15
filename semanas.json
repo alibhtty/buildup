@@ -258,7 +258,7 @@
         "nombre": "Johan Cruz",
         "plaza": "Base 3",
         "contratadas": 30,
-        "complementarias": 6.3,
+        "complementarias": 6.5,
         "horarios": {
           "lunes": { "mediodia": ["11:30", "17:00"], "noche": ["", ""] },
           "martes": { "mediodia": ["", ""], "noche": ["20:00", "0:00"] },
@@ -282,7 +282,7 @@
         "nombre": "Ali Bhtty",
         "plaza": "Base 4",
         "contratadas": 20,
-        "complementarias": 13.3,
+        "complementarias": 13.5,
         "horarios": {
           "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
           "martes": { "mediodia": ["", ""], "noche": ["", ""] },
