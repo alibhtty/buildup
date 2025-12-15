@@ -19,7 +19,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "Actualiza tu widget",
+      "texto": "",
       "fondo": "#000000",
       "opacidad": 0.85
     }
@@ -34,7 +34,7 @@
       "aviso_modal": {
         "texto": "ADMIN",
         "fondo": "#111111",
-        "opacidad": 0.8
+        "opacidad": 0.7
       }
     },
 
@@ -46,7 +46,7 @@
       "aviso_modal": {
         "texto": "Caduca 01/01/2026",
         "fondo": "#000000",
-        "opacidad": 0.2
+        "opacidad": 0
       }
     },
 
@@ -65,7 +65,7 @@
       "aviso_modal": {
         "texto": "Caduca 01/01/2026",
         "fondo": "#000000",
-        "opacidad": 0.2
+        "opacidad": 0
       }
     },
 
