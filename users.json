@@ -1,12 +1,12 @@
 {
   "configuracion_global": {
     "oferta_free": {
-      "desde": "2025-12-21",
+      "desde": "2025-12-15",
       "hasta": "2025-12-31"
     },
 
     "aviso_modal_global": {
-      "texto": "",
+      "texto": "Actualiza tu widget",
       "fondo": "#000000",
       "opacidad": 0.85
     }
