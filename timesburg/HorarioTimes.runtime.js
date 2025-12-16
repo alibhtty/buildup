@@ -239,7 +239,15 @@ async function crearWidget(usersData) {
     contenedor.layoutHorizontally();
     contenedor.centerAlignContent();
     contenedor.addSpacer();
-  
+
+    if (args.widgetParameter) {
+    const tUser = w.addText(`👤 Usuario: ${args.widgetParameter}`);
+     tUser.textColor = new Color("#ffffff", 0.8);
+     tUser.font = Font.systemFont(11);
+     tUser.centerAlignText();
+     w.addSpacer(8);
+    }
+    
     // Botón de contacto
     const boton = contenedor.addStack();
     boton.layoutHorizontally();
