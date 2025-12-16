@@ -240,8 +240,9 @@ async function crearWidget(usersData) {
     contenedor.centerAlignContent();
     contenedor.addSpacer();
 
+    w.addSpacer(4);
     if (args.widgetParameter) {
-    const tUser = w.addText(`👤 Usuario: ${args.widgetParameter}`);
+    const tUser = w.addText(`Usuario: ${args.widgetParameter}`);
      tUser.textColor = new Color("#ffffff", 0.8);
      tUser.font = Font.systemFont(11);
      tUser.centerAlignText();
