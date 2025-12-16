@@ -1,9 +1,10 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: deep-gray; icon-glyph: magic;
-// =======================
-//   WIDGET HORARIOTIMES.js – 4Bdev. Ali Bhtty
-// =======================
+// icon-color: brown; icon-glyph: magic;
+// ===========================
+//   WIDGET HORARIOTIMES.js
+//   4Bdev. – Ali Bhtty
+// ===========================
 
 // ========================================================
 // ============= 1. DATOS DE SEMANAS COMPLETOS ============
@@ -167,18 +168,15 @@ function mostrarAviso() {
   // desactivado temporalmente
 }
 
-
-
 async function crearWidget(usersData) {
 
   // Crear el widget al inicio
   const w = new ListWidget();
 
-  // 🔒 Bloqueo por suscripción
+  // Bloqueo por suscripción
   const activo = usuarioActivo(usersData);
 
-
-  // Cargar colores globales desde el JSON
+  // Cargar colores desde el JSON
   const colores = usersData.configuracion_global?.colores || {};
 
   const bgColor = colores.background
@@ -202,14 +200,6 @@ async function crearWidget(usersData) {
     : new Color("#FFFFFF", 0.9);
 
 
-
-    /* const fondo = w.addStack();
-    fondo.layoutVertically();
-    fondo.backgroundColor = bgColor;
-    fondo.size = new Size(0, 0); // Se ajusta al widget automáticamente
-    fondo.addSpacer(); // Ocupa todo el espacio  */
-
-
   if (!activo) {
     w.backgroundColor = bgColor;
     //w.backgroundColor = new Color("#00cc66", 0.3);
@@ -217,9 +207,9 @@ async function crearWidget(usersData) {
     // Frases modernas y motivadoras
     const frases = [
       "🔓 Desbloquea tu semana\nUn widget de tu horario",
-      "✨ Premium vibes only\nActiva tu acceso",
+      "✨ Premium vibes only\nSuscríbete ya",
       "🚀 Tu horario sin capturas\nSuscríbete ahora",
-      "Deja las fotos, vive el widget\nSuscripción necesaria"
+      "Deja las fotos, vive el widget\n🔓 Acceso Premium",
     ];
 
     // Calcular índice según media hora + aleatorio inicial
@@ -240,20 +230,132 @@ async function crearWidget(usersData) {
     contenedor.centerAlignContent();
     contenedor.addSpacer();
 
-    w.addSpacer(4);
+    w.addSpacer(3);
+        // Texto debajo del botón
+    const t5 = w.addText("Activación de 1h a 5h tras el pago.");
+    t5.textColor = new Color("#ffffff", 0.8);
+    t5.centerAlignText();
+    t5.font = Font.systemFont(8.5);
+    w.addSpacer(8);
+
     if (args.widgetParameter) {
-    const tUser = w.addText(`Usuario: ${args.widgetParameter}`);
-     tUser.textColor = new Color("#ffffff", 0.8);
-     tUser.font = Font.systemFont(11);
-     tUser.centerAlignText();
-     w.addSpacer(8);
+      const formattedUser = args.widgetParameter.charAt(0).toUpperCase() + args.widgetParameter.slice(1).toLowerCase();
+    
+      const tUser = w.addText(`Usuario: ${formattedUser}`);
+      tUser.textColor = new Color("#ffffff", 0.9);
+      tUser.font = Font.boldSystemFont(11);
+      tUser.centerAlignText();
+      w.addSpacer(8);
+    }
+
+
+    // Botón Stripe
+    /* const boton = contenedor.addStack()
+    boton.layoutHorizontally()
+    boton.centerAlignContent()
+    boton.backgroundColor = new Color("#000000") // fondo negro estilo Apple Pay
+    boton.cornerRadius = 20                     // esquinas más redondeadas
+    boton.setPadding(12, 22, 12, 22)            // padding más generoso
+    
+    // icono
+    const icono = boton.addText("")            // símbolo Apple
+    icono.textColor = Color.white()
+    icono.font = Font.boldSystemFont(18)
+    
+    // espacio entre icono y texto
+    boton.addSpacer(8)
+    
+    // texto
+    const textoBoton = boton.addText("Pagar 2€/mes")
+    textoBoton.textColor = Color.white()
+    textoBoton.font = Font.boldSystemFont(18)
+    
+    // ---- datos para Stripe (SIN redeclarar nada global) ----
+    const nombreUsuario = args.widgetParameter
+      ? args.widgetParameter.toLowerCase()
+      : "anonimo";
+    
+    const inicio = new Date();
+    const fin = new Date();
+    fin.setMonth(fin.getMonth() + 1);
+    
+    const f = d =>
+      `${String(d.getDate()).padStart(2, "0")}/` +
+      `${String(d.getMonth() + 1).padStart(2, "0")}/` +
+      d.getFullYear();
+    
+    const referencia = `${nombreUsuario}-${f(inicio)}-${f(fin)}`;
+    
+
+    // ---- URL Stripe ----
+    boton.url =
+      "https://buy.stripe.com/00g7wm7dj2Jde52dQQ" +
+      `?client_reference_id=${encodeURIComponent(referencia)}`; */
+
+
+
+    // Aviso si NO hay parameter
+    if (!args.widgetParameter) {
+      const aviso = w.addText(
+        "Mantén presionado el widget, presiona editar\ny pon tu nombre en 'Parámetro' antes de pagar"
+      );
+      aviso.textColor = new Color("#ffffff", 0.95);
+      aviso.font = Font.boldSystemFont(9);
+      aviso.centerAlignText();
+      w.addSpacer(10);
     }
     
-    // Botón de contacto
+    // Botón Stripe
     const boton = contenedor.addStack();
     boton.layoutHorizontally();
     boton.centerAlignContent();
-    boton.backgroundColor = new Color("#FFFFFF", 0.2); // semitransparente
+    boton.backgroundColor = new Color("#000000"); // estilo Apple Pay
+    boton.cornerRadius = 20;
+    boton.setPadding(12, 22, 12, 22);
+    
+    // Icono
+    const icono = boton.addText("");
+    icono.textColor = Color.white();
+    icono.font = Font.boldSystemFont(18);
+    
+    boton.addSpacer(8);
+    
+    // Texto
+    const textoBoton = boton.addText("Pagar 2€/mes");
+    textoBoton.textColor = Color.white();
+    textoBoton.font = Font.boldSystemFont(18);
+    
+    // 🔒 Si NO hay parameter → botón desactivado visual y funcional
+    if (!args.widgetParameter) {
+      boton.backgroundColor = new Color("#000000", 0.35);
+      icono.textColor = new Color("#ffffff", 0.45);
+      textoBoton.textColor = new Color("#ffffff", 0.45);
+    } else {
+      // ---- datos para Stripe ----
+      const nombreUsuario = args.widgetParameter.toLowerCase();
+    
+      const inicio = new Date();
+      const fin = new Date();
+      fin.setMonth(fin.getMonth() + 1);
+    
+      const f = d =>
+        `${String(d.getDate()).padStart(2, "0")}/` +
+        `${String(d.getMonth() + 1).padStart(2, "0")}/` +
+        d.getFullYear();
+    
+      const referencia = `${nombreUsuario}-${f(inicio)}-${f(fin)}`;
+    
+      // ---- URL Stripe ----
+      boton.url =
+        "https://buy.stripe.com/00g7wm7dj2Jde52dQQ" +
+        `?client_reference_id=${encodeURIComponent(referencia)}`;
+    }
+      
+    // Botón Whattsapp
+    /*const boton = contenedor.addStack();
+    boton.layoutHorizontally();
+    boton.centerAlignContent();
+    boton.backgroundColor = new Color("#FFFFFF", 0.2);
     boton.cornerRadius = 12;
     boton.setPadding(10, 16, 10, 16);
   
@@ -261,26 +363,75 @@ async function crearWidget(usersData) {
     textoBoton.textColor = Color.white();
     textoBoton.font = Font.boldSystemFont(16);
   
-    // Acción al tocar: WhatsApp con mensaje predefinido
     const mensaje = encodeURIComponent("Hola, quiero una licencia de HorarioTimes");
-    boton.url = `https://wa.me/34602316998?text=${mensaje}`;
+    boton.url = `https://wa.me/34602316998?text=${mensaje}`; */
   
-    contenedor.addSpacer(); // Espacio flexible a la derecha
+    contenedor.addSpacer();
   
-    w.addSpacer(4);
+    w.addSpacer(24);
   
     // Texto debajo del botón
-    const t2 = w.addText("La suscripción sirve para mantener\nla actualización continua de datos\n y el desarrollo de este widget.\n\n\nUnofficial – Timesburg®");
-    t2.textColor = new Color("#ffffff", 0.65);
+    /* const t5 = w.addText("Activación de 1h a 5h tras el pago.");
+    t5.textColor = new Color("#ffffff", 0.9);
+    t5.centerAlignText();
+    t5.font = Font.systemFont(9); */
+
+    //w.addSpacer(10);
+
+    const t2 = w.addText("La suscripción sirve para mantener\nla actualización continua de datos\n y el desarrollo de este widget."); //\n\n\nUnofficial – Timesburg®
+    t2.textColor = new Color("#ffffff", 0.6);
     t2.centerAlignText();
-    t2.font = Font.systemFont(9);
+    t2.font = Font.systemFont(8.5);
 
-    w.addSpacer(25);
+    w.addSpacer(10);
 
-    const t3 = w.addText("4Bdev® – 2025\nAli Bhtty");
+    const t4 = w.addText("Este widget no está vinculado a Timesburg® ni\nreemplaza las vías oficiales para recibir los horarios.\nEs solo un skin diseñado y programado por 4Bdev\nUnofficial – Timesburg®");
+    t4.textColor = new Color("#ffffff", 0.65);
+    t4.centerAlignText();
+    t4.font = Font.systemFont(8);
+
+    w.addSpacer(15);
+
+
+    // contenedor horizontal centrado
+    const filaWrapper = w.addStack()
+    filaWrapper.layoutHorizontally()
+    filaWrapper.addSpacer()
+    
+    const fila = filaWrapper.addStack()
+    fila.layoutHorizontally()
+    fila.centerAlignContent()
+    
+    // texto izquierdo (bold) con enlace
+    const tIzq = fila.addText("4Bdev®")
+    tIzq.textColor = new Color("#ffffff", 0.8)
+    tIzq.font = Font.boldSystemFont(9)
+    tIzq.url = "https://ali-bhtty.web.app"
+    
+    // espacio
+    fila.addSpacer(2)
+    
+    // texto central (sin bold)
+    const tDer = fila.addText("– Ali Bhtty")
+    tDer.textColor = new Color("#ffffff", 0.8)
+    tDer.font = Font.systemFont(9)
+    
+    // espacio
+    fila.addSpacer(2)
+    
+    // texto derecho (bold)
+    const tFin = fila.addText("2025")
+    tFin.textColor = new Color("#ffffff", 0.8)
+    tFin.font = Font.boldSystemFont(9)
+    
+    filaWrapper.addSpacer()
+
+
+
+    /* const t3 = w.addText("4Bdev® – 2025\nAli Bhtty");
     t3.textColor = new Color("#ffffff", 0.8);
     t3.centerAlignText();
-    t3.font = Font.boldSystemFont(10);
+    t3.font = Font.boldSystemFont(9); */
   
     mostrarAviso(w, usersData);
     return w; // ✅ Devuelve el widget
@@ -303,8 +454,6 @@ async function crearWidget(usersData) {
   //w.backgroundColor = bgColor;
   //widget.backgroundColor = new Color("#00cc66", 0.3);
 
-  /* mostrarAviso(widget, usersData); */
-
   // ⬇️ 4. Control si no hay datos
   if (!semanas.length) {
     widget.addText("No se pudieron cargar los horarios");
@@ -317,9 +466,6 @@ async function crearWidget(usersData) {
     return widget;
   }
 
-
-  // ⬇️ A partir de aquí, TODO tu código actual tal cual
-  // header, secciones, tablas, etc...
 
   // ================= HEADER =================
   const header = widget.addStack();
@@ -335,7 +481,7 @@ async function crearWidget(usersData) {
   const h1_right = header.addText(`— Sem ${semana.id}`);
   h1_right.font = Font.italicSystemFont(10);
   h1_right.textColor = new Color(headerColor.hex, 0.5); 
-  // h1_right.textColor = new Color("#EFDECD", 0.5); // mismo color pero semitransparente
+  // h1_right.textColor = new Color("#EFDECD", 0.5);
   
   header.addSpacer();
 
@@ -344,10 +490,29 @@ async function crearWidget(usersData) {
   rightStack.layoutHorizontally();
   rightStack.centerAlignContent();
   
-  const h2a = rightStack.addText("Timesburg ");
+  /* const h2a = rightStack.addText("Timesburg ");
   h2a.font = Font.boldSystemFont(12);
-  h2a.textColor = headerColor;
+  h2a.textColor = headerColor; */
   //h2a.textColor = new Color("#EFDECD");
+
+  // tu cadena base64 (ejemplo)
+  const base64String = "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAAAaCAYAAAC+RB5CAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfpDBAWKArNVcICAAABIHpUWHRSYXcgcHJvZmlsZSB0eXBlIHhtcAAAKJF1UktyxSAM23OKHoHIxibHSR+w60yXPX5lkr6keS2e/GwjSyLp6+MzvcUSSJKHV9m8WvNszYqrLcjxbQ/rLlGTBthiasNgRbY9/+weAHI6YZh8jy2laisZWcWGcyOyGLrkeUF63pAjSAEEN9kKVJPabf5eDA7VlZFl48zhc6E7m9DnCMeQRdYIjCRZwAR4bzsIn+IrYUnbK1oMiPLJ5c5I1UpyMWFindJWutDJ8GigL+BsOhEMacQvoGt4TRdRAWR/yZqc+mk33+mfNQo+9oS0ZZo4Xqk/BfwM2DScWa0csg8F0unUI52o/zfevcG4urObk67uXI/2bI7DVYvazL78dVFJ30ktmxa/6wauAAAAAW9yTlQBz6J3mgAAFOJJREFUaN7tm3u07VV13z/f9dt7n8c9j3u5l/vmIWAA4QoFLVatoOEVSU1Rg8EkMmrVtENAHYq0iY1QaHA4jDAQtYnkoSSE1AxR2yQGFVI0ViTB1gDGEqD3/eKee+95771/v/ntH7/f3mfvfQ7I6CiDUZs5xh7n7N9vrrnmmnOu+Vpra3bPLgAKCUsAWAaMTPmdBED5Nkid5zIh4eqdMIbRZL9bTlcJr4XYgfhUUvoT25EDqzcez08aTB3czZp1WzjyzA6S68NBbMsizjPxMqFxwz2tbOHPajHkNRtOfLHZfUGhVijhFEQMK1IQAmOESBEUMpAhIGGgRaOADtZCbYRV+bwjZWRFmyBdAfwGeBRA6HjjkwPvQzyIX+wlv3Aw+8zTCM4W7X+TWa8Drwey6vUr68Xo3wFPvth8/t+Cqf17SAEuvQ2SiMip5apn9Wj+QmLhQgfgHk+FqFuYvBwEXe8FIhGMtucipC+mdvNreW2ooSguTzBKSaoz4SYcl2XEgwW1F1sWLxgsarRWi9aHsN+mCCyhyr8LtoA36ifEqI4c2AVFG5QwjYaIVYVqM/WU57WG26cabkJ+iSyspVBWgpHTsxIvcdlGbehhHEfB+cpYLizxE+upnBjNZ/NWNvQFm3MFpw1iCLuTRPy/DokaRZkHnZHc/lXgtJqLR0CfqEnFecZbwCAhawaYRkyAxwMhRVcUxkdBc5BWC48KgX26yM9I5sFAd4N/Gnmyh4cdKH0lXmxJvMDQzEapRX4f1kfBdwGNF5unFwqCgpRSwxG/KuLtVRQ7x+iYWihei8vFGx4VfFDo743eAv4Y0OumFkEfsPxggnMxvwlsBcaMzkF+MPBXkgnBlZLWGraD75Ja37PrgJjev7tK6lUF2aWw2shFs15xU4Hs6rsY37iF6QP7KufnKlyXbyeLJoezYY5Zv3FFQUzv39vzzX3/h0oeJjdsWTbu6MF95ezVfOoZ3dlsE+s3cfjAbnBC8ENgGljXT6nEPrJvDyBSN5cIQEwMzH3kwN4Sz53t6DKdqNYcJGoOejISZHcLqbGNW7t0DKRlfjJAAU5dPZRSNhMbtnDkwO4uragwumK3MKwTnNtP0+fWsM8CIacCuD3BfS5D3qNW5Klvt2k+pdpf28WTEXoyJb0c82vVy7NqmpR8NA98r2r1rxGxLtl5A+9veshCDGemWRgTkOo17NWCuuCQ5VarlmOtTinmVlsMC7dFOlwozyXzd4f2Qp5Tb8/Srq+eBFYBuZUOT6esnZFz9MAuJtdvXVLOvh3kzQWCnLKWHcmgPQE0BE0rm6kVeWGguWsXc3VxzIYtzOzfWUm0Xe5NDQ8LTwA1RIE1g+fmUYPpA3uh2iZYBWKZYy7DHxiNCiYqFU/jmEdiZs9OXKObiCpykguKNDwMMUFZKx1Cqd0x0RC082mGapOjLnkLkp5xRBzdvxMEJidzYI3WcTEhg1SfsudcX8hpjQytFtShPiUvFKUh7q6MKSjyHWS1E8eBMSADFeF0NFO+XuaYjkG7dA+P1kBrqzU/DvrzgE4Olcpt2ZcEGZCUoZQT0t2yf1lwvNAkWatOzkslXeyieDX4JOyhJvwFSjeCp5utAmq1E0CXyPnrTToNewS4q1XXxxptvUqefofFuZQesGnFo4Lfah+79cHj9u2kSOmUvDZ2FS7eAKyVaScXPzT6vSTusymOHNjN6vVbOLpvBwaGGqPksEmkn4Xm64FTgFHDPI4nLL6J9ZXFmg9ZGUf27yEqz5A5TjLZW5LbF4COB+qYXHgvajxk6d6U6ZEIrGdNGm3MukJ6r5T/HKiyeu9E+grwRTIfbMxM0xpbDTBm6bxctdeJ/FzgBKBm6fOq1z9Oux3AJPDaem3sQrvYBmwSDhXcvmo6Pje9ps7E6Ham54/7qVC6DJqvETrZwkH+61J8uzVaey/2m8pqffF+pFuAfXKBU70O8dpa7bg3QbzCZh1QA/Kk2JccC8KrbbUtTUF6wEq3aGbfro+CXi+4bbhIX56pB7VcgC6z8i+hovJUCZGmUPZ64Ad5CpQyOW+/S/COzOmzViQctwBbBxztPCm7WI6/wv5pw63AmT3RA0vfydDvY99gvHkF1exGek8BhwT/MdlnL8MQhy29P3PxhVz1cj84WLVhK/P7d10ScAP4HycpqdKzbCxhVBi+WUjXZY4fTA9NsLZ5hDxlF2J/ErONZwXttdINNIbvTIvNwLwM5Q9YrO9BWgSeAE53qZiqGDKQAvg64n22frTYmNBIe+YWOa7FjLgrpYSVfS/VaxcttlrzNXGbiHdjN8RSeLP4VoHe2B7fOlef3fVO4V8DXtLvH7hTprD4laVHAegGubgxlB1r9BHkq5I9WWZBneA3WG3o+6APONN3ZZopi6GbRXbZ0PzTX57PTIqVdtryikU2URSey0bvzJVd+r0Nm+/GnAbeusL4BBoqN7HPFt42SFT2KXbcjL35WTb7FuzfSPYdss/uqKMfvAZ0XVuN40AsLGwGFcwd2HEJ+HeSeZVKzUzhdKfMHeDtJaXIIC7OXHxaeMtkc5a2GidgfQL6DOr7kj4BfLfn2SbgJuetc3sL5QH+his6mZZaO0vWApfI3CZx7Pj8bhumzEohlExIFArjw9jRUXcnJzKakBlKC1M1kS6UlxkUgtcCv6QuJ12E80iNccFHhK+VPVlRnxJ8WPAOpL8ZYOtM4ILceTsiSEXKC+O5hVUng8TkxkGb6LDcDwVlsjZSNJ3suXMP7CAUt1r63LLGgXBKmCwhuBN0M9AaILneeH3Ii5Z2GzVXMJuzBK8o86zYI7zQP42QOU3wamFGRneBsi0i3STSlgQkqwl8ZG5i+D3O0jWR0vuMZqrRlbB1VYnLG2S9fIkNA/5tO65L4m2C+0slGuP1dpziCrlj9ANWsV1wraQPgp6main3UL8krF9sZ2Ms1vVJrNv7hwdlyhxqNBR50s2C3+2+7VprgKxGPtdGfATpXmkgnYZTLVZ5wNpKWbBN4hdLQ+3q/36Gsk8a/gC43nCkZ1Qd4l314NSESeMbNzG+cRMTG8rP84W167eydsNm1m7YTFJCmCQdktJnDVPLR6jsuEpHLX0G8dQghtFBk/4Vys5H3AhqLaOiNI3SdQlfYPQByiqrHF+6/5rsbVlRdNT188ArgU4P7m9TobtHp+ftMFZ6EHi6bwfAG5ryMPjk7qiu2XJ5kn7Kjh0hvR/4BjADPCx4pEyCq7x1uQw+DbrD5laL66px/cuDN5OlidFm5Orjq0+SpJQxkhdN4R1pWepbVmmlQftJS58yzA1IW5Vxtb305HDIXzScYnRMLz3ggOejMImwvid4dICtjaAzlw71nhOCFbxwH6xev4moDnGMF4H2s1KzCNO2afbPIqz0XxZHa18wfhLp80gDhidw+suCsc8G2RNB7S6ZR9zDnx1ArIujh3BoTOF/hgMTBKaQIzJfCrwV9FaF3wSsWvItBjhGVgPFrnLtSxozujjMlyxdk1EcdEpvlXRRst86eWT3jxIJJKNyjy8JOM2L9AgknARJf2rS/YNRQMRpsk+IZIrkFD2vyzK+E+hUSXxpig6nyerxgQI0a7vdPw/I3GXSFUbXB/qoST//9LE//BNL7dJMe0OjT0k1jySZepbNATsGGDdSG+n5npn8+C7wmg3HM71/FyWvscKIKix0zok8kFOVGI8OzxcmCdAR8B56O9NlnvhYnelWuA4xvkA6snMF/urU6iCOwZzYP4dfCXFP10S6nKlnGj0W1hwqviV4CnTSgNs5A3NbKL0zOX5b8AeWZp7ZeBIj8+2+PlYPBKgNJnmRiMai0V+Af26A+zFgI/C3P04T7oiyxy320VqKv2KAK6M5K/2O8H9d2kziJc+cSYgfJNgr09s4O6eAc2V/25HXgDX96tVBlH4EPB+jeh7OrN8wnsWg+lLrZWsXIKUybNpldmSK/oaGsVhwlQ2bGqB8+W5HRaNG5lgrWO1+g5lGepjS7auau5ex7cDtDRVFu1Z7rJ7nH5K53WWTt3eWhDkb+JTRRaT0wcZC8+nnkFfHxVBoFXIL4R8A00YTPSto2F7TufuhPgJR6aO0llC/VDszW8wLtfxcvkDkKBYBoqe6iGSOjviH62b5LcGve8lG1sn+GHBr2C8B/kmv/kD/SUpP2PHjjWplI3l23Oce07dbBg2re9Hm2eYru9qltS3hLBddWVarDEP2oNOYFbrOI6OPkbeStZSPJMvzcwdbI41J6tkQFC2C7N4k78W+HriQ0pP0Qma4HHveKXuPC8+zsq+qG4+XYSc6vem9VcI70bPGFtIUDOZJnYVFIvJOHxWtgIa0kBrDLUdBtFc4ioUyllJm72s2LO2XqWd2ceyso2Z9IsdrgatZumnxGsOrwFn3mLw8ZbkHcYtd5J3U/rkNRUHo+Z7arVzo05MH9DxYAee5oUMheXCuFZoLkZNS9gwwNfB+i+23jMdCm3bedB7NoiiakRfNKFpjQ0Or329x6WwrQKmhlE4jaXcmflnizYK7WZb0gtHPYv5RCGyXrc6+eaNh+QwomHjzBUgJpWxWaLaz8iiz/FnE/upRsVwCXltEcUxEULcx2twn2QrPLj8rS4eqmkjlpweyCDKbkLeATsfKjPcY/zfDk6DdoKcs/Q3S7yX09gxfLftAGWFW8NVHDuyubD+6t/SWnHD3EI6ZfXv6xh3evwvL5bUZraBkl8JeyXQ6tyI6YagksXKzqtejVX0vD4rN4JtOOAPbB4HHVqByzexi8WHbm8IxFPaw4QysO3DcClw/XM8niOIDFPkDFHG/rV9aVHzdKf0LSVcDh/pmxGOI46qvK+sRX2JlkzNfeoDCogiNGI1231sEerJAO6Nc1QGWt142g98sNN5U7XzDpYMSsovRdnuxXhQtltQ8YHZWV13TB3b2jBaLmVYVcIvxxVWCcIfQRSll52dZ9rqk7HyTLhybn3wn6F6jucfTVpIShQc81dSBvaTG5vKQMXkNOEtO9DTIhhTFOrkgUr/3WuqDmGUrsDO7GHYEkqpdqtTfO7FwMZooqvnLQma5ZqKOTCSQ25Q9kqWZqwqodqtNRNEM8Ueg5gCVScN/EL4vOb6cHF/F8Wd2XFnV2dsDhrB/AWIj9inYt4xEulxFtHao/fugv+wnGQUuZqse0TBQX8Y6vFrElcOzLSgjwDkhNiwl2ULw1dGWj7hsv2wHHx0gU5P5dxDfTMQfJTiph4fKYDgtOS6jrlRmAWTCqbeSdSnbrKuxJR7JrHPAl3Q69FJaL2st0c6KopXsGM7QhrnR2ZchvVRo8nQ/RUEBavfnVAaK5m6c0suz8PuFsoH3YyR/2KQnZO8aFFpQG8qIK3Cxtv+NGwRXSdnDq2gemnXjnwMnLnfM8TaLrwU8LcfFkrf1owSCn0HpnuTi8WJo+lUOXr18F/o1swd2nZfgoSD7UxT3YF/VuRnRUQ5wpsyZpTCrw2B0yHAX4qjxdsHZ1dpXAx93YvK4qE2DT19ShLH1OOL7kbRK9rsFx6zgl4eAmxbH6scnvBfzbmBkiW89IvSHzZo6pyF/H/LDmDf2hjjBOOaVVe06X70a6cFYLfxptYv5prOv1RVXCI/33ctQjEu6wuj7QLeJnJwwbLQZdXUdQsS/tri8ilkJItkueyemQPwvUf/jgN8VmuvzBLIZzaeQ/S/Br2AFsLi0M0EvJIJEnI+5DlKtvI+y1IIDvQ185SL105PjRuxVgxFO1vlyujazN4m4GXv9AAagV4A+1M6Gx4VuAJ1U3unq9GYC8Mm2/j2pNiqYQ9n1Qp/3QDO1Exh6jjkOG9/YUu2BiGhZfDykxwt1r9ecgvkcZV71sh5SO0E3Jrw72f8UeFdZJfRU9LDTdtv2Oux/i7k9wbaqy09CTyTpusz5jnpWL40qFXMWt1ns6zOIMmFDYhbxWWB3j3w6WAWgOv4ZzNVG6g2DlbTeC+mNA119QIeBVic+utwMJ4BOAB0H2gJsAm9E3gJ+je1PJrhmONukPk8lw0I2Dvg+4CzQJPSqXjJpP+ivVypXhXcJfdPlxO6pA0WZg/yP6u83qu6r+6fXnOCvgFnMA8BA6SKVXXZ9J5Samf0t8LpuD3tJsBY8iNwWEI79ga4W+jrylcJnY68G1Sq9z0h6yPCZ3L6v7na0U53hWPxOW40rJP8K5iLwZkoBA8wCBxHfDtKnP7N+60PXHNyF8NOCPy+V0BGAZxC3YM4ArgJORNTL+z8cAT8A+k2HHnFWI48CksCJ1Wv3fv3IoY3vQnwQxxmUnq0J/pHhM6H0n5OLtaDNlAXELuRvI93dHMkfqs83zob0DeONIrr5aGlk2m/S072qjNLw/jtKD8m+gOcPNdDbF+PgXX2mcXjfHlBUOVQxJhhS1yZUds2lhUYU87P1ITasPbY79sjhp1BRI+X1UeOuSy8vgYHwImZOghwNyRqjbDz37pLWxBwzs6MFRnVgnN7Eq/RGOYrpQsmincnZRNkzyli6quOQNY0okIgiSruzcS2N4DheeJNIQ0IF9n5LTzry+U7IKpK63emaGwnlm0QcjzxukowXhHdK7CoK2qFESkKYrMhHkEajcwnRkY+v2nR0cW47hYY2h3wSSquEc8J7TTyZnDWdjCzGNpT5fln8iKwoiFo2kUVxPDAJmjVsT9KRsElwrOFUwYxhd4vaoQa5Q6ZRZDSztEpmOHXqLLmjy8XMMTc+PYteemrXU83v20GR0lmKuAnrdSEmel1gz9+kpRwNSXutdOkyf3N4/47KbajqvC95gKDM+jq3BFevXzornNm3u9wBSgOZX9eoIMvIFxKpkdPp5QwYFRak6CkC+hDU9XtWlPvNlcvvN6rqeclP5xbjNBNMMF01EV2tsYMnFptHGB1ey9ixm7qbLJXun4SgtNFSDu6cTNC9iSlH1UhL1a7vGlXXC9TkTuugYrVDP1GQMznw862pg7splFGL8qJdJbVKxEEaqGW6bWZluLoVmiru1WnFdI2KamXu6nLqwF7mRkeYmJ1FYgxrW8BLhYcpWwJRRZgWYjw53gecVpUZ37XSm55vX/Mf4P8jmD64k9QUrlK78rJzxyMttT2Hs6LRKvRVwyWSpkDXWq0//Mn9vdQ/wP8xTBx73I/FmT24kzaqSwrgfwI3FTX+OBUN/jczseJ54JX2ngAAAHhlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAlqgAwAEAAAAAQAAAGkAAAAAFtvH0wAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMi0xNlQyMjozOTozNyswMDowMC0cC2IAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTItMTZUMjI6Mzk6MzcrMDA6MDBcQbPeAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI1LTEyLTE2VDIyOjQwOjEwKzAwOjAwWfiVuwAAABJ0RVh0ZXhpZjpFeGlmT2Zmc2V0ADkwWYzemwAAABh0RVh0ZXhpZjpQaXhlbFhEaW1lbnNpb24ANjAyrXM3xAAAABh0RVh0ZXhpZjpQaXhlbFlEaW1lbnNpb24AMTA1q1dVlAAAABJ0RVh0dGlmZjpPcmllbnRhdGlvbgAxt6v8OwAAAABJRU5ErkJggg=="; // tu base64 aquí
+  
+  // convertir base64 a objeto Image
+  function imageFromBase64(base64) {
+    const data = Data.fromBase64String(base64.replace(/^data:image\/\w+;base64,/, ""))
+    return Image.fromData(data)
+  }
+  
+  // crear la imagen
+  const img = imageFromBase64(base64String)
+  
+  // añadirla al stack en lugar de texto
+  const h2a = rightStack.addImage(img)
+  h2a.imageSize = new Size(62, 12) // ajusta tamaño a lo que necesites
+
+  
+  rightStack.addSpacer(3.5); // espacio entre las dos partes
   
   const h2b = rightStack.addText("Sant Pau");
   h2b.font = Font.italicSystemFont(12);
@@ -357,17 +522,14 @@ async function crearWidget(usersData) {
   widget.addSpacer(2);
   
   // --- Línea horizontal debajo del header ---
-  const linea = widget.addStack(); // stack separado, no dentro de header
+  const linea = widget.addStack();
   linea.layoutHorizontally();
-  linea.size = new Size(0, 0.8); // altura 1px
+  linea.size = new Size(0, 0.8);
   linea.backgroundColor = new Color(headerColor.hex, 0.3);
   //linea.backgroundColor = new Color("#EFDECD", 0.3);
   linea.addSpacer(); // ocupa todo el ancho del widget
   
   widget.addSpacer(6);
-
-  //const mediodia = semana.trabajadores.filter(t => t.horarios[dia]?.mediodia.length);
-  //const noche = semana.trabajadores.filter(t => t.horarios[dia]?.noche.length);
 
   const mediodia = semana.trabajadores.filter(t => tieneTurnoValido(t, dia, "mediodia"));
   const noche = semana.trabajadores.filter(t => tieneTurnoValido(t, dia, "noche"));
@@ -454,7 +616,7 @@ addSection(widget, "Noche", noche, dia, "noche",
   boton.centerAlignContent();
   boton.backgroundColor = new Color("#EFDECD", 0.1); // semitransparente
   boton.cornerRadius = 6;
-  boton.setPadding(3,6,3,6);
+  boton.setPadding(2,6,2,6);
   
   const link = boton.addText("4Bdev®");
   link.textColor = new Color("#EFDECD", 0.6);
@@ -556,7 +718,6 @@ function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, c
 
   parent.addSpacer(4);
 }
-
 
 
 // ========================================================
@@ -704,7 +865,7 @@ function renderWorkerTable(widget, trabajador) {
     (trabajador.horarios[hoy]?.noche?.some(h => h.trim()));
 
   // ===================
-  // 🟣 DÍA DE DESCANSO
+  //   DÍA DE DESCANSO
   // ===================
   if (!tieneJornada) {
     const frases = [
