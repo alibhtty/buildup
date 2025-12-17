@@ -913,6 +913,14 @@ function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
       "Libre y sabros@ 😏",
       "Alguien dijo extra? 🤑",
       "Tiempo para ti 🌿",
+      "Libre y se nota 😏",
+      "Modo descanso activado 😌",
+      "Pausa bien ganada 🌿",
+      "Hoy manda el sofá 🛋️",
+      "Cuerpo off, mente on 🧘‍♂️",
+      "Hoy se duerme bien 😴",
+      "Hoy sin reloj 😏",
+      "Hoy no fichas 😏",
       "Hoy no se trabaja… se disfruta 😏",
       "Merecido descanso 💚"
     ];
