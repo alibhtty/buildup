@@ -923,7 +923,7 @@ function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
     // 🔀 semilla por trabajador + tiempo
     const seed =
       bloqueTiempo +
-      [...trab.nombre].reduce((a, c) => a + c.charCodeAt(0), 0);
+      [...trabajador.nombre].reduce((a, c) => a + c.charCodeAt(0), 0);
     
     // índice final
     const index = seed % frases.length;
