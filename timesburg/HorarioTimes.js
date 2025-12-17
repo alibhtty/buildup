@@ -916,8 +916,21 @@ function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
       "Hoy no se trabaja… se disfruta 😏",
       "Merecido descanso 💚"
     ];
-    const index = Math.floor(Date.now() / (30*60*1000)) % frases.length;
+    
+    // ⏱ bloque de 30 minutos
+    const bloqueTiempo = Math.floor(Date.now() / (30 * 60 * 1000));
+    
+    // 🔀 semilla por trabajador + tiempo
+    const seed =
+      bloqueTiempo +
+      [...trab.nombre].reduce((a, c) => a + c.charCodeAt(0), 0);
+    
+    // índice final
+    const index = seed % frases.length;
     const frase = frases[index];
+
+    //const index = Math.floor(Date.now() / (30*60*1000)) % frases.length;
+    //const frase = frases[index];
 
     const btn = titleRow.addStack();
     btn.backgroundColor = new Color("#00cc66",0.25);
