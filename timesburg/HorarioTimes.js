@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: brown; icon-glyph: magic;
+// icon-color: teal; icon-glyph: magic;
 // ===========================
 //   WIDGET HORARIOTIMES.js
 //   4Bdev. – Ali Bhtty
@@ -9,7 +9,6 @@
 // ========================================================
 // ============= 1. DATOS DE SEMANAS COMPLETOS ============
 const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/semanas.json";
-
 
 const USERS_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/users.json"; 
 
@@ -161,6 +160,39 @@ function getClosers(list, dia, turno, limite) {
 }
 
 // ========================================================
+// ============ PARSEO PRO DE WIDGET PARAMETER ============
+// ========================================================
+
+let fechaForzada = null;
+let usuarioOriginal = null; // ⚡ NUEVO: guarda el nombre del usuario aunque haya fecha forzada
+
+(function procesarWidgetParameter() {
+  if (!args.widgetParameter) return;
+
+  const raw = args.widgetParameter.trim().toLowerCase();
+  const parts = raw.split("-");
+
+  // Formato: usuario-dd-mm-yyyy
+  if (parts.length === 4) {
+    const user = parts[0];
+    const dd = Number(parts[1]);
+    const mm = Number(parts[2]);
+    const yyyy = Number(parts[3]);
+
+    const d = new Date(yyyy, mm - 1, dd);
+
+    if (!isNaN(d.getTime())) {
+      fechaForzada = d;
+      usuarioOriginal = user;  // 🔥 Guardamos el usuario original
+      args.widgetParameter = user; // seguimos usando solo el usuario para la lógica
+    }
+  } else {
+    usuarioOriginal = args.widgetParameter; // si solo hay nombre, también guardamos
+  }
+})();
+
+
+// ========================================================
 // ======================= WIDGET =========================
 // ========================================================
 
@@ -239,58 +271,15 @@ async function crearWidget(usersData) {
     w.addSpacer(8);
 
     if (args.widgetParameter) {
-      const formattedUser = args.widgetParameter.charAt(0).toUpperCase() + args.widgetParameter.slice(1).toLowerCase();
-    
+      const formattedUser = (usuarioOriginal ?? args.widgetParameter)
+  .charAt(0)
+  .toUpperCase() + (usuarioOriginal ?? args.widgetParameter).slice(1).toLowerCase();
       const tUser = w.addText(`Usuario: ${formattedUser}`);
       tUser.textColor = new Color("#ffffff", 0.9);
       tUser.font = Font.boldSystemFont(11);
       tUser.centerAlignText();
       w.addSpacer(8);
     }
-
-
-    // Botón Stripe
-    /* const boton = contenedor.addStack()
-    boton.layoutHorizontally()
-    boton.centerAlignContent()
-    boton.backgroundColor = new Color("#000000") // fondo negro estilo Apple Pay
-    boton.cornerRadius = 20                     // esquinas más redondeadas
-    boton.setPadding(12, 22, 12, 22)            // padding más generoso
-    
-    // icono
-    const icono = boton.addText("")            // símbolo Apple
-    icono.textColor = Color.white()
-    icono.font = Font.boldSystemFont(18)
-    
-    // espacio entre icono y texto
-    boton.addSpacer(8)
-    
-    // texto
-    const textoBoton = boton.addText("Pagar 2€/mes")
-    textoBoton.textColor = Color.white()
-    textoBoton.font = Font.boldSystemFont(18)
-    
-    // ---- datos para Stripe (SIN redeclarar nada global) ----
-    const nombreUsuario = args.widgetParameter
-      ? args.widgetParameter.toLowerCase()
-      : "anonimo";
-    
-    const inicio = new Date();
-    const fin = new Date();
-    fin.setMonth(fin.getMonth() + 1);
-    
-    const f = d =>
-      `${String(d.getDate()).padStart(2, "0")}/` +
-      `${String(d.getMonth() + 1).padStart(2, "0")}/` +
-      d.getFullYear();
-    
-    const referencia = `${nombreUsuario}-${f(inicio)}-${f(fin)}`;
-    
-
-    // ---- URL Stripe ----
-    boton.url =
-      "https://buy.stripe.com/00g7wm7dj2Jde52dQQ" +
-      `?client_reference_id=${encodeURIComponent(referencia)}`; */
 
 
 
@@ -305,7 +294,8 @@ async function crearWidget(usersData) {
       w.addSpacer(10);
     }
     
-    // Botón Stripe
+    
+    // ========= WIDGET ========
     const boton = contenedor.addStack();
     boton.layoutHorizontally();
     boton.centerAlignContent();
@@ -325,7 +315,7 @@ async function crearWidget(usersData) {
     textoBoton.textColor = Color.white();
     textoBoton.font = Font.boldSystemFont(18);
     
-    // 🔒 Si NO hay parameter → botón desactivado visual y funcional
+    // Si NO hay parameter → botón desactivado visual y funcional
     if (!args.widgetParameter) {
       boton.backgroundColor = new Color("#000000", 0.35);
       icono.textColor = new Color("#ffffff", 0.45);
@@ -369,14 +359,6 @@ async function crearWidget(usersData) {
     contenedor.addSpacer();
   
     w.addSpacer(24);
-  
-    // Texto debajo del botón
-    /* const t5 = w.addText("Activación de 1h a 5h tras el pago.");
-    t5.textColor = new Color("#ffffff", 0.9);
-    t5.centerAlignText();
-    t5.font = Font.systemFont(9); */
-
-    //w.addSpacer(10);
 
     const t2 = w.addText("La suscripción sirve para mantener\nla actualización continua de datos\n y el desarrollo de este widget."); //\n\n\nUnofficial – Timesburg®
     t2.textColor = new Color("#ffffff", 0.6);
@@ -425,22 +407,15 @@ async function crearWidget(usersData) {
     tFin.font = Font.boldSystemFont(9)
     
     filaWrapper.addSpacer()
-
-
-
-    /* const t3 = w.addText("4Bdev® – 2025\nAli Bhtty");
-    t3.textColor = new Color("#ffffff", 0.8);
-    t3.centerAlignText();
-    t3.font = Font.boldSystemFont(9); */
   
     mostrarAviso(w, usersData);
     return w; // ✅ Devuelve el widget
   }
 
-
-  const hoy = new Date();
-  const dia = diasSemana[hoy.getDay()];
-  const week = getWeekNumber(hoy);
+  // Usar fecha forzada si existe
+  const fechaWidget = fechaForzada ?? new Date();
+  const dia = diasSemana[fechaWidget.getDay()];
+  const week = getWeekNumber(fechaWidget);
 
   // ⬇️ 1. Cargar semanas REMOTAS
   const semanas = await cargarSemanas();
@@ -448,11 +423,27 @@ async function crearWidget(usersData) {
   // ⬇️ 2. Buscar la semana actual
   const semana = semanas.find(s => s.id === week);
 
-  // ⬇️ 3. Crear widget DESPUÉS de tener los datos
+  // ---------- COLOR DE FONDO SEGÚN FECHA -----------
+  const fechaHoy = new Date();
+  fechaHoy.setHours(0, 0, 0, 0); // ignorar hora
+  
+  let colorFondo = bgColor; // por defecto: hoy
+  
+  if (fechaForzada) {
+    const fForzada = new Date(fechaForzada);
+    fForzada.setHours(0, 0, 0, 0);
+  
+    if (fForzada < fechaHoy) {
+      colorFondo = new Color("#453327ff"); // pasado
+    } else if (fForzada > fechaHoy) {
+      colorFondo = new Color("#2f3325ff"); // futuro
+    } 
+    // else queda bgColor
+  }
+  
+  // Asignar el color al widget
   const widget = new ListWidget();
-  widget.backgroundColor = bgColor;
-  //w.backgroundColor = bgColor;
-  //widget.backgroundColor = new Color("#00cc66", 0.3);
+  widget.backgroundColor = colorFondo;
 
   // ⬇️ 4. Control si no hay datos
   if (!semanas.length) {
@@ -471,8 +462,37 @@ async function crearWidget(usersData) {
   const header = widget.addStack();
   header.layoutHorizontally();
   
-  // Texto principal: "Hoy LUNES 13 — "
-  const h1_left = header.addText(`Hoy ${dia.toUpperCase()} ${hoy.getDate()} `);
+  // Determinar la etiqueta correcta según fecha
+  let etiquetaDia = "Hoy"; // default
+  const fechaActual = new Date();
+  fechaActual.setHours(0,0,0,0); // ignorar hora para comparar solo día
+  
+  if (fechaForzada) {
+    const fForzada = new Date(fechaForzada);
+    fForzada.setHours(0,0,0,0);
+  
+    if (fForzada < fechaActual) {
+      etiquetaDia = "Aquel"; // fecha pasada
+    } else if (fForzada > fechaActual) {
+      etiquetaDia = "Próximo"; // fecha futura
+    } else {
+      etiquetaDia = "Hoy"; // misma fecha
+    }
+  }
+  
+  // Texto principal con etiqueta dinámica
+  const h1_left = header.addText(`${etiquetaDia} ${diasSemana[(fechaForzada ?? fechaActual).getDay()].toUpperCase()} ${(fechaForzada ?? fechaActual).getDate()} `);
+  h1_left.font = Font.boldSystemFont(12);
+  h1_left.textColor = headerColor;
+  
+  // Icono de reloj solo si la fecha es forzada y no es hoy
+  /* if (fechaForzada && fechaForzada.getTime() !== fechaActual.getTime()) {
+    const tag = header.addText("⏳");
+    tag.font = Font.systemFont(10);
+    tag.textColor = new Color(headerColor.hex, 0.6);
+  } */
+
+
   h1_left.font = Font.boldSystemFont(12);
   h1_left.textColor = headerColor; 
   //h1_left.textColor = new Color("#EFDECD"); // color base
@@ -509,7 +529,7 @@ async function crearWidget(usersData) {
   
   // añadirla al stack en lugar de texto
   const h2a = rightStack.addImage(img)
-  h2a.imageSize = new Size(62, 12) // ajusta tamaño a lo que necesites
+  h2a.imageSize = new Size(63, 13) // ajusta tamaño a lo que necesites
 
   
   rightStack.addSpacer(3.5); // espacio entre las dos partes
@@ -657,7 +677,6 @@ addSection(widget, "Noche", noche, dia, "noche",
 // ========================================================
 // ===================== SECCIONES ========================
 // ========================================================
-
 function addSection(widget, title, lista, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor) {
   const t = widget.addText(title);
   t.font = Font.boldSystemFont(13);
@@ -668,57 +687,84 @@ function addSection(widget, title, lista, dia, turno, openers, closers, apertura
   grid.layoutHorizontally();
   grid.spacing = 4;
 
-  const cols = Array.from({ length: 3 }, () => {
+  const numCols = 3; // número máximo de columnas
+  const cols = Array.from({ length: numCols }, () => {
     const c = grid.addStack();
     c.layoutVertically();
     c.widthWeight = 1;
     return c;
   });
 
+  // 🔹 calcular cuántas filas habrá en las columnas
+  const numRows = Math.ceil(lista.length / numCols);
+
+  // 🔹 pasar numRows a renderCard para ajustar padding y tamaño
   lista.forEach((trab, i) => {
-    renderCard(cols[i % 3], trab, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor);
+    renderCard(
+      cols[i % numCols],
+      trab,
+      dia,
+      turno,
+      openers,
+      closers,
+      aperturaColor,
+      cierreColor,
+      textoColor,
+      numRows // esto es lo que renderCard usa para cambiar padding/texto
+    );
   });
 }
 
-function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor) {
+function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor, numRows) {
   const card = parent.addStack();
   card.layoutVertically();
 
-  // ✅ Si el trabajador coincide con el widgetParameter, cambiar fondo
   const param = args.widgetParameter?.toLowerCase();
   const nombreSinIconos = trab.nombre.replace(/[^\w\s]/gi, "");
   const primerNombre = nombreSinIconos.split(" ")[0].toLowerCase();
   const esTrabajadorSeleccionado = param && primerNombre === param;
 
   card.backgroundColor = esTrabajadorSeleccionado
-    ? new Color("#000000", 0.2)  // color especial para el trabajador seleccionado
-    : new Color("#EFDECD", 0.15);  // color normal
+    ? new Color("#000000", 0.2)
+    : new Color("#EFDECD", 0.15);
 
   card.cornerRadius = 8;
-  card.setPadding(4, 8, 4, 8);
 
-  // Crear texto en la card
+  // ✅ Padding según número de filas
+  if (numRows === 3) {
+    card.setPadding(1.5, 8, 1.5, 8);
+  } else if (numRows === 2) {
+    card.setPadding(6, 8, 6, 8);
+  } else {
+    card.setPadding(9, 8, 9, 8);
+  }
+
+  // ✅ Tamaño de texto dinámico
+  let fontSize;
+  if (numRows === 3) fontSize = 9;
+  else if (numRows === 2) fontSize = 11;
+  else fontSize = 12;
+
   const n = card.addText(trab.nombre);
-  n.font = Font.boldSystemFont(11);
+  n.font = Font.boldSystemFont(fontSize);
   n.textColor = textoColor;
   card.addSpacer(2);
 
   const row = card.addStack();
   const [ini, fin] = trab.horarios[dia][turno];
-  
+
   const t1 = row.addText(ini);
-  t1.font = Font.boldSystemFont(11);
+  t1.font = Font.boldSystemFont(fontSize);
   t1.textColor = openers.includes(trab.nombre) ? aperturaColor : textoColor;
-  
-  row.addText(" - ").font = Font.systemFont(10);
-  
+
+  row.addText(" - ").font = Font.systemFont(fontSize - 1);
+
   const t2 = row.addText(fin);
-  t2.font = Font.boldSystemFont(11);
+  t2.font = Font.boldSystemFont(fontSize);
   t2.textColor = closers.includes(trab.nombre) ? cierreColor : textoColor;
 
   parent.addSpacer(4);
 }
-
 
 // ========================================================
 // ============ CALCULO DE HORAS SEMANALES =================
@@ -809,12 +855,12 @@ function minutosHastaProximaJornada(trabajador) {
 // ================= TABLA TRABAJADOR =====================
 // ========================================================
 
-function renderWorkerTable(widget, trabajador) {
+function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
   widget.addSpacer(8);
 
   // Cálculo de horas reales y esperadas
-  const horasReal = calcularHorasSemana(trabajador);   // Devuelve decimal
-  const horasObj  = horasEsperadas(trabajador);        // Devuelve decimal
+  const horasReal = calcularHorasSemana(trabajador);
+  const horasObj  = horasEsperadas(trabajador);
   const descuadre = horasReal !== horasObj;
 
   // Fila superior
@@ -822,28 +868,22 @@ function renderWorkerTable(widget, trabajador) {
   titleRow.layoutHorizontally();
   titleRow.centerAlignContent();
 
-  // Nombre
   const nameText = titleRow.addText(trabajador.nombre);
   nameText.font = Font.boldSystemFont(13);
   nameText.textColor = new Color("#EFDECD");
 
   titleRow.addSpacer(6);
 
-  // Función para convertir decimal a h:mm
   function formatHorasDecimal(horasDecimal) {
     const h = Math.floor(horasDecimal);
     const m = Math.round((horasDecimal - h) * 60);
-    return m === 0 ? `${h}h` : `${h}:${String(m).padStart(2, "0")}m`;
+    return m === 0 ? `${h}h` : `${h}:${String(m).padStart(2,"0")}m`;
   }
 
-  // Plaza + horas
-  const plazaText = titleRow.addText(
-    `${trabajador.plaza} · ${formatHorasDecimal(horasReal)}`
-  );
+  const plazaText = titleRow.addText(`${trabajador.plaza} · ${formatHorasDecimal(horasReal)}`);
   plazaText.font = Font.italicSystemFont(10);
   plazaText.textColor = new Color("#EFDECD", 0.7);
 
-  // ⚠️ Alerta si no cuadran horas
   if (descuadre) {
     titleRow.addSpacer(2);
     const alert = titleRow.addText("⚠️");
@@ -851,21 +891,20 @@ function renderWorkerTable(widget, trabajador) {
     alert.textColor = new Color("#FFD166");
   }
 
-  // Spacer para empujar el botón a la derecha
   titleRow.addSpacer();
 
   // ===================
-  // DÍA ACTUAL
+  // DÍA ACTUAL SEGÚN PARAMETRO
   // ===================
   const diasSemana = ["domingo","lunes","martes","miercoles","jueves","viernes","sabado"];
-  const hoy = diasSemana[new Date().getDay()];
+  const diaActual = diasSemana[fechaParaTabla.getDay()];
 
   const tieneJornada =
-    (trabajador.horarios[hoy]?.mediodia?.some(h => h.trim())) ||
-    (trabajador.horarios[hoy]?.noche?.some(h => h.trim()));
+    (trabajador.horarios[diaActual]?.mediodia?.some(h => h.trim())) ||
+    (trabajador.horarios[diaActual]?.noche?.some(h => h.trim()));
 
   // ===================
-  //   DÍA DE DESCANSO
+  // Día de descanso
   // ===================
   if (!tieneJornada) {
     const frases = [
@@ -881,7 +920,7 @@ function renderWorkerTable(widget, trabajador) {
     const frase = frases[index];
 
     const btn = titleRow.addStack();
-    btn.backgroundColor = new Color("#00cc66",0.25); // verde descanso
+    btn.backgroundColor = new Color("#00cc66",0.25);
     btn.cornerRadius = 8;
     btn.setPadding(3,6,3,6);
     btn.centerAlignContent();
@@ -891,15 +930,14 @@ function renderWorkerTable(widget, trabajador) {
     txt.textColor = new Color("#00cc66");
   }
   // ===================
-  // 🟢 ENTRADA / 🔴 SALIDA
+  // Entrada / Salida
   // ===================
   else {
-    const minutos = minutosHastaProximaJornada(trabajador);
+    const minutos = minutosHastaProximaJornada(trabajador, fechaParaTabla); // usar fechaParametro
     const absMin = Math.abs(minutos);
     const h = Math.floor(absMin / 60);
     const m = absMin % 60;
-
-    const tiempoTxt = m === 0 ? `${h}h` : `${h}:${String(m).padStart(2, "0")}m`;
+    const tiempoTxt = m === 0 ? `${h}h` : `${h}:${String(m).padStart(2,"0")}m`;
 
     const btn = titleRow.addStack();
     btn.cornerRadius = 10;
@@ -907,123 +945,106 @@ function renderWorkerTable(widget, trabajador) {
     btn.centerAlignContent();
 
     let txt;
-
-    // 🟢 Aún no entra
     if (minutos > 0) {
       btn.backgroundColor = new Color("#EFDECD",0.18);
       txt = btn.addText(`Entras en ${tiempoTxt}`);
       txt.textColor = new Color("#EFDECD");
-    }
-    // 🔴 Ya está trabajando
-    else {
+    } else {
       btn.backgroundColor = new Color("#FFD166",0.25);
       txt = btn.addText(`Acabas en ${tiempoTxt}`);
       txt.textColor = new Color("#FFD166");
     }
-
     txt.font = Font.boldSystemFont(9);
   }
 
   widget.addSpacer(6);
 
-
-
+  // ===================
+  // FILA DE DÍAS COMPLETA DE LA SEMANA
+  // ===================
   const row = widget.addStack();
   row.layoutHorizontally();
   row.spacing = 2;
-  
-  // Cambiamos el orden de los días: lunes primero
+
+  // lunes -> domingo
   const diasSemanaOrdenados = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"];
 
-  // 🔎 Contamos cuántos días libres completos hay
   const totalDiasLibres = diasSemanaOrdenados.filter(dia => {
     const md = trabajador.horarios[dia]?.mediodia;
     const n  = trabajador.horarios[dia]?.noche;
     return (!md || md.length === 0 || md.every(h => h.trim() === "")) &&
-           (!n  || n.length === 0  || n.every(h => h.trim() === ""));
+           (!n  || n.length === 0 || n.every(h => h.trim() === ""));
   }).length;
-  
+
   diasSemanaOrdenados.forEach(dia => {
     const md = trabajador.horarios[dia]?.mediodia;
     const n  = trabajador.horarios[dia]?.noche;
-  
-    const diaLibre =
-      (!md || md.length === 0 || md.every(h => h.trim() === "")) &&
-      (!n  || n.length === 0  || n.every(h => h.trim() === ""));
-  
+
+    const diaLibre = (!md || md.every(h => h.trim() === "")) &&
+                     (!n  || n.every(h => h.trim() === ""));
+
     const cell = row.addStack();
     cell.layoutVertically();
     cell.cornerRadius = 6;
-  
-    // 🎨 Fondo
-    cell.backgroundColor = diaLibre
-      ? new Color("#ffffff", 0.29)
-      : new Color("#EFDECD", 0.15);
-  
-    // 🔑 Tamaño dinámico
+    cell.backgroundColor = diaLibre ? new Color("#ffffff", 0.29) : new Color("#EFDECD",0.15);
+
     if (totalDiasLibres <= 1) {
       cell.size = new Size(diaLibre ? 19 : 49, 35);
       cell.setPadding(diaLibre ? 1 : 2, diaLibre ? 1 : 2, diaLibre ? 1 : 2, diaLibre ? 1 : 2);
     } else {
       cell.size = new Size(diaLibre ? 19 : 54, 35);
-      cell.setPadding(2, 2, 2, 2);
+      cell.setPadding(2,2,2,2);
     }
-  
-    // Día
+
     const d = cell.addText(dia.slice(0,2).toUpperCase());
     d.font = Font.boldSystemFont(8);
     d.centerAlignText();
     d.textColor = new Color("#EFDECD");
-  
+
     cell.addSpacer(2);
-  
-    // --- Mediodía ---
+
+    // Mediodía
     const mdStack = cell.addStack();
     mdStack.layoutHorizontally();
     mdStack.cornerRadius = 3;
     mdStack.size = new Size(totalDiasLibres <= 1 ? 44 : 50, 7);
-    //mdStack.size = new Size(50, 7);
-  
     const mdIni = md?.[0]?.trim() ?? "";
     const mdFin = md?.[1]?.trim() ?? "";
-  
+
     if (diaLibre) {
-      mdStack.backgroundColor = new Color("#000000", 0);
+      mdStack.backgroundColor = new Color("#000000",0);
       const mdText = mdStack.addText(" ");
-      mdText.textColor = new Color("#000000", 0);
+      mdText.textColor = new Color("#000000",0);
     } else {
-      mdStack.backgroundColor = (mdIni && mdFin) ? Color.clear() : new Color("#ffffff", 0.2);
+      mdStack.backgroundColor = (mdIni && mdFin) ? Color.clear() : new Color("#ffffff",0.2);
       const mdText = mdStack.addText(mdIni && mdFin ? `${mdIni}-${mdFin}` : "");
-      mdText.font = Font.boldSystemFont(totalDiasLibres <= 1 ? 6 : 7.2); // 🔑 fuente dinámica
+      mdText.font = Font.boldSystemFont(totalDiasLibres <= 1 ? 6 : 7.2);
       mdText.textColor = new Color("#EFDECD");
       mdText.centerAlignText();
     }
-  
+
     cell.addSpacer(3);
-  
-    // --- Noche ---
+
+    // Noche
     const nStack = cell.addStack();
     nStack.layoutHorizontally();
     nStack.cornerRadius = 3;
     nStack.size = new Size(totalDiasLibres <= 1 ? 44 : 50, 7);
-    //nStack.size = new Size(50, 7);
-  
     const nIni = n?.[0]?.trim() ?? "";
     const nFin = n?.[1]?.trim() ?? "";
-  
+
     if (diaLibre) {
-      nStack.backgroundColor = new Color("#000000", 0);
+      nStack.backgroundColor = new Color("#000000",0);
       const nText = nStack.addText(" ");
-      nText.textColor = new Color("#000000", 0);
+      nText.textColor = new Color("#000000",0);
     } else {
-      nStack.backgroundColor = (nIni && nFin) ? Color.clear() : new Color("#ffffff", 0.2);
+      nStack.backgroundColor = (nIni && nFin) ? Color.clear() : new Color("#ffffff",0.2);
       const nText = nStack.addText((nIni && nFin) ? `${nIni}-${nFin}` : "");
-      nText.font = Font.boldSystemFont(totalDiasLibres <= 1 ? 6 : 7.2); // 🔑 fuente dinámica
+      nText.font = Font.boldSystemFont(totalDiasLibres <= 1 ? 6 : 7.2);
       nText.textColor = new Color("#EFDECD");
       nText.centerAlignText();
     }
   });
-
 }
 
 // ========================================================
