@@ -1,6 +1,4 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: pink; icon-glyph: magic;
+
 // =============================
 //   HorarioTimes.js
 //   by Ali Bhtty – 4Bdev®
@@ -10,36 +8,27 @@ const PAYLOAD_URL =
   "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/HorarioTimes.b64";
 
 const fm = FileManager.local();
-
-// ✅ Caché oculto + binario + no visible en Scriptable
-const CACHE_PATH = fm.joinPath(fm.documentsDirectory(), ".ht_cache.bin");
+const CACHE_PATH = fm.joinPath(fm.documentsDirectory(), "HorarioTimes.cache");
 
 async function loadPayload() {
   let encoded;
 
   if (fm.fileExists(CACHE_PATH)) {
-    // ✅ Leer binario y convertirlo a string
-    const data = fm.read(CACHE_PATH);
-    encoded = data.toRawString();
+    encoded = fm.readString(CACHE_PATH);
   } else {
     const req = new Request(PAYLOAD_URL);
     req.timeoutInterval = 5;
-
     encoded = await req.loadString();
-
-    // ✅ Limpieza defensiva
-    encoded = encoded.replace(/\s+/g, "");
-
-    // ✅ Guardar como binario (no legible)
-    const data = Data.fromString(encoded);
-    fm.write(CACHE_PATH, data);
+    fm.writeString(CACHE_PATH, encoded);
   }
 
   if (!encoded || encoded.length < 200) {
     throw new Error("HorarioTimes: payload vacío o corrupto");
   }
 
-  // ✅ Decodificar Base64
+  // 🔒 limpieza defensiva
+  encoded = encoded.replace(/\s+/g, "");
+
   const data = Data.fromBase64String(encoded);
   if (!data) {
     throw new Error("HorarioTimes: payload NO es Base64 válido");
