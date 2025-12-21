@@ -1,0 +1,108 @@
+{
+  "configuracion_global": {
+    "oferta_free": {
+      "desde": "2025-12-17",
+      "hasta": "2025-12-31"
+    },
+
+    "colores": {
+      "background": { "hex": "#00cc66", "opacidad": 0.3 },
+      "header": { "hex": "#EFDECD", "opacidad": 1 },
+      "apertura": { "hex": "#00aa44", "opacidad": 1 },
+      "cierre": { "hex": "#f42828", "opacidad": 1 },
+      "texto": { "hex": "#fff6ed", "opacidad": 0.9 }
+    },
+
+    "widget_url": {
+      "activo": false,
+      "url": "https://ali-bhtty.web.app"
+    },
+
+    "aviso_modal_global": {
+      "texto": "Exp. 17 de Enero",
+      "fondo": "",
+      "opacidad": 0
+    }
+  },
+
+  "usuarios": {
+    "ali": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": null,
+
+      "aviso_modal": {
+        "texto": "(⌐■_■) poble nou",
+        "fondo": "#111111",
+        "opacidad": 0.3
+      },
+      "imagen": "https://instagram.fbcn13-1.fna.fbcdn.net/v/t51.2885-19/481477659_9288138714613425_6295212356515215707_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fbcn13-1.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHdUv7-E1NYlfikYA28c7ie_jgGffx2-8Q0SIP1wOON1L2NdIu01SljyleK0YiXMRE&_nc_ohc=jAd58wq1gWcQ7kNvwGsITYr&_nc_gid=n7ShJp475d2sLfFnKEkPRw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Afkndkb0JueretEA4c22no0JE4OtXudGmcf9_5q6LyalZg&oe=69475ABC&_nc_sid=7a9f4b"
+    },
+
+    "paola": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+
+      "aviso_modal": {
+        "texto": "",
+        "fondo": "",
+        "opacidad": 0
+      }
+    },
+
+    "eylin": {
+      "activo_por_defecto": true,
+      "activo_desde": null,
+      "activo_hasta": "2026-01-17",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "johan": {
+      "activo_por_defecto": false,
+      "activo_desde": "2025-12-17",
+      "activo_hasta": "2026-01-17",
+
+      "aviso_modal": {
+        "texto": "",
+        "fondo": "",
+        "opacidad": 0
+      }
+    },
+
+    "ray": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "weslie": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "alejandro": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "" }
+    },
+    
+    "rian": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": null,
+      "aviso_modal": { "texto": "" }
+    },
+
+    "judit": {
+      "activo_por_defecto": false,
+      "activo_desde": null,
+      "activo_hasta": "2025-12-31",
+      "aviso_modal": { "texto": "" }
+    }
+  }
+}
