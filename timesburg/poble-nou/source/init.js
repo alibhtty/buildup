@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: teal; icon-glyph: magic;
+// icon-color: deep-blue; icon-glyph: calendar-alt;
 // ===========================
 //   WIDGET HORARIOTIMES.js
 //   4Bdev. – Ali Bhtty
@@ -8,9 +8,9 @@
 
 // ========================================================
 // ============= 1. DATOS DE SEMANAS COMPLETOS ============
-const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/semanas.json";
+const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/poble-nou/data/semanas.json";
 
-const USERS_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/users.json"; 
+const USERS_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/poble-nou/data/users.json"; 
 
 // Cargar users.json (NUEVO)
 async function cargarUsuarios() {
@@ -193,6 +193,56 @@ let usuarioOriginal = null; // ⚡ NUEVO: guarda el nombre del usuario aunque ha
 
 
 // ========================================================
+// =================== AVISOS PANTALLA ====================
+// ========================================================
+
+function avisoPantallaCompleta(widget, iconoASCII, mensaje, fondoHex = "#1C1C1E") {
+  widget.setPadding(0, 0, 0, 0)
+  widget.backgroundColor = new Color(fondoHex)
+
+  const stack = widget.addStack()
+  stack.layoutVertically()
+  stack.centerAlignContent()
+
+  stack.addSpacer()
+
+  const icono = stack.addText(iconoASCII)
+  icono.font = Font.boldSystemFont(22)
+  icono.textColor = new Color("#FFFFFF")
+  icono.centerAlignText()
+
+  stack.addSpacer(6)
+
+  const msg = stack.addText(mensaje)
+  msg.font = Font.mediumSystemFont(12)
+  msg.textColor = new Color("#B0B0B0")
+  msg.centerAlignText()
+
+  stack.addSpacer()
+
+  return widget
+}
+
+function avisoSinConexion(widget) {
+  return avisoPantallaCompleta(
+    widget,
+    "       (ಠ_ಠ)",
+    "Sin conexión a internet\nRevisa tu red",
+    "#2A0A0A"
+  )
+}
+
+function avisoNoHayHorarios(widget, week) {
+  return avisoPantallaCompleta(
+    widget,
+    "       ¯\\_(ツ)_/¯",
+    `Horarios no disponibles\nSemana ${week}\n\nVerifica otra fuente de horarios`,
+    "#1C1C1E"
+  )
+}
+
+
+// ========================================================
 // ======================= WIDGET =========================
 // ========================================================
 
@@ -200,10 +250,27 @@ function mostrarAviso() {
   // desactivado temporalmente
 }
 
+async function hayConexionInternet() {
+  try {
+    const r = new Request("https://www.apple.com")
+    r.timeoutInterval = 3
+    await r.load()
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 async function crearWidget(usersData) {
 
   // Crear el widget al inicio
   const w = new ListWidget();
+
+  // ================= CONEXIÓN =================
+  const online = await hayConexionInternet()
+  if (!online) {
+    return avisoSinConexion(w)
+  }
 
   // Bloqueo por suscripción
   const activo = usuarioActivo(usersData);
@@ -452,10 +519,37 @@ async function crearWidget(usersData) {
   }
 
   if (!semana) {
+    widget.setPadding(0, 0, 0, 0)
+    widget.backgroundColor = new Color("#1C1C1E") // estilo Apple oscuro
+  
+    const avisoStack = widget.addStack()
+    avisoStack.layoutVertically()
+    avisoStack.centerAlignContent()
+    avisoStack.addSpacer() // empuja hacia el centro
+  
+    const icono = avisoStack.addText("   ¯\\_(ツ)_/¯")
+    icono.font = Font.boldSystemFont(22)
+    icono.textColor = new Color("#FFFFFF")
+    icono.centerAlignText()
+  
+    avisoStack.addSpacer(10)
+  
+    const msg = avisoStack.addText("Horarios no disponibles\nSemana " + week)
+    msg.font = Font.mediumSystemFont(12)
+    msg.textColor = new Color("#cdcdcd")
+    msg.centerAlignText()
+  
+    avisoStack.addSpacer() // empuja hacia el centro
+  
+    return widget
+  }
+
+
+  /* if (!semana) {
     let msg = widget.addText(`No hay horarios actualizados\npara la semana ${week}`);
     msg.centerAlignText();
     return widget;
-  }
+  } */
 
 
   // ================= HEADER =================
@@ -534,7 +628,7 @@ async function crearWidget(usersData) {
   
   rightStack.addSpacer(3.5); // espacio entre las dos partes
   
-  const h2b = rightStack.addText("Sant Pau");
+  const h2b = rightStack.addText("Poble Nou");
   h2b.font = Font.italicSystemFont(12);
   h2b.textColor = headerColor;
   // h2b.textColor = new Color("#EFDECD");
@@ -554,7 +648,32 @@ async function crearWidget(usersData) {
   const mediodia = semana.trabajadores.filter(t => tieneTurnoValido(t, dia, "mediodia"));
   const noche = semana.trabajadores.filter(t => tieneTurnoValido(t, dia, "noche"));
 
+  // ================= NUM ROWS GLOBAL =================
+  const NUM_COLS = 3;
+  
+  const rowsMediodia = Math.ceil(mediodia.length / NUM_COLS);
+  const rowsNoche = Math.ceil(noche.length / NUM_COLS);
+  
+  // 🔥 este es el valor único que usarán MD y N
+  const numRowsGlobal = Math.max(rowsMediodia, rowsNoche);
+
+
+  // ================= SECCIONES MD Y N =================
   addSection(widget, "Mediodía", mediodia, dia, "mediodia",
+    getOpeners(mediodia, dia, "mediodia"),
+    getClosers(mediodia, dia, "mediodia", "17:00"),
+    aperturaColor, cierreColor, textoColor,
+    numRowsGlobal
+  );
+  
+  addSection(widget, "Noche", noche, dia, "noche",
+    getOpeners(noche, dia, "noche"),
+    getClosers(noche, dia, "noche", "03:00"),
+    aperturaColor, cierreColor, textoColor,
+    numRowsGlobal
+  );
+
+  /* addSection(widget, "Mediodía", mediodia, dia, "mediodia",
     getOpeners(mediodia, dia, "mediodia"),
     getClosers(mediodia, dia, "mediodia", "17:00"),
     aperturaColor, cierreColor, textoColor
@@ -564,7 +683,7 @@ addSection(widget, "Noche", noche, dia, "noche",
     getOpeners(noche, dia, "noche"),
     getClosers(noche, dia, "noche", "03:00"),
     aperturaColor, cierreColor, textoColor
-);
+); */
 
   widget.addSpacer(6);
 
@@ -677,7 +796,7 @@ addSection(widget, "Noche", noche, dia, "noche",
 // ========================================================
 // ===================== SECCIONES ========================
 // ========================================================
-function addSection(widget, title, lista, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor) {
+function addSection(widget, title, lista, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor, numRowsGlobal) {
   const t = widget.addText(title);
   t.font = Font.boldSystemFont(13);
   t.textColor = new Color("#EFDECD");
@@ -696,7 +815,7 @@ function addSection(widget, title, lista, dia, turno, openers, closers, apertura
   });
 
   // 🔹 calcular cuántas filas habrá en las columnas
-  const numRows = Math.ceil(lista.length / numCols);
+  //const numRows = Math.ceil(lista.length / numCols);
 
   // 🔹 pasar numRows a renderCard para ajustar padding y tamaño
   lista.forEach((trab, i) => {
@@ -710,9 +829,43 @@ function addSection(widget, title, lista, dia, turno, openers, closers, apertura
       aperturaColor,
       cierreColor,
       textoColor,
-      numRows // esto es lo que renderCard usa para cambiar padding/texto
+      numRowsGlobal // esto es lo que renderCard usa para cambiar padding/texto
     );
   });
+}
+
+
+function horaAMinutos(h) {
+  const [hh, mm] = h.split(":").map(Number)
+  return hh * 60 + mm
+}
+
+function mereceHamburguesa(trab, dia, turno) {
+  const horario = trab.horarios?.[dia]?.[turno]
+  if (!horario || horario.length !== 2) return false
+
+  let [ini, fin] = horario
+  if (!ini || !fin) return false
+
+  const iniMin = horaAMinutos(ini)
+
+  let finMin = horaAMinutos(fin)
+  if (fin === "00:00") finMin = 24 * 60
+  if (finMin < iniMin) finMin += 24 * 60 // cruza medianoche
+
+  const duracion = (finMin - iniMin) / 60
+
+  // 🍔 MEDIODÍA
+  if (turno === "mediodia") {
+    return iniMin <= horaAMinutos("12:30") && duracion >= 4
+  }
+
+  // 🍔 NOCHE
+  if (turno === "noche") {
+    return iniMin <= horaAMinutos("19:00") && finMin >= horaAMinutos("24:00")
+  }
+
+  return false
 }
 
 function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, cierreColor, textoColor, numRows) {
@@ -734,7 +887,7 @@ function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, c
   if (numRows === 3) {
     card.setPadding(1.5, 8, 1.5, 8);
   } else if (numRows === 2) {
-    card.setPadding(6, 8, 6, 8);
+    card.setPadding(4, 8, 4, 8);
   } else {
     card.setPadding(9, 8, 9, 8);
   }
@@ -742,13 +895,34 @@ function renderCard(parent, trab, dia, turno, openers, closers, aperturaColor, c
   // ✅ Tamaño de texto dinámico
   let fontSize;
   if (numRows === 3) fontSize = 9;
-  else if (numRows === 2) fontSize = 11;
-  else fontSize = 12;
+  else if (numRows === 2) fontSize = 10;
+  else fontSize = 11;
 
-  const n = card.addText(trab.nombre);
+  /* const n = card.addText(trab.nombre);
   n.font = Font.boldSystemFont(fontSize);
   n.textColor = textoColor;
-  card.addSpacer(2);
+  card.addSpacer(2); */
+
+  const nameRow = card.addStack()
+  nameRow.layoutHorizontally()
+  nameRow.centerAlignContent()
+  
+  const n = nameRow.addText(trab.nombre)
+  n.font = Font.boldSystemFont(fontSize)
+  n.textColor = textoColor
+  
+  // 🍔 icono hamburguesa
+  if (mereceHamburguesa(trab, dia, turno)) {
+    nameRow.addSpacer(3)
+    const burger = nameRow.addText("🍔")
+    burger.font = Font.systemFont(fontSize - 2) // 🍔 más pequeña
+    //burger.font = Font.systemFont(fontSize)
+  }
+  
+  card.addSpacer(2)
+
+
+
 
   const row = card.addStack();
   const [ini, fin] = trab.horarios[dia][turno];
@@ -924,7 +1098,7 @@ function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
       "Hoy no se trabaja… se disfruta 😏",
       "Merecido descanso 💚"
     ];
-    
+
     // ⏱ bloque de 30 minutos
     const bloqueTiempo = Math.floor(Date.now() / (30 * 60 * 1000));
     
@@ -1072,15 +1246,17 @@ function renderWorkerTable(widget, trabajador, fechaParaTabla = new Date()) {
 // ======================= RUN ============================
 // ========================================================
 
-const usersData = await cargarUsuarios();
-const w = await crearWidget(usersData);
+(async () => {
+  const usersData = await cargarUsuarios();
+  const w = await crearWidget(usersData);
 
-// Activar URL desde JSON si está configurado
-const widgetUrlConfig = usersData.configuracion_global?.widget_url;
+  // Activar URL desde JSON si está configurado
+  const widgetUrlConfig = usersData.configuracion_global?.widget_url;
 
-if (widgetUrlConfig?.activo && widgetUrlConfig?.url) {
-  w.url = widgetUrlConfig.url;
-}
+  if (widgetUrlConfig?.activo && widgetUrlConfig?.url) {
+    w.url = widgetUrlConfig.url;
+  }
 
-Script.setWidget(w);
-Script.complete();
+  Script.setWidget(w);
+  Script.complete();
+})();
