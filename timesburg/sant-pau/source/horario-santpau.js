@@ -6,6 +6,15 @@
 //   4Bdev. – Ali Bhtty
 // ===========================
 
+// ===============================
+// MODO APP → ABRIR LANDING HTML
+// ===============================
+if (!config.runsInWidget) {
+  await abrirLandingHorarioTimes()
+  Script.complete()
+  return
+}
+
 // ========================================================
 // ============= 1. DATOS DE SEMANAS COMPLETOS ============
 const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/semanas.json";
@@ -474,6 +483,9 @@ async function crearWidget(usersData) {
     tFin.font = Font.boldSystemFont(9)
     
     filaWrapper.addSpacer()
+
+    // 👉 Al tocar el widget se abre el HTML / landing
+    widget.url = "scriptable:///run?scriptName=WIDGET%20HORARIOTIMES"
   
     mostrarAviso(w, usersData);
     return w; // ✅ Devuelve el widget
@@ -792,6 +804,305 @@ addSection(widget, "Noche", noche, dia, "noche",
 
   return widget;
 }
+
+/*                                         */
+/* Función para abrir la página de landing */
+async function abrirLandingHorarioTimes() {
+  const web = new WebView()
+
+  const html = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<!-- ❌ Desactivar zoom -->
+<meta name="viewport"
+  content="width=device-width,
+  initial-scale=1.0,
+  maximum-scale=1.0,
+  user-scalable=no">
+
+<title>HorarioTimes</title>
+
+<style>
+:root {
+  --bg: #0f1115;
+  --card: #1c1c1e;
+  --accent: #00cc66;
+  --text: #ffffff;
+  --muted: #9a9a9a;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 18px 20px 16px;
+  background: linear-gradient(135deg, #00cc66, #00994d);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+nav button {
+  background: var(--card);
+  border: none;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+
+nav button.active {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  display: none;
+  padding: 14px 16px 20px;
+  animation: fadeIn 0.35s ease;
+}
+
+section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.card p, li {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* ===== IMAGE BLOCK ===== */
+.image-block img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+/* ===== FAQ ===== */
+.faq-item {
+  margin-bottom: 8px;
+}
+
+.faq-q {
+  background: #2a2a2c;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.faq-a {
+  display: none;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.faq-item.open .faq-a {
+  display: block;
+}
+
+/* ===== AUTHOR ===== */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.author div {
+  font-size: 12.5px;
+}
+
+.author b {
+  display: block;
+  color: var(--text);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.5;
+  padding: 12px 0 18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>HorarioTimes</h1>
+  <p>Tu horario, claro y automático</p>
+</header>
+
+<nav>
+  <button class="active" onclick="show('info')">Info</button>
+  <button onclick="show('uso')">Uso</button>
+  <button onclick="show('faq')">FAQ</button>
+  <button onclick="show('autor')">Autor</button>
+</nav>
+
+<!-- ===== INFO ===== -->
+<section id="info" class="active">
+  <div class="card">
+    <h2>📲 ¿Qué es?</h2>
+    <p>
+      HorarioTimes es un widget inteligente que muestra
+      tus horarios actualizados sin capturas ni errores.
+    </p>
+  </div>
+
+  <div class="card image-block">
+    <img src="https://dummyimage.com/600x360/1c1c1e/ffffff&text=HorarioTimes+Widget">
+    <p>
+      Vista clara por turnos, colores y símbolos
+      pensados para leer en segundos.
+    </p>
+  </div>
+</section>
+
+<!-- ===== USO ===== -->
+<section id="uso">
+  <div class="card">
+    <h2>⚙️ Cómo usarlo</h2>
+    <ol>
+      <li>Mantén pulsado el widget</li>
+      <li>Toca <b>Editar widget</b></li>
+      <li>Introduce tu nombre en <b>Parámetro</b></li>
+      <li>Listo ✅</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>🍔 Iconos</h2>
+    <p>
+      🍔 Turno largo con comida<br>
+      Verde = apertura<br>
+      Rojo = cierre
+    </p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="card faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-q">¿Necesita internet?</div>
+    <div class="faq-a">
+      Sí, para actualizar datos. Si no hay conexión
+      se muestra el último horario guardado.
+    </div>
+  </div>
+
+  <div class="card faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-q">¿Es oficial de Timesburg?</div>
+    <div class="faq-a">
+      No. Es un desarrollo independiente tipo skin.
+    </div>
+  </div>
+
+  <div class="card faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-q">¿Por qué es de pago?</div>
+    <div class="faq-a">
+      Mantiene servidores, actualizaciones
+      y desarrollo continuo.
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUTOR ===== -->
+<section id="autor">
+  <div class="card author">
+    <img src="https://dummyimage.com/200x200/00cc66/000000&text=4B">
+    <div>
+      <b>Ali Bhtty</b>
+      4Bdev®<br>
+      Diseño · Código · UX
+    </div>
+  </div>
+</section>
+
+<footer>
+  4Bdev® – 2025<br>
+  Unofficial – Timesburg®
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"))
+  document.getElementById(id).classList.add("active")
+
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"))
+  event.target.classList.add("active")
+}
+
+function toggleFAQ(el) {
+  el.classList.toggle("open")
+}
+</script>
+
+</body>
+</html>
+  `
+
+  await web.loadHTML(html)
+  await web.present()
+}
+
 
 // ========================================================
 // ===================== SECCIONES ========================
