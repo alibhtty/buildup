@@ -17,9 +17,9 @@ if (!config.runsInWidget) {
 
 // ========================================================
 // ============= 1. DATOS DE SEMANAS COMPLETOS ============
-const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/semanas.json";
+const DATA_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/data/semanas.json";
 
-const USERS_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/users.json"; 
+const USERS_URL = "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/data/users.json"; 
 
 // Cargar users.json (NUEVO)
 async function cargarUsuarios() {
