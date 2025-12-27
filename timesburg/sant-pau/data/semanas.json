@@ -468,7 +468,7 @@
         "nombre": "Ali Bhtty",
         "plaza": "Base 4",
         "contratadas": 20,
-        "complementarias": 0,
+        "complementarias": 2,
         "horarios": {
           "lunes": { "mediodia": ["", ""], "noche": ["", ""] },
           "martes": { "mediodia": ["", ""], "noche": ["", ""] },
