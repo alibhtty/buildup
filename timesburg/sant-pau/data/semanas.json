@@ -214,7 +214,7 @@
       },
       {
         "nombre": "Jeimy Borjas",
-        "plaza": "Base 1",
+        "plaza": "Base 1 - BAJA",
         "contratadas": 30,
         "complementarias": 0,
         "horarios": {
@@ -405,7 +405,7 @@
         }
       },
       {
-        "nombre": "Eylin",
+        "nombre": "Eylin F.",
         "plaza": "Mando 2",
         "contratadas": 38,
         "complementarias": 0,
@@ -421,7 +421,7 @@
       },
       {
         "nombre": "Jeimy Borjas",
-        "plaza": "Base 1",
+        "plaza": "Base 1 - BAJA",
         "contratadas": 30,
         "complementarias": 0.5,
         "horarios": {
@@ -474,7 +474,7 @@
           "martes": { "mediodia": ["", ""], "noche": ["", ""] },
           "miercoles": { "mediodia": ["11:30", "15:30"], "noche": ["", ""] },
           "jueves": { "mediodia": ["", ""], "noche": ["", ""] },
-          "viernes": { "mediodia": ["13:00", "17:00"], "noche": ["20:00", "23:00"] },
+          "viernes": { "mediodia": ["13:00", "17:00"], "noche": ["20:00", "01:00"] },
           "sabado": { "mediodia": ["", ""], "noche": ["20:30", "23:00"] },
           "domingo": { "mediodia": ["13:00", "16:00"], "noche": ["19:30", "23:00"] }
         }
@@ -495,7 +495,7 @@
         }
       },
       {
-        "nombre": "Alejandro Lujeron",
+        "nombre": "Gerard",
         "plaza": "Base 6",
         "contratadas": 15,
         "complementarias": 0,
