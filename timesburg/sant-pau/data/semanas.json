@@ -540,5 +540,166 @@
         }
       }
     ]
+  },
+
+
+
+
+  
+  {
+    "id": 53,
+    "nombre": "Sem 53 (29-dic - 04-ene)",
+    "trabajadores": [
+      {
+        "nombre": "Paola Corrales",
+        "plaza": "Sant Pau",
+        "contratadas": 38,
+        "complementarias": 3,
+        "horarios": {
+          "lunes":     { "mediodia": ["09:00","16:00"], "noche": ["19:00","23:30"] },
+          "martes":    { "mediodia": ["09:00","16:00"], "noche": ["19:00","23:30"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["10:30","16:00"], "noche": ["19:00","01:00"] },
+          "sabado":    { "mediodia": ["",""], "noche": ["19:00","01:00"] },
+          "domingo":   { "mediodia": ["16:00","23:30"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Eylin",
+        "plaza": "Sant Pau",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["",""] },
+          "sabado":    { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "domingo":   { "mediodia": ["11:30","17:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Jeimy Borjas",
+        "plaza": "Sant Pau",
+        "contratadas": 30,
+        "complementarias": 0,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["",""] },
+          "sabado":    { "mediodia": ["",""], "noche": ["",""] },
+          "domingo":   { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Ray Vasallo",
+        "plaza": "Sant Pau",
+        "contratadas": 20,
+        "complementarias": 11,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "jueves":    { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
+          "viernes":   { "mediodia": ["13:00","17:00"], "noche": ["19:00","23:00"] },
+          "sabado":    { "mediodia": ["",""], "noche": ["19:30","23:30"] },
+          "domingo":   { "mediodia": ["13:30","17:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Johan Cruz",
+        "plaza": "Sant Pau",
+        "contratadas": 20,
+        "complementarias": 17,
+        "horarios": {
+          "lunes":     { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "martes":    { "mediodia": ["12:30","15:30"], "noche": ["20:00","00:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["11:30","17:00"], "noche": ["19:30","01:00"] },
+          "sabado":    { "mediodia": ["13:00","16:00"], "noche": ["19:00","01:00"] },
+          "domingo":   { "mediodia": ["11:30","16:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Ali Bhtty",
+        "plaza": "Sant Pau",
+        "contratadas": 20,
+        "complementarias": 8,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["13:00","15:30"], "noche": ["",""] },
+          "jueves":    { "mediodia": ["11:30","16:30"], "noche": ["19:00","23:30"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "sabado":    { "mediodia": ["11:30","15:30"], "noche": ["20:30","23:00"] },
+          "domingo":   { "mediodia": ["13:00","16:00"], "noche": ["20:00","00:00"] }
+        }
+      },
+      {
+        "nombre": "Weslie Negron",
+        "plaza": "Sant Pau",
+        "contratadas": 20,
+        "complementarias": 10,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["19:00","00:00"] },
+          "martes":    { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["11:30","16:00"], "noche": ["20:30","01:00"] },
+          "sabado":    { "mediodia": ["13:30","16:30"], "noche": ["20:00","00:00"] },
+          "domingo":   { "mediodia": ["",""], "noche": ["20:30","00:00"] }
+        }
+      },
+      {
+        "nombre": "Gerard Burniol",
+        "plaza": "Sant Pau",
+        "contratadas": 15,
+        "complementarias": 1,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["20:30","00:00"] },
+          "sabado":    { "mediodia": ["12:30","17:00"], "noche": ["20:30","01:00"] },
+          "domingo":   { "mediodia": ["",""], "noche": ["19:00","23:00"] }
+        }
+      },
+      {
+        "nombre": "Rianwhen Jones",
+        "plaza": "Sant Pau",
+        "contratadas": 10,
+        "complementarias": 6,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["13:00","16:00"], "noche": ["",""] },
+          "jueves":    { "mediodia": ["13:00","17:00"], "noche": ["20:00","23:00"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["20:00","23:30"] },
+          "sabado":    { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "domingo":   { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Judith Serrano",
+        "plaza": "Sant Pau",
+        "contratadas": 10,
+        "complementarias": 24,
+        "horarios": {
+          "lunes":     { "mediodia": ["11:30","17:00"], "noche": ["20:00","00:00"] },
+          "martes":    { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
+          "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "jueves":    { "mediodia": ["13:30","16:00"], "noche": ["20:00","00:00"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["",""] },
+          "sabado":    { "mediodia": ["",""], "noche": ["",""] },
+          "domingo":   { "mediodia": ["13:00","15:30"], "noche": ["",""] }
+        }
+      }
+    ]
   }
 ]
