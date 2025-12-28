@@ -552,7 +552,7 @@
     "trabajadores": [
       {
         "nombre": "Paola Corrales",
-        "plaza": "Sant Pau",
+        "plaza": "Mando 1",
         "contratadas": 38,
         "complementarias": 3,
         "horarios": {
@@ -567,7 +567,7 @@
       },
       {
         "nombre": "Eylin",
-        "plaza": "Sant Pau",
+        "plaza": "Mando 2",
         "contratadas": 38,
         "complementarias": 0,
         "horarios": {
@@ -582,7 +582,7 @@
       },
       {
         "nombre": "Jeimy Borjas",
-        "plaza": "Sant Pau",
+        "plaza": "Base 1",
         "contratadas": 30,
         "complementarias": 0,
         "horarios": {
@@ -597,7 +597,7 @@
       },
       {
         "nombre": "Ray Vasallo",
-        "plaza": "Sant Pau",
+        "plaza": "Base 2",
         "contratadas": 20,
         "complementarias": 11,
         "horarios": {
@@ -612,7 +612,7 @@
       },
       {
         "nombre": "Johan Cruz",
-        "plaza": "Sant Pau",
+        "plaza": "Base 3",
         "contratadas": 20,
         "complementarias": 17,
         "horarios": {
@@ -627,7 +627,7 @@
       },
       {
         "nombre": "Ali Bhtty",
-        "plaza": "Sant Pau",
+        "plaza": "Base 4",
         "contratadas": 20,
         "complementarias": 8,
         "horarios": {
@@ -642,7 +642,7 @@
       },
       {
         "nombre": "Weslie Negron",
-        "plaza": "Sant Pau",
+        "plaza": "Base 5",
         "contratadas": 20,
         "complementarias": 10,
         "horarios": {
@@ -657,7 +657,7 @@
       },
       {
         "nombre": "Gerard Burniol",
-        "plaza": "Sant Pau",
+        "plaza": "Base 6",
         "contratadas": 15,
         "complementarias": 1,
         "horarios": {
@@ -672,7 +672,7 @@
       },
       {
         "nombre": "Rianwhen Jones",
-        "plaza": "Sant Pau",
+        "plaza": "Base 7",
         "contratadas": 10,
         "complementarias": 6,
         "horarios": {
@@ -687,7 +687,7 @@
       },
       {
         "nombre": "Judith Serrano",
-        "plaza": "Sant Pau",
+        "plaza": "Base 8",
         "contratadas": 10,
         "complementarias": 24,
         "horarios": {
