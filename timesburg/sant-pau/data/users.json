@@ -37,7 +37,8 @@
         "fondo": "#111111",
         "opacidad": 0.3
       },
-      "imagen": "https://instagram.fbcn13-1.fna.fbcdn.net/v/t51.2885-19/481477659_9288138714613425_6295212356515215707_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fbcn13-1.fna.fbcdn.net&_nc_cat=109&_nc_oc=Q6cZ2QHdUv7-E1NYlfikYA28c7ie_jgGffx2-8Q0SIP1wOON1L2NdIu01SljyleK0YiXMRE&_nc_ohc=jAd58wq1gWcQ7kNvwGsITYr&_nc_gid=n7ShJp475d2sLfFnKEkPRw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Afkndkb0JueretEA4c22no0JE4OtXudGmcf9_5q6LyalZg&oe=69475ABC&_nc_sid=7a9f4b"
+      
+      "imagen": "http://ali-bhtty.web.app/static/icons/128x128.png"
     },
 
     "paola": {
@@ -49,7 +50,8 @@
         "texto": "",
         "fondo": "",
         "opacidad": 0
-      }
+      },
+      "imagen": "⭐️"
     },
 
     "eylin": {
