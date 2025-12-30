@@ -33,7 +33,7 @@
       "activo_hasta": null,
 
       "aviso_modal": {
-        "texto": "(⌐■_■)",
+        "texto": "4B",
         "fondo": "#111111",
         "opacidad": 0.3
       },
@@ -58,7 +58,8 @@
       "activo_por_defecto": true,
       "activo_desde": null,
       "activo_hasta": "2026-01-17",
-      "aviso_modal": { "texto": "" }
+      "aviso_modal": { "texto": "" },
+      "imagen": "⭐️"
     },
 
     "johan": {
@@ -70,7 +71,8 @@
         "texto": "",
         "fondo": "",
         "opacidad": 0
-      }
+      },
+      "imagen": "🫣"
     },
 
     "ray": {
