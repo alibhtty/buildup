@@ -29,13 +29,13 @@
   "usuarios": {
     "ali": {
       "activo_por_defecto": true,
-      "activo_desde": null,
-      "activo_hasta": null,
+      "activo_desde": "2025-12-30",
+      "activo_hasta": "2026-01-31",
 
       "aviso_modal": {
-        "texto": "4B",
-        "fondo": "#111111",
-        "opacidad": 0.3
+        "texto": "(⌐■_■)",
+        "fondo": "",
+        "opacidad": 0
       },
       
       "imagen": "http://ali-bhtty.web.app/static/icons/128x128.png"
