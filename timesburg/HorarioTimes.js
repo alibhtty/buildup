@@ -8,7 +8,7 @@
 // =============================
 
 const PAYLOAD_URL =
-  "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/ht.b64";
+  "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/payloads/HTsantpau-free.b64";
 
 const fm = FileManager.local();
 const CACHE_PATH = fm.joinPath(fm.documentsDirectory(), ".ht.cache");
@@ -29,7 +29,6 @@ async function loadPayload() {
     throw new Error("HorarioTimes: payload vacío o corrupto");
   }
 
-  // 🔒 limpieza defensiva
   encoded = encoded.replace(/\s+/g, "");
 
   const data = Data.fromBase64String(encoded);
