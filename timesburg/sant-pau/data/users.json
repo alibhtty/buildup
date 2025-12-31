@@ -20,7 +20,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "Exp. 17 de Enero",
+      "texto": "Feliz Año Nuevo!",
       "fondo": "",
       "opacidad": 0
     }
@@ -77,8 +77,8 @@
 
     "ray": {
       "activo_por_defecto": false,
-      "activo_desde": null,
-      "activo_hasta": "",
+      "activo_desde": "2025-12-31",
+      "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
 
@@ -105,8 +105,8 @@
 
     "judit": {
       "activo_por_defecto": false,
-      "activo_desde": null,
-      "activo_hasta": "2025-12-31",
+      "activo_desde": "2025-12-31",
+      "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     }
   }
