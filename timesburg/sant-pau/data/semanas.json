@@ -52,13 +52,13 @@
         "nombre": "Ray Vasallo",
         "plaza": "Base 2",
         "contratadas": 20,
-        "complementarias": 11,
+        "complementarias": 10.5,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["",""] },
           "martes":    { "mediodia": ["",""], "noche": ["",""] },
           "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
           "jueves":    { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
-          "viernes":   { "mediodia": ["13:00","17:00"], "noche": ["19:00","23:00"] },
+          "viernes":   { "mediodia": ["13:00","17:00"], "noche": ["19:00","22:00"] },
           "sabado":    { "mediodia": ["",""], "noche": ["19:30","23:30"] },
           "domingo":   { "mediodia": ["13:30","17:00"], "noche": ["",""] }
         }
@@ -82,13 +82,13 @@
         "nombre": "Ali Bhtty",
         "plaza": "Base 4",
         "contratadas": 20,
-        "complementarias": 11.5,
+        "complementarias": 10.5,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["21:00","00:00"] },
           "martes":    { "mediodia": ["",""], "noche": ["",""] },
           "miercoles": { "mediodia": ["13:00","15:30"], "noche": ["",""] },
           "jueves":    { "mediodia": ["11:30","16:30"], "noche": ["19:00","23:30"] },
-          "viernes":   { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["20:00","22:00"] },
           "sabado":    { "mediodia": ["11:30","15:30"], "noche": ["20:30","23:00"] },
           "domingo":   { "mediodia": ["13:00","16:00"], "noche": ["20:00","00:00"] }
         }
