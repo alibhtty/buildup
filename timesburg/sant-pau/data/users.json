@@ -95,14 +95,14 @@
       "aviso_modal": { "texto": "" }
     },
     
-    "rian": {
+    "rianwhen": {
       "activo_por_defecto": false,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
 
-    "judit": {
+    "judith": {
       "activo_por_defecto": false,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
