@@ -20,7 +20,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "Feliz Año Nuevo!",
+      "texto": "",
       "fondo": "",
       "opacidad": 0
     }
@@ -63,7 +63,7 @@
     },
 
     "johan": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
 
@@ -75,35 +75,35 @@
     },
 
     "ray": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
 
     "weslie": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
 
     "gerard": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
     
     "rianwhen": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
     },
 
     "judith": {
-      "activo_por_defecto": false,
+      "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
       "activo_hasta": "2026-01-31",
       "aviso_modal": { "texto": "" }
