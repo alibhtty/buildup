@@ -20,7 +20,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "",
+      "texto": " ",
       "fondo": "",
       "opacidad": 0
     }
@@ -33,7 +33,7 @@
       "activo_hasta": "2026-01-31",
 
       "aviso_modal": {
-        "texto": "2026",
+        "texto": "",
         "fondo": "",
         "opacidad": 0
       },
