@@ -43,8 +43,8 @@
 
     "paola": {
       "activo_por_defecto": true,
-      "activo_desde": null,
-      "activo_hasta": "2025-12-31",
+      "activo_desde": "2025-12-30",
+      "activo_hasta": "2026-01-31",
 
       "aviso_modal": {
         "texto": "",
