@@ -30,7 +30,7 @@
     "ali": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-30",
-      "activo_hasta": "2026-01-03",
+      "activo_hasta": "2026-01-02",
 
       "aviso_modal": {
         "texto": "",
