@@ -14,6 +14,14 @@
       "texto": { "hex": "#fff6ed", "opacidad": 0.9 }
     },
 
+    "backgrounds": [
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/img/01.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/img/02.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/img/03.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/img/04.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/sant-pau/img/05.jpg"
+    ],
+
     "widget_url": {
       "activo": false,
       "url": "https://ali-bhtty.web.app"
