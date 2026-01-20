@@ -1,122 +1,199 @@
 <!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Minimalist 3D Object Landing</title>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#00bbc2",
-                        "background-light": "#f1f2f4",
-                        "background-dark": "#000000",
-                    },
-                    fontFamily: {
-                        "display": ["Epilogue", "sans-serif"]
-                    },
-                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
-                        'tilt': 'tilt 10s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-                            '50%': { opacity: '0.7', transform: 'scale(1.1)' },
-                        },
-                         tilt: {
-                            '0%': { transform: 'perspective(1000px) rotateX(5deg) rotateY(-5deg)' },
-                            '100%': { transform: 'perspective(1000px) rotateX(-5deg) rotateY(5deg)' },
-                        }
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-        /* Custom scrollbar hiding for ultra-minimalist feel */
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            overflow: hidden; /* Prevent scrolling as requested */
-        }
-        
-        .glass-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
+<title>Widget 3D Showcase</title>
 
-        /* Simulating the "tilt" parallax effect with CSS animation since no JS is allowed */
-        .tilt-fx {
-            transform-style: preserve-3d;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Material Symbols -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/> -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#00bbc2",
+        bg: "#000000"
+      },
+      fontFamily: {
+        display: ["Epilogue", "sans-serif"]
+      }
     }
-  </style>
-  </head>
-<body class="bg-background-light dark:bg-background-dark text-white font-display h-screen w-screen flex flex-col overflow-hidden">
-<!-- Top Navigation Area -->
-<header class="fixed top-0 left-0 w-full z-50 p-6 pt-8 flex items-start justify-between pointer-events-none">
-<!-- Hamburger Menu -->
-<a href="index.html" class="pointer-events-auto group relative flex items-center justify-center size-12 rounded-full hover:bg-white/5 transition-colors duration-300 focus:outline-none">
-<span class="material-symbols-outlined text-white/90 text-[28px] font-light">menu</span>
+  }
+}
+</script>
+
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  perspective: 1400px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.light {
+  mix-blend-mode: screen;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+</style>
+</head>
+
+<body class="font-display text-white">
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
+  <div class="text-white/70 tracking-wide">4BDEV</div>
+  <!-- <div class="text-white/50 text-sm">Widget Preview</div> -->
+  <a href="index.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
+<span class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
 </a>
 </header>
-<!-- Main Stage Container -->
-<main class="relative flex-1 flex items-center justify-center w-full h-full perspective-[1000px]">
-<!-- Ambient Glow Underlay -->
-<!-- Positioned behind the object to create depth and the "floating" feeling -->
-<div class="absolute w-[80vw] h-[80vw] bg-primary/20 rounded-full blur-[100px] opacity-20 animate-pulse-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 mix-blend-screen"></div>
-<div class="absolute w-[40vw] h-[40vw] bg-primary/30 rounded-full blur-[60px] opacity-10 top-1/2 left-1/2 -translate-x-1/2 translate-y-[20%] pointer-events-none z-0"></div>
-<!-- Floating Glass Container (The Pedestal) -->
-<div class="relative z-10 w-[85vw] max-w-[400px] aspect-square animate-float">
-<!-- Inner Tilt Wrapper (Simulating Gyroscope) -->
-<div class="w-full h-full animate-tilt tilt-fx">
-<!-- The Glass Box -->
-<div class="relative w-full h-full glass-container rounded-3xl overflow-hidden flex items-center justify-center group cursor-pointer transition-all duration-700 hover:border-primary/30 hover:bg-white/5">
-<!-- 3D Object Representation -->
-<!-- Since we can't use real WebGL without JS, we use a high-quality abstract image to represent the rendered object. -->
-<!-- The image has a specific styling to look like a 3D render floating in void. -->
-<div class="relative w-[100%] h-[100%] transition-transform duration-700 group-hover:scale-105">
-<div class="w-full h-full bg-contain bg-center bg-no-repeat drop-shadow-2xl" data-alt="Abstract 3D liquid metal shape floating in dark space with cyan reflections" style='background-image: url("./cover.jpg");'>
-</div>
-<!-- Internal lighting effect on the object -->
-<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-primary/10 rounded-full mix-blend-overlay"></div>
-</div>
-<!-- Subtle reflection overlay for glass effect -->
-<div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-<!-- Tech accents - corners -->
-<div class="absolute top-4 left-4 w-2 h-2 border-t border-l border-white/20 rounded-tl-sm"></div>
-<div class="absolute top-4 right-4 w-2 h-2 border-t border-r border-white/20 rounded-tr-sm"></div>
-<div class="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-white/20 rounded-bl-sm"></div>
-<div class="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-white/20 rounded-br-sm"></div>
-</div>
-<!-- Shadow cast by the object on the "floor" far below -->
-<div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[60%] h-4 bg-black/80 blur-xl rounded-[100%]"></div>
-</div>
-</div>
+
+<!-- STAGE -->
+<main class="stage w-screen h-screen flex items-center justify-center relative">
+
+  <!-- Ambient glow -->
+  <div class="absolute w-[70vmin] h-[70vmin] bg-primary/20 blur-[140px] rounded-full"></div>
+
+  <!-- 3D CARD -->
+  <div id="card"
+    class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing">
+
+    <!-- IMAGE -->
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z-[40px]">
+      <img src="./cover.jpg"
+        class="w-full h-full object-cover pointer-events-none"/>
+    </div>
+
+    <!-- Light follow -->
+    <div id="light"
+      class="light absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: radial-gradient(300px at 50% 50%, rgba(0,187,194,.35), transparent 60%);">
+    </div>
+
+    <!-- Glass reflection -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: linear-gradient(120deg, rgba(255,255,255,.12), transparent 40%);">
+    </div>
+
+    <!-- Frame -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none border border-white/10"></div>
+  </div>
 </main>
-<!-- Hidden accessibility text -->
-<h1 class="sr-only">Interactive 3D Widget Showcase</h1>
-</body></html>
+
+<!-- FOOTER -->
+<div class="fixed bottom-0 left-0 w-full px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
+  <div class="flex flex-col gap-1">
+    <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
+      <span class="w-1 h-1 bg-green-500 rounded-full"></span>
+      System Ready
+    </div>
+    <div class="text-[9px] text-white/50 font-mono">
+      60FPS • <span class="text-primary">WEBGL</span>
+    </div>
+  </div>
+  <div class="text-[9px] text-white/40 font-mono tracking-wider">
+    V 2.1.0 (PWA)
+  </div>
+</div>
+
+<script>
+const card = document.getElementById("card")
+const light = document.getElementById("light")
+
+let currentX = 0, currentY = 0
+let targetX = 0, targetY = 0
+let dragging = false
+
+const lerp = (a, b, n) => a + (b - a) * n
+
+function animate() {
+  currentX = lerp(currentX, targetX, 0.08)
+  currentY = lerp(currentY, targetY, 0.08)
+
+  card.style.transform =
+    `rotateX(${currentY}deg) rotateY(${currentX}deg)`
+
+  requestAnimationFrame(animate)
+}
+animate()
+
+function updateFromEvent(e) {
+  const rect = card.getBoundingClientRect()
+  const x = (e.clientX - rect.left) / rect.width - 0.5
+  const y = (e.clientY - rect.top) / rect.height - 0.5
+
+  targetX = x * 24
+  targetY = -y * 24
+
+  light.style.background =
+    `radial-gradient(320px at ${x*100+50}% ${y*100+50}%,
+      rgba(0,187,194,.45),
+      transparent 60%)`
+}
+
+card.addEventListener("pointerdown", e => {
+  dragging = true
+  card.setPointerCapture(e.pointerId)
+})
+
+card.addEventListener("pointermove", e => {
+  if (!dragging) return
+  updateFromEvent(e)
+})
+
+card.addEventListener("pointerup", () => {
+  dragging = false
+  targetX = 0
+  targetY = 0
+})
+
+card.addEventListener("pointerleave", () => {
+  dragging = false
+  targetX = 0
+  targetY = 0
+})
+
+// idle motion
+setInterval(() => {
+  if (!dragging) {
+    targetX = Math.sin(Date.now()/2000) * 6
+    targetY = Math.cos(Date.now()/2400) * 6
+  }
+}, 50)
+</script>
+
+</body>
+</html>

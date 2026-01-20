@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<title>Tactile High-End 3D Widget PWA</title>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00bbc2",
+                        "accent": "#ffffff",
+                        "surface": "#050505",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                    animation: {
+                        'sheen': 'sheen 4s ease-in-out infinite',
+                        'breathe': 'breathe 6s ease-in-out infinite',
+                        'micro-shake': 'shake 0.2s cubic-bezier(.36,.07,.19,.97) infinite',
+                    },
+                    keyframes: {
+                        sheen: {
+                            '0%, 100%': { transform: 'translateX(-150%) skewX(-20deg)' },
+                            '50%': { transform: 'translateX(150%) skewX(-20deg)' },
+                        },
+                        breathe: {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.6', transform: 'scale(1.05)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(1px, 0, 0)' }
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                },
+            },
+        }
+    </script>
+<style>body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior: none;
+            touch-action: none;
+        }::-webkit-scrollbar {
+            display: none;
+        }.gpu-accel {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }.blend-glow {
+            mix-blend-mode: screen;
+        }
+        .blend-soft {
+            mix-blend-mode: soft-light;
+        }.preserve-3d {
+            transform-style: preserve-3d;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-white font-display h-[100dvh] w-screen flex flex-col overflow-hidden relative selection:bg-transparent">
+<div class="absolute inset-0 bg-noise opacity-30 pointer-events-none z-0"></div>
+<header class="fixed top-0 left-0 w-full z-50 p-6 pt-12 flex items-start justify-between pointer-events-none">
+<button class="pointer-events-auto group relative flex flex-col items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 active:scale-90 active:bg-white/10">
+<div class="w-4 h-[1px] bg-white group-hover:w-5 transition-all duration-300 mb-1 shadow-[0_0_5px_rgba(255,255,255,0.5)]"></div>
+<div class="w-4 h-[1px] bg-white group-hover:w-3 transition-all duration-300 shadow-[0_0_5px_rgba(255,255,255,0.5)]"></div>
+</button>
+</header>
+<main class="relative flex-1 flex items-center justify-center w-full h-full perspective-[1500px] z-10">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120vw] h-[60vh] bg-gradient-to-t from-primary/5 to-transparent opacity-20 pointer-events-none blur-[100px]"></div>
+<div class="relative group cursor-grab active:cursor-grabbing touch-none select-none p-10" id="widget-container">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/20 rounded-full blur-[80px] opacity-40 transition-all duration-200 group-active:opacity-60 group-active:blur-[60px] group-active:scale-90 mix-blend-screen animate-breathe"></div>
+<div class="relative z-20 w-[80vw] h-[80vw] max-w-[340px] max-h-[340px] gpu-accel transition-all duration-300 cubic-bezier(0.34, 1.56, 0.64, 1) group-active:scale-[0.96] group-active:rotate-x-3 group-active:brightness-110">
+<div class="relative w-full h-full rounded-[2.5rem] bg-[#080808] border border-white/10 overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,1)] group-active:shadow-[0_10px_30px_-10px_rgba(0,0,0,1)] transition-shadow duration-300">
+<div class="absolute inset-0 bg-noise opacity-50 z-0"></div>
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<div class="w-[110%] h-[110%] bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 group-active:scale-100" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNrCqdu4rfXFfYS0r2Clvr8JxZRdesW77NHkJYWM6xxdgb5gWgpwiTXsuc0bOoWDLgCAJV2jhIbGRFi7P2lBo71D5zcCxPX3DzqdO1l-K9mfAmzxPDqSvHvs4rBkdhFfrXfA_d68kExU81DN3JBgrE10kPT35xxRJvzfXx6sYbAzXStbahWGmzrIAYJyDlj35EAVUnW7q78N6xvCAV2D7iJIrGYm-f7KXHZmIZ4s7ei1bayDtAobRn-osThTid5AFjZtbk2AU5xLZO");'>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/80 z-20 pointer-events-none mix-blend-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent z-30 pointer-events-none animate-sheen w-[200%] h-full mix-blend-color-dodge opacity-60"></div>
+<div class="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_40px_rgba(255,255,255,0.05)] z-20 pointer-events-none"></div>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-active:opacity-10 transition-opacity duration-100 z-40 pointer-events-none mix-blend-overlay"></div>
+</div>
+<div class="absolute -inset-[1px] rounded-[2.5rem] border border-white/20 opacity-30 pointer-events-none z-50 mask-image:linear-gradient(to bottom, black, transparent)"></div>
+<div class="absolute -bottom-10 left-4 right-4 h-8 bg-gradient-to-b from-white/5 to-transparent opacity-20 blur-md rounded-full pointer-events-none transform scale-x-90 group-active:scale-x-100 transition-transform duration-300"></div>
+</div>
+</div>
+</main>
+<h1 class="sr-only">Interactive 3D Physical Widget</h1>
+
+</body></html>
