@@ -82,11 +82,13 @@ img {
 
 
 
-
+* {
+  touch-action: manipulation;
+}
 .pin-led {
   position: absolute;
-  width: .5rem;
-  height: .5rem;
+  width: .3rem;
+  height: .3rem;
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0 0 10px #000000, 0 0 22px #000000;
@@ -94,6 +96,15 @@ img {
   animation: blink 1.8s infinite;
   cursor: pointer;
   pointer-events: auto;
+  touch-action: manipulation;
+}
+.pin-led::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px #000;
 }
 .pin-led::before {
   content: "";
@@ -120,17 +131,15 @@ img {
   background-color: radial #000000 ;
 }
 
+#card {
+  touch-action: none;
+}
 
 #pins-layer {
   position: absolute;
   inset: 0;
-  z-index: 2;           /* encima del card interno */
+  z-index: 20;           /* encima del card interno */
   pointer-events: auto;  /* el layer no bloquea */
-}
-
-.pin-led {
-  pointer-events: auto;  /* cada LED sí recibe click */
-  cursor: pointer;
 }
 
 
@@ -168,12 +177,13 @@ img {
 /* Moviles: portrait o standalone */
 @media (max-width: 768px), (orientation: portrait) {
   #pin-info {
-    min-width: 75%;
+    min-width: 76%;
+    max-height: 17rem;
     top: 4.5rem;
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;  /* imagen al lado del texto */
-    max-width: 90%;
+    max-width: 80%;
     visibility: visible;
     opacity: 0;
     pointer-events: none;
@@ -205,6 +215,8 @@ img {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+    height: 24rem;
+    max-height: 24rem;
   }
 
   #pin-info.show {
@@ -232,6 +244,8 @@ img {
     right: 10%;
     transform: translateY(-50%);
     flex-direction: column;
+    max-width: 17rem;
+    height: 24rem;
 
     top: 50%;
 
@@ -242,7 +256,7 @@ img {
 /* Movil / portrait: debajo del card */
 @media (max-width: 868px), (orientation: portrait) {
   #buy-info {
-    max-height: 15rem;
+    max-height: 8rem;
     background-color: #111111;
     
     min-width: 90%;
@@ -250,8 +264,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
-    max-width: 90%;
-    bottom: 6rem;
+    bottom: 6.5rem;
   }
 }
 
@@ -422,7 +435,8 @@ function animate() {
   card.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`
 
   // Idle glow cuando no se arrastra
-  if (!dragging) {
+  //if (!dragging) {
+  if (!dragging && !document.hidden) {
     const t = Date.now()
     targetX = Math.sin(t / 2000) * 18
     targetY = Math.cos(t / 2400) * 18
@@ -519,7 +533,9 @@ document.addEventListener("DOMContentLoaded", () => {
     el.style.left = (pin.x * 100) + "%";
     el.style.top  = (pin.y * 100) + "%";
 
-    el.addEventListener("click", e => {
+    //el.addEventListener("click", e => {
+    el.addEventListener("pointerdown", e => {
+      e.preventDefault();
       e.stopPropagation();
 
       title.textContent = pin.title;
@@ -542,7 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
          z-50 opacity-0 pointer-events-none
          bg-black/70 backdrop-blur-xl
          border border-white/10
-         rounded-2xl p-4 max-w-[320px]
+         rounded-2xl p-3 max-w-[320px]
          transition-opacity duration-300
          flex flex-col md:flex-col lg:flex-row gap-4 items-start text-left">
 
