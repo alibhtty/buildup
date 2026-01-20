@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="es" class="dark">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
 
-<title>Widget 3D Showcase</title>
+<title>HorarioTimes.js for Timesburg – 4B®</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- Material Symbols -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/> -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
 
 <script>
 tailwind.config = {
@@ -21,7 +18,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        primary: "#00bbc2",
+        primary: "#005d38", // 00bbc2
         bg: "#000000"
       },
       fontFamily: {
@@ -66,6 +63,157 @@ html, body {
   user-select: none;
   -webkit-user-drag: none;
 }
+.light--active {
+  opacity: 1;
+}
+
+
+
+#pins-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.pin-led {
+  position: absolute;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #000000, 0 0 22px #000000;
+  transform: translate(-50%, -50%);
+  animation: blink 1.8s infinite;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.pin-led::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;   /* área clicable más grande */
+  height: 2rem;
+  transform: translate(-50%, -50%);
+}
+
+
+@keyframes blink {
+  0%,100% { opacity: 1 }
+  50% { opacity: .3 }
+}
+
+#pins-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;           /* encima del card interno */
+  pointer-events: none;  /* el layer no bloquea */
+}
+
+.pin-led {
+  pointer-events: auto;  /* cada LED sí recibe click */
+  cursor: pointer;
+}
+
+
+
+/* Panel Info */
+/* Moviles: portrait o standalone */
+@media (max-width: 768px), (orientation: portrait) {
+  #pin-info {
+    min-width: 75%;
+    top: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;  /* imagen al lado del texto */
+    max-width: 90%;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #pin-info.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  #pin-img {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+/* Desktop: landscape */
+@media (min-width: 769px) {
+  #pin-info {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    background-color: #111111;
+    flex-direction: column; /* imagen debajo del texto */
+    max-width: 30%;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #pin-info.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  #pin-img {
+    width: 17rem;
+    height: 17rem;
+    margin-top: 0.5rem;
+  }
+}
+
+
+/* Boton de compra */
+/* Desktop: derecha del card */
+@media (min-width: 1369px) {
+  #buy-info {
+    /* bottom: 5rem; */
+    height: 22rem;
+    background-color: #111111;
+    /* left: 10%; */
+    right: 10%;
+    transform: translateY(-50%);
+    flex-direction: column;
+
+    top: 50%;
+
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* Movil / portrait: debajo del card */
+@media (max-width: 868px), (orientation: portrait) {
+  #buy-info {
+    max-height: 15rem;
+    background-color: #111111;
+    
+    min-width: 90%;
+    /* transform: translateX(-50%); */
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    max-width: 90%;
+    bottom: 7rem;
+  }
+}
+
+/* Clase show para fade-in/fade-out */
+#buy-info.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 </style>
 </head>
@@ -85,7 +233,8 @@ html, body {
 <main class="stage w-screen h-screen flex items-center justify-center relative">
 
   <!-- Ambient glow -->
-  <div class="absolute w-[70vmin] h-[70vmin] bg-primary/20 blur-[140px] rounded-full"></div>
+  <div class="absolute w-[90vmin] h-[90vmin] bg-primary/30 blur-[140px] rounded-full"></div>
+ 
 
   <!-- 3D CARD -->
   <div id="card"
@@ -97,11 +246,21 @@ html, body {
         class="w-full h-full object-cover pointer-events-none"/>
     </div>
 
+    <!-- 
+    <div class="absolute inset-0 rounded-[26px] translate-z-[40px]
+                flex items-center justify-center">
+      <div class="w-[88%] h-[88%] rounded-[20px] overflow-hidden
+                  shadow-[0_20px_60px_rgba(0,0,0,.6)]">
+        <img src="./cover.jpg"
+          class="w-full h-full object-cover pointer-events-none"/>
+      </div>
+    </div> -->
+
     <!-- Light follow -->
-    <div id="light"
-      class="light absolute inset-0 rounded-[26px] pointer-events-none"
-      style="background: radial-gradient(300px at 50% 50%, rgba(0,187,194,.35), transparent 60%);">
-    </div>
+     <div id="light"
+       class="light absolute inset-0 rounded-[26px] pointer-events-none
+              opacity-0 transition-opacity duration-[800ms] ease-in-out">
+     </div>
 
     <!-- Glass reflection -->
     <div class="absolute inset-0 rounded-[26px] pointer-events-none"
@@ -110,6 +269,9 @@ html, body {
 
     <!-- Frame -->
     <div class="absolute inset-0 rounded-[26px] pointer-events-none border border-white/10"></div>
+
+    <div id="pins-layer" class="absolute inset-0"></div>
+
   </div>
 </main>
 
@@ -121,7 +283,7 @@ html, body {
       System Ready
     </div>
     <div class="text-[9px] text-white/50 font-mono">
-      60FPS • <span class="text-primary">WEBGL</span>
+      60FPS • <span class="text-primary">WEBGL</span> • <span class="text-primary">4Bdev SERVER ON</span>
     </div>
   </div>
   <div class="text-[9px] text-white/40 font-mono tracking-wider">
@@ -136,6 +298,7 @@ const light = document.getElementById("light")
 let currentX = 0, currentY = 0
 let targetX = 0, targetY = 0
 let dragging = false
+let idleGlow = 0
 
 const lerp = (a, b, n) => a + (b - a) * n
 
@@ -151,6 +314,7 @@ function animate() {
 animate()
 
 function updateFromEvent(e) {
+    idleGlow = 0
   const rect = card.getBoundingClientRect()
   const x = (e.clientX - rect.left) / rect.width - 0.5
   const y = (e.clientY - rect.top) / rect.height - 0.5
@@ -158,42 +322,223 @@ function updateFromEvent(e) {
   targetX = x * 24
   targetY = -y * 24
 
-  light.style.background =
-    `radial-gradient(320px at ${x*100+50}% ${y*100+50}%,
-      rgba(0,187,194,.45),
-      transparent 60%)`
+  light.style.opacity = 1
+light.style.background =
+  `radial-gradient(
+    780px at ${x*100+50}% ${y*100+50}%,
+    rgba(0,93,56,.48),
+    transparent 65%
+  )`
 }
 
 card.addEventListener("pointerdown", e => {
-  dragging = true
-  card.setPointerCapture(e.pointerId)
-})
+  // Si hacemos click sobre un LED, no arrastramos el card
+  if (e.target.classList.contains("pin-led")) return;
+
+  dragging = true;
+  card.setPointerCapture(e.pointerId);
+  light.classList.add("light--active");
+});
+
 
 card.addEventListener("pointermove", e => {
   if (!dragging) return
   updateFromEvent(e)
 })
 
-card.addEventListener("pointerup", () => {
+function release() {
   dragging = false
   targetX = 0
   targetY = 0
-})
 
-card.addEventListener("pointerleave", () => {
-  dragging = false
-  targetX = 0
-  targetY = 0
-})
+  light.classList.remove("light--active")
+}
 
-// idle motion
+card.addEventListener("pointerup", release)
+card.addEventListener("pointerleave", release)
+card.addEventListener("pointercancel", release)
+
 setInterval(() => {
   if (!dragging) {
-    targetX = Math.sin(Date.now()/2000) * 6
-    targetY = Math.cos(Date.now()/2400) * 6
+    const t = Date.now()
+
+    targetX = Math.sin(t / 2000) * 9
+    targetY = Math.cos(t / 2400) * 9
+
+    // intensidad oscilante del brillo
+    idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+
+    light.style.opacity = 0.35 + idleGlow * 0.25
+
+    light.style.background = `
+      radial-gradient(220px at 15% 15%,
+        rgba(0,93,56,${0.22 + idleGlow * 0.20}),
+        transparent 70%
+      ),
+      radial-gradient(220px at 85% 85%,
+        rgba(0,93,56,${0.18 + idleGlow * 0.15}),
+        transparent 75%
+      )
+    `
   }
 }, 50)
+
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const card = document.getElementById("card");
+  const layer = document.getElementById("pins-layer");
+  const info  = document.getElementById("pin-info");
+  const title = document.getElementById("pin-title");
+  const desc  = document.getElementById("pin-desc");
+
+  const pins = [
+    { x: 0.24, y: 0.19, title: "CPU", desc: "Zona de procesamiento principal", img: "./info/cpu.jpg" },
+    { x: 0.65, y: 0.35, title: "RAM", desc: "Memoria dinámica del sistema", img: "./info/ram.jpg" },
+    { x: 0.45, y: 0.75, title: "Power", desc: "Estado de encendido", img: "./info/power.jpg" },
+    { x: 0.8, y: 0.6, title: "I/O", desc: "Entradas y salidas", img: "./info/io.jpg" }
+  ];
+
+  pins.forEach(pin => {
+    const el = document.createElement("div");
+    el.className = "pin-led";
+    el.style.left = (pin.x * 100) + "%";
+    el.style.top  = (pin.y * 100) + "%";
+  
+    el.addEventListener("click", e => {
+      e.stopPropagation();
+      title.textContent = pin.title;
+      desc.textContent  = pin.desc;
+      document.getElementById("pin-img").src = pin.img;
+  
+      // Mostrar cuadro con fade-in
+      info.classList.add("show");
+  
+      // Limpiar cualquier timeout anterior
+      if (info.hideTimeout) clearTimeout(info.hideTimeout);
+  
+      // Ocultar después de 8 segundos con fade-out
+      info.hideTimeout = setTimeout(() => {
+        info.classList.remove("show");
+      }, 8000);
+    });
+  
+    layer.appendChild(el);
+  });
+
+  /* document.addEventListener("click", () => {
+    info.style.opacity = "0";
+    info.style.pointerEvents = "none";
+  }); */
+  document.addEventListener("click", (e) => {
+    // Si el click fue sobre un LED, no ocultamos info
+    if (e.target.classList.contains("pin-led")) return;
+  
+    const info = document.getElementById("pin-info");
+    info.classList.remove("show");
+    clearTimeout(info.hideTimeout); // cancela cualquier timeout pendiente
+  });
+
+});
+
+
+
+function showBuyInfo() {
+  const buyInfo = document.getElementById("buy-info");
+  
+  // Mostrar con fade
+  buyInfo.classList.add("show");
+
+  // Limpiar cualquier timeout anterior
+  if (buyInfo.hideTimeout) clearTimeout(buyInfo.hideTimeout);
+
+  // Ocultar después de 8 segundos
+  buyInfo.hideTimeout = setTimeout(() => {
+    buyInfo.classList.remove("show");
+  }, 8000);
+}
+
+// Ejemplo: mostrar cuadro de compra al hacer click en un botón o LED
+/* document.getElementById("card").addEventListener("dblclick", showBuyInfo); */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const buyInfo = document.getElementById("buy-info");
+  buyInfo.classList.add("show"); // para ver si se ve al cargar
+});
+
+
+
+
+</script>
+
+
+
+<div id="pin-info"
+  class="fixed left-6 top-1/2 -translate-y-1/2
+         z-50 opacity-0 pointer-events-none
+         bg-black/70 backdrop-blur-xl
+         border border-white/10
+         rounded-2xl p-4 max-w-[320px]
+         transition-opacity duration-300
+         flex flex-col md:flex-col lg:flex-row gap-4 items-center">
+  
+  <!-- Imagen del pin -->
+  <img id="pin-img" src="./info/io.jpg" alt="Pin Image"
+       class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
+
+  <!-- Texto del pin -->
+  <div class="flex flex-col">
+    <h3 id="pin-title" class="text-sm font-semibold mb-1"></h3>
+    <p id="pin-desc" class="text-xs text-white/70 leading-snug"></p>
+  </div>
+</div>
+
+    <div id="buy-info"
+     class="fixed z-50 opacity-0 pointer-events-none
+            bg-black/60 backdrop-blur-[18px]
+            border border-white/10
+            rounded-2xl p-3 sm:p-4
+            max-w-[340px] max-h-[85vh] overflow-y-auto
+            transition-opacity duration-300
+            flex flex-col gap-2 sm:gap-3 items-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
+
+  <!-- Icono -->
+  <img id="buy-icon" src="./info/disk-icon.png" alt="Buy Icon"
+       class="w-14 sm:w-16 h-14 sm:h-16 object-contain drop-shadow-md mb-1">
+
+  <!-- Texto de compra -->
+  <div>
+    <h3 class="text-sm sm:text-base font-semibold mb-0.5 leading-snug">HorarioTimes.js</h3>
+    <p class="text-[10px] sm:text-xs text-white/70 leading-tight mb-0.5">
+        Nadie tiene mejores horarios que tú.
+    </p>
+    <p class="text-[10px] sm:text-xs text-white/70 leading-tight">
+        La forma más práctica de ver tu rutina.
+    </p>
+  </div>
+
+  <!-- Botones compactos centrados -->
+  <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 w-full mt-2">
+    <!-- Descarga gratuita -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-1 rounded-full bg-white text-black text-[10px] sm:text-xs font-medium 
+              hover:bg-gray-100 transition-colors duration-200 shadow-sm">
+      Free mode
+    </a>
+  
+    <!-- Comprar PRO -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-1 rounded-full bg-[#327D5F] text-white text-[10px] sm:text-xs font-medium 
+              hover:bg-[#00b078] transition-colors duration-200 shadow-sm">
+      Comprar PRO
+    </a>
+  </div>
+</div>
+
+
+
+
 
 </body>
 </html>

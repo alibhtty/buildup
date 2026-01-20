@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
+
+<title>HorarioTimes.js for Timesburg – 4B®</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Material Symbols -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/> -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#005d38", // 00bbc2
+        bg: "#000000"
+      },
+      fontFamily: {
+        display: ["Epilogue", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage {
+  perspective: 1400px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.light {
+  mix-blend-mode: screen;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.light--active {
+  opacity: 1;
+}
+
+</style>
+</head>
+
+<body class="font-display text-white">
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
+  <div class="text-white/70 tracking-wide">4BDEV</div>
+  <!-- <div class="text-white/50 text-sm">Widget Preview</div> -->
+  <a href="index.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
+<span class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
+</a>
+</header>
+
+<!-- STAGE -->
+<main class="stage w-screen h-screen flex items-center justify-center relative">
+
+  <!-- Ambient glow -->
+  <div class="absolute w-[90vmin] h-[90vmin] bg-primary/30 blur-[140px] rounded-full"></div>
+
+  <!-- 3D CARD -->
+  <div id="card"
+    class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing">
+
+    <!-- IMAGE -->
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z-[40px]">
+      <img src="./cover.jpg"
+        class="w-full h-full object-cover pointer-events-none"/>
+    </div>
+
+    <!-- 
+    <div class="absolute inset-0 rounded-[26px] translate-z-[40px]
+                flex items-center justify-center">
+      
+      <div class="w-[88%] h-[88%] rounded-[20px] overflow-hidden
+                  shadow-[0_20px_60px_rgba(0,0,0,.6)]">
+        <img src="./cover.jpg"
+          class="w-full h-full object-cover pointer-events-none"/>
+      </div>
+    
+    </div> -->
+
+    <!-- Light follow -->
+     <div id="light"
+       class="light absolute inset-0 rounded-[26px] pointer-events-none
+              opacity-0 transition-opacity duration-[800ms] ease-in-out">
+     </div>
+    <!-- <div id="light"
+      class="light absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: radial-gradient(100px at 50% 50%, rgba(0,187,194,.35), transparent 60%);">
+    </div> -->
+
+    <!-- Glass reflection -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: linear-gradient(120deg, rgba(255,255,255,.12), transparent 40%);">
+    </div>
+
+    <!-- Frame -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none border border-white/10"></div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<div class="fixed bottom-0 left-0 w-full px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
+  <div class="flex flex-col gap-1">
+    <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
+      <span class="w-1 h-1 bg-green-500 rounded-full"></span>
+      System Ready
+    </div>
+    <div class="text-[9px] text-white/50 font-mono">
+      60FPS • <span class="text-primary">WEBGL</span> • <span class="text-primary">4Bdev SERVER ON</span>
+    </div>
+  </div>
+  <div class="text-[9px] text-white/40 font-mono tracking-wider">
+    V 2.1.0 (PWA)
+  </div>
+</div>
+
+<script>
+const card = document.getElementById("card")
+const light = document.getElementById("light")
+
+let currentX = 0, currentY = 0
+let targetX = 0, targetY = 0
+let dragging = false
+let idleGlow = 0
+
+const lerp = (a, b, n) => a + (b - a) * n
+
+function animate() {
+  currentX = lerp(currentX, targetX, 0.08)
+  currentY = lerp(currentY, targetY, 0.08)
+
+  card.style.transform =
+    `rotateX(${currentY}deg) rotateY(${currentX}deg)`
+
+  requestAnimationFrame(animate)
+}
+animate()
+
+function updateFromEvent(e) {
+    idleGlow = 0
+  const rect = card.getBoundingClientRect()
+  const x = (e.clientX - rect.left) / rect.width - 0.5
+  const y = (e.clientY - rect.top) / rect.height - 0.5
+
+  targetX = x * 24
+  targetY = -y * 24
+
+  light.style.opacity = 1
+light.style.background =
+  `radial-gradient(
+    780px at ${x*100+50}% ${y*100+50}%,
+    rgba(0,93,56,.48),
+    transparent 65%
+  )`
+}
+
+card.addEventListener("pointerdown", e => {
+  dragging = true
+  card.setPointerCapture(e.pointerId)
+
+  light.classList.add("light--active")
+})
+
+card.addEventListener("pointermove", e => {
+  if (!dragging) return
+  updateFromEvent(e)
+})
+
+function release() {
+  dragging = false
+  targetX = 0
+  targetY = 0
+
+  light.classList.remove("light--active")
+}
+
+card.addEventListener("pointerup", release)
+card.addEventListener("pointerleave", release)
+card.addEventListener("pointercancel", release)
+
+// idle motion
+/* setInterval(() => {
+  if (!dragging) {
+    targetX = Math.sin(Date.now()/2000) * 6
+    targetY = Math.cos(Date.now()/2400) * 6
+  }
+}, 50) */
+// idle motion + corner glow
+setInterval(() => {
+  if (!dragging) {
+    const t = Date.now()
+
+    targetX = Math.sin(t / 2000) * 9
+    targetY = Math.cos(t / 2400) * 9
+
+    // intensidad oscilante del brillo
+    idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+
+    light.style.opacity = 0.35 + idleGlow * 0.25
+
+    light.style.background = `
+      radial-gradient(220px at 15% 15%,
+        rgba(0,93,56,${0.22 + idleGlow * 0.20}),
+        transparent 70%
+      ),
+      radial-gradient(220px at 85% 85%,
+        rgba(0,93,56,${0.18 + idleGlow * 0.15}),
+        transparent 75%
+      )
+    `
+  }
+}, 50)
+
+</script>
+
+</body>
+</html>
