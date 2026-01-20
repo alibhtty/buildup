@@ -4,10 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
 
-<meta name="theme-color" content="#000000">
-<meta name="format-detection" content="telephone=no">
-<meta name="msapplication-tap-highlight" content="no">
-<meta name="description" content="4B by alibhtty">
 <title>HorarioTimes.js for Timesburg – 4B®</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
@@ -15,25 +11,6 @@
 
 <!-- Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-
-<meta property="og:title" content="HT.js – 4Bdev®">
-  <meta property="og:description" content="4Bshop">
-  <meta property="og:image" content="https://4bshop.web.app/static/share.png">
-  <meta property="og:image:width" content="1500">
-  <meta property="og:image:height" content="800">
-  <meta property="og:site_name" content="4Bdev">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ali-bhtty.web.app">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="4Bdev – @ali.bhtty">
-  <meta name="twitter:description" content="Proyects 4B">
-  <meta name="twitter:image" content="https://4bshop.web.app/static/share.png">
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.jpg">
-  <link rel="icon" href="assets/icons/192x192.png">
-  <link rel="manifest" href="/manifest.json">
 
 <script>
 tailwind.config = {
@@ -100,18 +77,7 @@ img {
 }
 .balance-text {
     text-wrap: balance;
-}
-
-.slider-img {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 2.2s ease-in-out;
-}
-
-.slider-img.active {
-  opacity: 1;
-}
+  }
 
 
 
@@ -223,7 +189,7 @@ img {
     opacity: 0;
     gap: .5rem;
     pointer-events: none;
-    transition: opacity .6s ease-in-out;
+    transition: opacity 0.3s ease;
   }
 
   #pin-info.show {
@@ -251,7 +217,7 @@ img {
     opacity: 0;
     gap: .5rem;
     pointer-events: none;
-    transition: opacity .6s ease-in-out;
+    transition: opacity 0.3s ease;
   }
 
   #pin-info.show {
@@ -278,7 +244,7 @@ img {
     visibility: visible;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .6s ease-in-out;
+    transition: opacity 0.3s ease;
     height: 24rem;
     max-height: 24rem;
   }
@@ -313,7 +279,7 @@ img {
 
     top: 50%;
 
-    transition: opacity .6s ease-in-out;
+    transition: opacity 0.3s ease;
   }
 }
 
@@ -350,19 +316,10 @@ img {
 }
 
 
-.holo, .flare {
-  opacity: 0;   /* ocultas por defecto */
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.holo.active, .flare.active {
-  opacity: 1;
-}
 
 /* HOLO LAYER (mejorado) */
 .holo {
-  opacity: .23;
+  opacity: .05;
   mix-blend-mode: color-dodge;
 
   background-image:
@@ -373,14 +330,13 @@ img {
       rgba(255,255,255,.28),
       rgba(0,231,255,.45)
     ),
-    url("./assets/icons/sparkles.webp"); /* https://assets.codepen.io/13471/sparkles.gif */
+    url("https://assets.codepen.io/13471/sparkles.gif");
 
-    /* textura cuadros. -  https://i.pinimg.com/originals/bf/36/76/bf3676d6107b8953decfb33ad16ebf9b.gif */
   background-size: 280% 280%, 160%;
   background-position: 50% 50%, 50% 50%;
   background-blend-mode: overlay;
 
-  filter: brightness(1.1) contrast(1.3) saturate(1.1);
+  filter: brightness(1.2) contrast(1.5) saturate(1.25);
   transition:
     opacity .6s ease,
     filter .6s ease,
@@ -399,21 +355,6 @@ img {
 }
 
 
-/* Destellos tipo sol / lens flare */
-.flare {
-  /* background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.7), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(255,255,255,.5), transparent 50%); */
-  background: 
-    radial-gradient(circle 120px at 25% 25%, rgba(0, 147, 88, .6), transparent 70%),
-    radial-gradient(circle 80px at 75% 75%, rgba(0, 147, 88, .6), transparent 70%);
-  background-repeat: no-repeat;
-  background-size: 150% 150%, 120% 120%;
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  filter: blur(10px) brightness(1.4);
-  transition: background-position 0.1s linear, opacity 0.3s ease;
-}
-
 
 
 </style>
@@ -423,14 +364,10 @@ img {
 
 <!-- NAV -->
 <header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
-  <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
-  <span class="text-base">HorarioTimes.js</span>
-  <p class="text-xs text-white/50 mt-">4bdeveloper® 2025</p>
-</div>
-
-  <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
+  <div class="text-white/70 tracking-wide">4BDEV</div>
+  <!-- <div class="text-white/50 text-sm">Widget Preview</div> -->
   <a href="index.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
-<span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
+<span class="material-symbols-outlined text-white/30 group-hover:text-primary transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
 </a>
 </header>
 
@@ -446,19 +383,15 @@ img {
     class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12">
 
     <!-- IMAGE -->
-    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z-[40px]" id="image-slider">
-      <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8] active" />
-      <img src="./assets/img/cover01.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
-      <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z-[40px]">
+      <!-- <img src="./cover.jpg"
+        class="w-full h-full object-cover pointer-events-none"/> -->
+        <img src="./cover.jpg"
+     class="w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.9]"/>
     </div>
 
-
     <!-- Holo layer -->
-    <div class="holo absolute inset-0 rounded-[26px] pointer-events-none filter hue-rotate-[180deg]"></div>
-
-
-    <!-- Destellos tipo sol -->
-    <div id="flare" class="flare absolute inset-0 pointer-events-none"></div>
+    <div class="holo absolute inset-0 rounded-[26px] pointer-events-none"></div>
 
 
     <!-- 
@@ -507,30 +440,18 @@ img {
 </div>
 
 <script>
+const card = document.getElementById("card")
+const light = document.getElementById("light")
+const holo = document.querySelector(".holo")
+
+
 // --- Variables de estado ---
 let currentX = 0, currentY = 0
 let targetX = 0, targetY = 0
 let dragging = false
 let moved = false
-let ignoreDrag = false; // NUEVO: ignorar arrastre inicial
-const IGNORE_MS = 35;   // milisegundos a ignorar
-
 let idleGlow = 0
 let animateId = null
-
-//
-//  Variables de efectos
-//
-let holoEnabled = false    // HOLO DESACTIVADO
-let flareEnabled = true    // DESTELLO ACTIVADO
-const card = document.getElementById("card")
-const holo = document.querySelector(".holo")
-const flare = document.querySelector(".flare")
-const light = document.getElementById("light")
-
-// Oculta las capas si están desactivadas
-if (!holoEnabled && holo) holo.style.display = 'none';
-if (!flareEnabled && flare) flare.style.display = 'none';
 
 // --- Función de interpolación ---
 const lerp = (a, b, n) => a + (b - a) * n
@@ -568,12 +489,6 @@ card.addEventListener("pointerdown", e => {
 
   moved = false
   dragging = true
-  ignoreDrag = true
-
-  // desactivar ignoreDrag después de IGNORE_MS
-  setTimeout(() => {
-    ignoreDrag = false;
-  }, IGNORE_MS);
 
   card.setPointerCapture(e.pointerId)
   light.classList.add("light--active")
@@ -585,9 +500,6 @@ let pointerFrame = null;
 
 card.addEventListener("pointermove", e => {
   if (!dragging) return;
-
-  if (ignoreDrag) return;
-
   moved = true
   if (pointerFrame) return;
   pointerFrame = requestAnimationFrame(() => {
@@ -603,11 +515,8 @@ card.addEventListener("pointermove", e => {
 
 function release(e) {
   dragging = false
-  // Solo resetear si no hubo movimiento
-  if (!moved) {
-    targetX = 0
-    targetY = 0
-  }
+  targetX = 0
+  targetY = 0
 
   light.classList.remove("light--active")
   card.classList.remove("grabbing")
@@ -629,30 +538,24 @@ function animate() {
   currentY = lerp(currentY, targetY, 0.16)
   card.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`
 
-  // HOLO FOLLOW
-if (holoEnabled && holo) {
-  holo.style.backgroundPosition = `${50 + currentX * 1.6}% ${50 + currentY * 1.6}%`
-}
-
-// DESTELLOS / FLARE
-if (flareEnabled && flare) {
-  flare.style.backgroundPosition = `
-    ${50 + currentX * 2}% ${50 + currentY * 2}%,
-    ${50 - currentX * 2.5}% ${50 - currentY * 2.5}%`
-  flare.style.opacity = 0.35 + Math.min(Math.abs(currentX + currentY)/90, 0.45)
-}
-
-// Solo si quieres, también puedes desactivar todo el "idle glow" de los efectos
-if (!dragging && !document.hidden) {
-  const t = Date.now()
-  if (holoEnabled || flareEnabled) {
-    targetX = Math.sin(t / 2000) * 18
-    targetY = Math.cos(t / 2400) * 18
+  /* -------------------------------
+     HOLO FOLLOW (AQUÍ)
+  -------------------------------- */
+  if (holo) {
+    holo.style.backgroundPosition = `
+      ${50 + currentX * 1.6}% ${50 + currentY * 1.6}%
+    `
   }
 
-  idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+  // Idle glow cuando no se arrastra
+  //if (!dragging) {
+  if (!dragging && !document.hidden) {
+    const t = Date.now()
+    targetX = Math.sin(t / 2000) * 18
+    targetY = Math.cos(t / 2400) * 18
 
-  if (flareEnabled) {
+    idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+
     light.style.opacity = 0.35 + idleGlow * 0.25
     light.style.background = `
       radial-gradient(220px at 15% 15%,
@@ -665,7 +568,6 @@ if (!dragging && !document.hidden) {
       )
     `
   }
-}
 
   animateId = requestAnimationFrame(animate)
 }
@@ -686,219 +588,68 @@ document.addEventListener("visibilitychange", () => {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  const card = document.getElementById("card");
   const layer = document.getElementById("pins-layer");
+  const info  = document.getElementById("pin-info");
   const title = document.getElementById("pin-title");
   const desc  = document.getElementById("pin-desc");
+
   const pinInfo = document.getElementById("pin-info");
   const buyInfo = document.getElementById("buy-info");
 
-  // --- SONIDOS ---
-  const clickSound = new Audio('./assets/icons/tictac.wav');
-  clickSound.volume = 0.15;
-  clickSound.preload = 'auto';
-
-  const appearSound = new Audio('./assets/icons/in.wav'); 
-  appearSound.volume = 0.15;
-  appearSound.preload = 'auto';
-
-  const disappearSound = new Audio('./assets/icons/in.wav');
-  disappearSound.volume = 0.15;
-  disappearSound.preload = 'auto';
-
-  // --- PINS ---
   const pins = [
-    { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
-    { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
-    { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
-    { x:0.366, y:0.056, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
-    { x:0.80, y:0.192, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
-    { x:0.055, y:0.712, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
-    { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
-    { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
-    { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+    { x: 0.225, y: 0.185, title: "Turnos Mediodía", desc: "Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img: "./info/cpu.jpg" },
+    { x: 0.176, y: 0.465, title: "Turnos de Noche", desc: "Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img: "./info/io.jpg" },
+    { x: 0.960, y: 0.115, title: "Nombre de Local", desc: "Tu sede fija y equipo con el que compartes horarios.", img: "./info/cpu.jpg" },
+    { x: 0.306, y: 0.11, title: "Día y Semana actual", desc: "Renderizado del día actual junto con todos los datos del widget.", img: "./info/ram.jpg" },
+    { x: 0.592, y: 0.246, title: "Comidas", desc: "Comida de fin de franja para los miebros asignados según cálculo de horas.", img: "./info/power.jpg" },
+    { x: 0.055, y: 0.652, title: "Turnos de Apertura y Cierre", desc: "Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img: "./info/io.jpg" },
+    { x: 0.568, y: 0.652, title: "Estado de cuenta PRO", desc: "Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img: "./info/io.jpg" },
+    { x: 0.08, y: 0.752, title: "Apartado exclusivo para usuario PRO", desc: "Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img: "./info/io.jpg" },
+    { x: 0.908, y: 0.722, title: "Contador de tiempo restante", desc: "Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img: "./info/io.jpg" }
   ];
-  /* const pins = [
-    { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
-    { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
-    { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
-    { x:0.306, y:0.11, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
-    { x:0.592, y:0.246, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
-    { x:0.055, y:0.652, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
-    { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
-    { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
-    { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
-  ]; */
 
-  // --- FLAGS PARA SONIDO ---
-  let pinSoundPlayed = false;
-  let buySoundPlayed = false;
 
-  // --- TIMEOUTS ---
-  let pinShowTimeout = null;
-  let pinHideTimeout = null;
+    let pinHideTimeout = null;
   let buyShowTimeout = null;
   let buyHideTimeout = null;
 
+  const PIN_DURATION = 9000;
+  const BUY_DELAY = 1000;
+
   function showPinInfo() {
-    clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
+    pinInfo.classList.add("show");
 
-    // Pin Info aparece tras 3s
-    pinShowTimeout = setTimeout(() => {
-      pinInfo.classList.add("show");
-      if (!pinSoundPlayed) {
-        appearSound.currentTime = 0;
-        appearSound.play().catch(() => {});
-        pinSoundPlayed = true;
-      }
-    }, 1000);
+    clearTimeout(pinHideTimeout);
+    clearTimeout(buyShowTimeout);
+    clearTimeout(buyHideTimeout);
 
-    // Buy Info aparece tras 5s
     buyShowTimeout = setTimeout(() => {
       buyInfo.classList.add("show");
-      if (!buySoundPlayed) {
-        appearSound.currentTime = 0;
-        appearSound.play().catch(() => {});
-        buySoundPlayed = true;
-      }
-    }, 1500);
+    }, BUY_DELAY);
 
-    // Ocultar ambos después de la duración total
-    pinHideTimeout = setTimeout(hidePinInfo, 9000);
+    pinHideTimeout = setTimeout(hidePinInfo, PIN_DURATION);
   }
 
   function hidePinInfo() {
     pinInfo.classList.remove("show");
-    disappearSound.currentTime = 0;
-    disappearSound.play().catch(() => {});
 
     buyHideTimeout = setTimeout(() => {
       buyInfo.classList.remove("show");
-      disappearSound.currentTime = 0;
-      disappearSound.play().catch(() => {});
-    }, 0);
-
-    // Resetear flags para la próxima aparición
-    pinSoundPlayed = false;
-    buySoundPlayed = false;
+    }, BUY_DELAY);
   }
 
-  // --- CREAR PINS ---
+
   pins.forEach(pin => {
     const el = document.createElement("div");
     el.className = "pin-led";
-    el.style.left = (pin.x*100) + "%";
-    el.style.top  = (pin.y*100) + "%";
+    el.style.left = (pin.x * 100) + "%";
+    el.style.top  = (pin.y * 100) + "%";
 
+    //el.addEventListener("click", e => {
     el.addEventListener("pointerdown", e => {
       e.preventDefault();
       e.stopPropagation();
-
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
-
-      title.textContent = pin.title;
-      desc.textContent = pin.desc;
-      document.getElementById("pin-img").src = pin.img;
-
-      showPinInfo();
-    });
-
-    layer.appendChild(el);
-  });
-});
-</script>
-
-
-
-<!-- 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const card = document.getElementById("card");
-  const layer = document.getElementById("pins-layer");
-  const title = document.getElementById("pin-title");
-  const desc  = document.getElementById("pin-desc");
-  const pinInfo = document.getElementById("pin-info");
-  const buyInfo = document.getElementById("buy-info");
-
-  // --- SONIDOS ---
-  const clickSound = new Audio('./assets/icons/tictac.wav');
-  clickSound.volume = 0.15;
-  clickSound.preload = 'auto';
-
-  const appearSound = new Audio('./assets/icons/in.wav'); 
-  appearSound.volume = 0.15;
-  appearSound.preload = 'auto';
-
-  const disappearSound = new Audio('./assets/icons/out.wav');
-  disappearSound.volume = 0.15;
-  disappearSound.preload = 'auto';
-
-  // --- PINS ---
-  const pins = [
-    { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango 10:30-17:00", img:"./info/cpu.jpg" },
-    { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango 19:00-01:00", img:"./info/io.jpg" },
-    { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
-    { x:0.306, y:0.11, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
-    { x:0.592, y:0.246, title:"Comidas", desc:"Comida de fin de franja según cálculo de horas.", img:"./info/power.jpg" },
-    { x:0.055, y:0.652, title:"Turnos de Apertura y Cierre", desc:"Miembros que abren y cierran el turno indicado con colores.", img:"./info/io.jpg" },
-    { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Lineas de color azúl = 2 días con PRO; grises = días vacíos.", img:"./info/io.jpg" },
-    { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados.", img:"./info/io.jpg" },
-    { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Contadores exactos según contexto.", img:"./info/io.jpg" }
-  ];
-
-  // --- CONTROL DE TIMERS Y SONIDO ---
-  let pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout;
-  let infoActive = false; // true si algún info está visible
-
-  function showPinInfo() {
-    clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
-
-    // Pin Info aparece tras 3s
-    pinShowTimeout = setTimeout(() => {
-      if (!pinInfo.classList.contains("show")) {
-        pinInfo.classList.add("show");
-        if (!infoActive) { appearSound.currentTime=0; appearSound.play().catch(()=>{}); infoActive=true; }
-      }
-    }, 3000);
-
-    // Buy Info aparece tras 5s
-    buyShowTimeout = setTimeout(() => {
-      if (!buyInfo.classList.contains("show")) {
-        buyInfo.classList.add("show");
-        if (!infoActive) { appearSound.currentTime=0; appearSound.play().catch(()=>{}); infoActive=true; }
-      }
-    }, 5000);
-
-    // Ocultar ambos después de la duración total
-    pinHideTimeout = setTimeout(hidePinInfo, 9000);
-  }
-
-  function hidePinInfo() {
-    if (pinInfo.classList.contains("show")) {
-      pinInfo.classList.remove("show");
-      disappearSound.currentTime = 0; disappearSound.play().catch(()=>{});
-    }
-
-    if (buyInfo.classList.contains("show")) {
-      buyInfo.classList.remove("show");
-      disappearSound.currentTime = 0; disappearSound.play().catch(()=>{});
-    }
-
-    infoActive = false; // libera bloqueo de sonido
-  }
-
-  // --- CREAR PINS ---
-  pins.forEach(pin => {
-    const el = document.createElement("div");
-    el.className = "pin-led";
-    el.style.left = (pin.x*100) + "%";
-    el.style.top  = (pin.y*100) + "%";
-
-    el.addEventListener("pointerdown", e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      clickSound.currentTime=0; clickSound.play().catch(()=>{});
 
       title.textContent = pin.title;
       desc.textContent  = pin.desc;
@@ -910,20 +661,9 @@ document.addEventListener("DOMContentLoaded", () => {
     layer.appendChild(el);
   });
 
-  // --- SLIDES AUTOMÁTICAS ---
-  const slides = document.querySelectorAll('#image-slider .slider-img');
-  let current = 0;
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 8000);
-
 });
+
 </script>
-
--->
-
 
 
 
