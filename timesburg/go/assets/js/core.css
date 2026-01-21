@@ -203,6 +203,23 @@ img {
   user-select: none;
 }
 
+@media (max-width: 320px) and (orientation: portrait)  {
+    #card{
+        margin-bottom: 14rem;
+    }
+}
+@media (display-mode: standalone)  {
+    header{
+        margin-top: 1.5rem;
+    }
+    html, body{
+        height: 100vh;
+    }
+    #card{
+        margin-bottom: 0rem;
+    }
+}
+
 /* #card {
   touch-action: pan-x pan-y;
 } */
