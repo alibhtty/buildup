@@ -193,11 +193,11 @@ document.addEventListener("visibilitychange", () => {
 // --- INIT ---
 //animate()
 
-window.addEventListener("load", () => {
+/* window.addEventListener("load", () => {
   requestAnimationFrame(() => {
     animate();
   });
-});
+}); */
 
 
 
@@ -421,7 +421,22 @@ function playUISound(name, volume = 0.15) {
 });
 
 
-window.addEventListener("load", () => {
+/* window.addEventListener("load", () => {
   document.documentElement.classList.remove('loading');
   document.documentElement.classList.add('ready');
+}); */
+
+
+window.addEventListener("load", () => {
+  // 1️⃣ Marca la página como lista
+  document.documentElement.classList.remove('loading');
+  document.documentElement.classList.add('ready');
+
+  // 2️⃣ Inicia animación 3D
+  requestAnimationFrame(() => {
+    animate();
+  });
+
+  // 3️⃣ Oculta el loader con fade out
+  setTimeout(hideLoader, 500); // coincide con tu transición CSS
 });
