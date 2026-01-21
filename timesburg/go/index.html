@@ -4,7 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
 
-<title>HorarioTimes.js for Timesburg – 4B®</title>
+<meta name="theme-color" content="#000000">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="description" content="4B by alibhtty">
+<title>HorarioTimes.js – 4B®</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -12,9 +16,26 @@
 <!-- Material Symbols -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<meta property="og:title" content="HT.js – 4Bdev®">
+  <meta property="og:description" content="4Bshop">
+  <meta property="og:image" content="https://4bshop.web.app/static/share.png">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="800">
+  <meta property="og:site_name" content="4Bdev">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ali-bhtty.web.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="4Bdev – @ali.bhtty">
+  <meta name="twitter:description" content="Proyects 4B">
+  <meta name="twitter:image" content="https://4bshop.web.app/static/share.png">
 
-<!-- <script>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.jpg">
+  <link rel="icon" href="assets/icons/192x192.png">
+  <link rel="manifest" href="./manifest.json">
+
+<script>
 tailwind.config = {
   darkMode: "class",
   theme: {
@@ -29,39 +50,9 @@ tailwind.config = {
     }
   }
 }
-</script> -->
+</script>
 
-<!-- Tailwind Config -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1b855b", //00bbc2
-                        "background-light": "#f1f2f4",
-                        "background-dark": "#000000",
-                        "surface-dark": "#0a0a0a",
-                    },
-                    fontFamily: {
-                        "display": ["Epilogue", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem", 
-                        "2xl": "2rem",
-                        "full": "9999px"
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
-                },
-            },
-        }
-    </script>
-
-<!-- <style>
+<style>
 html, body {
   width: 100%;
   height: 100%;
@@ -77,6 +68,10 @@ img {
   -user-drag: none;
   user-drag: none;
 }
+.translate-z {
+  transform: translateZ(40px);
+}
+
 
 .stage {
   perspective: 1400px;
@@ -128,10 +123,10 @@ img {
 * {
   touch-action: manipulation;
 }
-.pin-led {
+/* .pin-led {
   position: absolute;
-  width: .3rem;
-  height: .3rem;
+  width: .45rem;
+  height: .45rem;
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0 0 10px #000000, 0 0 22px #000000;
@@ -156,13 +151,95 @@ img {
     border-radius: 3rem;
   top: 50%;
   left: 50%;
-  width: 2rem;   /* área clicable más grande */
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transform: translate(-50%, -50%);
 
-  /* Animación de rebote */ animation: waveBounce 5s ease-out infinite; animation-delay: 0.3s;
+  animation: waveBounce 5s ease-out infinite; animation-delay: 0.3s;
+} */
+ /* Pin normal */
+/* Pin normal */
+.pin-led {
+  position: absolute;
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #000000, 0 0 22px #000000;
+  transform: translate(-50%, -50%);
+  animation: blink 1.8s infinite;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  transition: background 0.2s, box-shadow 0.2s;
 }
-@keyframes waveBounce { 0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.4; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+
+.pin-led::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px #000;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.pin-led::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5rem;   /* área grande */
+  height: 1.5rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;   /* inicialmente transparente */
+  box-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+/* Hover o touch activo */
+.pin-led:hover,
+.pin-led.active {
+  background: #000 !important;
+  box-shadow: none !important;
+  animation: none !important; /* desactiva parpadeo */
+}
+
+.pin-led:hover::after,
+.pin-led.active::after {
+  background: #000 !important;
+  box-shadow: none !important;
+}
+
+.pin-led:hover::before,
+.pin-led.active::before {
+  background: #000 !important;   /* relleno negro completo */
+  box-shadow: none !important;   /* elimina cualquier halo */
+}
+
+@keyframes waveRadar {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0.25;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+}
 
 
 @keyframes blink {
@@ -174,9 +251,16 @@ img {
   background-color: radial #000000 ;
 }
 
+
 #card {
   touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
+
+/* #card {
+  touch-action: pan-x pan-y;
+} */
 
 #pins-layer {
   position: absolute;
@@ -218,7 +302,7 @@ img {
 
 /* Panel Info */
 /* Moviles: portrait o standalone */
-@media (max-width: 768px), (orientation: portrait) {
+@media (max-width: 1200px), (orientation: portrait) {
   #pin-info {
     min-width: 90%;
     max-height: 8rem;
@@ -276,7 +360,7 @@ img {
 }
 
 /* Desktop: landscape */
-@media (min-width: 769px) {
+@media (min-width: 1969px) {
   #pin-info {
     top: 50%;
     left: 10%;
@@ -304,6 +388,7 @@ img {
     margin-top: 0.5rem;
   }
 }
+
 
 
 /* Boton de compra */
@@ -413,8 +498,8 @@ img {
   /* background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.7), transparent 60%),
               radial-gradient(circle at 80% 80%, rgba(255,255,255,.5), transparent 50%); */
   background: 
-    radial-gradient(circle 120px at 25% 25%, rgba(0, 147, 88, .6), transparent 70%),
-    radial-gradient(circle 80px at 75% 75%, rgba(0, 147, 88, .6), transparent 70%);
+    radial-gradient(circle 240px at 25% 25%, rgba(61, 147, 0, .6), transparent 70%), /* circle 120    rgba(0, 147, 88, .6) */
+    radial-gradient(circle 200px at 75% 75%, rgba(61, 147, 88, .6), transparent 70%); /* circle 80 */
   background-repeat: no-repeat;
   background-size: 150% 150%, 120% 120%;
   opacity: 0.45;
@@ -425,52 +510,11 @@ img {
 
 
 
-</style> -->
-
-<style>
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #050600; /* 0b0900 */
-    user-select: none;       /* No se puede seleccionar texto */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-  img {
-    -webkit-user-drag: none;
-    -user-drag: none;
-    user-drag: none;
-  }
-
-        /* Custom utilities for subtle effects */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        /* Simulating the glow behind the object */
-        .ambient-glow {
-            background: radial-gradient(circle, rgba(0, 187, 194, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-        }
-        
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+</style>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display antialiased overflow-hidden selection:bg-primary selection:text-white">
-<!-- Main Container -->
+<body class="font-display text-white">
+
 <!-- NAV -->
 <header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
   <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
@@ -479,7 +523,7 @@ img {
 </div>
 
   <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
-  <a href="index-2.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
+  <a href="4b.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
 <span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
 </a>
 </header>
@@ -489,60 +533,57 @@ img {
 
   <!-- Ambient glow -->
   <div class="absolute w-[90vmin] h-[90vmin] bg-primary/40 blur-[140px] rounded-full"></div>
-<!-- Background Ambience -->
-<!-- <div class="absolute inset-0 z-0 pointer-events-none"> -->
-<!-- Subtle Radial Gradient Center -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-gradient-radial from-[#051516] via-background-dark to-background-dark opacity-80"></div>
-<!-- Additional localized glow near top right for asymmetry -->
-<div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full"></div>
-</div>
+ 
 
-<!-- Central Stage (3D Widget Placeholder) -->
-<div class="relative z-10 w-full max-w-md px-6 flex flex-col items-center justify-center grow">
-<!-- 3D Object Container -->
-<!-- Using aspect-square to force 1:1 ratio for the widget area -->
-<div class="relative w-full aspect-square max-h-[60vh] flex items-center justify-center group/widget cursor-grab active:cursor-grabbing">
-<!-- Inner Glow for depth -->
-<div class="absolute inset-0 ambient-glow scale-110 pointer-events-none transition-transform duration-700 ease-out group-hover/widget:scale-125"></div>
-<!-- The "Widget" -->
-<!-- Ideally this would be a Canvas element. Here we simulate it with a high-end image and styling -->
-<div class="relative w-full h-full rounded-2xl overflow-visible flex items-center justify-center perspective-[1000px]">
-<!-- Simulated 3D Object Image -->
-<div class="w-[75%] h-[75%] bg-contain bg-center bg-no-repeat drop-shadow-2xl transition-transform duration-500 ease-out group-hover/widget:scale-105 group-active/widget:scale-95 group-active/widget:rotate-3" data-alt="Abstract dark glossy 3D geometric shape with teal rim lighting floating in a black void" style="background-image: url('./assets/icons/192x192.png'); filter: contrast(0.98) brightness(1.1);">
-</div>
-<!-- Interactive HUD elements (Subtle) -->
-<!-- These simulate the 'widget' UI overlays that might appear in a 3D view -->
-<!-- Axis Indicator (Bottom Left of widget) -->
-<div class="absolute bottom-4 left-4 opacity-30 pointer-events-none">
-<div class="h-8 w-[1px] bg-primary absolute bottom-0 left-0"></div>
-<div class="h-[1px] w-8 bg-primary absolute bottom-0 left-0"></div>
-<span class="text-[10px] text-primary absolute -top-4 left-0 font-mono">Y</span>
-<span class="text-[10px] text-primary absolute bottom-0 left-9 font-mono">X</span>
-</div>
-<!-- Data readout (Top Right of widget) -->
-<div class="absolute top-4 right-4 flex flex-col items-end gap-1 opacity-40 pointer-events-none">
-<div class="flex items-center gap-2">
-<span class="text-[9px] text-white tracking-widest font-mono uppercase">Rotation</span>
-<div class="h-1 w-1 rounded-full bg-primary animate-pulse"></div>
-</div>
-<span class="text-[9px] text-white/60 font-mono">124.2°</span>
-</div>
-</div>
-</div>
-<!-- Interaction Hints -->
-<div class="mt-8 md:mt-4 flex flex-col items-center gap-4 text-center opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]" style="animation-fill-mode: forwards;">
-<!-- Gesture Indicator -->
-<!-- <div class="relative h-12 w-12 flex items-center justify-center rounded-full glass-panel overflow-hidden group/hint">
-<span class="material-symbols-outlined text-white/50 animate-[ping_3s_ease-in-out_infinite]" style="font-size: 16px;">touch_app</span>
-<div class="absolute inset-0 bg-primary/10 rounded-full animate-pulse"></div>
-</div> -->
-<!-- Text Hint -->
-<div class="flex flex-col gap-1">
-<p class="text-white text-lg font-medium tracking-tight">Ali Bhtty</p> <!-- Interactive View -->
-<p class="text-[#9abbbc] text-xs uppercase tracking-[0.2em] font-light">4Bdev® • 2025</p>  <!-- Drag to Rotate • Pinch to Zoom -->
-</div>
-</div>
-</div>
+  <!-- 3D CARD -->
+  <div id="card"
+    class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12">
+
+    <!-- IMAGE -->
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z" id="image-slider"> <!-- translate-z-[40px] -->
+      <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8] active" />
+      <img src="./assets/img/cover01.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
+      <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
+    </div>
+
+
+    <!-- Holo layer -->
+    <div class="holo absolute inset-0 rounded-[26px] pointer-events-none filter hue-rotate-[180deg]"></div>
+
+
+    <!-- Destellos tipo sol -->
+    <div id="flare" class="flare absolute inset-0 pointer-events-none"></div>
+
+
+    <!-- 
+    <div class="absolute inset-0 rounded-[26px] translate-z-[40px]
+                flex items-center justify-center">
+      <div class="w-[88%] h-[88%] rounded-[20px] overflow-hidden
+                  shadow-[0_20px_60px_rgba(0,0,0,.6)]">
+        <img src="./cover.jpg"
+          class="w-full h-full object-cover pointer-events-none"/>
+      </div>
+    </div> -->
+
+    <!-- Light follow -->
+     <div id="light"
+       class="light absolute inset-0 rounded-[26px] pointer-events-none
+              opacity-0 transition-opacity duration-[800ms] ease-in-out">
+     </div>
+
+    <!-- Glass reflection -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: linear-gradient(120deg, rgba(255,255,255,.12), transparent 40%);">
+    </div>
+
+    <!-- Frame -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none border border-white/10"></div>
+
+    <div id="pins-layer" class="absolute inset-0"></div>
+
+  </div>
+</main>
+
 <!-- FOOTER -->
 <div class="fixed bottom-0 left-0 w-full px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
   <div class="flex flex-col gap-1">
@@ -558,13 +599,447 @@ img {
     V 2.1.0
   </div>
 </div>
-</main>
-<!-- Keyframe animation helper style injection -->
-<style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+
+<script>
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+// --- Variables de estado ---
+let currentX = 0, currentY = 0
+let targetX = 0, targetY = 0
+let dragging = false
+let moved = false
+
+let lastFrame = 0
+
+let ignoreDrag = false
+const IGNORE_MS = 35
+
+let idleGlow = 0
+let animateId = null
+
+// --- Variables de efectos ---
+let holoEnabled = false
+let flareEnabled = true
+
+if (isIOS) {
+  holoEnabled = false
+  flareEnabled = false
+}
+
+const card  = document.getElementById("card")
+const holo  = document.querySelector(".holo")
+const flare = document.querySelector(".flare")
+const light = document.getElementById("light")
+
+if (!holoEnabled && holo) holo.style.display = "none"
+if (!flareEnabled && flare) flare.style.display = "none"
+
+// --- LERP ---
+const lerp = (a, b, n) => a + (b - a) * n
+
+// --- Pointer → Rotación ---
+function updateFromPointer(clientX, clientY) {
+  idleGlow = 0
+
+  const rect = card.getBoundingClientRect()
+  const x = (clientX - rect.left) / rect.width  - 0.5
+  const y = (clientY - rect.top)  / rect.height - 0.5
+
+  const MAX_ANGLE = 35
+  targetX = Math.max(Math.min(x * 50,  MAX_ANGLE), -MAX_ANGLE)
+  targetY = Math.max(Math.min(-y * 50, MAX_ANGLE), -MAX_ANGLE)
+
+  light.style.opacity = 1
+  light.style.background = `
+    radial-gradient(
+      780px at ${x * 100 + 50}% ${y * 100 + 50}%,
+      rgba(0,93,56,.48),
+      transparent 65%
+    )
+  `
+}
+
+// --- Pointer events ---
+let pointerFrame = null
+
+card.addEventListener("pointerdown", e => {
+  if (e.target.classList.contains("pin-led")) return
+
+  moved = false
+  dragging = true
+  ignoreDrag = true
+
+  setTimeout(() => ignoreDrag = false, IGNORE_MS)
+
+  card.setPointerCapture(e.pointerId)
+  light.classList.add("light--active")
+  card.classList.add("grabbing")
+})
+
+card.addEventListener("pointermove", e => {
+  if (!dragging && !isIOS) return
+
+  moved = true
+  if (pointerFrame) return
+
+  pointerFrame = requestAnimationFrame(() => {
+    updateFromPointer(e.clientX, e.clientY)
+    pointerFrame = null
+  })
+})
+
+function release(e) {
+  dragging = false
+
+  if (!moved) {
+    targetX = 0
+    targetY = 0
+  }
+
+  light.classList.remove("light--active")
+  card.classList.remove("grabbing")
+
+  if (e?.pointerId !== undefined) {
+    card.releasePointerCapture(e.pointerId)
+  }
+}
+
+card.addEventListener("pointerup", release)
+card.addEventListener("pointerleave", release)
+card.addEventListener("pointercancel", release)
+
+// --- Animación principal ---
+function animate() {
+  const now = performance.now()
+
+  // iOS → limitar FPS sin romper movimiento
+  if (isIOS && now - lastFrame < 32) {
+    animateId = requestAnimationFrame(animate)
+    return
+  }
+  lastFrame = now
+
+  currentX = lerp(currentX, targetX, 0.16)
+  currentY = lerp(currentY, targetY, 0.16)
+
+  card.style.transform =
+    `rotateX(${currentY}deg) rotateY(${currentX}deg)`
+
+  // --- HOLO ---
+  if (holoEnabled && holo) {
+    holo.style.backgroundPosition =
+      `${50 + currentX * 1.6}% ${50 + currentY * 1.6}%`
+  }
+
+  // --- FLARE ---
+  if (flareEnabled && flare) {
+    flare.style.backgroundPosition = `
+      ${50 + currentX * 2}% ${50 + currentY * 2}%,
+      ${50 - currentX * 2.5}% ${50 - currentY * 2.5}%`
+    flare.style.opacity =
+      0.35 + Math.min(Math.abs(currentX + currentY) / 90, 0.45)
+  }
+
+  // --- IDLE desktop ---
+  if (!isIOS && !dragging && !document.hidden) {
+    const t = now
+
+    if (holoEnabled || flareEnabled) {
+      targetX = Math.sin(t / 2000) * 18
+      targetY = Math.cos(t / 2400) * 18
+    }
+
+    idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+
+    if (flareEnabled) {
+      light.style.opacity = 0.35 + idleGlow * 0.25
+      light.style.background = `
+        radial-gradient(220px at 15% 15%,
+          rgba(0,93,56,${0.22 + idleGlow * 0.20}),
+          transparent 70%
+        ),
+        radial-gradient(220px at 85% 85%,
+          rgba(0,93,56,${0.18 + idleGlow * 0.15}),
+          transparent 75%
+        )
+      `
+    }
+  }
+
+  animateId = requestAnimationFrame(animate)
+}
+
+// --- Visibilidad ---
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    cancelAnimationFrame(animateId)
+  } else {
+    animateId = requestAnimationFrame(animate)
+  }
+})
+
+// --- INIT ---
+animate()
+</script>
+
+
+<script>
+
+  
+// --- UI SOUND ENGINE ---
+let uiAudioCtx = null;
+const uiBuffers = {};
+
+async function loadUISound(name, url) {
+  if (!uiAudioCtx) uiAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const res = await fetch(url);
+  const arrayBuffer = await res.arrayBuffer();
+  const audioBuffer = await uiAudioCtx.decodeAudioData(arrayBuffer);
+  uiBuffers[name] = audioBuffer;
+}
+
+function playUISound(name, volume = 0.15) {
+  if (!uiAudioCtx) uiAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (uiAudioCtx.state === 'suspended') uiAudioCtx.resume();
+
+  const buffer = uiBuffers[name];
+  if (!buffer) return;
+
+  const gain = uiAudioCtx.createGain();
+  gain.gain.value = volume;
+
+  const source = uiAudioCtx.createBufferSource();
+  source.buffer = buffer;
+  source.connect(gain).connect(uiAudioCtx.destination);
+  source.start();
+}
+
+// --- ESPERAR CARGA DEL DOM y SONIDOS ---
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // 1️⃣ Cargar todos los sonidos antes de usar
+  await loadUISound("click", "./assets/icons/tictac.wav");
+  await loadUISound("appear", "./assets/icons/in.wav");
+  await loadUISound("disappear", "./assets/icons/in.wav");
+
+
+  const layer = document.getElementById("pins-layer");
+  const title = document.getElementById("pin-title");
+  const desc  = document.getElementById("pin-desc");
+  const pinInfo = document.getElementById("pin-info");
+  const buyInfo = document.getElementById("buy-info");
+
+  // --- SONIDOS ---
+  /* const clickSound = new Audio('./assets/icons/tictac.wav');
+  clickSound.volume = 0.15;
+  clickSound.preload = 'auto';
+
+  const appearSound = new Audio('./assets/icons/in.wav'); 
+  appearSound.volume = 0.15;
+  appearSound.preload = 'auto';
+
+  const disappearSound = new Audio('./assets/icons/in.wav');
+  disappearSound.volume = 0.15;
+  disappearSound.preload = 'auto'; */
+
+  // --- PINS ---
+  const pins = [
+    { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
+    { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
+    { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
+    { x:0.366, y:0.056, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
+    { x:0.80, y:0.192, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
+    { x:0.055, y:0.712, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
+    { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
+    { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
+    { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+  ];
+  /* const pins = [
+    { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
+    { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
+    { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
+    { x:0.306, y:0.11, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
+    { x:0.592, y:0.246, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
+    { x:0.055, y:0.652, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
+    { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
+    { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
+    { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+  ]; */
+
+  // --- FLAGS PARA SONIDO ---
+  let pinSoundPlayed = false;
+  let buySoundPlayed = false;
+
+  // --- TIMEOUTS ---
+  let pinShowTimeout = null;
+  let pinHideTimeout = null;
+  let buyShowTimeout = null;
+  let buyHideTimeout = null;
+
+  function showPinInfo() {
+    clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
+
+    pinShowTimeout = setTimeout(() => {
+      pinInfo.classList.add("show");
+      if (!pinSoundPlayed) {
+        playUISound("appear");
+        pinSoundPlayed = true;
+      }
+    }, 1000);
+
+    buyShowTimeout = setTimeout(() => {
+      buyInfo.classList.add("show");
+      if (!buySoundPlayed) {
+        playUISound("appear");
+        buySoundPlayed = true;
+      }
+    }, 1500);
+
+    pinHideTimeout = setTimeout(hidePinInfo, 9000);
+  }
+
+  function hidePinInfo() {
+    pinInfo.classList.remove("show");
+    playUISound("disappear");
+
+    buyHideTimeout = setTimeout(() => {
+      buyInfo.classList.remove("show");
+      playUISound("disappear");
+    }, 0);
+
+    pinSoundPlayed = false;
+    buySoundPlayed = false;
+  }
+
+  // --- CREAR PINS ---
+  pins.forEach(pin => {
+    const el = document.createElement("div");
+    el.className = "pin-led";
+    el.style.left = (pin.x*100) + "%";
+    el.style.top  = (pin.y*100) + "%";
+
+    el.addEventListener("pointerdown", e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+
+      // quitar active de todos
+      document.querySelectorAll('.pin-led').forEach(p => p.classList.remove('active'));
+    
+      // poner el actual como activo
+      el.classList.add('active');
+
+      playUISound("click"); // ✅ Aquí ya funciona
+
+      title.textContent = pin.title;
+      desc.textContent = pin.desc;
+      document.getElementById("pin-img").src = pin.img;
+
+      showPinInfo();
+    });
+
+    layer.appendChild(el);
+  });
+
+  // --- SLIDES AUTOMÁTICAS ---
+  const slides = document.querySelectorAll('#image-slider .slider-img');
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 8000);
+
+  // --- Aquí pones el efecto touch para móviles ---
+  document.querySelectorAll('.pin-led').forEach(pin => {
+
+    // --- Hover en desktop ---
+    pin.addEventListener('mouseenter', () => pin.classList.add('active'));
+    pin.addEventListener('mouseleave', () => pin.classList.remove('active'));
+
+    // --- Touch en móvil ---
+    pin.addEventListener('touchstart', () => pin.classList.add('active'));
+    pin.addEventListener('touchend', () => pin.classList.remove('active'));
+    pin.addEventListener('touchcancel', () => pin.classList.remove('active'));
+
+    // --- Click / pointer release ---
+    pin.addEventListener('pointerdown', () => pin.classList.add('active'));
+    pin.addEventListener('pointerup', () => pin.classList.remove('active'));
+    pin.addEventListener('pointercancel', () => pin.classList.remove('active'));
+    pin.addEventListener('pointerleave', () => pin.classList.remove('active'));
+
+  });
+
+});
+</script>
+
+
+
+
+
+<div id="pin-info" class="info-card fixed left-6 top-1/2 -translate-y-1/2
+         z-50 opacity-0 pointer-events-none
+         bg-black/70 backdrop-blur-xl
+         border border-white/10
+         rounded-2xl p-3 max-w-[320px]
+         transition-opacity duration-300
+         flex flex-col md:flex-col lg:flex-row gap-4 items-start text-left">
+
+  
+  <!-- Imagen del pin -->
+  <img id="pin-img" src="./info/io.jpg" alt="Pin Image"
+       class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
+
+  <!-- Texto del pin -->
+  <div class="flex flex-col">
+    <h3 id="pin-title" class="text-sm font-semibold mb-1"></h3>
+    <p id="pin-desc" class="text-xs text-white/70 leading-snug"></p>
+  </div>
+</div>
+
+    <div id="buy-info"
+     class="info-card fixed z-50 opacity-0 pointer-events-none
+            bg-black/60 backdrop-blur-[18px]
+            border border-white/10
+            rounded-2xl p-3 sm:p-4
+            max-w-[340px] max-h-[85vh] overflow-y-auto
+            transition-opacity duration-300
+            flex flex-col gap-2 sm:gap-3 items-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
+
+  <!-- Icono -->
+  <img id="buy-icon" src="./info/disk-icon.png" alt="Buy Icon"
+       class="w-14 sm:w-16 h-14 sm:h-16 object-contain drop-shadow-md mb-1">
+
+  <!-- Texto de compra -->
+  <div class="w-full">
+    <h3 class="text-sm sm:text-base font-semibold mb-0.5 leading-snug">HorarioTimes.js</h3>
+    <p class="text-[10px] sm:text-xs text-white/70 leading-tight balance-text"> <!-- mb-0.5 -->
+        Nadie tiene mejores horarios que tú.
+    <!-- </p>
+    <p class="text-[10px] sx:text-xs text-white/70 leading-tight"> -->
+        La forma más práctica de ver tu rutina.
+    </p>
+  </div>
+
+  <!-- Botones compactos centrados -->
+  <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 w-full mt-0">
+    <!-- Descarga gratuita -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-white text-black text-[10px] sm:text-xs font-medium 
+              hover:bg-gray-100 transition-colors duration-200 shadow-sm">
+      Free mode
+    </a>
+  
+    <!-- Comprar PRO -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-[#327D5F] text-white text-[10px] sm:text-xs font-medium 
+              hover:bg-[#00b078] transition-colors duration-200 shadow-sm">
+      Comprar PRO
+    </a>
+  </div>
+</div>
+
+
 </body>
 </html>
