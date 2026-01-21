@@ -68,10 +68,6 @@ img {
   -user-drag: none;
   user-drag: none;
 }
-.translate-z {
-  transform: translateZ(40px);
-}
-
 
 .stage {
   perspective: 1400px;
@@ -170,7 +166,7 @@ img {
 }
 
 #card {
-  touch-action: pan-x pan-y;
+  touch-action: none;
 }
 
 #pins-layer {
@@ -450,7 +446,7 @@ img {
     class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12">
 
     <!-- IMAGE -->
-    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z" id="image-slider"> <!-- translate-z-[40px] -->
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z-[40px]" id="image-slider">
       <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8] active" />
       <img src="./assets/img/cover01.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
       <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
@@ -511,17 +507,11 @@ img {
 </div>
 
 <script>
-
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
 // --- Variables de estado ---
 let currentX = 0, currentY = 0
 let targetX = 0, targetY = 0
 let dragging = false
 let moved = false
-
-let lastFrame = 0 // ⬅️ AQUÍ
-
 let ignoreDrag = false; // NUEVO: ignorar arrastre inicial
 const IGNORE_MS = 35;   // milisegundos a ignorar
 
@@ -531,14 +521,8 @@ let animateId = null
 //
 //  Variables de efectos
 //
-let holoEnabled = false    // HOLO DESACTIVADO
+let holoEnabled = true    // HOLO DESACTIVADO
 let flareEnabled = true    // DESTELLO ACTIVADO
-if (isIOS) {
-  holoEnabled = false;
-  flareEnabled = false;
-}
-
-
 const card = document.getElementById("card")
 const holo = document.querySelector(".holo")
 const flare = document.querySelector(".flare")
@@ -616,18 +600,6 @@ card.addEventListener("pointermove", e => {
   if (!dragging) return
   updateFromPointer(e)
 }) */
-/* if (!isIOS) {
-  card.addEventListener("pointermove", e => {
-    if (!dragging || ignoreDrag) return;
-    updateFromPointer(e);
-  });
-}
-if (isIOS) {
-  card.addEventListener("touchmove", e => {
-    if (!dragging) return;
-    updateFromPointer(e.touches[0]);
-  }, { passive: true });
-} */
 
 function release(e) {
   dragging = false
@@ -650,70 +622,56 @@ card.addEventListener("pointerleave", release)
 card.addEventListener("pointercancel", release)
 
 
-//let lastFrame = 0
-
 // --- Animación principal ---
 function animate() {
-
-  const now = performance.now()
-
-  // iOS: limitar FPS (≈30fps) SIN romper movimiento
-  if (isIOS && now - lastFrame < 32) {
-    animateId = requestAnimationFrame(animate)
-    return
-  }
-  lastFrame = now
-
-  // --- Interpolación suave (TU lógica original) ---
+  // Interpolación suave
   currentX = lerp(currentX, targetX, 0.16)
   currentY = lerp(currentY, targetY, 0.16)
   card.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`
 
-  // --- HOLO FOLLOW ---
-  if (holoEnabled && holo) {
-    holo.style.backgroundPosition =
-      `${50 + currentX * 1.6}% ${50 + currentY * 1.6}%`
+  // HOLO FOLLOW
+if (holoEnabled && holo) {
+  holo.style.backgroundPosition = `${50 + currentX * 1.6}% ${50 + currentY * 1.6}%`
+}
+
+// DESTELLOS / FLARE
+if (flareEnabled && flare) {
+  flare.style.backgroundPosition = `
+    ${50 + currentX * 2}% ${50 + currentY * 2}%,
+    ${50 - currentX * 2.5}% ${50 - currentY * 2.5}%`
+  flare.style.opacity = 0.35 + Math.min(Math.abs(currentX + currentY)/90, 0.45)
+}
+
+// Solo si quieres, también puedes desactivar todo el "idle glow" de los efectos
+if (!dragging && !document.hidden) {
+  const t = Date.now()
+  if (holoEnabled || flareEnabled) {
+    targetX = Math.sin(t / 2000) * 18
+    targetY = Math.cos(t / 2400) * 18
   }
 
-  // --- DESTELLOS / FLARE ---
-  if (flareEnabled && flare) {
-    flare.style.backgroundPosition = `
-      ${50 + currentX * 2}% ${50 + currentY * 2}%,
-      ${50 - currentX * 2.5}% ${50 - currentY * 2.5}%`
-    flare.style.opacity =
-      0.35 + Math.min(Math.abs(currentX + currentY) / 90, 0.45)
+  idleGlow = (Math.sin(t / 1800) + 1) * 0.5
+
+  if (flareEnabled) {
+    light.style.opacity = 0.35 + idleGlow * 0.25
+    light.style.background = `
+      radial-gradient(220px at 15% 15%,
+        rgba(0,93,56,${0.22 + idleGlow * 0.20}),
+        transparent 70%
+      ),
+      radial-gradient(220px at 85% 85%,
+        rgba(0,93,56,${0.18 + idleGlow * 0.15}),
+        transparent 75%
+      )
+    `
   }
-
-  // --- Idle SOLO desktop ---
-  if (!isIOS && !dragging && !document.hidden) {
-    const t = now
-
-    if (holoEnabled || flareEnabled) {
-      targetX = Math.sin(t / 2000) * 18
-      targetY = Math.cos(t / 2400) * 18
-    }
-
-    idleGlow = (Math.sin(t / 1800) + 1) * 0.5
-
-    if (flareEnabled) {
-      light.style.opacity = 0.35 + idleGlow * 0.25
-      light.style.background = `
-        radial-gradient(220px at 15% 15%,
-          rgba(0,93,56,${0.22 + idleGlow * 0.20}),
-          transparent 70%
-        ),
-        radial-gradient(220px at 85% 85%,
-          rgba(0,93,56,${0.18 + idleGlow * 0.15}),
-          transparent 75%
-        )
-      `
-    }
-  }
+}
 
   animateId = requestAnimationFrame(animate)
 }
 
-
+// --- Inicializa animación ---
+animate()
 
 // --- Pausar cuando la pestaña no está visible ---
 document.addEventListener("visibilitychange", () => {
