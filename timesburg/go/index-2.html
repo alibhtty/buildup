@@ -169,9 +169,16 @@ img {
   background-color: radial #000000 ;
 }
 
+
 #card {
-  touch-action: pan-x pan-y;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
+
+/* #card {
+  touch-action: pan-x pan-y;
+} */
 
 #pins-layer {
   position: absolute;
@@ -511,7 +518,6 @@ img {
 </div>
 
 <script>
-
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 // --- Variables de estado ---
@@ -520,65 +526,59 @@ let targetX = 0, targetY = 0
 let dragging = false
 let moved = false
 
-let lastFrame = 0 // ⬅️ AQUÍ
+let lastFrame = 0
 
-let ignoreDrag = false; // NUEVO: ignorar arrastre inicial
-const IGNORE_MS = 35;   // milisegundos a ignorar
+let ignoreDrag = false
+const IGNORE_MS = 35
 
 let idleGlow = 0
 let animateId = null
 
-//
-//  Variables de efectos
-//
-let holoEnabled = false    // HOLO DESACTIVADO
-let flareEnabled = true    // DESTELLO ACTIVADO
+// --- Variables de efectos ---
+let holoEnabled = false
+let flareEnabled = true
+
 if (isIOS) {
-  holoEnabled = false;
-  flareEnabled = false;
+  holoEnabled = false
+  flareEnabled = false
 }
 
-
-const card = document.getElementById("card")
-const holo = document.querySelector(".holo")
+const card  = document.getElementById("card")
+const holo  = document.querySelector(".holo")
 const flare = document.querySelector(".flare")
 const light = document.getElementById("light")
 
-// Oculta las capas si están desactivadas
-if (!holoEnabled && holo) holo.style.display = 'none';
-if (!flareEnabled && flare) flare.style.display = 'none';
+if (!holoEnabled && holo) holo.style.display = "none"
+if (!flareEnabled && flare) flare.style.display = "none"
 
-// --- Función de interpolación ---
+// --- LERP ---
 const lerp = (a, b, n) => a + (b - a) * n
 
-// --- Actualiza posición de la luz durante drag ---
-function updateFromPointer(e) {
+// --- Pointer → Rotación ---
+function updateFromPointer(clientX, clientY) {
   idleGlow = 0
+
   const rect = card.getBoundingClientRect()
-  const x = (e.clientX - rect.left) / rect.width - 0.5
-  const y = (e.clientY - rect.top) / rect.height - 0.5
+  const x = (clientX - rect.left) / rect.width  - 0.5
+  const y = (clientY - rect.top)  / rect.height - 0.5
 
-  targetX = x * 40 //24
-  targetY = -y * 40 //24
-
-  const MAX_ANGLE = 35; // ángulo máximo permitido
-
-  // dentro de updateFromPointer
-  targetX = Math.max(Math.min(x * 50, MAX_ANGLE), -MAX_ANGLE);
-  targetY = Math.max(Math.min(-y * 50, MAX_ANGLE), -MAX_ANGLE);
-
+  const MAX_ANGLE = 35
+  targetX = Math.max(Math.min(x * 50,  MAX_ANGLE), -MAX_ANGLE)
+  targetY = Math.max(Math.min(-y * 50, MAX_ANGLE), -MAX_ANGLE)
 
   light.style.opacity = 1
   light.style.background = `
     radial-gradient(
-      780px at ${x*100+50}% ${y*100+50}%,
+      780px at ${x * 100 + 50}% ${y * 100 + 50}%,
       rgba(0,93,56,.48),
       transparent 65%
     )
   `
 }
 
-// --- Manejo de drag ---
+// --- Pointer events ---
+let pointerFrame = null
+
 card.addEventListener("pointerdown", e => {
   if (e.target.classList.contains("pin-led")) return
 
@@ -586,52 +586,28 @@ card.addEventListener("pointerdown", e => {
   dragging = true
   ignoreDrag = true
 
-  // desactivar ignoreDrag después de IGNORE_MS
-  setTimeout(() => {
-    ignoreDrag = false;
-  }, IGNORE_MS);
+  setTimeout(() => ignoreDrag = false, IGNORE_MS)
 
   card.setPointerCapture(e.pointerId)
   light.classList.add("light--active")
   card.classList.add("grabbing")
 })
 
-
-let pointerFrame = null;
-
 card.addEventListener("pointermove", e => {
-  if (!dragging) return;
-
-  if (ignoreDrag) return;
+  if (!dragging && !isIOS) return
 
   moved = true
-  if (pointerFrame) return;
-  pointerFrame = requestAnimationFrame(() => {
-    updateFromPointer(e);
-    pointerFrame = null;
-  });
-});
+  if (pointerFrame) return
 
-/* card.addEventListener("pointermove", e => {
-  if (!dragging) return
-  updateFromPointer(e)
-}) */
-/* if (!isIOS) {
-  card.addEventListener("pointermove", e => {
-    if (!dragging || ignoreDrag) return;
-    updateFromPointer(e);
-  });
-}
-if (isIOS) {
-  card.addEventListener("touchmove", e => {
-    if (!dragging) return;
-    updateFromPointer(e.touches[0]);
-  }, { passive: true });
-} */
+  pointerFrame = requestAnimationFrame(() => {
+    updateFromPointer(e.clientX, e.clientY)
+    pointerFrame = null
+  })
+})
 
 function release(e) {
   dragging = false
-  // Solo resetear si no hubo movimiento
+
   if (!moved) {
     targetX = 0
     targetY = 0
@@ -649,33 +625,30 @@ card.addEventListener("pointerup", release)
 card.addEventListener("pointerleave", release)
 card.addEventListener("pointercancel", release)
 
-
-//let lastFrame = 0
-
 // --- Animación principal ---
 function animate() {
-
   const now = performance.now()
 
-  // iOS: limitar FPS (≈30fps) SIN romper movimiento
+  // iOS → limitar FPS sin romper movimiento
   if (isIOS && now - lastFrame < 32) {
     animateId = requestAnimationFrame(animate)
     return
   }
   lastFrame = now
 
-  // --- Interpolación suave (TU lógica original) ---
   currentX = lerp(currentX, targetX, 0.16)
   currentY = lerp(currentY, targetY, 0.16)
-  card.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`
 
-  // --- HOLO FOLLOW ---
+  card.style.transform =
+    `rotateX(${currentY}deg) rotateY(${currentX}deg)`
+
+  // --- HOLO ---
   if (holoEnabled && holo) {
     holo.style.backgroundPosition =
       `${50 + currentX * 1.6}% ${50 + currentY * 1.6}%`
   }
 
-  // --- DESTELLOS / FLARE ---
+  // --- FLARE ---
   if (flareEnabled && flare) {
     flare.style.backgroundPosition = `
       ${50 + currentX * 2}% ${50 + currentY * 2}%,
@@ -684,7 +657,7 @@ function animate() {
       0.35 + Math.min(Math.abs(currentX + currentY) / 90, 0.45)
   }
 
-  // --- Idle SOLO desktop ---
+  // --- IDLE desktop ---
   if (!isIOS && !dragging && !document.hidden) {
     const t = now
 
@@ -713,9 +686,7 @@ function animate() {
   animateId = requestAnimationFrame(animate)
 }
 
-
-
-// --- Pausar cuando la pestaña no está visible ---
+// --- Visibilidad ---
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     cancelAnimationFrame(animateId)
@@ -723,11 +694,53 @@ document.addEventListener("visibilitychange", () => {
     animateId = requestAnimationFrame(animate)
   }
 })
+
+// --- INIT ---
+animate()
 </script>
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+
+  
+// --- UI SOUND ENGINE ---
+let uiAudioCtx = null;
+const uiBuffers = {};
+
+async function loadUISound(name, url) {
+  if (!uiAudioCtx) uiAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const res = await fetch(url);
+  const arrayBuffer = await res.arrayBuffer();
+  const audioBuffer = await uiAudioCtx.decodeAudioData(arrayBuffer);
+  uiBuffers[name] = audioBuffer;
+}
+
+function playUISound(name, volume = 0.15) {
+  if (!uiAudioCtx) uiAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (uiAudioCtx.state === 'suspended') uiAudioCtx.resume();
+
+  const buffer = uiBuffers[name];
+  if (!buffer) return;
+
+  const gain = uiAudioCtx.createGain();
+  gain.gain.value = volume;
+
+  const source = uiAudioCtx.createBufferSource();
+  source.buffer = buffer;
+  source.connect(gain).connect(uiAudioCtx.destination);
+  source.start();
+}
+
+// --- ESPERAR CARGA DEL DOM y SONIDOS ---
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // 1️⃣ Cargar todos los sonidos antes de usar
+  await loadUISound("click", "./assets/icons/tictac.wav");
+  await loadUISound("appear", "./assets/icons/in.wav");
+  await loadUISound("disappear", "./assets/icons/in.wav");
+
+
   const layer = document.getElementById("pins-layer");
   const title = document.getElementById("pin-title");
   const desc  = document.getElementById("pin-desc");
@@ -735,7 +748,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buyInfo = document.getElementById("buy-info");
 
   // --- SONIDOS ---
-  const clickSound = new Audio('./assets/icons/tictac.wav');
+  /* const clickSound = new Audio('./assets/icons/tictac.wav');
   clickSound.volume = 0.15;
   clickSound.preload = 'auto';
 
@@ -745,7 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const disappearSound = new Audio('./assets/icons/in.wav');
   disappearSound.volume = 0.15;
-  disappearSound.preload = 'auto';
+  disappearSound.preload = 'auto'; */
 
   // --- PINS ---
   const pins = [
@@ -784,42 +797,34 @@ document.addEventListener("DOMContentLoaded", () => {
   function showPinInfo() {
     clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
 
-    // Pin Info aparece tras 3s
     pinShowTimeout = setTimeout(() => {
       pinInfo.classList.add("show");
       if (!pinSoundPlayed) {
-        appearSound.currentTime = 0;
-        appearSound.play().catch(() => {});
+        playUISound("appear");
         pinSoundPlayed = true;
       }
     }, 1000);
 
-    // Buy Info aparece tras 5s
     buyShowTimeout = setTimeout(() => {
       buyInfo.classList.add("show");
       if (!buySoundPlayed) {
-        appearSound.currentTime = 0;
-        appearSound.play().catch(() => {});
+        playUISound("appear");
         buySoundPlayed = true;
       }
     }, 1500);
 
-    // Ocultar ambos después de la duración total
     pinHideTimeout = setTimeout(hidePinInfo, 9000);
   }
 
   function hidePinInfo() {
     pinInfo.classList.remove("show");
-    disappearSound.currentTime = 0;
-    disappearSound.play().catch(() => {});
+    playUISound("disappear");
 
     buyHideTimeout = setTimeout(() => {
       buyInfo.classList.remove("show");
-      disappearSound.currentTime = 0;
-      disappearSound.play().catch(() => {});
+      playUISound("disappear");
     }, 0);
 
-    // Resetear flags para la próxima aparición
     pinSoundPlayed = false;
     buySoundPlayed = false;
   }
@@ -835,8 +840,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       e.stopPropagation();
 
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
+      playUISound("click"); // ✅ Aquí ya funciona
 
       title.textContent = pin.title;
       desc.textContent = pin.desc;
@@ -850,121 +854,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
-
-<!-- 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const card = document.getElementById("card");
-  const layer = document.getElementById("pins-layer");
-  const title = document.getElementById("pin-title");
-  const desc  = document.getElementById("pin-desc");
-  const pinInfo = document.getElementById("pin-info");
-  const buyInfo = document.getElementById("buy-info");
-
-  // --- SONIDOS ---
-  const clickSound = new Audio('./assets/icons/tictac.wav');
-  clickSound.volume = 0.15;
-  clickSound.preload = 'auto';
-
-  const appearSound = new Audio('./assets/icons/in.wav'); 
-  appearSound.volume = 0.15;
-  appearSound.preload = 'auto';
-
-  const disappearSound = new Audio('./assets/icons/out.wav');
-  disappearSound.volume = 0.15;
-  disappearSound.preload = 'auto';
-
-  // --- PINS ---
-  const pins = [
-    { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango 10:30-17:00", img:"./info/cpu.jpg" },
-    { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango 19:00-01:00", img:"./info/io.jpg" },
-    { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
-    { x:0.306, y:0.11, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
-    { x:0.592, y:0.246, title:"Comidas", desc:"Comida de fin de franja según cálculo de horas.", img:"./info/power.jpg" },
-    { x:0.055, y:0.652, title:"Turnos de Apertura y Cierre", desc:"Miembros que abren y cierran el turno indicado con colores.", img:"./info/io.jpg" },
-    { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Lineas de color azúl = 2 días con PRO; grises = días vacíos.", img:"./info/io.jpg" },
-    { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados.", img:"./info/io.jpg" },
-    { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Contadores exactos según contexto.", img:"./info/io.jpg" }
-  ];
-
-  // --- CONTROL DE TIMERS Y SONIDO ---
-  let pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout;
-  let infoActive = false; // true si algún info está visible
-
-  function showPinInfo() {
-    clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
-
-    // Pin Info aparece tras 3s
-    pinShowTimeout = setTimeout(() => {
-      if (!pinInfo.classList.contains("show")) {
-        pinInfo.classList.add("show");
-        if (!infoActive) { appearSound.currentTime=0; appearSound.play().catch(()=>{}); infoActive=true; }
-      }
-    }, 3000);
-
-    // Buy Info aparece tras 5s
-    buyShowTimeout = setTimeout(() => {
-      if (!buyInfo.classList.contains("show")) {
-        buyInfo.classList.add("show");
-        if (!infoActive) { appearSound.currentTime=0; appearSound.play().catch(()=>{}); infoActive=true; }
-      }
-    }, 5000);
-
-    // Ocultar ambos después de la duración total
-    pinHideTimeout = setTimeout(hidePinInfo, 9000);
-  }
-
-  function hidePinInfo() {
-    if (pinInfo.classList.contains("show")) {
-      pinInfo.classList.remove("show");
-      disappearSound.currentTime = 0; disappearSound.play().catch(()=>{});
-    }
-
-    if (buyInfo.classList.contains("show")) {
-      buyInfo.classList.remove("show");
-      disappearSound.currentTime = 0; disappearSound.play().catch(()=>{});
-    }
-
-    infoActive = false; // libera bloqueo de sonido
-  }
-
-  // --- CREAR PINS ---
-  pins.forEach(pin => {
-    const el = document.createElement("div");
-    el.className = "pin-led";
-    el.style.left = (pin.x*100) + "%";
-    el.style.top  = (pin.y*100) + "%";
-
-    el.addEventListener("pointerdown", e => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      clickSound.currentTime=0; clickSound.play().catch(()=>{});
-
-      title.textContent = pin.title;
-      desc.textContent  = pin.desc;
-      document.getElementById("pin-img").src = pin.img;
-
-      showPinInfo();
-    });
-
-    layer.appendChild(el);
-  });
-
-  // --- SLIDES AUTOMÁTICAS ---
-  const slides = document.querySelectorAll('#image-slider .slider-img');
-  let current = 0;
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 8000);
-
-});
-</script>
-
--->
 
 
 
