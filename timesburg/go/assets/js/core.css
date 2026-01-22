@@ -144,14 +144,50 @@ img {
 }
 
 /* Hover o touch activo */
-.pin-led:hover,
+/* .pin-led:hover,
+.pin-led.active { */
 .pin-led.active {
   background: #000 !important;
   box-shadow: none !important;
   animation: none !important; /* desactiva parpadeo */
 }
 
-.pin-led:hover::after,
+.pin-led.active {
+  background: #000;
+  box-shadow: none;
+  animation: none;
+}
+
+.pin-led.active::after {
+  background: #000;
+  box-shadow: none;
+}
+
+.pin-led.active::before {
+  background: #000;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pin-led:hover {
+    background: #000;
+    box-shadow: none;
+    animation: none;
+  }
+
+  .pin-led:hover::after,
+  .pin-led:hover::before {
+    background: #000;
+    box-shadow: none;
+  }
+}
+
+.pin-led {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+/* .pin-led:hover::after,
 .pin-led.active::after {
   background: #000 !important;
   box-shadow: none !important;
@@ -159,9 +195,10 @@ img {
 
 .pin-led:hover::before,
 .pin-led.active::before {
-  background: #000 !important;   /* relleno negro completo */
-  box-shadow: none !important;   /* elimina cualquier halo */
-}
+  background: #000 !important;
+  box-shadow: none !important;
+} */
+
 
 @keyframes waveRadar {
   0% {
@@ -201,6 +238,20 @@ img {
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
+}
+#card {
+  cursor: grab;
+}
+
+#card.grabbing {
+  cursor: grabbing;
+}
+
+/* Evitar que el transform afecte al hit-testing */
+#card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 320px) and (orientation: portrait)  {
@@ -429,9 +480,10 @@ img {
       rgba(255,255,255,.28),
       rgba(0,231,255,.45)
     ),
-    url("./assets/icons/sparkles.webp"); /* https://assets.codepen.io/13471/sparkles.gif */
+    /* url("./assets/icons/sparkles.webp") */ ; 
 
     /* textura cuadros. -  https://i.pinimg.com/originals/bf/36/76/bf3676d6107b8953decfb33ad16ebf9b.gif */
+    /* https://assets.codepen.io/13471/sparkles.gif */
   background-size: 280% 280%, 160%;
   background-position: 50% 50%, 50% 50%;
   background-blend-mode: overlay;

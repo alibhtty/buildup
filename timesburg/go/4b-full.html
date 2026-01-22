@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
+
+<title>HorarioTimes.js for Timesburg – 4B®</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<!-- <script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1b855b", // 00bbc2 005d38
+        bg: "#000000"
+      },
+      fontFamily: {
+        display: ["Epilogue", "sans-serif"]
+      }
+    }
+  }
+}
+</script> -->
+
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1b855b", //00bbc2
+                        "background-light": "#f1f2f4",
+                        "background-dark": "#000000",
+                        "surface-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Epilogue", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem", 
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+
+<!-- <style>
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050600; /* 0b0900 */
+  user-select: none;       /* No se puede seleccionar texto */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+img {
+  -webkit-user-drag: none;
+  -user-drag: none;
+  user-drag: none;
+}
+
+.stage {
+  perspective: 1400px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.light {
+  mix-blend-mode: screen;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.light--active {
+  opacity: 1;
+}
+.balance-text {
+    text-wrap: balance;
+}
+
+.slider-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 2.2s ease-in-out;
+}
+
+.slider-img.active {
+  opacity: 1;
+}
+
+
+
+
+* {
+  touch-action: manipulation;
+}
+.pin-led {
+  position: absolute;
+  width: .3rem;
+  height: .3rem;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #000000, 0 0 22px #000000;
+  transform: translate(-50%, -50%);
+  animation: blink 1.8s infinite;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+.pin-led::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px #000;
+}
+.pin-led::before {
+  content: "";
+  position: absolute;
+    box-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff;
+    border-radius: 3rem;
+  top: 50%;
+  left: 50%;
+  width: 2rem;   /* área clicable más grande */
+  height: 2rem;
+  transform: translate(-50%, -50%);
+
+  /* Animación de rebote */ animation: waveBounce 5s ease-out infinite; animation-delay: 0.3s;
+}
+@keyframes waveBounce { 0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.4; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+
+
+@keyframes blink {
+  0%,100% { opacity: 1 }
+  50% { opacity: .3 }
+}
+
+.pin-led:active::before {
+  background-color: radial #000000 ;
+}
+
+#card {
+  touch-action: none;
+}
+
+#pins-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;           /* encima del card interno */
+  pointer-events: auto;  /* el layer no bloquea */
+}
+
+
+.info-card {
+  opacity: 0;
+  pointer-events: none;
+  /* transition: opacity .4s ease; */
+  /* transition: opacity 0.9s cubic-bezier(.4,0,.2,1); */
+  /* transform: translateY(16px) scale(.94);
+  transition:
+    opacity 1.1s cubic-bezier(.22,1,.36,1),
+    transform 1.1s cubic-bezier(.22,1,.36,1); */
+
+    transform:
+    translateY(22px)
+    scale(.92);
+  filter: blur(4px);
+  transition:
+    opacity 1.2s cubic-bezier(.22,1,.36,1),
+    transform 3.2s cubic-bezier(.22,1,.36,1),
+    filter 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+.info-card.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+
+
+
+/* Panel Info */
+/* Moviles: portrait o standalone */
+@media (max-width: 768px), (orientation: portrait) {
+  #pin-info {
+    min-width: 90%;
+    max-height: 8rem;
+    overflow: hidden;
+    top: 4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;  /* imagen al lado del texto */
+    max-width: 80%;
+    visibility: visible;
+    opacity: 0;
+    gap: .5rem;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+  }
+
+  #pin-info.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  #pin-img {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+@media (max-width: 768px), (display-mode: standalone) {
+  #pin-info {
+    min-width: 90%;
+    max-height: 9rem;
+    overflow: hidden;
+    top: 4.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;  /* imagen al lado del texto */
+    max-width: 80%;
+    visibility: visible;
+    opacity: 0;
+    gap: .5rem;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+  }
+
+  #pin-info.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  #pin-img {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+/* Desktop: landscape */
+@media (min-width: 769px) {
+  #pin-info {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    background-color: #111111;
+    flex-direction: column; /* imagen debajo del texto */
+    max-width: 17rem;
+    visibility: visible;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+    height: 24rem;
+    max-height: 24rem;
+  }
+
+  #pin-info.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  #pin-img {
+    width: 15rem;
+    height: 15rem;
+    margin-top: 0.5rem;
+  }
+}
+
+
+/* Boton de compra */
+/* Desktop: derecha del card */
+@media (min-width: 1369px) {
+  #buy-info {
+    /* bottom: 5rem; */
+    height: 22rem;
+    background-color: #222222;
+    /* left: 10%; */
+    right: 10%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    max-width: 17rem;
+    height: 24rem;
+
+    top: 50%;
+
+    transition: opacity .6s ease-in-out;
+  }
+}
+
+/* Movil / portrait: debajo del card */
+@media (max-width: 868px), (orientation: portrait) {
+  #buy-info {
+    max-height: 8rem;
+    background-color: #222222;
+    
+    min-width: 90%;
+    /* transform: translateX(-50%); */
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    bottom: 5.5rem;
+  }
+}
+@media (max-width: 868px), (display-mode: standalone) {
+  #buy-info {
+    max-height: 8rem;
+    background-color: #222222;
+    min-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    bottom: 6.5rem;
+  }
+}
+
+/* Clase show para fade-in/fade-out */
+#buy-info.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.holo, .flare {
+  opacity: 0;   /* ocultas por defecto */
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.holo.active, .flare.active {
+  opacity: 1;
+}
+
+/* HOLO LAYER (mejorado) */
+.holo {
+  opacity: .23;
+  mix-blend-mode: color-dodge;
+
+  background-image:
+    linear-gradient(
+      125deg,
+      rgba(0,231,255,.45),
+      rgba(255,0,231,.35),
+      rgba(255,255,255,.28),
+      rgba(0,231,255,.45)
+    ),
+    url("./assets/icons/sparkles.webp"); /* https://assets.codepen.io/13471/sparkles.gif */
+
+    /* textura cuadros. -  https://i.pinimg.com/originals/bf/36/76/bf3676d6107b8953decfb33ad16ebf9b.gif */
+  background-size: 280% 280%, 160%;
+  background-position: 50% 50%, 50% 50%;
+  background-blend-mode: overlay;
+
+  filter: brightness(1.1) contrast(1.3) saturate(1.1);
+  transition:
+    opacity .6s ease,
+    filter .6s ease,
+    background-position .2s linear;
+}
+
+/* movimiento lento base (idle) */
+@keyframes holoShift {
+  0%   { background-position:   0% 50%, 50% 50%; }
+  50%  { background-position: 100% 50%, 60% 60%; }
+  100% { background-position:   0% 50%, 50% 50%; }
+}
+
+.holo {
+  animation: holoShift 8s ease-in-out infinite;
+}
+
+
+/* Destellos tipo sol / lens flare */
+.flare {
+  /* background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.7), transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,.5), transparent 50%); */
+  background: 
+    radial-gradient(circle 120px at 25% 25%, rgba(0, 147, 88, .6), transparent 70%),
+    radial-gradient(circle 80px at 75% 75%, rgba(0, 147, 88, .6), transparent 70%);
+  background-repeat: no-repeat;
+  background-size: 150% 150%, 120% 120%;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  filter: blur(10px) brightness(1.4);
+  transition: background-position 0.1s linear, opacity 0.3s ease;
+}
+
+
+
+</style> -->
+
+<style>
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050600; /* 0b0900 */
+    user-select: none;       /* No se puede seleccionar texto */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  img {
+    -webkit-user-drag: none;
+    -user-drag: none;
+    user-drag: none;
+  }
+
+        /* Custom utilities for subtle effects */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Simulating the glow behind the object */
+        .ambient-glow {
+            background: radial-gradient(circle, rgba(0, 187, 194, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display antialiased overflow-hidden selection:bg-primary selection:text-white">
+<!-- Main Container -->
+<!-- NAV -->
+<header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
+  <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
+  <span class="text-base">HorarioTimes.js</span>
+  <p class="text-xs text-white/50 mt-">4bdeveloper® 2025</p>
+</div>
+
+  <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
+  <a href="index-2.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
+<span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
+</a>
+</header>
+
+<!-- STAGE -->
+<main class="stage w-screen h-screen flex items-center justify-center relative">
+
+  <!-- Ambient glow -->
+  <div class="absolute w-[90vmin] h-[90vmin] bg-primary/40 blur-[140px] rounded-full"></div>
+<!-- Background Ambience -->
+<!-- <div class="absolute inset-0 z-0 pointer-events-none"> -->
+<!-- Subtle Radial Gradient Center -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-gradient-radial from-[#051516] via-background-dark to-background-dark opacity-80"></div>
+<!-- Additional localized glow near top right for asymmetry -->
+<div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full"></div>
+</div>
+
+<!-- Central Stage (3D Widget Placeholder) -->
+<div class="relative z-10 w-full max-w-md px-6 flex flex-col items-center justify-center grow">
+<!-- 3D Object Container -->
+<!-- Using aspect-square to force 1:1 ratio for the widget area -->
+<div class="relative w-full aspect-square max-h-[60vh] flex items-center justify-center group/widget cursor-grab active:cursor-grabbing">
+<!-- Inner Glow for depth -->
+<div class="absolute inset-0 ambient-glow scale-110 pointer-events-none transition-transform duration-700 ease-out group-hover/widget:scale-125"></div>
+<!-- The "Widget" -->
+<!-- Ideally this would be a Canvas element. Here we simulate it with a high-end image and styling -->
+<div class="relative w-full h-full rounded-2xl overflow-visible flex items-center justify-center perspective-[1000px]">
+<!-- Simulated 3D Object Image -->
+<div class="w-[75%] h-[75%] bg-contain bg-center bg-no-repeat drop-shadow-2xl transition-transform duration-500 ease-out group-hover/widget:scale-105 group-active/widget:scale-95 group-active/widget:rotate-3" data-alt="Abstract dark glossy 3D geometric shape with teal rim lighting floating in a black void" style="background-image: url('./assets/icons/192x192.png'); filter: contrast(0.98) brightness(1.1);">
+</div>
+<!-- Interactive HUD elements (Subtle) -->
+<!-- These simulate the 'widget' UI overlays that might appear in a 3D view -->
+<!-- Axis Indicator (Bottom Left of widget) -->
+<div class="absolute bottom-4 left-4 opacity-30 pointer-events-none">
+<div class="h-8 w-[1px] bg-primary absolute bottom-0 left-0"></div>
+<div class="h-[1px] w-8 bg-primary absolute bottom-0 left-0"></div>
+<span class="text-[10px] text-primary absolute -top-4 left-0 font-mono">Y</span>
+<span class="text-[10px] text-primary absolute bottom-0 left-9 font-mono">X</span>
+</div>
+<!-- Data readout (Top Right of widget) -->
+<div class="absolute top-4 right-4 flex flex-col items-end gap-1 opacity-40 pointer-events-none">
+<div class="flex items-center gap-2">
+<span class="text-[9px] text-white tracking-widest font-mono uppercase">Rotation</span>
+<div class="h-1 w-1 rounded-full bg-primary animate-pulse"></div>
+</div>
+<span class="text-[9px] text-white/60 font-mono">124.2°</span>
+</div>
+</div>
+</div>
+<!-- Interaction Hints -->
+<div class="mt-8 md:mt-4 flex flex-col items-center gap-4 text-center opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]" style="animation-fill-mode: forwards;">
+<!-- Gesture Indicator -->
+<!-- <div class="relative h-12 w-12 flex items-center justify-center rounded-full glass-panel overflow-hidden group/hint">
+<span class="material-symbols-outlined text-white/50 animate-[ping_3s_ease-in-out_infinite]" style="font-size: 16px;">touch_app</span>
+<div class="absolute inset-0 bg-primary/10 rounded-full animate-pulse"></div>
+</div> -->
+<!-- Text Hint -->
+<div class="flex flex-col gap-1">
+<p class="text-white text-lg font-medium tracking-tight">Ali Bhtty</p> <!-- Interactive View -->
+<p class="text-[#9abbbc] text-xs uppercase tracking-[0.2em] font-light">4Bdev® • 2025</p>  <!-- Drag to Rotate • Pinch to Zoom -->
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<div class="fixed bottom-0 left-0 w-full px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
+  <div class="flex flex-col gap-1">
+    <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
+      <span class="w-1 h-1 bg-green-500 rounded-full"></span>
+      SERVER ON 4B
+    </div>
+    <div class="text-[9px] text-white/50 font-mono">
+      60FPS • <span class="text-primary">WEBGL</span> • <span class="text-primary">System Ready</span>
+    </div>
+  </div>
+  <div class="text-[9px] text-white/40 font-mono tracking-wider">
+    V 2.1.0
+  </div>
+</div>
+</main>
+<!-- Keyframe animation helper style injection -->
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body>
+</html>

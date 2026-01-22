@@ -77,21 +77,22 @@ tailwind.config = {
 <div id="loader" class="loader hidden">
   <div class="loader-bg"></div>
   <div class="loader-content">
-    <img src="./assets/img/logo.png" alt="4B Logo" class="loader-logo">
+    <img src="./assets/icons/apple-touch-icon.jpg" alt="4B Logo" class="loader-logo">
   </div>
 </div>
 
 <!-- NAV -->
-<header class="fixed top-0 left-0 w-full p-6 z-50 flex justify-between">
+<header class="fixed top-0 left-0 w-full p-4 z-50 flex justify-between">
   <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
-  <span class="text-base">HorarioTimes.js</span>
-  <p class="text-xs text-white/50 mt-">4bdeveloper® 2025</p>
-</div>
+    <span class="text-base">HorarioTimes.js</span>
+    <p class="w-full text-xs text-white/50 mt-0">4Bdev® 2025</p>
+  </div>
 
   <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
-  <a href="4b.html" class="group flex items-center justify-center p-2 rounded-full hover:bg-white/5 transition-colors duration-300">
-<span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span>
-</a>
+  <a href="4b.html" class="group flex items-center justify-center p-0 rounded-full bg-white/15 hover:bg-white/20 transition-colors duration-300">
+    <!-- <span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span> -->
+    <img class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] w-12 p-1 r-2 transition-colors" src="./assets/icons/192x192.png" alt="4B Logo" class="loader-logo">
+  </a>
 </header>
 
 <!-- STAGE -->
@@ -113,24 +114,10 @@ tailwind.config = {
       <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
     </div>
 
-
     <!-- Holo layer -->
     <div class="holo absolute inset-0 rounded-[26px] pointer-events-none filter hue-rotate-[180deg]"></div>
-
-
     <!-- Destellos tipo sol -->
     <div id="flare" class="flare absolute inset-0 pointer-events-none"></div>
-
-
-    <!-- 
-    <div class="absolute inset-0 rounded-[26px] translate-z-[40px]
-                flex items-center justify-center">
-      <div class="w-[88%] h-[88%] rounded-[20px] overflow-hidden
-                  shadow-[0_20px_60px_rgba(0,0,0,.6)]">
-        <img src="./cover.jpg"
-          class="w-full h-full object-cover pointer-events-none"/>
-      </div>
-    </div> -->
 
     <!-- Light follow -->
      <div id="light"
@@ -152,7 +139,7 @@ tailwind.config = {
 </main>
 
 <!-- FOOTER -->
-<div class="fixed bottom-0 left-0 w-full px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
+<div class="fixed bottom-0 left-0 w-full px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
   <div class="flex flex-col gap-1">
     <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
       <span class="w-1 h-1 bg-green-500 rounded-full"></span>

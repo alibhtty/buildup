@@ -1,3 +1,18 @@
+// ===============================
+// LOADER HELPERS (GLOBAL)
+// ===============================
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+
+  loader.classList.add("hidden");
+
+  // eliminar del DOM tras el fade
+  setTimeout(() => {
+    loader.remove();
+  }, 600);
+}
+
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 // --- Variables de estado ---
@@ -86,6 +101,23 @@ card.addEventListener("pointermove", e => {
 })
 
 function release(e) {
+  if (!dragging) return; // 🔒 evita dobles releases
+
+  dragging = false;
+
+  // ❌ NO resetear aquí targetX / targetY
+  // deja que el lerp vuelva solo
+
+  light.classList.remove("light--active");
+  card.classList.remove("grabbing");
+
+  // 🔐 liberar SOLO si estaba capturado
+  if (e?.pointerId !== undefined && card.hasPointerCapture(e.pointerId)) {
+    card.releasePointerCapture(e.pointerId);
+  }
+}
+
+/* function release(e) {
   dragging = false
 
   if (!moved) {
@@ -99,10 +131,14 @@ function release(e) {
   if (e?.pointerId !== undefined) {
     card.releasePointerCapture(e.pointerId)
   }
-}
+} */
 
 card.addEventListener("pointerup", release)
-card.addEventListener("pointerleave", release)
+/* card.addEventListener("pointerleave", release) */
+card.addEventListener("pointerleave", e => {
+  if (dragging) return;
+  release(e);
+});
 card.addEventListener("pointercancel", release)
 
 // --- Animación principal ---
@@ -421,21 +457,33 @@ function clearAllTimeouts() {
   // --- Aquí pones el efecto touch para móviles ---
   document.querySelectorAll('.pin-led').forEach(pin => {
 
-    // --- Hover en desktop ---
-    pin.addEventListener('mouseenter', () => pin.classList.add('active'));
-    pin.addEventListener('mouseleave', () => pin.classList.remove('active'));
-
-    // --- Touch en móvil ---
-    pin.addEventListener('touchstart', () => pin.classList.add('active'));
-    pin.addEventListener('touchend', () => pin.classList.remove('active'));
-    pin.addEventListener('touchcancel', () => pin.classList.remove('active'));
-
-    // --- Click / pointer release ---
-    pin.addEventListener('pointerdown', () => pin.classList.add('active'));
-    pin.addEventListener('pointerup', () => pin.classList.remove('active'));
-    pin.addEventListener('pointercancel', () => pin.classList.remove('active'));
-    pin.addEventListener('pointerleave', () => pin.classList.remove('active'));
-
+    // --- TOUCH (móvil) ---
+    pin.addEventListener('touchstart', e => {
+      e.preventDefault();
+      pin.classList.add('active');
+    }, { passive: false });
+  
+    pin.addEventListener('touchend', () => {
+      pin.classList.remove('active');
+    });
+  
+    pin.addEventListener('touchcancel', () => {
+      pin.classList.remove('active');
+    });
+  
+    // --- POINTER fallback ---
+    pin.addEventListener('pointerdown', () => {
+      pin.classList.add('active');
+    });
+  
+    pin.addEventListener('pointerup', () => {
+      pin.classList.remove('active');
+    });
+  
+    pin.addEventListener('pointerleave', () => {
+      pin.classList.remove('active');
+    });
+  
   });
 
 });
