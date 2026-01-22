@@ -20,7 +20,7 @@ let flareEnabled = true
 
 if (isIOS) {
   holoEnabled = false
-  flareEnabled = false
+  flareEnabled = true
 }
 
 const card  = document.getElementById("card")
@@ -152,12 +152,12 @@ function animate() {
 
     if (isIOS) {
       // iPhone: movimiento MAS suave
-      targetX = Math.sin(t / 2600) * 16
-      targetY = Math.cos(t / 3000) * 16
+      targetX = Math.sin(t / 2600) * 22
+      targetY = Math.cos(t / 3000) * 22
     } else if (holoEnabled || flareEnabled) {
       // Desktop: movimiento completo
-      targetX = Math.sin(t / 2000) * 18
-      targetY = Math.cos(t / 2400) * 18
+      targetX = Math.sin(t / 2000) * 24
+      targetY = Math.cos(t / 2400) * 24 // 18
     }
 
 
@@ -232,7 +232,7 @@ async function ensureSounds() {
 
   await loadUISound("click", "./assets/icons/tictac.wav");
   await loadUISound("appear", "./assets/icons/in.wav");
-  await loadUISound("disappear", "./assets/icons/in.wav");
+  await loadUISound("disappear", "./assets/icons/out.wav");
 
   soundsLoaded = true;
 }
@@ -279,6 +279,24 @@ function playUISound(name, volume = 0.15) {
   const pinInfo = document.getElementById("pin-info");
   const buyInfo = document.getElementById("buy-info");
 
+
+  // --- ESTADO GLOBAL (ANTI MULTI-OUT) ---
+let infoVisible = false;
+let isHiding = false;
+
+// --- TIMEOUTS ---
+let pinShowTimeout = null;
+let pinHideTimeout = null;
+let buyShowTimeout = null;
+let buyHideTimeout = null;
+
+function clearAllTimeouts() {
+  clearTimeout(pinShowTimeout);
+  clearTimeout(pinHideTimeout);
+  clearTimeout(buyShowTimeout);
+  clearTimeout(buyHideTimeout);
+}
+
   // --- SONIDOS ---
   /* const clickSound = new Audio('./assets/icons/tictac.wav');
   clickSound.volume = 0.15;
@@ -317,49 +335,51 @@ function playUISound(name, volume = 0.15) {
   ]; */
 
   // --- FLAGS PARA SONIDO ---
-  let pinSoundPlayed = false;
-  let buySoundPlayed = false;
+  /* let pinSoundPlayed = false;
+  let buySoundPlayed = false; */
 
   // --- TIMEOUTS ---
-  let pinShowTimeout = null;
+ /*  let pinShowTimeout = null;
   let pinHideTimeout = null;
   let buyShowTimeout = null;
-  let buyHideTimeout = null;
+  let buyHideTimeout = null; */
 
   function showPinInfo() {
-    clearTimeout(pinShowTimeout, pinHideTimeout, buyShowTimeout, buyHideTimeout);
+  clearAllTimeouts();
+  isHiding = false;
 
+  if (!infoVisible) {
     pinShowTimeout = setTimeout(() => {
       pinInfo.classList.add("show");
-      if (!pinSoundPlayed) {
-        playUISound("appear");
-        pinSoundPlayed = true;
-      }
-    }, 1000);
+      playUISound("appear");
+      infoVisible = true;
+    }, 300);
 
     buyShowTimeout = setTimeout(() => {
       buyInfo.classList.add("show");
-      if (!buySoundPlayed) {
-        playUISound("appear");
-        buySoundPlayed = true;
-      }
-    }, 1500);
-
-    pinHideTimeout = setTimeout(hidePinInfo, 9000);
+    }, 600);
   }
+
+  pinHideTimeout = setTimeout(hidePinInfo, 9000);
+}
 
   function hidePinInfo() {
-    pinInfo.classList.remove("show");
-    playUISound("disappear");
+  if (!infoVisible || isHiding) return;
 
-    buyHideTimeout = setTimeout(() => {
-      buyInfo.classList.remove("show");
-      playUISound("disappear");
-    }, 0);
+  isHiding = true;
+  clearAllTimeouts();
 
-    pinSoundPlayed = false;
-    buySoundPlayed = false;
-  }
+  pinInfo.classList.remove("show");
+  buyInfo.classList.remove("show");
+
+  playUISound("disappear");
+
+  infoVisible = false;
+
+  setTimeout(() => {
+    isHiding = false;
+  }, 400); // duración del fade
+}
 
   // --- CREAR PINS ---
   pins.forEach(pin => {
@@ -372,7 +392,7 @@ function playUISound(name, volume = 0.15) {
       e.preventDefault();
       e.stopPropagation();
     
-      await ensureSounds(); // 🔥 carga sonidos SOLO la primera vez
+      await ensureSounds();
     
       document.querySelectorAll('.pin-led').forEach(p => p.classList.remove('active'));
       el.classList.add('active');
