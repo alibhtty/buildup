@@ -318,7 +318,7 @@ img {
 @media (max-width: 1200px), (orientation: portrait) {
   #pin-info {
     min-width: 90%;
-    max-height: 8rem;
+    max-height: 6.5rem;
     overflow: hidden;
     top: 4.5rem;
     left: 50%;
@@ -339,8 +339,8 @@ img {
   }
 
   #pin-img {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
   }
 }
 @media (max-width: 768px), (display-mode: standalone) {

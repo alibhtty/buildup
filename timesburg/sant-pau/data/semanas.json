@@ -559,7 +559,7 @@
           "lunes": { "mediodia": ["",""], "noche": ["",""] },
           "martes": { "mediodia": ["",""], "noche": ["",""] },
           "miercoles": { "mediodia": ["13:00","15:30"], "noche": ["20:00","00:00"] },
-          "jueves": { "mediodia": ["10:30","17:00"], "noche": ["19:00","00:00"] },
+          "jueves": { "mediodia": ["10:00","17:00"], "noche": ["19:00","00:00"] },
           "viernes": { "mediodia": ["",""], "noche": ["20:00","23:00"] },
           "sabado": { "mediodia": ["",""], "noche": ["20:30","23:00"] },
           "domingo": { "mediodia": ["11:30","17:00"], "noche": ["20:30","00:00"] }

@@ -266,7 +266,7 @@ let soundsLoaded = false;
 async function ensureSounds() {
   if (soundsLoaded) return;
 
-  await loadUISound("click", "./assets/icons/tictac.wav");
+  await loadUISound("click", "./assets/icons/clic.wav");
   await loadUISound("appear", "./assets/icons/in.wav");
   await loadUISound("disappear", "./assets/icons/out.wav");
 
@@ -389,11 +389,11 @@ function clearAllTimeouts() {
       pinInfo.classList.add("show");
       playUISound("appear");
       infoVisible = true;
-    }, 300);
+    }, 800);
 
     buyShowTimeout = setTimeout(() => {
       buyInfo.classList.add("show");
-    }, 600);
+    }, 1200);
   }
 
   pinHideTimeout = setTimeout(hidePinInfo, 9000);
