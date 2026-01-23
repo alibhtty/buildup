@@ -347,7 +347,7 @@ function clearAllTimeouts() {
   disappearSound.preload = 'auto'; */
 
   // --- PINS ---
-  const pins = [
+  /* const pins = [
     { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
     { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
     { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
@@ -357,8 +357,25 @@ function clearAllTimeouts() {
     { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
     { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
     { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
-  ];
-  /* const pins = [
+  ]; */
+  // --- PINS POR SLIDE ---
+const slidesPins = [
+  [ // Slide 0
+    { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
+    { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
+    { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
+    { x:0.366, y:0.056, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
+    { x:0.80, y:0.192, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
+    { x:0.055, y:0.712, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
+    { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
+    { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
+    { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+  ],
+  [ // Slide 1
+    /* { x:0.296, y:0.260, title:"Nombre de Local", desc:"Sede fija y equipo", img:"./info/cpu.jpg" }, */
+    { x:0.66, y:0.55, title:"Día y Semana actual", desc:"Renderizado del día actual", img:"./info/ram.jpg" }
+  ],
+  [ // Slide 2
     { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
     { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
     { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
@@ -368,7 +385,8 @@ function clearAllTimeouts() {
     { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
     { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
     { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
-  ]; */
+  ]
+];
 
   // --- FLAGS PARA SONIDO ---
   /* let pinSoundPlayed = false;
@@ -418,7 +436,7 @@ function clearAllTimeouts() {
 }
 
   // --- CREAR PINS ---
-  pins.forEach(pin => {
+  /* pins.forEach(pin => {
     const el = document.createElement("div");
     el.className = "pin-led";
     el.style.left = (pin.x*100) + "%";
@@ -443,15 +461,64 @@ function clearAllTimeouts() {
     });
 
     layer.appendChild(el);
+  }); */
+
+  const slideContainers = document.querySelectorAll('#image-slider .slide-container');
+
+  slideContainers.forEach((slide, index) => {
+    const layer = slide.querySelector('.pins-layer');
+  
+    slidesPins[index].forEach(pin => {
+      const el = document.createElement("div");
+      el.className = "pin-led";
+      el.style.left = (pin.x * 100) + "%";
+      el.style.top  = (pin.y * 100) + "%";
+  
+      el.addEventListener("pointerdown", async e => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        await ensureSounds();
+  
+        // Desactiva pins de esta slide
+        layer.querySelectorAll('.pin-led').forEach(p => p.classList.remove('active'));
+        el.classList.add('active');
+  
+        playUISound("click");
+  
+        title.textContent = pin.title;
+        desc.textContent = pin.desc;
+        document.getElementById("pin-img").src = pin.img;
+  
+        showPinInfo();
+      });
+  
+      layer.appendChild(el);
+    });
   });
 
   // --- SLIDES AUTOMÁTICAS ---
-  const slides = document.querySelectorAll('#image-slider .slider-img');
+  const slides = document.querySelectorAll('#image-slider .slide-container');
   let current = 0;
+  
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.querySelector('img').classList.remove('active');
+      slide.querySelector('.pins-layer').style.opacity = '0'; // oculta pins
+      if (i === index) {
+        slide.querySelector('img').classList.add('active');
+        slide.querySelector('.pins-layer').style.opacity = '1'; // muestra pins
+      }
+    });
+  }
+  
+  // Mostrar la primera slide
+  showSlide(current);
+  
+  // Cambiar slide cada 8s
   setInterval(() => {
-    slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
+    showSlide(current);
   }, 8000);
 
   // --- Aquí pones el efecto touch para móviles ---
