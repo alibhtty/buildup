@@ -1,5 +1,5 @@
 {
-  "name": "HT.js 4B®",
+  "name": "HT.js – 4B®",
   "short_name": "4Bdev®",
   "description": "HorarioTimes.js by 4Bdev®",
   "lang": "es-ES",
@@ -20,12 +20,12 @@
       "type": "image/png"
     },
     {
-      "src": "./assets/icons/152x152.png",
+      "src": "./assets/icons/b.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "/assets/icons/192x192.png",
+      "src": "/assets/icons/b.png",
       "sizes": "192x192",
       "type": "image/png"
     },
@@ -35,7 +35,7 @@
       "type": "image/png"
     },
     {
-      "src": "./assets/icons/512x512.png",
+      "src": "./assets/icons/apple-touch-icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }

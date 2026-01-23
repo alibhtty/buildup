@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover,user-scalable=0" />
+<meta name="theme-color" content="#000000">
+<meta name="description" content="4B by alibhtty">
+<title>HorarioTimes.js</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet"/> -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<meta property="og:title" content="HorarioTimes.js – 4Bdev®">
+  <meta property="og:description" content="4Bshop">
+  <meta property="og:image" content="./assets/icons/share.jpg">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="800">
+  <meta property="og:site_name" content="4Bdev">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ali-bhtty.web.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HorarioTimes.js 4Bdev®">
+  <meta name="twitter:description" content="El mejor widget para tu rutina.">
+  <meta name="twitter:image" content="./assets/icons/share.jpg">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="assets/icons/192x192.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./assets/js/core.css">
+
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1b855b", // 00bbc2 005d38
+        bg: "#000000"
+      },
+      fontFamily: {
+        display: ["Epilogue", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  html.loading body {
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  html.ready body {
+    opacity: 1;
+    transition: opacity 420ms cubic-bezier(.22,.61,.36,1);
+  }
+</style>
+
+<script>
+  document.documentElement.classList.add('loading');
+</script>
+
+</head>
+
+<body class="font-display text-white">
+
+<!-- Loader -->
+<div id="loader" class="loader hidden">
+  <div class="loader-bg"></div>
+  <div class="loader-content">
+    <img src="./assets/icons/192x192.png" alt="4B Logo" class="loader-logo">
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 w-full p-4 z-50 flex justify-between">
+  <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
+    <span class="text-base">HorarioTimes.js</span>
+    <p class="w-full text-xs text-white/50 mt-0">4Bdev® 2025</p>
+  </div>
+
+  <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
+  <a href="4b.html" class="group flex items-center justify-center p-0 rounded-full bg-white/15 hover:bg-white/20 transition-colors duration-300">
+    <!-- <span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span> -->
+    <img class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] w-12 p-1 r-2 transition-colors" src="./assets/icons/ali.png" alt="4B Logo" class="loader-logo">
+  </a>
+</header>
+
+<!-- STAGE -->
+<main class="stage w-screen h-screen flex items-center justify-center relative">
+
+  <!-- Ambient glow -->
+  <div class="absolute w-[90vmin] h-[90vmin] bg-primary/40 blur-[140px] rounded-full"></div>
+ 
+
+  <!-- 3D CARD -->
+  <div id="card"
+    class="card-3d relative w-[78vmin] max-w-[420px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12">
+
+    <!-- IMAGE -->
+    <div class="absolute inset-0 rounded-[26px] overflow-hidden translate-z" id="image-slider"> <!-- translate-z-[40px] -->
+      <img src="./assets/img/cover02.jpg" fetchpriority="high"
+                decoding="async" loading="eager" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8] active" />
+      <img src="./assets/img/cover01.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
+      <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8]" />
+    </div>
+
+    <!-- Holo layer -->
+    <div class="holo absolute inset-0 rounded-[26px] pointer-events-none filter hue-rotate-[180deg]"></div>
+    <!-- Destellos tipo sol -->
+    <div id="flare" class="flare absolute inset-0 pointer-events-none"></div>
+
+    <!-- Light follow -->
+     <div id="light"
+       class="light absolute inset-0 rounded-[26px] pointer-events-none
+              opacity-0 transition-opacity duration-[800ms] ease-in-out">
+     </div>
+
+    <!-- Glass reflection -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none"
+      style="background: linear-gradient(120deg, rgba(255,255,255,.12), transparent 40%);">
+    </div>
+
+    <!-- Frame -->
+    <div class="absolute inset-0 rounded-[26px] pointer-events-none border border-white/10"></div>
+
+    <div id="pins-layer" class="absolute inset-0"></div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<div class="fixed bottom-0 left-0 w-full px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] flex justify-between items-end opacity-100 z-10 pointer-events-none">
+  <div class="flex flex-col gap-1">
+    <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
+      <span class="w-1 h-1 bg-green-500 rounded-full"></span>
+      SERVER ON 4B
+    </div>
+    <div class="text-[9px] text-white/50 font-mono">
+      60FPS • <span class="text-primary">WEBGL</span> • <span class="text-primary">System Ready</span>
+    </div>
+  </div>
+  <div class="text-[9px] text-white/40 font-mono tracking-wider">
+    V 2.1.0
+  </div>
+</div>
+
+
+
+<script type="text/javascript" src="./assets/js/core.js"></script>
+
+
+
+<div id="pin-info" class="info-card fixed left-6 top-1/2 -translate-y-1/2
+         z-50 opacity-0 pointer-events-none
+         bg-black/70 backdrop-blur-xl
+         border border-white/10
+         rounded-2xl p-3 max-w-[320px]
+         transition-opacity duration-300
+         flex flex-col md:flex-col lg:flex-row gap-4 items-start text-left">
+
+  
+  <!-- Imagen del pin -->
+  <img id="pin-img" src="./info/io.jpg" alt="Pin Image"
+       class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
+
+  <!-- Texto del pin -->
+  <div class="flex flex-col">
+    <h3 id="pin-title" class="text-sm font-semibold mb-1"></h3>
+    <p id="pin-desc" class="text-xs text-white/70 leading-snug"></p>
+  </div>
+</div>
+
+    <div id="buy-info"
+     class="info-card fixed z-50 opacity-0 pointer-events-none
+            bg-black/60 backdrop-blur-[18px]
+            border border-white/10
+            rounded-2xl p-3 sm:p-4
+            max-w-[340px] max-h-[85vh] overflow-y-auto
+            transition-opacity duration-300
+            flex flex-col gap-2 sm:gap-3 items-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
+
+  <!-- Icono -->
+  <img id="buy-icon" src="./info/disk-icon.png" alt="Buy Icon"
+       class="w-14 sm:w-16 h-14 sm:h-16 object-contain drop-shadow-md mb-1">
+
+  <!-- Texto de compra -->
+  <div class="w-full">
+    <h3 class="text-sm sm:text-base font-semibold mb-0.5 leading-snug">HorarioTimes.js</h3>
+    <p class="text-[10px] sm:text-xs text-white/70 leading-tight balance-text"> <!-- mb-0.5 -->
+        Nadie tiene mejores horarios que tú.
+    <!-- </p>
+    <p class="text-[10px] sx:text-xs text-white/70 leading-tight"> -->
+        La forma más práctica de ver tu rutina.
+    </p>
+  </div>
+
+  <!-- Botones compactos centrados -->
+  <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 w-full mt-0">
+    <!-- Descarga gratuita -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-white text-black text-[10px] sm:text-xs font-medium 
+              hover:bg-gray-100 transition-colors duration-200 shadow-sm">
+      Free mode
+    </a>
+  
+    <!-- Comprar PRO -->
+    <a href="#"
+       class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-[#327D5F] text-white text-[10px] sm:text-xs font-medium 
+              hover:bg-[#00b078] transition-colors duration-200 shadow-sm">
+      Comprar PRO
+    </a>
+  </div>
+</div>
+
+
+</body>
+</html>
