@@ -54,7 +54,7 @@ img {
   pointer-events: none; 
   opacity: 1; 
   padding-bottom: max(1rem,env(safe-area-inset-bottom));
-  background-color: #222222;
+  /* background-color: #222222; */
   height: 6rem;
 
   @media (display-mode:standalone)  {
@@ -625,6 +625,9 @@ img {
   }
 }
 
+.cover-image{
+  filter: brightness(1.1) contrast(1.2);
+}
 /* =========================
    PIN INFO
 ========================= */
