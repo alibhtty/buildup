@@ -75,7 +75,8 @@ function updateFromPointer(clientX, clientY) {
 let pointerFrame = null
 
 card.addEventListener("pointerdown", e => {
-  if (e.target.classList.contains("pin-led")) return
+  // ⛔ si es un pin, NO capturar, NO drag
+  if (e.target.closest(".pin-led")) return
 
   moved = false
   dragging = true
@@ -117,6 +118,22 @@ function release(e) {
   }
 }
 
+/* function release(e) {
+  dragging = false
+
+  if (!moved) {
+    targetX = 0
+    targetY = 0
+  }
+
+  light.classList.remove("light--active")
+  card.classList.remove("grabbing")
+
+  if (e?.pointerId !== undefined) {
+    card.releasePointerCapture(e.pointerId)
+  }
+} */
+
 card.addEventListener("pointerup", release)
 /* card.addEventListener("pointerleave", release) */
 card.addEventListener("pointerleave", e => {
@@ -157,10 +174,19 @@ function animate() {
       0.35 + Math.min(Math.abs(currentX + currentY) / 90, 0.45)
   }
 
+  // --- IDLE desktop ---
+  //if (!isIOS && !dragging && !document.hidden) {
+
   // --- Idle (desktop + iOS controlado) ---
     if (!dragging && !document.hidden) {
 
     const t = now
+
+    /* if (holoEnabled || flareEnabled) {
+      targetX = Math.sin(t / 2000) * 18
+      targetY = Math.cos(t / 2400) * 18
+    } */
+
     if (isIOS) {
       // iPhone: movimiento MAS suave
       targetX = Math.sin(t / 2600) * 22
@@ -201,6 +227,14 @@ document.addEventListener("visibilitychange", () => {
   }
 })
 
+// --- INIT ---
+//animate()
+
+/* window.addEventListener("load", () => {
+  requestAnimationFrame(() => {
+    animate();
+  });
+}); */
 
 
 
@@ -214,23 +248,23 @@ document.addEventListener("visibilitychange", () => {
 
 
 
+
+
+
+
+
+
+document.addEventListener("touchstart", () => {
+  if (uiAudioCtx && uiAudioCtx.state === "suspended") {
+    uiAudioCtx.resume();
+  }
+}, { once: true });
 
 
 
 // --- UI SOUND ENGINE ---
 let uiAudioCtx = null;
 const uiBuffers = {};
-
-// --- iOS AUDIO UNLOCK (ONE TIME) ---
-let audioUnlocked = false;
-
-function unlockAudioOnce() {
-  if (audioUnlocked) return;
-  audioUnlocked = true;
-  ensureSounds();
-}
-
-document.addEventListener("pointerdown", unlockAudioOnce, { once: true });
 
 
 // --- LAZY SOUND LOADING (iOS friendly) ---
@@ -272,6 +306,14 @@ function playUISound(name, volume = 0.15) {
   source.start();
 }
 
+// --- ESPERAR CARGA DEL DOM y SONIDOS ---
+/* document.addEventListener("DOMContentLoaded", async () => {
+
+  // 1️⃣ Cargar todos los sonidos antes de usar
+  await loadUISound("click", "./assets/icons/tictac.wav");
+  await loadUISound("appear", "./assets/icons/in.wav");
+  await loadUISound("disappear", "./assets/icons/in.wav"); */
+
   document.addEventListener("DOMContentLoaded", () => {
 
   const layer = document.getElementById("pins-layer");
@@ -298,8 +340,21 @@ function clearAllTimeouts() {
   clearTimeout(buyHideTimeout);
 }
 
+  // --- SONIDOS ---
+  /* const clickSound = new Audio('./assets/icons/tictac.wav');
+  clickSound.volume = 0.15;
+  clickSound.preload = 'auto';
+
+  const appearSound = new Audio('./assets/icons/in.wav'); 
+  appearSound.volume = 0.15;
+  appearSound.preload = 'auto';
+
+  const disappearSound = new Audio('./assets/icons/in.wav');
+  disappearSound.volume = 0.15;
+  disappearSound.preload = 'auto'; */
+
   // --- PINS ---
-  const pins = [
+  /* const pins = [
     { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
     { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
     { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
@@ -309,26 +364,60 @@ function clearAllTimeouts() {
     { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
     { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
     { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
-  ];
+  ]; */
+  // --- PINS POR SLIDE ---
+const slidesPins = [
+  [ // Slide 0
+    { x:0.225, y:0.132, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
+    { x:0.176, y:0.412, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
+    { x:0.960, y:0.060, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
+    { x:0.366, y:0.056, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
+    { x:0.80, y:0.192, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
+    { x:0.055, y:0.712, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
+    { x:0.568, y:0.71, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
+    { x:0.085, y:0.79, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
+    { x:0.908, y:0.78, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+  ],
+  [ // Slide 1
+    /* { x:0.296, y:0.260, title:"Nombre de Local", desc:"Sede fija y equipo", img:"./info/cpu.jpg" }, */
+    { x:0.66, y:0.48, title:"Día y Semana actual", desc:"Renderizado del día actual", img:"./info/ram.jpg" }
+  ],
+  [ // Slide 2
+    { x:0.225, y:0.185, title:"Turnos Mediodía", desc:"Bloque con miembros para el turno mediodia, Rango de 10:30 a 17:00", img:"./info/cpu.jpg" },
+    { x:0.176, y:0.465, title:"Turnos de Noche", desc:"Bloque con miembros para el turno noche, Rango de 19:00 a 01:00", img:"./info/io.jpg" },
+    { x:0.960, y:0.115, title:"Nombre de Local", desc:"Tu sede fija y equipo con el que compartes horarios.", img:"./info/cpu.jpg" },
+    { x:0.306, y:0.11, title:"Día y Semana actual", desc:"Renderizado del día actual junto con todos los datos del widget.", img:"./info/ram.jpg" },
+    { x:0.592, y:0.246, title:"Comidas", desc:"Comida de fin de franja para los miebros asignados según cálculo de horas.", img:"./info/power.jpg" },
+    { x:0.055, y:0.652, title:"Turnos de Apertura y Cierre", desc:"Los pilares del turno, los miembros que abren y cierran el turno indicado con colores. ", img:"./info/io.jpg" },
+    { x:0.568, y:0.652, title:"Estado de cuenta PRO", desc:"Las lineas de color azúl representan 2 días con PRO, las lineas grises son días vacíos. Todo el stack representa 1mes de PRO", img:"./info/io.jpg" },
+    { x:0.08, y:0.752, title:"Apartado exclusivo para usuario PRO", desc:"Horario semanal del usuario, con franjas y días libres señalados. El día actual siempre se marca de color oscuro.", img:"./info/io.jpg" },
+    { x:0.908, y:0.722, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
+  ]
+];
 
-  function showPinInfo() {
+  // --- FLAGS PARA SONIDO ---
+  /* let pinSoundPlayed = false;
+  let buySoundPlayed = false; */
+
+  // --- TIMEOUTS ---
+ /*  let pinShowTimeout = null;
+  let pinHideTimeout = null;
+  let buyShowTimeout = null;
+  let buyHideTimeout = null; */
+
+  function showPinInfo(force = false) {
   clearAllTimeouts();
   isHiding = false;
 
-  if (!infoVisible) {
-    pinShowTimeout = setTimeout(() => {
-      pinInfo.classList.add("show");
-      playUISound("appear");
-      infoVisible = true;
-    }, 800);
+  if (!infoVisible || force) {
+    pinInfo.classList.add("show");
+    buyInfo.classList.add("show");
 
-    buyShowTimeout = setTimeout(() => {
-      buyInfo.classList.add("show");
-      playUISound("appear");
-    }, 1200);
+    playUISound("appear", 0.12);
+    infoVisible = true;
   }
 
-  pinHideTimeout = setTimeout(hidePinInfo, 6000);
+  pinHideTimeout = setTimeout(hidePinInfo, 5000);
 }
 
   function hidePinInfo() {
@@ -350,7 +439,7 @@ function clearAllTimeouts() {
 }
 
   // --- CREAR PINS ---
-  pins.forEach(pin => {
+  /* pins.forEach(pin => {
     const el = document.createElement("div");
     el.className = "pin-led";
     el.style.left = (pin.x*100) + "%";
@@ -375,19 +464,74 @@ function clearAllTimeouts() {
     });
 
     layer.appendChild(el);
-  });
+  }); */
+
+const slideContainers = document.querySelectorAll('#image-slider .slide-container');
+
+slideContainers.forEach((slide, index) => {
+  const layer = slide.querySelector('.pins-layer');
+  layer.innerHTML = ""; // 🔥 limpia por seguridad
+
+  slidesPins[index].forEach(pin => {
+  const el = document.createElement("div");
+  el.className = "pin-led";
+  el.style.left = (pin.x * 100) + "%";
+  el.style.top  = (pin.y * 100) + "%";
+
+  el.addEventListener("pointerdown", e => {
+  e.preventDefault()
+  e.stopPropagation() // 🔥 corta antes de llegar al card
+
+  ensureSounds()
+
+  layer.querySelectorAll('.pin-led').forEach(p => p.classList.remove('active'))
+  el.classList.add('active')
+
+  playUISound("click")
+
+  title.textContent = pin.title
+  desc.textContent  = pin.desc
+  document.getElementById("pin-img").src = pin.img
+
+  showPinInfo(true)
+})
+
+  layer.appendChild(el);
+});
+});
 
   // --- SLIDES AUTOMÁTICAS ---
-  const slides = document.querySelectorAll('#image-slider .slider-img');
+  const slides = document.querySelectorAll('#image-slider .slide-container');
   let current = 0;
+  
+  function showSlide(index) {
+  slides.forEach((slide, i) => {
+    const img   = slide.querySelector('img');
+    const layer = slide.querySelector('.pins-layer');
+
+    if (i === index) {
+      img.classList.add('active');
+      layer.style.opacity = '1';
+      layer.style.pointerEvents = 'auto';
+    } else {
+      img.classList.remove('active');
+      layer.style.opacity = '0';
+      layer.style.pointerEvents = 'none';
+    }
+  });
+}
+  
+  // Mostrar la primera slide
+  showSlide(current);
+  
+  // Cambiar slide cada 8s
   setInterval(() => {
-    slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
+    showSlide(current);
   }, 8000);
 
   // --- Aquí pones el efecto touch para móviles ---
-  document.querySelectorAll('.pin-led').forEach(pin => {
+  /* document.querySelectorAll('.pin-led').forEach(pin => {
 
     // --- TOUCH (móvil) ---
     pin.addEventListener('touchstart', e => {
@@ -416,9 +560,16 @@ function clearAllTimeouts() {
       pin.classList.remove('active');
     });
   
-  });
+  }); */
 
 });
+
+
+/* window.addEventListener("load", () => {
+  document.documentElement.classList.remove('loading');
+  document.documentElement.classList.add('ready');
+}); */
+
 
 window.addEventListener("load", () => {
   // 1️⃣ Marca la página como lista
@@ -431,5 +582,5 @@ window.addEventListener("load", () => {
   });
 
   // 3️⃣ Oculta el loader con fade out
-  setTimeout(hideLoader, 500);
+  setTimeout(hideLoader, 500); // coincide con tu transición CSS
 });

@@ -218,6 +218,9 @@
     border-radius: 26px
 }
 
+.rounded-\[28px\] {
+    border-radius: 8% ; /* 32px */
+}
 .rounded-\[30px\] {
     border-radius: 30px
 }
@@ -234,7 +237,7 @@
     border-width: 1px
 }
 
-.border-\[\#00d681\]\/30 {
+.border-\[\#00d681\]\/26 {
     border-color: rgba(0, 214, 129, .3)
 }
 
@@ -256,7 +259,8 @@
 }
 
 .bg-black\/70 {
-    background-color: rgba(0, 0, 0, .7)
+    /* background-color: rgba(0, 0, 0, .7); */
+    background-color: #222222;
 }
 
 .bg-green-500 {

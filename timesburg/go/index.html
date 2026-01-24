@@ -37,8 +37,9 @@
   <link rel="manifest" href="./manifest.json">
   <!-- <link rel="stylesheet" href="./assets/js/core.css"> -->
    <!-- <link rel="stylesheet" href="./assets/js/tailwind.build.css"> -->
-  <link rel="stylesheet" href="./assets/css/core.css">
   <link rel="stylesheet" href="./assets/css/tw.css">
+  <link rel="stylesheet" href="./assets/css/core.css">
+
 
 
 <!-- <script>
@@ -92,14 +93,14 @@ tailwind.config = {
 <header class="fixed top-0 left-0 w-full p-4 z-50 flex justify-between">
   <div class="text-white/90 tracking-wide flex flex-col items-center justify-center">
     <span class="text-base">HorarioTimes.js</span>
-    <p class="w-full text-xs text-[#00d681]/90 mt-0 mb-0">Realtime Widgets</p>
+    <p class="w-full text-xs text-[#00d681]/90 mt-0 mb-0"> Tactic Widgets</p>
     <!-- <p class="w-full text-xs text-[#00d681]/90 mt-0">Realtime Widgets</p> -->
   </div>
 
   <!-- <a href="" class="flex items-center justify-center">Timesburg</a> -->
-  <a href="4b.html" class="group flex items-center justify-center p-0 rounded-full bg-white/15 hover:bg-[#00d681]/25 transition-colors duration-300 border border-[#00d681]/30">
+  <a href="4b.html" class="group flex items-center justify-center p-0 rounded-full bg-white/15 hover:bg-[#00d681]/25 transition-colors duration-300 border border-[#00d681]/28">
     <!-- <span class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[26px] p-2 r-2 transition-colors" style="font-size: 24px; font-weight: 300;">view_in_ar</span> -->
-    <img class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[30px] w-12 p-1 r-2 transition-colors" src="./assets/icons/ali.png" alt="4B Logo" class="loader-logo">
+    <img class="material-symbols-outlined text-white/50 group-hover:text-primary bg-text-primary rounded-[28px] w-12 p-1 r-2 transition-colors loader-logo" src="./assets/icons/ali.png" alt="4B Logo">
   </a>
 </header>
 
@@ -112,10 +113,18 @@ tailwind.config = {
 
   <!-- 3D CARD -->
   <div id="card"
-    class="card-3d relative w-[82vmin] max-w-[460px] aspect-square rounded-[30px] glass no-select cursor-grab active:cursor-grabbing mb-12"> <!-- w-[78vmin] max-w-[420px] -->
+    class="card-3d relative w-[82vmin] max-w-[460px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12"> <!-- w-[78vmin] max-w-[420px] -->
 
     <!-- IMAGE -->
-     <div id="image-slider" class="relative w-full h-full overflow-hidden">
+     <div id="image-slider" class="rounded-[28px] relative w-full h-full overflow-hidden">
+       <div class="slide-container absolute inset-0">
+         <img src="./assets/img/cover02.jpg"
+              class="slider-img w-full h-full object-cover pointer-events-none active" />
+         <div class="pins-layer absolute inset-0"></div>
+       </div>
+     </div>
+
+     <!-- <div id="image-slider" class="rounded-[28px] relative w-full h-full overflow-hidden">
        <div class="slide-container absolute inset-0">
          <img src="./assets/img/cover02.jpg" class="slider-img w-full h-full object-cover pointer-events-none active" />
          <div class="pins-layer absolute inset-0"></div>
@@ -130,7 +139,7 @@ tailwind.config = {
          <img src="./assets/img/cover00.jpg" class="slider-img w-full h-full object-cover pointer-events-none" />
          <div class="pins-layer absolute inset-0"></div>
        </div>
-     </div>
+     </div> -->
     <!-- <div class="absolute inset-0 rounded-[30px] overflow-hidden translate-z" id="image-slider">
       <img src="./assets/img/cover02.jpg" fetchpriority="high"
                 decoding="async" loading="eager" class="slider-img w-full h-full object-cover pointer-events-none filter brightness-[1.2] contrast-[1.3] saturate-[.8] active" />
@@ -145,29 +154,33 @@ tailwind.config = {
 
     <!-- Light follow -->
      <div id="light"
-       class="light absolute inset-0 rounded-[30px] pointer-events-none
+       class="light absolute inset-0 rounded-[28px] pointer-events-none
               opacity-0 transition-opacity duration-[800ms] ease-in-out">
      </div>
 
     <!-- Glass reflection -->
-    <div class="absolute inset-0 rounded-[30px] pointer-events-none"
+    <div class="absolute inset-0 rounded-[28px] pointer-events-none"
       style="background: linear-gradient(120deg, rgba(255,255,255,.12), transparent 40%);">
     </div>
 
     <!-- Frame -->
-    <div class="absolute inset-0 rounded-[30px] pointer-events-none border card-frame"></div> <!--  border-[#00d681]/80  -->
+    <div class="absolute inset-0 rounded-[28px] pointer-events-none border card-frame"></div> <!--  border-[#00d681]/80  -->
 
     <div id="pins-layer" class="absolute inset-0"></div>
 
   </div>
+  
 </main>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="flex flex-col gap-1">
+  <div class="flex flex-col gap-1 footer-left">
     <div class="text-[9px] text-white font-mono tracking-widest uppercase flex items-center gap-2">
       <span class="w-1 h-1 bg-green-500 rounded-full"></span>
       SERVER ON 4B
+    </div>
+    <div class="text-[9px] text-white/50 font-mono">
+      DB • <span class="text-primary">Realtime</span> <span class="text-primary">Run</span>
     </div>
     <div class="text-[9px] text-white/50 font-mono">
       RENDER • <span class="text-primary">GLOC</span>  <!-- <span class="text-primary">System Ready</span> -->
@@ -194,70 +207,46 @@ tailwind.config = {
 
 
 
-<script type="text/javascript" src="./assets/js/core.js"></script>
+<!-- <script type="text/javascript" src="./assets/js/core.js"></script> -->
+ <script src="./assets/js/sound-engine.js"></script> 
+<script src="./assets/js/card-images.js"></script>
+ <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/selector-engine.js"></script>
+   <script src="./assets/js/card-engine.js"></script>
+ <script src="./assets/js/pins-engine.js"></script>
 
 
-  <div id="pin-info" class="info-card fixed left-6 top-1/2 -translate-y-1/2
-           z-50 opacity-0 pointer-events-none
-           bg-black/70 backdrop-blur-xl
-           border border-white/10
-           rounded-2xl p-3 max-w-[320px]
-           transition-opacity duration-300
-           flex flex-col md:flex-col lg:flex-row gap-4 items-start text-left">
-  
+    <!-- BOTONERA: fuera del card, arriba del footer -->
+    <div id="image-selector" class="image-selector"></div>
     
-    <!-- Imagen del pin -->
-    <img id="pin-img" src="./info/io.jpg" alt="Pin Image"
-         class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
-  
-    <!-- Texto del pin -->
-    <div class="flex flex-col">
-      <h3 id="pin-title" class="text-sm font-semibold mb-1"></h3>
-      <p id="pin-desc" class="text-xs text-white/70 leading-snug"></p>
+    <!-- PIN INFO -->
+    <div id="pin-info" class="info-card pin-info">
+      <img id="pin-img" src="" alt="Pin Image">
+      <div class="pin-text">
+        <h3 id="pin-title"></h3>
+        <p id="pin-desc"></p>
+      </div>
     </div>
-  </div>
-
-  <div id="buy-info"
-       class="info-card fixed z-50 opacity-0 pointer-events-none
-              bg-black/60 backdrop-blur-[18px]
-              border border-white/10
-              rounded-2xl p-3 sm:p-4
-              max-w-[340px] max-h-[85vh] overflow-y-auto
-              transition-opacity duration-300
-              flex flex-col gap-2 sm:gap-3 items-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
-  
-    <!-- Icono -->
-    <img id="buy-icon" src="./info/disk-icon.png" alt="Buy Icon"
-         class="w-14 sm:w-16 h-14 sm:h-16 object-contain drop-shadow-md mb-1">
-  
-    <!-- Texto de compra -->
-    <div class="w-full">
-      <h3 class="text-sm sm:text-base font-semibold mb-0.5 leading-snug">HorarioTimes.js</h3>
-      <p class="text-[10px] sm:text-xs text-white/70 leading-tight balance-text"> <!-- mb-0.5 -->
-          Nadie tiene mejores horarios que tú.
-      <!-- </p>
-      <p class="text-[10px] sx:text-xs text-white/70 leading-tight"> -->
+    
+    <!-- BUY INFO -->
+    <!-- <div id="buy-info" class="info-card buy-info">
+      <img id="buy-icon" src="./info/disk-icon.png" alt="Buy Icon">
+    
+      <div class="buy-text">
+        <h3>HorarioTimes.js</h3>
+        <p>
+          Nadie tiene mejores horarios que tú.  
           La forma más práctica de ver tu rutina.
-      </p>
-    </div>
-  
-    <!-- Botones compactos centrados -->
-    <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 w-full mt-0">
-      <!-- Descarga gratuita -->
-      <a href="#"
-         class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-white text-black text-[10px] sm:text-xs font-medium 
-                hover:bg-gray-100 transition-colors duration-200 shadow-sm">
-        Free mode
-      </a>
+        </p>
+      </div>
     
-      <!-- Comprar PRO -->
-      <a href="#"
-         class="w-full sm:w-32 text-center px-2 py-2 rounded-full bg-[#327D5F] text-white text-[10px] sm:text-xs font-medium 
-                hover:bg-[#00b078] transition-colors duration-200 shadow-sm">
-        Comprar PRO
-      </a>
-    </div>
+      <div class="buy-actions">
+        <a href="#" class="btn btn-light">Free mode</a>
+        <a href="#" class="btn btn-pro">Comprar PRO</a>
+      </div>
+    </div> -->
   </div>
 
 </body>
+
 </html>

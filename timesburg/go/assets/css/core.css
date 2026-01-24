@@ -8,6 +8,9 @@ html, body {
   overflow: hidden;
   background: #050600; /* 0b0900 */
   user-select: none;       /* No se puede seleccionar texto */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: none;
+  touch-action: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -16,7 +19,10 @@ img {
   -webkit-user-drag: none;
   -user-drag: none;
   user-select: none;
-  pointer-events: none;
+  /* pointer-events: none; */
+}
+.group{
+  border: .05rem solid rgb(0, 214, 129,.5); /* 00d681 */
 }
 .translate-z {
   transform: translateZ(40px);
@@ -37,26 +43,44 @@ img {
 
 .footer{
   display: flex; 
-  position: fixed; 
+  position: fixed;
   bottom: 0; 
   left: 0; 
-  z-index: 10; 
-  padding-top: 1rem;
-  padding-bottom: 1rem; 
-  padding-left: 1rem;
-  padding-right: 1rem; 
+  z-index: 10;
+  padding: 1rem;
   justify-content: space-between; 
-  align-items: flex-end; 
+  align-items: center; /* flex-end */
   width: 100%; 
   pointer-events: none; 
   opacity: 1; 
   padding-bottom: max(1rem,env(safe-area-inset-bottom));
+  background-color: #222222;
+  height: 6rem;
+
+  @media (display-mode:standalone)  {
+    padding: 1rem;
+    height: 5rem;
+   /* bottom: auto; */
+  }
+  @media (orientation: portrait){
+    height: 4.5rem;
+  }
 }
 
+.footer-left{
+  /* background-color: red; */
+  /* box-shadow: inset 0 0 0 .02rem rgba(255, 255, 255, 0.3); */
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  @media (orientation: portrait){
+    height: 3.5rem;
+  }
+}
 .footer-pill {
   background: #333;
   border-radius: 9999px;
-  height: 3rem;
+  height: 4rem;
   padding: .5rem;
   /* padding: 0.25rem 0.25rem; */
   display: flex;
@@ -64,6 +88,10 @@ img {
   gap: 0.25rem;
   pointer-events: auto;
   box-shadow: inset 0 0 0 .02rem rgba(255, 255, 255, 0.3);
+
+  @media (orientation: portrait){
+    height: 3.5rem;
+  }
 }
 
 .footer-pill-text {
@@ -82,9 +110,6 @@ img {
   .footer-pill-btn{
     padding: .5rem .5rem;
   }
-  #buy-info{
-    display: none;
-  }
 }
 
 .footer-pill-btn {
@@ -92,8 +117,8 @@ img {
   color: black;
   font-size: .85rem;
   font-weight: 500;
+  height: 3rem;
   padding: .6rem 1rem;
-  /* padding: 0.6rem 1rem; */
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -101,6 +126,10 @@ img {
   text-decoration: none;
   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
   transition: .1s ease-in-out;
+
+  @media (orientation: portrait){
+    height: 2.5rem;
+  }
 }
 .footer-pill-btn:active{
   background-color: #dddddd;
@@ -213,6 +242,9 @@ img {
   pointer-events: auto;
   touch-action: manipulation;
   transition: background 0.2s, box-shadow 0.2s;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .pin-led::after {
@@ -259,10 +291,24 @@ img {
   box-shadow: none;
 }
 
-.pin-led.active::before {
+/* .pin-led.active::before {
   background: #000;
   box-shadow: none;
+} */
+ .pin-led.active::before {
+  content: "";
+  position: absolute;
+  /* inset: 0; */
+  background-image: url("../icons/hack.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 50%; /* curva todo */
+  box-shadow: none;
+  z-index: -1; /* si quieres que quede detrás del pin */
 }
+
 
 @media (hover: hover) and (pointer: fine) {
   .pin-led:hover {
@@ -357,7 +403,7 @@ img {
 }
 @media (display-mode: standalone)  {
     header{
-        margin-top: 1.5rem;
+        margin-top: 2.4rem;
     }
     html, body{
         height: 100vh;
@@ -370,7 +416,15 @@ img {
 /* #card {
   touch-action: pan-x pan-y;
 } */
+.pin-led {
+  pointer-events: auto;
+  touch-action: manipulation;
+  z-index: 10;
+}
 
+.pins-layer {
+  pointer-events: auto;
+}
 #pins-layer {
   position: absolute;
   inset: 0;
@@ -409,148 +463,13 @@ img {
 
 
 
-/* Panel Info */
-/* Moviles: portrait o standalone */
-@media (max-width: 1200px), (orientation: portrait) {
-  #pin-info {
-    min-width: calc(100% - 2rem);
-    max-height: 6rem;
-    overflow: hidden;
-    top: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;  /* imagen al lado del texto */
-    max-width: 80%;
-    visibility: visible;
-    opacity: 0;
-    gap: .5rem;
-    pointer-events: none;
-    transition: opacity .6s ease-in-out;
-  }
-
-  #pin-info.show {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  #pin-img {
-    width: 5rem;
-    height: 5rem;
-  }
-}
-@media (max-width: 768px), (display-mode: standalone) {
-  #pin-info {
-    min-width: calc(100% - 2rem); /* 90% */
-    max-height: 9rem;
-    overflow: hidden;
-    top: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;  /* imagen al lado del texto */
-    max-width: 80%;
-    visibility: visible;
-    opacity: 0;
-    gap: .5rem;
-    pointer-events: none;
-    transition: opacity .6s ease-in-out;
-  }
-
-  #pin-info.show {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  #pin-img {
-    width: 7rem;
-    height: 7rem;
-  }
-}
-
-/* Desktop: landscape */
-@media (min-width: 1969px) {
-  #pin-info {
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    background-color: #111111;
-    flex-direction: column; /* imagen debajo del texto */
-    max-width: 17rem;
-    visibility: visible;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .6s ease-in-out;
-    height: 24rem;
-    max-height: 24rem;
-  }
-
-  #pin-info.show {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  #pin-img {
-    width: 15rem;
-    height: 15rem;
-    margin-top: 0.5rem;
-  }
-}
 
 
 
-/* Boton de compra */
-/* Desktop: derecha del card */
-@media (min-width: 1369px) {
-  #buy-info {
-    /* bottom: 5rem; */
-    height: 22rem;
-    background-color: #222222;
-    /* left: 10%; */
-    right: 10%;
-    transform: translateY(-50%);
-    flex-direction: column;
-    max-width: 17rem;
-    height: 24rem;
 
-    top: 50%;
 
-    transition: opacity .6s ease-in-out;
-  }
-}
 
-/* Movil / portrait: debajo del card */
-@media (max-width: 868px), (orientation: portrait) {
-  #buy-info {
-    max-height: 8rem;
-    background-color: #222222;
-    
-    min-width: 90%;
-    /* transform: translateX(-50%); */
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    bottom: 5.5rem;
-  }
-}
-@media (max-width: 868px), (display-mode: standalone) {
-  #buy-info {
-    max-height: 8rem;
-    background-color: #222222;
-    min-width: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    bottom: 6.5rem;
-  }
-}
 
-/* Clase show para fade-in/fade-out */
-#buy-info.show {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 
 .holo, .flare {
@@ -654,8 +573,9 @@ img {
 
 /* Logo */
 .loader-logo {
-  width: 120px;
-  height: auto;
+  /* width: 120px;
+  height: auto; */
+  border-radius: 50%;
   animation: loader-pulse 1.2s infinite ease-in-out;
 }
 
@@ -678,3 +598,420 @@ img {
 .loader.hidden {
   display: none;
 }
+
+
+
+/* =========================
+   BASE CARD
+========================= */
+
+.info-card {
+  position: fixed;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  background: #001e13;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 0 0 .05rem rgba(0, 155, 98, 0.4);
+  border-radius: .5rem; /* 16px */
+  padding: .5rem;
+  color: #fff;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* =========================
+   PIN INFO
+========================= */
+
+.pin-info,
+#pin-info {
+  left: 35%;
+  top: 8rem;
+  transform: translateY(-50%);
+  width: 30%;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  text-align: left;
+  height: 7rem;
+  overflow: hidden;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 250ms;
+  }
+
+  @media (max-width: 640px) {
+    left: 12px;
+    right: 12px;
+    top: auto;
+    bottom: 100px;
+    transform: none;
+    max-width: calc(100% - 24px);
+    flex-direction: row;
+  }
+
+  @media (max-width: 1200px), (orientation: portrait) {
+    min-width: calc(100% - 2rem);
+    max-height: 6rem;
+    overflow: hidden;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    max-width: 80%;
+    visibility: visible;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+    gap: .5rem;
+  }
+
+  @media (min-width: 1969px) {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    background-color: #111;
+    flex-direction: column;
+    max-width: 17rem;
+    height: 24rem;
+    max-height: 24rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+  }
+
+  @media (display-mode: standalone) {
+    margin-top: 2rem;
+    height: 8rem;
+    border-radius: .75rem;
+  }
+}
+
+/* Imagen dentro del PIN INFO */
+#pin-img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: .5rem;
+  object-fit: cover;
+  flex-shrink: 0;
+
+  @media (orientation: portrait) {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  @media (min-width: 1969px) {
+    width: 15rem;
+    height: 15rem;
+    margin-top: .5rem;
+  }
+
+  @media (display-mode: standalone) {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+/* Texto del PIN */
+.pin-text {
+  h3 {
+    font-size: .8rem;
+    font-weight: 600;
+    margin: 0;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    font-family: monospace;
+    text-transform: uppercase;
+
+    @media (orientation: portrait) {
+      font-size: .7rem;
+    }
+  }
+
+  p {
+    font-size: .7rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.25;
+    font-family: monospace;
+    text-wrap: balance;
+    margin: 0;
+
+    @media (orientation: portrait) {
+      font-size: .6rem;
+    }
+  }
+}
+
+/* =========================
+   BUY INFO
+========================= */
+.image-selector,
+#image-selector {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 500ms;
+  }
+}
+
+.buy-info,
+#buy-info {
+  /* right: 24px;
+  bottom: 24px; */
+  /* max-width: 340px;
+  max-height: 85vh; */
+  overflow-y: auto;
+  display: grid; /* flex */
+  grid-template-columns: 3.5rem 3fr 2fr;
+  /* flex-direction: column; */
+  gap: .5rem;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @media (orientation: portrait) {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  @media (max-width: 640px) {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    max-width: calc(100% - 24px);
+  }
+
+  @media (min-width: 1369px) {
+    /* background-color: #222; */
+    right: 25%; /* 10% */
+    /* top: calc(100% - 4rem); */
+    bottom: 1rem;
+    /* transform: translateY(-50%); */
+    flex-direction: column;
+    width: 50%;
+    /* max-width: 17rem; */
+    height: 4rem;
+  }
+
+  @media (max-width: 868px), (orientation: portrait) {
+    max-height: 8rem;
+    min-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    bottom: 6rem;
+  }
+
+  @media (display-mode: standalone) {
+    max-height: 8rem;
+    /* min-width: 90%; */
+    /* display: none; */
+    width: calc(100% - 2rem);
+    border-radius: .75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    bottom: 6.5rem;
+  }
+}
+
+/* Icono */
+#buy-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: .5rem;
+  gap: .8rem;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+
+  @media (orientation: portrait) {
+    display: none;
+  }
+}
+
+/* Texto */
+.buy-text {
+  h3 {
+    text-align: start;
+    font-size: .8rem;
+    font-weight: 600;
+    font-family: monospace;
+    margin: 0;
+    margin-bottom: 4px;
+  }
+
+  p {
+    text-align: start;
+    font-family: monospace;
+    font-size: .7rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.25;
+    text-wrap: balance;
+    margin: 0;
+    @media (orientation: portrait) {
+      font-size: .6rem;
+    }
+  }
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.buy-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+
+  @media (orientation: portrait) {
+    gap: .5rem;
+    flex-direction: column;
+  }
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  max-width: 140px;
+  width: 8rem;
+  height: 2.5rem;
+  /* padding: .6rem .5rem; */
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  align-content: center;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (orientation: portrait) {
+    height: 1.8rem;
+  }
+
+  /* @media (max-width: 640px) {
+    max-width: none;
+    font-size: 11px;
+  } */
+
+  &.btn-light {
+    background: #fff;
+    color: #000;
+
+    &:hover {
+      background: #f2f2f2;
+    }
+  }
+
+  &.btn-pro {
+    background: #00875a;
+    color: #fff;
+
+    &:hover {
+      background: #009664;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* .image-selector {
+  position: absolute;
+  bottom: 7rem;
+  display: flex;
+  gap: 10px;
+  z-index: 999;
+}
+
+.image-selector button {
+  width: 42px;
+  height: 42px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.image-selector button:hover {
+  border-color: #00d681;
+}
+
+.image-selector button.active {
+  background: #00d681;
+  box-shadow: 0 0 0 2px rgba(0,214,129,.35);
+}
+ */
+
+.image-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: fixed;
+  bottom: 80px; /* encima del footer */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.image-selector button {
+  width: 30%; /* 3.5rem */
+  height: 1.5rem;
+  border-radius: .3rem;
+  border: 1px solid #00d681;
+  background: transparent;
+  background-color: #00875a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-selector button.active {
+  background: #ffffff;
+}
+
+/* .pin-led {
+  width: .5rem;
+  height: .5rem;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+  transition: transform 0.2s ease;
+} */
+
+.pin-led.active {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
