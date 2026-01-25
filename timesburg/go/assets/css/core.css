@@ -66,7 +66,7 @@ img {
    /* bottom: auto; */
   }
   @media (orientation: portrait){
-    height: 4.5rem;
+    height: 5.5rem;
   }
 }
 
@@ -772,6 +772,14 @@ img {
     pointer-events: auto;
     transition-delay: 500ms;
   }
+    /* @media (orientation: portrait) {
+      opacity: 1;
+      pointer-events: all;
+    } */
+}
+
+#pin-info, #switcher {
+  will-change: transform, opacity;
 }
 
 .buy-info,

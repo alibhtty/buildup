@@ -80,7 +80,12 @@ tailwind.config = {
 
 </head>
 
-<body class="font-display text-white">
+<body class="font-display text-white"
+  oncontextmenu="return false;" 
+  onselectstart="return false;" 
+  ondragstart="return false;"
+  onmousedown="return false;"
+  style="user-select: none; -webkit-user-select: none;">
 
 <!-- Loader -->
 <div id="loader" class="loader hidden">
@@ -243,7 +248,7 @@ tailwind.config = {
         <h3 id="pin-title"></h3>
         <p id="pin-desc"></p>
       </div>
-    </div> -->
+    </div>
     
     <!-- BUY INFO -->
     <!-- <div id="buy-info" class="info-card buy-info">

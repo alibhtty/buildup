@@ -128,23 +128,29 @@ function createButtons() {
   });
 }
 
-  function activate(index) {
+function activate(index) {
   const data = window.CARD_IMAGES[index];
   if (!data) return;
 
-  // 🔥 aplicar colores del card
+  // aplicar colores del card
   if (data.theme) applyTheme(data.theme);
 
-  // Cambiar imagen
+  // cambiar imagen del slider
   sliderImg.src = data.src;
 
-  // Cargar pins
+  // cargar pins del nuevo card
   loadPins(data.pins);
 
-  // Reset info-card
+  // limpiar contenido de pin-info
   if (title) title.textContent = "";
   if (desc) desc.textContent = "";
   if (pinImg) pinImg.src = "";
+
+  // ocultar pin-info pero NO buy-info
+  pinInfo.classList.remove("show");
+
+  // limpiar pin activo anterior
+  document.querySelectorAll(".pin-led").forEach(p => p.classList.remove("active"));
 
   if (window.CardEngine?.wobble) CardEngine.wobble();
 }

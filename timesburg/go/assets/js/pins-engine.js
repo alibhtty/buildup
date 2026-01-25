@@ -43,7 +43,28 @@ document.addEventListener("DOMContentLoaded", () => {
     layer.innerHTML = "";
   }
 
+
+  let activePin = null; // cache del pin activo
+
   function loadPins(pinList) {
+    layer.textContent = ""; // limpia layer
+    const frag = document.createDocumentFragment();
+  
+    pinList.forEach(p => {
+      const el = document.createElement("div");
+      el.className = "pin-led";
+      el.style.left = p.x + "%";
+      el.style.top  = p.y + "%";
+      el.dataset.title = p.title;
+      el.dataset.desc  = p.desc;
+      el.dataset.img   = p.img;
+      frag.appendChild(el);
+    });
+  
+    layer.appendChild(frag);
+  }
+
+  /* function loadPins(pinList) {
     clearPins();
     pinList.forEach(p => {
       const el = document.createElement("div");
@@ -55,26 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
       el.dataset.img   = p.img;
       layer.appendChild(el);
     });
-  }
+  } */
 
   // --- Click en pin ---
   layer.addEventListener("pointerdown", async e => {
     const pin = e.target.closest(".pin-led");
     if (!pin) return;
-
+  
     if (window.Sound) await Sound.init();
-
-    document.querySelectorAll(".pin-led").forEach(p => p.classList.remove("active"));
-    pin.classList.add("active");
-
+  
+    // solo remover active del pin anterior
+    if (activePin) activePin.classList.remove("active");
+    activePin = pin;
+    activePin.classList.add("active");
+  
     title.textContent = pin.dataset.title;
     desc.textContent  = pin.dataset.desc;
     img.src           = pin.dataset.img;
-
+  
     Sound.play("click");
-
-    showInfo();
-
+  
+    showInfo(); // reinicia timer desde último click
+  
     if (window.CardEngine?.wobble) CardEngine.wobble();
   });
 
