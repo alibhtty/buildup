@@ -61,6 +61,7 @@ img {
 
   @media (display-mode:standalone)  {
     padding: 1rem;
+    padding-bottom: 1.5rem;
     height: 5rem;
    /* bottom: auto; */
   }
