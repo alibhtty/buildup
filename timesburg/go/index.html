@@ -39,6 +39,7 @@
    <!-- <link rel="stylesheet" href="./assets/js/tailwind.build.css"> -->
   <link rel="stylesheet" href="./assets/css/tw.css">
   <link rel="stylesheet" href="./assets/css/core.css">
+  <link rel="stylesheet" href="./assets/css/glass.css">
 
 
 
@@ -113,7 +114,7 @@ tailwind.config = {
 
   <!-- 3D CARD -->
   <div id="card"
-    class="card-3d relative w-[82vmin] max-w-[460px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing mb-12"> <!-- w-[78vmin] max-w-[420px] -->
+    class="card-3d relative w-[82vmin] max-w-[460px] aspect-square rounded-[28px] glass no-select cursor-grab active:cursor-grabbing "> <!-- mb-12  w-[78vmin] max-w-[420px] -->
 
     <!-- IMAGE -->
      <div id="image-slider" class="rounded-[28px] relative w-full h-full overflow-hidden">
@@ -211,12 +212,28 @@ tailwind.config = {
  <script src="./assets/js/sound-engine.js"></script> 
 <script src="./assets/js/card-images.js"></script>
  <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/card-engine.js"></script>
   <script src="./assets/js/selector-engine.js"></script>
-   <script src="./assets/js/card-engine.js"></script>
  <script src="./assets/js/pins-engine.js"></script>
 
 
     <!-- BOTONERA: fuera del card, arriba del footer -->
+     <!-- <fieldset id="switcher" class="switcher"></fieldset> -->
+      <fieldset id="switcher" class="switcher"></fieldset>
+  <!-- <fieldset class="switcher">
+
+    <label class="switcher__option">
+      <input class="switcher__input" type="radio" name="theme" value="light" c-option="1" checked />
+    </label>
+    <label class="switcher__option">
+      <input class="switcher__input" type="radio" name="theme" value="dark" c-option="2" />
+    </label>
+    <label class="switcher__option">
+      <input class="switcher__input" type="radio" name="theme" value="dim" c-option="3" />
+    </label>
+  
+  </fieldset>
+  
     <div id="image-selector" class="image-selector"></div>
     
     <!-- PIN INFO -->
@@ -226,7 +243,7 @@ tailwind.config = {
         <h3 id="pin-title"></h3>
         <p id="pin-desc"></p>
       </div>
-    </div>
+    </div> -->
     
     <!-- BUY INFO -->
     <!-- <div id="buy-info" class="info-card buy-info">

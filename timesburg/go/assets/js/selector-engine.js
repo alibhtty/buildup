@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const selectorContainer = document.getElementById("image-selector");
+  const selectorContainer = document.getElementById("switcher");
   const sliderImg = document.querySelector("#image-slider img");
   const pinsLayer = document.getElementById("pins-layer");
 
@@ -8,12 +8,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const desc  = document.getElementById("pin-desc");
   const pinImg = document.getElementById("pin-img");
   const pinInfo = document.getElementById("pin-info");
-  const buyInfo = document.getElementById("image-selector"); /* buy-info */
+  const buyInfo = document.getElementById("switcher"); /* buy-info image-selector*/ 
 
   let visible = false, timer;
 
+    // --- Theme engine (NUEVO)
+  function applyTheme(theme) {
+    if (!theme) return;
+
+    const r = document.documentElement;
+
+    r.style.setProperty("--c-glass", theme.glass);
+    r.style.setProperty("--c-light", theme.light);
+    r.style.setProperty("--c-dark", theme.dark);
+
+    r.style.setProperty("--c-content", theme.content);
+    r.style.setProperty("--c-action", theme.action);
+    r.style.setProperty("--c-bg", theme.bg);
+
+    r.style.setProperty("--glass-reflex-dark", theme.reflexDark);
+    r.style.setProperty("--glass-reflex-light", theme.reflexLight);
+    r.style.setProperty("--saturation", theme.saturation);
+  }
+
   // --- Info-card
   function showInfo() {
+    clearTimeout(timer);           // siempre limpia el timeout anterior
+    pinInfo.classList.add("show"); // asegura que esté visible
+    buyInfo.classList.add("show"); // idem
+  
+    // siempre reproducir sonido al mostrar
+    if (window.Sound) Sound.play("appear");
+  
+    visible = true;                // marca como visible
+  
+    // reinicia el timer
+    timer = setTimeout(hideInfo, 6000);
+  }
+  /* function showInfo() {
     clearTimeout(timer);
     if (!visible) {
       pinInfo.classList.add("show");
@@ -22,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       visible = true;
     }
     timer = setTimeout(hideInfo, 6000);
-  }
+  } */
 
   function hideInfo() {
     if (!visible) return;
@@ -68,51 +100,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Crear botones según CARD_IMAGES
-  function createButtons() {
-    if (!window.CARD_IMAGES) return;
-    selectorContainer.innerHTML = "";
-    window.CARD_IMAGES.forEach((_, i) => {
-      const btn = document.createElement("button");
-      btn.dataset.slide = i;
-      btn.textContent = i+1; // opcional, ver qué botón es
-      selectorContainer.appendChild(btn);
-    });
-  }
+function createButtons() {
+  if (!window.CARD_IMAGES) return;
 
-  // --- Activar slide
+  selectorContainer.innerHTML = "";
+
+  window.CARD_IMAGES.forEach((_, i) => {
+    const label = document.createElement("label");
+    label.className = "switcher__option";
+
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "card";              
+    input.className = "switcher__input";
+    input.dataset.slide = i;
+    input.setAttribute("c-option", i + 1);  // para CSS
+    if (i === 0) input.checked = true;
+
+    // Aquí agregamos contenido visible
+    const span = document.createElement("span");
+    span.className = "switcher__icon";
+    span.textContent = String.fromCharCode(65 + i); // A, B, C, ... 
+    label.appendChild(input);
+    label.appendChild(span);
+
+    selectorContainer.appendChild(label);
+  });
+}
+
   function activate(index) {
-    const data = window.CARD_IMAGES[index];
-    if (!data) return;
+  const data = window.CARD_IMAGES[index];
+  if (!data) return;
 
-    // Cambiar imagen
-    sliderImg.src = data.src;
+  // 🔥 aplicar colores del card
+  if (data.theme) applyTheme(data.theme);
 
-    // Cargar pins
-    loadPins(data.pins);
+  // Cambiar imagen
+  sliderImg.src = data.src;
 
-    // Botones activos
-    const buttons = selectorContainer.querySelectorAll("button");
-    buttons.forEach(b => b.classList.remove("active"));
-    buttons[index]?.classList.add("active");
+  // Cargar pins
+  loadPins(data.pins);
 
-    // Reset info-card
-    if (title) title.textContent = "";
-    if (desc) desc.textContent = "";
-    if (pinImg) pinImg.src = "";
+  // Reset info-card
+  if (title) title.textContent = "";
+  if (desc) desc.textContent = "";
+  if (pinImg) pinImg.src = "";
 
-    if (window.CardEngine?.wobble) CardEngine.wobble();
-  }
+  if (window.CardEngine?.wobble) CardEngine.wobble();
+}
 
   // --- Click en botones
-  selectorContainer.addEventListener("click", e => {
-    const btn = e.target.closest("button");
-    if (!btn) return;
-    const idx = parseInt(btn.dataset.slide, 10);
-    activate(idx);
-  });
+  selectorContainer.addEventListener("change", e => {
+  const input = e.target.closest("input.switcher__input");
+  if (!input) return;
+
+  const idx = parseInt(input.dataset.slide, 10);
+  activate(idx);
+});
 
   // --- Init
   createButtons();
-  activate(0); // mostrar primera imagen por defecto
+  activate(0);
 
 });

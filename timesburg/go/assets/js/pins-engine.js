@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const desc  = document.getElementById("pin-desc");
   const img   = document.getElementById("pin-img");
   const pinInfo = document.getElementById("pin-info");
-  const buyInfo = document.getElementById("image-selector"); // USAMOS LA BOTONERA
+  const buyInfo = document.getElementById("switcher"); // USAMOS LA BOTONERA
   let visible = false, timer;
 
   // --- Mostrar info escalado ---
