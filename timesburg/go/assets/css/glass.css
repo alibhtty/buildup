@@ -409,7 +409,7 @@ figcaption {
   color: color-mix(in srgb, var(--c-content) 60%, var(--c-bg));
 }
 
-a {
+/* a {
   color: var(--c-action);
   text-decoration-thickness: 0.05em;
   text-underline-position: under;
@@ -424,7 +424,7 @@ a:hover {
   color: color-mix(in srgb, var(--c-action), var(--c-content) 40%);
   -webkit-text-decoration-color: color-mix(in srgb, currentColor, transparent 30%);
           text-decoration-color: color-mix(in srgb, currentColor, transparent 30%);
-}
+} */
 
 /* img {
   display: block;
