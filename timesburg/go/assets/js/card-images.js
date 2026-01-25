@@ -47,11 +47,22 @@ window.CARD_IMAGES = [
         dark: "#000000",
         content: "#e1e1e1",
         action: "#03d5ff",
-        bg: "#1b1b1d",
+        bg: "#000000",
         reflexDark: 2,
         reflexLight: 0.3,
         saturation: "150%"
       }
+      /* theme: {
+        glass: "#bbbbbc",
+        light: "#ffffff",
+        dark: "#000000",
+        content: "#e1e1e1",
+        action: "#03d5ff",
+        bg: "#1b1b1d",
+        reflexDark: 2,
+        reflexLight: 0.3,
+        saturation: "150%"
+      } */
     },
     {
       src: "./assets/img/cover00.jpg",
@@ -67,15 +78,15 @@ window.CARD_IMAGES = [
     { x:90.8, y:72.2, title:"Contador de tiempo restante", desc:"Dos tipos de contadores pasa saber en cuanto tiempo exacto entras o sales del turno según el contexto. Los contadores funcionan en distintos tamaños del widget para los usuario PRO.", img:"./info/io.jpg" }
       ],
       theme: {
-        glass: "hsl(335 250% 74% / 1)",
-        light: "#99deff",
-        dark: "#20001b",
-        content: "#d5dbe2",
-        action: "#ff48a9",
-        bg: "#152433",
-        reflexDark: 2,
-        reflexLight: 0.7,
-        saturation: "200%"
-      }
+          glass: "#1f2a3a",       // gris-azulado elegante, más técnico
+          light: "#cfeaff",       // luz suave azulada, no blanco puro
+          dark: "#07101f",        // azul muy oscuro, casi negro
+          content: "#9bbcd4",     // gris frío para detalles secundarios
+          action: "#00c8ff",      // cian profesional, vibrante pero no saturado
+          bg: "#0a1a3a",          // azul blueprint clásico
+          reflexDark: 1.6,        // reflejo más suave, menos contraste duro
+          reflexLight: 0.25,      // brillo controlado, más premium
+          saturation: "120%"      // saturación moderada, evita look “neón”
+        }
     }
   ];
