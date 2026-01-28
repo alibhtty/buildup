@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Instalación</title>
+
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body,
+		html {
+			background-color: black;
+			font-size: 62.5%;
+		}
+
+		section {
+			position: relative;
+			height: 100svh;
+			width: 100%;
+			background-color: var(--bg);
+			overflow: hidden;
+
+			&.section2 {
+				height: min-content;
+			}
+		}
+
+		.loop-images {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		.carousel-track {
+			--left: -300rem;
+			min-width: calc(10rem * var(--total));
+			height: 30rem;
+		}
+
+		.carousel-track .carousel-item {
+			position: absolute;
+			width: 30rem;
+			height: 30rem;
+			left: 100%;
+			display: flex;
+			justify-content: center;
+			perspective: 1000px;
+			transform-style: preserve-3d;
+			animation: scroll-left var(--time) linear infinite;
+			animation-delay: calc(var(--time) / var(--total) * (var(--i) - 1) - var(--time));
+			will-change: left;
+			transition: 0.5s ease-in-out;
+			cursor: pointer;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				background-color: white;
+				transform: rotateY(-45deg);
+				transition: 0.5s ease-in-out;
+				mask: linear-gradient(black 70%, transparent 100%);
+			}
+		}
+
+		.carousel-track .carousel-item:hover img {
+			transform: rotateY(0deg) translateY(-1rem);
+		}
+
+		/*.carousel-track:hover .carousel-item {
+animation-play-state: paused;
+}*/
+		@keyframes scroll-left {
+			to {
+				left: var(--left);
+			}
+		}
+
+		.image-motion {
+			width: 100%;
+			height: 100%;
+			border-radius: inherit;
+			object-position: center;
+			transform: rotatex(90deg);
+			transform-origin: 50% 0;
+
+			picture {
+				display: block;
+				width: 100%;
+				height: 100%;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					background-color: #111111; /* white */
+				}
+			}
+		}
+
+		.scroll-down {
+			position: absolute;
+			bottom: 5rem;
+			left: 0;
+			right: 0;
+			font-family: "Poppins", sans-serif;
+			text-align: center;
+			font-size: 1.6rem;
+			/* color: black; */
+			color: #ccc;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-decoration: none;
+		}
+
+		.section3 {
+			--bg-color: #000000;
+			--text-primary: #ccc;
+			--text-secondary: #aaa;
+			--text-white: #ffffff;
+			--accent-primary: #ff6b6b;
+			--accent-secondary: #ff8a80;
+			--accent-tertiary: #ffab40;
+			--accent-quaternary: #ff7043;
+			--accent-quinary: #ff5722;
+			--border-radius: 25px;
+			--transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: var(--text-white);
+			padding: 6rem 2rem;
+			min-height: 100vh;
+			background: var(--bg-color);
+			overflow: hidden;
+
+			.container {
+				width: 100%;
+				max-width: 1200px;
+				margin: auto;
+				text-align: center;
+				position: relative;
+				z-index: 2;
+
+				.title {
+					font-size: 5rem;
+					font-family: "Poppins", sans-serif;
+					font-weight: 800;
+					margin-bottom: 2.5rem;
+					background: linear-gradient(135deg,
+							var(--accent-primary) 0%,
+							var(--accent-secondary) 25%,
+							var(--accent-tertiary) 50%,
+							var(--accent-quaternary) 75%,
+							var(--accent-quinary) 100%);
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					background-clip: text;
+					line-height: 1.1;
+					letter-spacing: -2px;
+					position: relative;
+
+					&::after {
+						content: "";
+						position: absolute;
+						bottom: -10px;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 100px;
+						height: 4px;
+						background: linear-gradient(90deg,
+								var(--accent-primary),
+								var(--accent-secondary));
+						border-radius: 2px;
+					}
+				}
+
+				.subtitle {
+					position: relative;
+					width: fit-content;
+					margin-inline: auto;
+					font-size: 1.6rem;
+					font-family: "Poppins", sans-serif;
+					font-weight: 300;
+					color: var(--text-primary);
+					margin-bottom: 2rem;
+					letter-spacing: 3px;
+					text-transform: uppercase;
+
+					&::before {
+						content: "◆";
+						position: absolute;
+						left: -30px;
+						top: 50%;
+						transform: translateY(-50%);
+						color: var(--accent-primary);
+						font-size: 1.2rem;
+					}
+
+					&::after {
+						content: "◆";
+						position: absolute;
+						right: -30px;
+						top: 50%;
+						transform: translateY(-50%);
+						color: var(--accent-primary);
+						font-size: 1.2rem;
+					}
+				}
+
+				.text-content {
+					margin-bottom: 6rem;
+					position: relative;
+
+					.text {
+						font-size: 1.3rem;
+						font-family: "Poppins", sans-serif;
+						font-weight: 400;
+						color: var(--text-primary);
+						line-height: 1.9;
+						margin-bottom: 2.5rem;
+						max-width: 700px;
+						margin-left: auto;
+						margin-right: auto;
+						text-align: center;
+					}
+				}
+
+				.features {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+					gap: 2.5rem;
+					margin-top: 5rem;
+
+					.feature {
+						background: linear-gradient(145deg,
+								rgba(255, 107, 107, 0.1) 0%,
+								rgba(255, 138, 128, 0.05) 100%);
+						backdrop-filter: blur(20px);
+						border: 1px solid rgba(255, 107, 107, 0.3);
+						border-radius: var(--border-radius);
+						padding: 3.5rem 2.5rem;
+						text-align: center;
+						transition: var(--transition);
+						position: relative;
+						overflow: hidden;
+						cursor: pointer;
+
+						&::before {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: -100%;
+							width: 100%;
+							height: 100%;
+							background: linear-gradient(90deg,
+									transparent,
+									rgba(255, 107, 107, 0.2),
+									transparent);
+							transition: left 0.6s ease;
+						}
+
+						&:hover {
+							transform: translateY(-15px) scale(1.02);
+							background: linear-gradient(145deg,
+									rgba(255, 107, 107, 0.2) 0%,
+									rgba(255, 138, 128, 0.1) 100%);
+							border-color: rgba(255, 107, 107, 0.6);
+
+							&::before {
+								left: 100%;
+							}
+						}
+
+						.feature-icon {
+							font-size: 3.5rem;
+							display: block;
+							margin-bottom: 2rem;
+							filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+							transition: transform 0.3s ease;
+						}
+
+						&:hover .feature-icon {
+							transform: scale(1.1) rotate(5deg);
+						}
+
+						h3 {
+							font-size: 1.8rem;
+							font-family: "Poppins", sans-serif;
+							font-weight: 700;
+							color: var(--text-white);
+							margin-bottom: 1.5rem;
+							background: linear-gradient(135deg,
+									var(--text-white) 0%,
+									var(--accent-primary) 100%);
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+							background-clip: text;
+						}
+
+						p {
+							font-size: 1.1rem;
+							font-family: "Poppins", sans-serif;
+							font-weight: 300;
+							color: var(--text-secondary);
+							line-height: 1.7;
+						}
+					}
+				}
+			}
+		}
+
+		@media (max-width: 768px) {
+			.section3 {
+				padding: 4rem 1rem;
+
+				.container {
+					.title {
+						font-size: 3.5rem;
+						letter-spacing: -1px;
+
+						&::after {
+							width: 60px;
+							height: 3px;
+						}
+					}
+
+					.subtitle {
+						font-size: 1.2rem;
+						margin-bottom: 3rem;
+						letter-spacing: 2px;
+
+						&::before,
+						&::after {
+							display: none;
+						}
+					}
+
+					.text-content {
+						margin-bottom: 4rem;
+
+						.text {
+							font-size: 1.1rem;
+							text-align: center;
+						}
+					}
+
+					.features {
+						grid-template-columns: 1fr;
+						gap: 2rem;
+						margin-top: 3rem;
+
+						.feature {
+							padding: 2.5rem 2rem;
+
+							.feature-icon {
+								font-size: 3rem;
+								margin-bottom: 1.5rem;
+							}
+
+							h3 {
+								font-size: 1.5rem;
+								margin-bottom: 1rem;
+							}
+
+							p {
+								font-size: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	</style>
+
+</head>
+
+<body translate="no">
+	<section class="loop-images" style="--bg: #111;">
+		<div class="carousel-track" style="--time: 60s; --total: 12;">
+			<div class="carousel-item" style="--i: 1;">
+				<img src="./assets/img/cover02.jpg"
+					alt="image">
+					<!-- https://images.unsplash.com/photo-1758314896569-b3639ee707c4?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D -->
+			</div>
+			<div class="carousel-item" style="--i: 2;">
+				<img src="https://plus.unsplash.com/premium_photo-1671649240322-2124cd07eaae?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 3;">
+				<img src="https://plus.unsplash.com/premium_photo-1673029925648-af80569efc46?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 4;">
+				<img src="https://plus.unsplash.com/premium_photo-1666533099824-abd0ed813f2a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 5;">
+				<img src="https://plus.unsplash.com/premium_photo-1671105035554-7f8c2a587201?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 6;">
+				<img src="https://plus.unsplash.com/premium_photo-1686750875748-d00684d36b1e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 7;">
+				<img src="https://plus.unsplash.com/premium_photo-1686844462591-393ceae12be0?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 8;">
+				<img src="https://plus.unsplash.com/premium_photo-1686839181367-febb561faa53?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 9;">
+				<img src="https://plus.unsplash.com/premium_photo-1671199850329-91cae34a6b6d?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 10;">
+				<img src="https://plus.unsplash.com/premium_photo-1685655611311-9f801b43b9fa?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 11;">
+				<img src="https://plus.unsplash.com/premium_photo-1675598468920-878ae1e46f14?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+			<div class="carousel-item" style="--i: 12;">
+				<img src="https://images.unsplash.com/photo-1718036094878-ecdce2b1be95?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="image">
+			</div>
+		</div>
+		<span class="scroll-down">Desliza <span class="arrow">↓</span></span>
+	</section>
+	<section class="section2" style="--bg: black;">
+		<div class="image-motion">
+			<picture>
+				<img src="https://i.postimg.cc/1ztkf4hX/moveimage.png" alt="image">
+			</picture>
+		</div>
+	</section>
+	<section style="--bg: black;" class="section3">
+		<div class="container">
+			<h1 class="title">Carrusel Infinito</h1>
+			<p class="subtitle">Una experiencia visual única</p>
+			<div class="text-content">
+				<p class="text">Descubre la magia del movimiento continuo con nuestro carrusel de imágenes infinito.
+					Cada elemento se desliza suavemente creando una experiencia visual hipnotizante que captura la
+					atención del espectador.</p>
+
+				<p class="text">La animación 3D y los efectos de perspectiva añaden profundidad y dinamismo a cada
+					imagen, mientras que el loop infinito garantiza una experiencia sin interrupciones.</p>
+
+				<p class="text">Perfecto para portfolios, galerías de productos o cualquier proyecto que requiera
+					mostrar contenido visual de manera elegante y moderna.</p>
+			</div>
+			<div class="features">
+				<div class="feature">
+					<h3>Diseño Moderno</h3>
+					<p>Efectos 3D y animaciones suaves</p>
+				</div>
+				<div class="feature">
+					<h3>Rendimiento Óptimo</h3>
+					<p>Animaciones CSS puras sin JavaScript</p>
+				</div>
+				<div class="feature">
+					<h3>Totalmente Responsive</h3>
+					<p>Se adapta a cualquier dispositivo</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js'></script>
+	<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js'></script>
+	<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js'></script>
+	<script src='https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js'></script>
+	<script id="rendered-js">
+		document.addEventListener("DOMContentLoaded", () => {
+			gsap.registerPlugin(ScrollTrigger, SplitText);
+
+			const lenis = new Lenis();
+			lenis.on("scroll", ScrollTrigger.update);
+			gsap.ticker.add(time => {
+				lenis.raf(time * 1000);
+			});
+			gsap.ticker.lagSmoothing(0);
+
+			gsap.set(".image-motion", {
+				transform: "rotatex(90deg)"
+			});
+
+
+			gsap.to(".image-motion", {
+				transform: "rotatex(0deg)",
+				scrollTrigger: {
+					trigger: ".section2",
+					start: "top bottom",
+					end: "bottom top",
+					scrub: true,
+					markers: false
+				}
+			});
+
+
+
+			gsap.fromTo(
+				".title",
+				{
+					opacity: 0,
+					y: 50
+				},
+
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".section3",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none reverse"
+					}
+				});
+
+
+
+
+			gsap.fromTo(
+				".subtitle",
+				{
+					opacity: 0,
+					y: 30
+				},
+
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.8,
+					delay: 0.3,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".section3",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none reverse"
+					}
+				});
+
+
+
+
+			const text = new SplitText(".text", {
+				types: "lines",
+				mask: "lines"
+			});
+
+
+			gsap.fromTo(
+				text.lines,
+				{
+					opacity: 0,
+					y: 30
+				},
+
+				{
+					opacity: 1,
+					y: 0,
+					stagger: 0.2,
+					duration: 0.8,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".text-content",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none reverse"
+					}
+				});
+
+
+
+
+			gsap.fromTo(
+				".feature",
+				{
+					opacity: 0,
+					y: 50,
+					scale: 0.9
+				},
+
+				{
+					opacity: 1,
+					y: 0,
+					scale: 1,
+					stagger: 0.2,
+					duration: 0.8,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".features",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none reverse"
+					}
+				});
+
+
+
+		});
+		//# sourceURL=pen.js
+	</script>
+
+
+</body>
+
+</html>
