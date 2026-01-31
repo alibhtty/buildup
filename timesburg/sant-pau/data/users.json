@@ -28,7 +28,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "",
+      "texto": "Sem 6 Cargada",
       "fondo": "",
       "opacidad": 0
     }
@@ -38,7 +38,7 @@
     "ali": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-30",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
 
       "aviso_modal": {
         "texto": "(⌐■_■) ",
@@ -52,7 +52,7 @@
     "paola": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-30",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
 
       "aviso_modal": {
         "texto": "",
@@ -65,7 +65,7 @@
     "eylin": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" },
       "imagen": "⭐️"
     },
@@ -85,14 +85,14 @@
     "ray": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" }
     },
 
     "weslie": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" }
     },
 
@@ -106,14 +106,14 @@
     "rianwhen": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" }
     },
 
     "judith": {
       "activo_por_defecto": true,
       "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-01-31",
+      "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" }
     }
   }

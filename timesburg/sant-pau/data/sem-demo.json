@@ -927,5 +927,322 @@
         }
       }
     ]
+  },
+
+
+  {
+    "id": 7,
+    "nombre": "Sant Pau",
+    "trabajadores": [
+      {
+        "nombre": "Paola Corrales",
+        "plaza": "Mando 1",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["09:00","15:30"], "noche": ["19:00","23:30"] },
+          "martes": { "mediodia": ["",""], "noche": ["19:00","23:30"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["11:30","16:00"], "noche": ["19:00","00:00"] },
+          "sabado": { "mediodia": ["",""], "noche": ["19:00","01:00"] },
+          "domingo": { "mediodia": ["11:30","18:30"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Eylin Ferreira",
+        "plaza": "Mando 2",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "martes": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
+          "jueves": { "mediodia": ["10:30","17:00"], "noche": ["19:00","00:00"] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:00","01:00"] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Jeymi Borjas",
+        "plaza": "Base 1",
+        "contratadas": 30,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["",""] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Ray Leonard",
+        "plaza": "Base 2",
+        "contratadas": 30,
+        "complementarias": 8,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["10:00","17:00"], "noche": ["19:00","00:00"] },
+          "jueves": { "mediodia": ["13:00","17:00"], "noche": ["19:00","00:00"] },
+          "viernes": { "mediodia": ["13:00","17:00"], "noche": ["19:00","23:00"] },
+          "sabado": { "mediodia": ["13:30","16:00"], "noche": ["20:00","23:30"] },
+          "domingo": { "mediodia": ["13:30","16:30"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Johan Cruz",
+        "plaza": "Base 3",
+        "contratadas": 30,
+        "complementarias": 9,
+        "horarios": {
+          "lunes": { "mediodia": ["11:30","17:00"], "noche": ["20:00","00:00"] },
+          "martes": { "mediodia": ["12:30","15:30"], "noche": ["20:00","00:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["11:30","17:00"], "noche": ["19:30","01:00"] },
+          "sabado": { "mediodia": ["13:00","15:30"], "noche": ["19:00","01:00"] },
+          "domingo": { "mediodia": ["13:00","16:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Ali Bhtty",
+        "plaza": "Base 4",
+        "contratadas": 20,
+        "complementarias": 16,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["13:00","16:30"], "noche": ["20:00","23:30"] },
+          "jueves": { "mediodia": ["11:30","15:30"], "noche": ["20:00","23:30"] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "sabado": { "mediodia": ["11:30","17:00"], "noche": ["20:30","23:00"] },
+          "domingo": { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] }
+        }
+      },
+      {
+        "nombre": "Weslie Negron",
+        "plaza": "Base 5",
+        "contratadas": 20,
+        "complementarias": 10.5,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["19:00","00:00"] },
+          "martes": { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["13:00","16:00"], "noche": ["20:30","23:00"] },
+          "sabado": { "mediodia": ["12:30","16:30"], "noche": ["20:00","23:00"] },
+          "domingo": { "mediodia": ["",""], "noche": ["20:30","23:00"] }
+        }
+      },
+      {
+        "nombre": "Rianwhen Jones",
+        "plaza": "Base 6",
+        "contratadas": 10,
+        "complementarias": 13.5,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["20:30","23:00"] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:30","01:00"] },
+          "sabado": { "mediodia": ["11:30","17:00"], "noche": ["20:30","01:00"] },
+          "domingo": { "mediodia": ["13:00","15:30"], "noche": ["20:00","00:00"] }
+        }
+      },
+      {
+        "nombre": "Judith Serrano",
+        "plaza": "Base 7",
+        "contratadas": 20,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["",""] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Xxx",
+        "plaza": "Base 8",
+        "contratadas": 0,
+        "complementarias": 12.5,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:00","23:30"] },
+          "sabado": { "mediodia": ["",""], "noche": ["19:30","00:00"] },
+          "domingo": { "mediodia": ["",""], "noche": ["19:00","23:30"] }
+        }
+      }
+    ]
+  },
+
+
+  
+  {
+    "id": 8,
+    "nombre": "Sant Pau",
+    "trabajadores": [
+      {
+        "nombre": "Paola Corrales",
+        "plaza": "Mando 1",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["09:00","15:30"], "noche": ["19:00","23:30"] },
+          "martes": { "mediodia": ["12:30","15:30"], "noche": ["19:00","23:30"] },
+          "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["11:30","16:00"], "noche": ["19:00","00:00"] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Eylin Ferreira",
+        "plaza": "Mando 2",
+        "contratadas": 38,
+        "complementarias": 2.5,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["13:00","15:30"], "noche": ["19:00","00:00"] },
+          "jueves": { "mediodia": ["10:30","17:00"], "noche": ["20:00","00:00"] },
+          "viernes": { "mediodia": ["",""], "noche": ["19:30","01:00"] },
+          "sabado": { "mediodia": ["11:30","17:00"], "noche": ["19:00","01:00"] },
+          "domingo": { "mediodia": ["13:00","18:30"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Jeymi Borjas",
+        "plaza": "Base 1",
+        "contratadas": 30,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["",""] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Ray Leonard",
+        "plaza": "Base 2",
+        "contratadas": 30,
+        "complementarias": 8,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["10:00","17:00"], "noche": ["19:00","23:30"] },
+          "jueves": { "mediodia": ["11:30","17:00"], "noche": ["20:30","23:00"] },
+          "viernes": { "mediodia": ["11:30","17:00"], "noche": ["19:00","23:30"] },
+          "sabado": { "mediodia": ["",""], "noche": ["19:30","01:00"] },
+          "domingo": { "mediodia": ["13:00","16:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Johan Cruz",
+        "plaza": "Base 3",
+        "contratadas": 30,
+        "complementarias": 6.5,
+        "horarios": {
+          "lunes": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["20:00","00:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["13:00","17:00"], "noche": ["20:00","01:00"] },
+          "sabado": { "mediodia": ["12:30","16:00"], "noche": ["19:00","23:30"] },
+          "domingo": { "mediodia": ["11:30","17:00"], "noche": ["19:00","23:30"] }
+        }
+      },
+      {
+        "nombre": "Ali Bhtty",
+        "plaza": "Base 4",
+        "contratadas": 20,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["",""] },
+          "sabado": { "mediodia": ["",""], "noche": ["",""] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Weslie Negron",
+        "plaza": "Base 5",
+        "contratadas": 20,
+        "complementarias": 9.5,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["19:00","00:00"] },
+          "martes": { "mediodia": ["11:30","17:00"], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["13:00","16:00"], "noche": ["20:30","01:00"] },
+          "sabado": { "mediodia": ["13:30","16:30"], "noche": ["20:00","01:00"] },
+          "domingo": { "mediodia": ["",""], "noche": ["20:30","00:00"] }
+        }
+      },
+      {
+        "nombre": "Rianwhen Jones",
+        "plaza": "Base 6",
+        "contratadas": 10,
+        "complementarias": 13,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["19:00","00:00"] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:30","23:00"] },
+          "sabado": { "mediodia": ["11:30","17:00"], "noche": ["20:00","00:00"] },
+          "domingo": { "mediodia": ["13:30","16:30"], "noche": ["20:00","23:00"] }
+        }
+      },
+      {
+        "nombre": "Judith Serrano",
+        "plaza": "Base 7",
+        "contratadas": 20,
+        "complementarias": 17,
+        "horarios": {
+          "lunes": { "mediodia": ["11:30","17:00"], "noche": ["20:00","00:00"] },
+          "martes": { "mediodia": ["11:30","17:00"], "noche": ["19:00","00:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves": { "mediodia": ["",""], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "sabado": { "mediodia": ["13:00","15:30"], "noche": ["20:30","23:00"] },
+          "domingo": { "mediodia": ["11:30","15:30"], "noche": ["19:00","00:00"] }
+        }
+      },
+      {
+        "nombre": "Xxx",
+        "plaza": "Base 8",
+        "contratadas": 0,
+        "complementarias": 12,
+        "horarios": {
+          "lunes": { "mediodia": ["",""], "noche": ["",""] },
+          "martes": { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["20:00","00:00"] },
+          "jueves": { "mediodia": ["13:00","15:30"], "noche": ["",""] },
+          "viernes": { "mediodia": ["",""], "noche": ["20:00","23:00"] },
+          "sabado": { "mediodia": ["",""], "noche": ["20:30","23:00"] },
+          "domingo": { "mediodia": ["",""], "noche": ["",""] }
+        }
+      }
+    ]
   }
 ]
