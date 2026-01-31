@@ -1,6 +1,6 @@
 {
   "configuracion_global": {
-    "local": "Sant Pau",
+    "local": "Sant Pau Demo",
     "oferta_free": {
       "desde": "2025-12-17",
       "hasta": "2025-12-31"
@@ -28,7 +28,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": " Sem 6 Cargada ",
+      "texto": "Modo PRO agotado, suscríbete",
       "fondo": "",
       "opacidad": 0
     }

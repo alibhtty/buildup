@@ -719,7 +719,7 @@
           "miercoles": { "mediodia": ["11:30","15:30"], "noche": ["20:00","00:00"] },
           "jueves": { "mediodia": ["10:30","15:30"], "noche": ["20:00","23:30"] },
           "viernes": { "mediodia": ["13:00","17:00"], "noche": ["20:00","23:00"] },
-          "sabado": { "mediodia": ["",""], "noche": ["20:30","23:00"] },
+          "sabado": { "mediodia": ["",""], "noche": ["20:30","22:00"] },
           "domingo": { "mediodia": ["13:00","16:00"], "noche": ["",""] }
         }
       },
