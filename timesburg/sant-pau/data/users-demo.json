@@ -1,5 +1,6 @@
 {
   "configuracion_global": {
+    "free_click_url": "https://alibhtty.github.io/buildup/timesburg/go/",
     "local": "Sant Pau Demo",
     "oferta_free": {
       "desde": "2026-01-02",
@@ -154,7 +155,5 @@
         "title": "DESBLOQUEA TODO 🚀",
         "sub": "Un arsenal de componentes. Accede sin límites a todos los apartados, y detalles avanzados del horario."
       }
-    ],
-
-    "free_click_url": "https://alibhtty.github.io/buildup/timesburg/go/"
+    ]
 }
