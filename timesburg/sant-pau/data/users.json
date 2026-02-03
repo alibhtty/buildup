@@ -28,7 +28,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": " Sem 6 Cargada ",
+      "texto": "",
       "fondo": "",
       "opacidad": 0
     }
@@ -37,11 +37,11 @@
   "usuarios": {
     "ali": {
       "activo_por_defecto": true,
-      "activo_desde": "2025-12-30",
-      "activo_hasta": "2026-02-01",
+      "activo_desde": "2026-02-01",
+      "activo_hasta": "2026-02-28",
 
       "aviso_modal": {
-        "texto": "(⌐■_■) ",
+        "texto": "(⌐■_■)",
         "fondo": "",
         "opacidad": 0
       },
