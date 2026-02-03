@@ -1,5 +1,6 @@
 {
   "configuracion_global": {
+    "click_free": "https://alibhtty.github.io/buildup/timesburg/go/",
     "local": "Sant Pau Demo",
     "oferta_free": {
       "desde": "2026-01-02",
@@ -28,7 +29,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "Modo PRO agotado",
+      "texto": "PRO agotado",
       "fondo": "",
       "opacidad": 0
     }
