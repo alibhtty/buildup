@@ -116,5 +116,45 @@
       "activo_hasta": "2026-02-01",
       "aviso_modal": { "texto": "" }
     }
-  }
+  },
+
+
+
+    "free_banners": [
+      {
+        "img": "b1-246.png",
+        "title": "TODO, BAJO CONTROL ♥",
+        "sub": "Tus horarios van cargando automáticamente. Desbloquea PRO y consulta tus próximos turnos."
+      },
+      {
+        "img": "b2-246.png",
+        "title": "TODO MÁS CLARO",
+        "sub": "Visualiza turnos, descansos, comidas y el horario completo desde tu pantalla de inicio."
+      },
+      {
+        "img": "b3-246.png",
+        "title": "DISEÑADO PARA TU RUTINA",
+        "sub": "Controla tu jornada consultando datos importantes sin abrir apps ni perder el flujo."
+      },
+      {
+        "img": "b4-246.png",
+        "title": "FUNCIONES AVANZADAS",
+        "sub": "El modo PRO muestra todo el horario SEMANAL del trabajador, estadísticas clave y estimación salarial."
+      },
+      {
+        "img": "b5-246.png",
+        "title": "FREE MODE ♥",
+        "sub": "La capa gratuita FREE MODE ofrece los datos básicos para organizar tu día de trabajo rápidamente."
+      },
+      {
+        "img": "b6-246.png",
+        "title": "MÁS CONTROL Y PRECISIÓN",
+        "sub": "Con PRO podrás acceder a vistas completas, los turnos del día, los de tu semana entera y en cuanto tiempo entras."
+      },
+      {
+        "img": "b7-246.png",
+        "title": "DESBLOQUEA TODO 🚀",
+        "sub": "Un arsenal de componentes. Accede sin límites a todos los apartados, y detalles avanzados del horario."
+      }
+    ]
 }
