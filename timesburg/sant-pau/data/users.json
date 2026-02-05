@@ -28,7 +28,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "",
+      "texto": "PRO agotadoa",
       "fondo": "",
       "opacidad": 0
     }
@@ -64,8 +64,8 @@
 
     "eylin": {
       "activo_por_defecto": true,
-      "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-02-01",
+      "activo_desde": "2025-02-01",
+      "activo_hasta": "2026-02-28",
       "aviso_modal": { "texto": "" },
       "imagen": "⭐️"
     },
