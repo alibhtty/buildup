@@ -28,7 +28,7 @@
     },
 
     "aviso_modal_global": {
-      "texto": "PRO agotadoa",
+      "texto": "",
       "fondo": "",
       "opacidad": 0
     }
@@ -66,7 +66,7 @@
       "activo_por_defecto": true,
       "activo_desde": "2025-02-01",
       "activo_hasta": "2026-02-28",
-      "aviso_modal": { "texto": "" },
+      "aviso_modal": { "texto": "Nuevamente en PRO" },
       "imagen": "⭐️"
     },
 
