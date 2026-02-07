@@ -64,9 +64,9 @@
 
     "eylin": {
       "activo_por_defecto": true,
-      "activo_desde": "2025-02-01",
+      "activo_desde": "2026-02-01",
       "activo_hasta": "2026-02-28",
-      "aviso_modal": { "texto": "Otro mes con PRO" },
+      "aviso_modal": { "texto": "" },
       "imagen": "⭐️"
     },
 
@@ -84,9 +84,9 @@
 
     "ray": {
       "activo_por_defecto": true,
-      "activo_desde": "2025-12-31",
-      "activo_hasta": "2026-02-01",
-      "aviso_modal": { "texto": "" }
+      "activo_desde": "2026-02-01",
+      "activo_hasta": "2026-02-28",
+      "aviso_modal": { "texto": "Febrero con PRO" }
     },
 
     "weslie": {
@@ -154,7 +154,7 @@
       {
         "img": "b7-246.png",
         "title": "DESBLOQUEA TODO 🚀",
-        "sub": "Un arsenal de componentes. Accede sin límites a todos los apartados, y detalles avanzados del horario."
+        "sub": "Todos los componentes. Accede sin límites a todos los apartados, y detalles avanzados del horario."
       }
     ]
 }
