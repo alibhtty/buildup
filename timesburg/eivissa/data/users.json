@@ -1,0 +1,160 @@
+{
+  "configuracion_global": {
+    "local": "Sant Pau",
+    "oferta_free": {
+      "desde": "2025-12-17",
+      "hasta": "2025-12-31"
+    },
+
+    "colores": {
+      "background": { "hex": "#00cc66", "opacidad": 0.3 },
+      "header": { "hex": "#EFDECD", "opacidad": 1 },
+      "apertura": { "hex": "#00aa44", "opacidad": 1 },
+      "cierre": { "hex": "#f42828", "opacidad": 1 },
+      "texto": { "hex": "#fff6ed", "opacidad": 0.9 }
+    },
+
+    "backgrounds": [
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/eivissa/img/01.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/eivissa/img/02.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/eivissa/img/03.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/eivissa/img/04.jpg",
+      "https://raw.githubusercontent.com/alibhtty/buildup/main/timesburg/eivissa/img/05.jpg"
+    ],
+
+    "widget_url": {
+      "activo": false,
+      "url": "https://ali-bhtty.web.app"
+    },
+
+    "aviso_modal_global": {
+      "texto": "PRO per a tots!",
+      "fondo": "",
+      "opacidad": 0
+    }
+  },
+
+  "usuarios": {
+    "ali": {
+      "activo_por_defecto": true,
+      "activo_desde": "2026-03-01",
+      "activo_hasta": "2026-03-31",
+
+      "aviso_modal": {
+        "texto": "(⌐■_■)",
+        "fondo": "",
+        "opacidad": 0
+      },
+      
+      "imagen": "http://ali-bhtty.web.app/static/icons/128x128.png"
+    },
+
+    "paola": {
+      "activo_por_defecto": true,
+      "activo_desde": "2025-12-30",
+      "activo_hasta": "2026-02-01",
+
+      "aviso_modal": {
+        "texto": "",
+        "fondo": "",
+        "opacidad": 0
+      },
+      "imagen": "⭐️"
+    },
+
+    "eylin": {
+      "activo_por_defecto": true,
+      "activo_desde": "2026-02-01",
+      "activo_hasta": "2026-02-31",
+      "aviso_modal": { "texto": "" },
+      "imagen": "⭐️"
+    },
+
+    "johan": {
+      "activo_por_defecto": true,
+      "activo_desde": "2025-03-01",
+      "activo_hasta": "2026-03-31",
+
+      "aviso_modal": {
+        "texto": "",
+        "fondo": "",
+        "opacidad": 0
+      }
+    },
+
+    "ray": {
+      "activo_por_defecto": true,
+      "activo_desde": "2026-03-01",
+      "activo_hasta": "2026-03-31",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "weslie": {
+      "activo_por_defecto": true,
+      "activo_desde": "2025-03-01",
+      "activo_hasta": "2026-03-31",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "gerard": {
+      "activo_por_defecto": true,
+      "activo_desde": "2025-03-01",
+      "activo_hasta": "2026-03-30",
+      "aviso_modal": { "texto": "" }
+    },
+    
+    "rianwhen": {
+      "activo_por_defecto": true,
+      "activo_desde": "2025-03-01",
+      "activo_hasta": "2026-03-30",
+      "aviso_modal": { "texto": "" }
+    },
+
+    "judith": {
+      "activo_por_defecto": true,
+      "activo_desde": "2026-03-01",
+      "activo_hasta": "2026-03-30",
+      "aviso_modal": { "texto": "TU SEMANA PRO" }
+    }
+  },
+
+
+
+    "free_banners": [
+      {
+        "img": "b1-246.png",
+        "title": "TODO, BAJO CONTROL ♥",
+        "sub": "Tus horarios van cargando automáticamente. Desbloquea PRO y consulta tus próximos turnos."
+      },
+      {
+        "img": "b2-246.png",
+        "title": "TODO MÁS CLARO",
+        "sub": "Visualiza turnos, descansos, comidas y el horario completo desde tu pantalla de inicio."
+      },
+      {
+        "img": "b3-246.png",
+        "title": "DISEÑADO PARA TU RUTINA",
+        "sub": "Controla tu jornada consultando datos importantes sin abrir apps ni perder el flujo."
+      },
+      {
+        "img": "b4-246.png",
+        "title": "FUNCIONES AVANZADAS",
+        "sub": "El modo PRO muestra todo el horario SEMANAL del trabajador, estadísticas clave y estimación salarial."
+      },
+      {
+        "img": "b5-246.png",
+        "title": "FREE MODE ♥",
+        "sub": "La capa gratuita FREE MODE ofrece los datos básicos para organizar tu día de trabajo rápidamente."
+      },
+      {
+        "img": "b6-246.png",
+        "title": "MÁS CONTROL Y PRECISIÓN",
+        "sub": "Con PRO podrás acceder a vistas completas, los turnos del día, los de tu semana entera y en cuanto tiempo entras."
+      },
+      {
+        "img": "b7-246.png",
+        "title": "DESBLOQUEA TODO 🚀",
+        "sub": "Todos los componentes. Accede sin límites a todos los apartados, y detalles avanzados del horario."
+      }
+    ]
+}
