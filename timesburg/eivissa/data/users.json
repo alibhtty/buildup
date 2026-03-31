@@ -1,9 +1,9 @@
 {
   "configuracion_global": {
-    "local": "Sant Pau",
+    "local": "Eivissa",
     "oferta_free": {
-      "desde": "2025-12-17",
-      "hasta": "2025-12-31"
+      "desde": "2026-04-01",
+      "hasta": "202-04-30"
     },
 
     "colores": {
