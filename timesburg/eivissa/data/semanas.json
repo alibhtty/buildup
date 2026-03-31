@@ -1992,7 +1992,7 @@
         "complementarias": 0,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["",""] },
-          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["11:30","17:00"], "noche": ["19:00","23:30"] },
           "miercoles": { "mediodia": ["",""], "noche": ["20:45","23:45"] },
           "jueves":    { "mediodia": ["09:30","17:00"], "noche": ["20:45","00:00"] },
           "viernes":   { "mediodia": ["11:30","17:00"], "noche": ["20:45","01:00"] },
@@ -2037,7 +2037,7 @@
         "complementarias": 13,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["",""] },
-          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["19:00","23:30"], "noche": ["19:00","23:30"] },
           "miercoles": { "mediodia": ["",""], "noche": ["19:30","23:30"] },
           "jueves":    { "mediodia": ["19:30","23:30"], "noche": ["19:30","23:30"] },
           "viernes":   { "mediodia": ["19:00","00:00"], "noche": ["19:00","00:00"] },
@@ -2052,7 +2052,7 @@
         "complementarias": 6,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["",""] },
-          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["10:00","16:30"], "noche": ["20:00","23:00"] },
           "miercoles": { "mediodia": ["",""], "noche": ["",""] },
           "jueves":    { "mediodia": ["",""], "noche": ["",""] },
           "viernes":   { "mediodia": ["",""], "noche": ["20:00","23:00"] },
@@ -2067,7 +2067,7 @@
         "complementarias": 2,
         "horarios": {
           "lunes":     { "mediodia": ["",""], "noche": ["",""] },
-          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["10:00","16:30"], "noche": ["",""] },
           "miercoles": { "mediodia": ["12:00","16:30"], "noche": ["",""] },
           "jueves":    { "mediodia": ["10:00","16:30"], "noche": ["",""] },
           "viernes":   { "mediodia": ["12:00","17:00"], "noche": ["20:30","23:30"] },
