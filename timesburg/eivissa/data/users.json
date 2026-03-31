@@ -2,8 +2,8 @@
   "configuracion_global": {
     "local": "Eivissa",
     "oferta_free": {
-      "desde": "2026-04-01",
-      "hasta": "202-04-30"
+      "desde": "2026-03-31",
+      "hasta": "2026-04-30"
     },
 
     "colores": {
