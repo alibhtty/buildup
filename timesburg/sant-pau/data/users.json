@@ -37,8 +37,8 @@
   "usuarios": {
     "ali": {
       "activo_por_defecto": true,
-      "activo_desde": "2026-03-01",
-      "activo_hasta": "2026-03-31",
+      "activo_desde": "2026-03-31",
+      "activo_hasta": "2026-04-30",
 
       "aviso_modal": {
         "texto": "(⌐■_■)",
