@@ -2076,6 +2076,120 @@
         }
       }
     ]
+  },
+
+
+  
+  {
+    "id": 15,
+    "nombre": "Eivissa",
+    "trabajadores": [
+      {
+        "nombre": "Omar Montiel",
+        "plaza": "Mando 1",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["11:30","17:00"], "noche": ["20:45","0:00"] },
+          "jueves":    { "mediodia": ["9:30","16:30"], "noche": ["20:45","0:00"] },
+          "viernes":   { "mediodia": ["12:00","17:00"], "noche": ["20:45","1:00"] },
+          "sabado":    { "mediodia": ["",""], "noche": ["19:00","23:00"] },
+          "domingo":   { "mediodia": ["",""], "noche": ["19:00","0:00"] }
+        }
+      },
+      {
+        "nombre": "Lismar Perez",
+        "plaza": "Aut. Cierre",
+        "contratadas": 30,
+        "complementarias": 5,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["19:00","0:00"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["19:00","23:00"] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["11:30","17:00"], "noche": ["20:00","0:00"] },
+          "sabado":    { "mediodia": ["11:00","17:00"], "noche": ["20:00","1:00"] },
+          "domingo":   { "mediodia": ["11:30","17:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Matias Greco",
+        "plaza": "Base 1",
+        "contratadas": 20,
+        "complementarias": 0,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["",""] },
+          "sabado":    { "mediodia": ["",""], "noche": ["",""] },
+          "domingo":   { "mediodia": ["",""], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "David Ponce",
+        "plaza": "Base 2",
+        "contratadas": 15,
+        "complementarias": 6.5,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["19:30","23:30"] },
+          "martes":    { "mediodia": ["",""], "noche": ["19:30","23:30"] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["19:00","23:30"] },
+          "sabado":    { "mediodia": ["13:30","16:00"], "noche": ["20:30","0:00"] },
+          "domingo":   { "mediodia": ["13:00","16:00"], "noche": ["",""] }
+        }
+      },
+      {
+        "nombre": "Carmen Tejedor",
+        "plaza": "Base 3",
+        "contratadas": 10,
+        "complementarias": 17.5,
+        "horarios": {
+          "lunes":     { "mediodia": ["12:00","17:00"], "noche": ["20:00","23:30"] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["19:30","23:00"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["20:30","23:00"] },
+          "sabado":    { "mediodia": ["12:30","17:00"], "noche": ["20:30","1:00"] },
+          "domingo":   { "mediodia": ["",""], "noche": ["20:00","0:00"] }
+        }
+      },
+      {
+        "nombre": "Ali Bhtty",
+        "plaza": "Base 3",
+        "contratadas": 20,
+        "complementarias": 18.75,
+        "horarios": {
+          "lunes":     { "mediodia": ["",""], "noche": ["",""] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["12:00","16:30"], "noche": ["19:30","23:30"] },
+          "jueves":    { "mediodia": ["10:30","17:00"], "noche": ["19:00","23:30"] },
+          "viernes":   { "mediodia": ["",""], "noche": ["19:00","0:45"] },
+          "sabado":    { "mediodia": ["",""], "noche": ["19:00","23:30"] },
+          "domingo":   { "mediodia": ["12:30","17:00"], "noche": ["19:00","23:30"] }
+        }
+      },
+      {
+        "nombre": "Lucas Merino",
+        "plaza": "Base 4",
+        "contratadas": 20,
+        "complementarias": 0,
+        "horarios": {
+          "lunes":     { "mediodia": ["11:30","17:00"], "noche": ["19:00","0:00"] },
+          "martes":    { "mediodia": ["",""], "noche": ["",""] },
+          "miercoles": { "mediodia": ["",""], "noche": ["",""] },
+          "jueves":    { "mediodia": ["",""], "noche": ["",""] },
+          "viernes":   { "mediodia": ["",""], "noche": ["",""] },
+          "sabado":    { "mediodia": ["",""], "noche": ["",""] },
+          "domingo":   { "mediodia": ["",""], "noche": ["",""] }
+        }
+      }
+    ]
   }
 
 ]
