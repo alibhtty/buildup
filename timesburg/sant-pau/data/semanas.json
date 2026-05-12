@@ -2756,6 +2756,303 @@
     }
     }
   ]
-}
+},
+
+
+
+  {
+    "id": 20,
+    "nombre": "Timbesurg Sant Pau",
+    "trabajadores": [
+      {
+        "nombre": "Hashir Baig",
+        "plaza": "Mando",
+        "contratadas": 38,
+        "complementarias": 2,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["10:30", "16:30"],
+            "noche": ["19:30", "0:00"]
+          },
+          "martes": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["19:30", "0:00"]
+          },
+          "miercoles": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "jueves": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "viernes": {
+            "mediodia": ["", ""],
+            "noche": ["19:30", "0:00"]
+          },
+          "sabado": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["20:30", "1:00"]
+          },
+          "domingo": {
+            "mediodia": ["", ""],
+            "noche": ["18:00", "0:00"]
+          }
+        }
+      },
+      {
+        "nombre": "Milagros Quezada",
+        "plaza": "Mando",
+        "contratadas": 38,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "miercoles": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["19:30", "0:00"]
+          },
+          "jueves": {
+            "mediodia": ["10:30", "16:30"],
+            "noche": ["19:30", "0:00"]
+          },
+          "viernes": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["19:30", "1:00"]
+          },
+          "sabado": {
+            "mediodia": ["", ""],
+            "noche": ["20:00", "22:30"]
+          },
+          "domingo": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["", ""]
+          }
+        }
+      },
+      {
+        "nombre": "Daniel Flores",
+        "plaza": "Base 1",
+        "contratadas": 30,
+        "complementarias": 6,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["20:00", "23:00"]
+          },
+          "martes": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["19:30", "23:30"]
+          },
+          "miercoles": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "jueves": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "viernes": {
+            "mediodia": ["13:00", "16:00"],
+            "noche": ["20:00", "23:00"]
+          },
+          "sabado": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["19:30", "23:00"]
+          },
+          "domingo": {
+            "mediodia": ["", ""],
+            "noche": ["19:30", "0:00"]
+          }
+        }
+      },
+      {
+        "nombre": "Judith Serrano",
+        "plaza": "Base 2",
+        "contratadas": 20,
+        "complementarias": 14.5,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "miercoles": {
+            "mediodia": ["11:30", "15:30"],
+            "noche": ["19:30", "23:30"]
+          },
+          "jueves": {
+            "mediodia": ["10:30", "15:30"],
+            "noche": ["19:30", "0:00"]
+          },
+          "viernes": {
+            "mediodia": ["13:00", "16:30"],
+            "noche": ["19:30", "23:00"]
+          },
+          "sabado": {
+            "mediodia": ["19:30", "23:30"],
+            "noche": ["", ""]
+          },
+          "domingo": {
+            "mediodia": ["13:00", "16:30"],
+            "noche": ["20:00", "23:00"]
+          }
+        }
+      },
+      {
+        "nombre": "Ali Bhtty",
+        "plaza": "Base 3",
+        "contratadas": 20,
+        "complementarias": 10,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["20:00", "23:30"]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["20:00", "23:30"]
+          },
+          "miercoles": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "jueves": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "viernes": {
+            "mediodia": ["11:30", "15:30"],
+            "noche": ["20:00", "23:00"]
+          },
+          "sabado": {
+            "mediodia": ["13:30", "16:00"],
+            "noche": ["19:30", "1:00"]
+          },
+          "domingo": {
+            "mediodia": ["11:30", "16:30"],
+            "noche": ["20:00", "23:00"]
+          }
+        }
+      },
+      {
+        "nombre": "Weslie Negron",
+        "plaza": "Base 4",
+        "contratadas": 20,
+        "complementarias": 6.5,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "miercoles": {
+            "mediodia": ["13:00", "16:30"],
+            "noche": ["20:00", "0:00"]
+          },
+          "jueves": {
+            "mediodia": ["13:00", "16:30"],
+            "noche": ["20:00", "23:30"]
+          },
+          "viernes": {
+            "mediodia": ["", ""],
+            "noche": ["21:00", "23:30"]
+          },
+          "sabado": {
+            "mediodia": ["13:00", "16:00"],
+            "noche": ["21:00", "1:00"]
+          },
+          "domingo": {
+            "mediodia": ["13:00", "15:30"],
+            "noche": ["", ""]
+          }
+        }
+      },
+      {
+        "nombre": "Eva Castel",
+        "plaza": "Base 5",
+        "contratadas": 10,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "miercoles": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "jueves": {
+            "mediodia": ["", ""],
+            "noche": ["20:30", "23:00"]
+          },
+          "viernes": {
+            "mediodia": ["", ""],
+            "noche": ["20:30", "1:00"]
+          },
+          "sabado": {
+            "mediodia": ["", ""],
+            "noche": ["20:30", "23:30"]
+          },
+          "domingo": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          }
+        }
+      },
+      {
+        "nombre": "Ray Vassallo",
+        "plaza": "Base 6",
+        "contratadas": 0,
+        "complementarias": 0,
+        "horarios": {
+          "lunes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "martes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "miercoles": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "jueves": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "viernes": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "sabado": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          },
+          "domingo": {
+            "mediodia": ["", ""],
+            "noche": ["", ""]
+          }
+        }
+      }
+    ]
+  }
 
 ]
